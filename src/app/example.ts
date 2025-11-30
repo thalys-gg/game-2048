@@ -1,6 +1,6 @@
 import { logger } from '@thalys/logger'
+import { engine } from '∆/engine.singleton'
 import { Assets, Container, Sprite, Texture } from 'pixi.js'
-import { engine } from '@/getEngine'
 
 export async function testPixiLayout () {
   const { stage, screen } = engine()

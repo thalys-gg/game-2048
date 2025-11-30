@@ -1,13 +1,8 @@
-import type { FancyButton } from '@pixi/ui'
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { Ticker } from 'pixi.js'
-import { animate } from 'motion'
+import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
-import { engine } from '@/getEngine'
 import { PopupPause } from '@/popups/popup.pause'
-import { Bouncer } from '@/screens/main/Bouncer'
-import { Button } from '@/ui/Button'
-import { create } from '@/ui/create.ts'
 
 /** The screen that holds the app */
 export class ScreenMain extends Container implements IAppScreen {
@@ -17,11 +12,6 @@ export class ScreenMain extends Container implements IAppScreen {
   public static assetBundles: TAssetBundleId[] = ['main']
 
   public mainContainer: Container
-  private pauseButton: FancyButton
-  private settingsButton: FancyButton
-  private addButton: FancyButton
-  private removeButton: FancyButton
-  private bouncer: Bouncer
   private paused = false
 
   constructor () {
@@ -29,29 +19,6 @@ export class ScreenMain extends Container implements IAppScreen {
 
     this.mainContainer = new Container()
     this.addChild(this.mainContainer)
-    this.bouncer = new Bouncer()
-
-    this.pauseButton = create.mainUI.btnPause()
-    this.addChild(this.pauseButton)
-
-    this.settingsButton = create.mainUI.btnSettings()
-    this.addChild(this.settingsButton)
-
-    this.addButton = new Button({
-      text: 'Add',
-      width: 175,
-      height: 110,
-    })
-    this.addButton.onPress.connect(() => this.bouncer.add())
-    this.addChild(this.addButton)
-
-    this.removeButton = new Button({
-      text: 'Remove',
-      width: 175,
-      height: 110,
-    })
-    this.removeButton.onPress.connect(() => this.bouncer.remove())
-    this.addChild(this.removeButton)
   }
 
   /** Prepare the screen just before showing */
@@ -59,8 +26,8 @@ export class ScreenMain extends Container implements IAppScreen {
 
   /** Update the screen */
   public update (_time: Ticker) {
+    // eslint-disable-next-line no-useless-return
     if (this.paused) { return }
-    this.bouncer.update()
   }
 
   /** Pause gameplay - automatically fired when a popup is presented */
@@ -85,41 +52,11 @@ export class ScreenMain extends Container implements IAppScreen {
 
     this.mainContainer.x = centerX
     this.mainContainer.y = centerY
-    this.pauseButton.x = 30
-    this.pauseButton.y = 30
-    this.settingsButton.x = width - 30
-    this.settingsButton.y = 30
-    this.removeButton.x = width / 2 - 100
-    this.removeButton.y = height - 75
-    this.addButton.x = width / 2 + 100
-    this.addButton.y = height - 75
-
-    this.bouncer.resize(width, height)
   }
 
   /** Show screen with animations */
   public async show (): Promise<void> {
-    engine().audio.bgm.play('main/sounds/bgm-main.mp3', { volume: 0.5 })
 
-    const elementsToAnimate = [
-      this.pauseButton,
-      this.settingsButton,
-      this.addButton,
-      this.removeButton,
-    ]
-
-    let finalPromise!: ReturnType<typeof animate>
-    for (const element of elementsToAnimate) {
-      element.alpha = 0
-      finalPromise = animate(
-        element,
-        { alpha: 1 },
-        { duration: 0.3, delay: 0.75, ease: 'backOut' },
-      )
-    }
-
-    await finalPromise
-    this.bouncer.show(this)
   }
 
   /** Hide screen with animations */
