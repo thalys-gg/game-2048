@@ -4,7 +4,6 @@ import { ScreenAssetLoader } from '@/screens/loading-screen/ScreenAssetLoader'
 import { ScreenMain } from '@/screens/main/ScreenMain'
 import { OverlayUI } from '@/screens/overlay/UI'
 
-
 export default new class {
   public async start () {
 
