@@ -4,8 +4,8 @@ import { FancyButton } from '@pixi/ui'
 import { logger } from '@thalys/logger'
 import { Assets, Sprite, Texture } from 'pixi.js'
 import { engine } from '@/getEngine'
-import { PausePopup } from '@/popups/PausePopup'
-import { SettingsPopup } from '@/popups/SettingsPopup'
+import { PopupPause } from '@/popups/popup.pause'
+import { PopupSettings } from '@/popups/popup.settings'
 import { Check } from '@/ui/Check'
 
 const buttonAnimations = {
@@ -44,9 +44,9 @@ class _MainUI {
       animations: buttonAnimations,
     })
 
-    btn.onPress.connect(async () =>
-      engine().navigation.presentPopup(PausePopup),
-    )
+    btn.onPress.connect(() => {
+      engine().navigation.presentPopup(PopupPause)
+    })
 
     return btn
   }
@@ -58,9 +58,9 @@ class _MainUI {
       animations: buttonAnimations,
     })
 
-    btn.onPress.connect(async () =>
-      engine().navigation.presentPopup(SettingsPopup),
-    )
+    btn.onPress.connect(() => {
+      engine().navigation.presentPopup(PopupSettings)
+    })
 
     return btn
   }

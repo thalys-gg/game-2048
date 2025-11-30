@@ -1,8 +1,6 @@
 import type { Container, Ticker } from 'pixi.js'
 
 export const appScreens = [
-  'ScreenMemoryGameMenu',
-  'ScreenMemoryGame',
   'ScreenMain',
   'ScreenAssetLoader',
 

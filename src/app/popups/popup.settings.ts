@@ -1,5 +1,5 @@
 import type { FancyButton } from '@pixi/ui'
-import type { AppScreens } from '∆/navigation.types'
+import type { AppScreens, IAppScreen } from '∆/navigation.types'
 import type { Text } from 'pixi.js'
 import { List } from '@pixi/ui'
 import { engine } from '∆/engine.singleton'
@@ -15,7 +15,7 @@ import { Label } from '@/ui/Label'
 import { VolumeSlider } from '@/ui/VolumeSlider'
 
 /** Popup for volume */
-export class PopupSettings extends Container {
+export class PopupSettings extends Container implements IAppScreen {
   public definition: AppScreens = 'PopupSettings'
   /** The dark semi-transparent background covering current screen */
   private bg: Sprite

@@ -1,4 +1,4 @@
-import type { CreationEngine } from '∆/index'
+import type { CreationEngine } from '∆/engine'
 
 let instance: CreationEngine | null = null
 

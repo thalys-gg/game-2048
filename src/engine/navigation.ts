@@ -3,10 +3,7 @@ import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/navigati
 import type { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
-import { Background } from '@/screens/background'
-import { ScreenMemoryGame } from '@/screens/game/ScreenMemoryGame'
 import { ScreenMain } from '@/screens/main/ScreenMain'
-import { ScreenMemoryGameMenu } from '@/screens/menu/ScreenMemoryGameMenu'
 
 export class Navigation {
   /** Reference to the main application */
@@ -14,7 +11,7 @@ export class Navigation {
 
   public cLayers = new Container()
   /** Containers as layers */
-  public cBackground = new Background()
+  public cBackground = new Container()
   public cRuler = new Container()
   public cScreen = new Container()
   public cScreenOverlay = new Container()
@@ -240,15 +237,11 @@ export class Navigation {
     e?.preventDefault()
     // This fires when the user hits the browser/Android back button.
     // logger.log('Back button pressed. Emitting "goBack" signal.')
-    this.showScreen(ScreenMemoryGameMenu)
+    this.showScreen(ScreenMain)
   }
 
   private crossReference = (screen: AppScreens): AppScreens | null => {
     switch (screen) {
-      case 'ScreenMemoryGame':
-        return 'ScreenMemoryGame'
-      case 'ScreenMemoryGameMenu':
-        return 'ScreenMemoryGameMenu'
       case 'Measure':
       case 'ScreenAssetLoader':
       case 'OverlayUI':
@@ -258,16 +251,12 @@ export class Navigation {
       case 'PopupSettings':
       case 'ScreenMain':
       default:
-        return 'ScreenMemoryGameMenu'
+        return 'ScreenMain'
     }
   }
 
   private matchRefScreen = (screen: AppScreens): IAppScreenConstructor | null => {
     switch (screen) {
-      case 'ScreenMemoryGame':
-        return ScreenMemoryGame
-      case 'ScreenMemoryGameMenu':
-        return ScreenMemoryGameMenu
       case 'Measure':
       case 'ScreenAssetLoader':
       case 'OverlayUI':

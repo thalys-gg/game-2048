@@ -1,7 +1,8 @@
 import type { Application, ExtensionMetadata } from 'pixi.js'
 import { sound } from '@pixi/sound'
-import { ExtensionType } from 'pixi.js'
+import { logger } from '@thalys/logger'
 import { BGM, SFX } from '∆/audio'
+import { ExtensionType } from 'pixi.js'
 
 /**
  * Middleware for Application's audio functionality.
@@ -36,6 +37,7 @@ export class CreationAudioPlugin {
         }
       },
     }
+    logger.info('Audio plugin initialized')
   }
 
   /**

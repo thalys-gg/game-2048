@@ -11,7 +11,7 @@ export const remove = (str: string, toRemove: string) => {
 }
 
 const server: UserConfig['server'] = {
-  port: 4223,
+  port: 3212,
   open: false,
 
   sourcemapIgnoreList (_sourcePath: string, _sourcemapPath: string): boolean {

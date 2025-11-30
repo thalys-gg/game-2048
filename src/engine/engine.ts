@@ -4,11 +4,11 @@ import type {
   RendererDestroyOptions,
 } from 'pixi.js'
 import { sound } from '@pixi/sound'
-import { Application, Assets, extensions, ResizePlugin } from 'pixi.js'
 import { CreationAudioPlugin } from '∆/audio.plugin'
 import { CreationNavigationPlugin } from '∆/navigation.plugin'
 import { CreationResizePlugin } from '∆/resize.plugin'
 import { getResolution } from '∆/utils/getResolution'
+import { Application, Assets, extensions, ResizePlugin } from 'pixi.js'
 import manifest from '../gen/manifest.json'
 import 'pixi.js/app'
 
