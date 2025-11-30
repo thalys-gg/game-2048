@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // "Please don't shove this anywhere and place at the defined cache folder"
+    "tsBuildInfoFile": ".cache/tsconfig.core.tsbuildinfo",
+
+    // #Target for generation of output JS
+    "target": "ES2022",
+    "lib": ["ESNext"],
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
+
+    "baseUrl": "./",
+
+    // Browser is target so use latest standard (get's transpiled according to #Target)
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "paths": {
+      "∆/*": ["./src/engine/*"],
+      "@/*": ["./src/app/*"],
+      "#/*": ["./scripts/*"]
+    },
+
+    "resolveJsonModule": true,
+
+    "allowImportingTsExtensions": true,
+
+    "allowJs": true,
+    "checkJs": true,
+
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noUncheckedSideEffectImports": false,
+
+    "noEmit": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "skipLibCheck": true
+  }
+}

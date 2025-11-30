@@ -1,0 +1,1203 @@
+{
+  "bundles": [
+    {
+      "name": "default",
+      "assets": []
+    },
+    {
+      "name": "main",
+      "assets": [
+        {
+          "alias": [
+            "main/ui"
+          ],
+          "src": [
+            "main/ui.webp.json",
+            "main/ui.png.json"
+          ]
+        },
+        {
+          "alias": [
+            "main/sounds/sfx-hover.wav",
+            "main/sounds/sfx-hover",
+            "sfx-hover.wav",
+            "sfx-hover"
+          ],
+          "src": [
+            "main/sounds/sfx-hover.ogg",
+            "main/sounds/sfx-hover.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "main/sounds/sfx-press.wav",
+            "main/sounds/sfx-press",
+            "sfx-press.wav",
+            "sfx-press"
+          ],
+          "src": [
+            "main/sounds/sfx-press.ogg",
+            "main/sounds/sfx-press.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "main/sounds/bgm-main.mp3",
+            "main/sounds/bgm-main",
+            "bgm-main.mp3",
+            "bgm-main"
+          ],
+          "src": [
+            "main/sounds/bgm-main.ogg",
+            "main/sounds/bgm-main.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "main/logo-white.svg",
+            "main/logo-white",
+            "logo-white.svg",
+            "logo-white"
+          ],
+          "src": [
+            "main/logo-white.svg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "memory-game-phaser",
+      "assets": [
+        {
+          "alias": [
+            "memory-game-phaser/ui"
+          ],
+          "src": [
+            "memory-game-phaser/ui.webp.json",
+            "memory-game-phaser/ui.png.json"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/whoosh.mp3",
+            "memory-game-phaser/audio/whoosh",
+            "whoosh.mp3",
+            "whoosh"
+          ],
+          "src": [
+            "memory-game-phaser/audio/whoosh.ogg",
+            "memory-game-phaser/audio/whoosh.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/card-match.mp3",
+            "memory-game-phaser/audio/card-match",
+            "card-match.mp3",
+            "card-match"
+          ],
+          "src": [
+            "memory-game-phaser/audio/card-match.ogg",
+            "memory-game-phaser/audio/card-match.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/victory.mp3",
+            "memory-game-phaser/audio/victory",
+            "victory.mp3",
+            "victory"
+          ],
+          "src": [
+            "memory-game-phaser/audio/victory.ogg",
+            "memory-game-phaser/audio/victory.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/fat-caps-audionatix.mp3",
+            "memory-game-phaser/audio/fat-caps-audionatix",
+            "fat-caps-audionatix.mp3",
+            "fat-caps-audionatix"
+          ],
+          "src": [
+            "memory-game-phaser/audio/fat-caps-audionatix.ogg",
+            "memory-game-phaser/audio/fat-caps-audionatix.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/card-slide.mp3",
+            "memory-game-phaser/audio/card-slide",
+            "card-slide.mp3",
+            "card-slide"
+          ],
+          "src": [
+            "memory-game-phaser/audio/card-slide.ogg",
+            "memory-game-phaser/audio/card-slide.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/card-flip.mp3",
+            "memory-game-phaser/audio/card-flip",
+            "card-flip.mp3",
+            "card-flip"
+          ],
+          "src": [
+            "memory-game-phaser/audio/card-flip.ogg",
+            "memory-game-phaser/audio/card-flip.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/audio/card-mismatch.mp3",
+            "memory-game-phaser/audio/card-mismatch",
+            "card-mismatch.mp3",
+            "card-mismatch"
+          ],
+          "src": [
+            "memory-game-phaser/audio/card-mismatch.ogg",
+            "memory-game-phaser/audio/card-mismatch.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "memory-game-phaser/cards",
+            "cards"
+          ],
+          "src": [
+            "memory-game-phaser/cards.webp.json",
+            "memory-game-phaser/cards.png.json"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loops",
+      "assets": [
+        {
+          "alias": [
+            "loops/retro/retro-beat.ogg",
+            "loops/retro/retro-beat",
+            "retro-beat.ogg",
+            "retro-beat"
+          ],
+          "src": [
+            "loops/retro/retro-beat.ogg",
+            "loops/retro/retro-beat.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/retro/retro-reggae.ogg",
+            "loops/retro/retro-reggae",
+            "retro-reggae.ogg",
+            "retro-reggae"
+          ],
+          "src": [
+            "loops/retro/retro-reggae.ogg",
+            "loops/retro/retro-reggae.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/retro/retro-mystic.ogg",
+            "loops/retro/retro-mystic",
+            "retro-mystic.ogg",
+            "retro-mystic"
+          ],
+          "src": [
+            "loops/retro/retro-mystic.ogg",
+            "loops/retro/retro-mystic.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/retro/retro-comedy.ogg",
+            "loops/retro/retro-comedy",
+            "retro-comedy.ogg",
+            "retro-comedy"
+          ],
+          "src": [
+            "loops/retro/retro-comedy.ogg",
+            "loops/retro/retro-comedy.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/retro/retro-polka.ogg",
+            "loops/retro/retro-polka",
+            "retro-polka.ogg",
+            "retro-polka"
+          ],
+          "src": [
+            "loops/retro/retro-polka.ogg",
+            "loops/retro/retro-polka.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/night-at-the-beach.ogg",
+            "loops/loops/night-at-the-beach",
+            "night-at-the-beach.ogg",
+            "night-at-the-beach"
+          ],
+          "src": [
+            "loops/loops/night-at-the-beach.ogg",
+            "loops/loops/night-at-the-beach.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/italian-mom.ogg",
+            "loops/loops/italian-mom",
+            "italian-mom.ogg",
+            "italian-mom"
+          ],
+          "src": [
+            "loops/loops/italian-mom.ogg",
+            "loops/loops/italian-mom.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/game-over.ogg",
+            "loops/loops/game-over",
+            "game-over.ogg",
+            "game-over"
+          ],
+          "src": [
+            "loops/loops/game-over.ogg",
+            "loops/loops/game-over.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/wacky-waiting.ogg",
+            "loops/loops/wacky-waiting",
+            "wacky-waiting.ogg",
+            "wacky-waiting"
+          ],
+          "src": [
+            "loops/loops/wacky-waiting.ogg",
+            "loops/loops/wacky-waiting.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/time-driving.ogg",
+            "loops/loops/time-driving",
+            "time-driving.ogg",
+            "time-driving"
+          ],
+          "src": [
+            "loops/loops/time-driving.ogg",
+            "loops/loops/time-driving.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/flowing-rocks.ogg",
+            "loops/loops/flowing-rocks",
+            "flowing-rocks.ogg",
+            "flowing-rocks"
+          ],
+          "src": [
+            "loops/loops/flowing-rocks.ogg",
+            "loops/loops/flowing-rocks.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/mission-plausible.ogg",
+            "loops/loops/mission-plausible",
+            "mission-plausible.ogg",
+            "mission-plausible"
+          ],
+          "src": [
+            "loops/loops/mission-plausible.ogg",
+            "loops/loops/mission-plausible.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/cheerful-annoyance.ogg",
+            "loops/loops/cheerful-annoyance",
+            "cheerful-annoyance.ogg",
+            "cheerful-annoyance"
+          ],
+          "src": [
+            "loops/loops/cheerful-annoyance.ogg",
+            "loops/loops/cheerful-annoyance.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/mishief-stroll.ogg",
+            "loops/loops/mishief-stroll",
+            "mishief-stroll.ogg",
+            "mishief-stroll"
+          ],
+          "src": [
+            "loops/loops/mishief-stroll.ogg",
+            "loops/loops/mishief-stroll.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/space-cadet.ogg",
+            "loops/loops/space-cadet",
+            "space-cadet.ogg",
+            "space-cadet"
+          ],
+          "src": [
+            "loops/loops/space-cadet.ogg",
+            "loops/loops/space-cadet.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/swinging-pants.ogg",
+            "loops/loops/swinging-pants",
+            "swinging-pants.ogg",
+            "swinging-pants"
+          ],
+          "src": [
+            "loops/loops/swinging-pants.ogg",
+            "loops/loops/swinging-pants.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/polka-train.ogg",
+            "loops/loops/polka-train",
+            "polka-train.ogg",
+            "polka-train"
+          ],
+          "src": [
+            "loops/loops/polka-train.ogg",
+            "loops/loops/polka-train.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/farm-frolics.ogg",
+            "loops/loops/farm-frolics",
+            "farm-frolics.ogg",
+            "farm-frolics"
+          ],
+          "src": [
+            "loops/loops/farm-frolics.ogg",
+            "loops/loops/farm-frolics.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/german-virtue.ogg",
+            "loops/loops/german-virtue",
+            "german-virtue.ogg",
+            "german-virtue"
+          ],
+          "src": [
+            "loops/loops/german-virtue.ogg",
+            "loops/loops/german-virtue.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/sad-town.ogg",
+            "loops/loops/sad-town",
+            "sad-town.ogg",
+            "sad-town"
+          ],
+          "src": [
+            "loops/loops/sad-town.ogg",
+            "loops/loops/sad-town.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/alpha-dance.ogg",
+            "loops/loops/alpha-dance",
+            "alpha-dance.ogg",
+            "alpha-dance"
+          ],
+          "src": [
+            "loops/loops/alpha-dance.ogg",
+            "loops/loops/alpha-dance.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/infinite-descent.ogg",
+            "loops/loops/infinite-descent",
+            "infinite-descent.ogg",
+            "infinite-descent"
+          ],
+          "src": [
+            "loops/loops/infinite-descent.ogg",
+            "loops/loops/infinite-descent.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/sad-descent.ogg",
+            "loops/loops/sad-descent",
+            "sad-descent.ogg",
+            "sad-descent"
+          ],
+          "src": [
+            "loops/loops/sad-descent.ogg",
+            "loops/loops/sad-descent.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/loops/drumming-sticks.ogg",
+            "loops/loops/drumming-sticks",
+            "drumming-sticks.ogg",
+            "drumming-sticks"
+          ],
+          "src": [
+            "loops/loops/drumming-sticks.ogg",
+            "loops/loops/drumming-sticks.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/idents/polka-ident.ogg",
+            "loops/idents/polka-ident",
+            "polka-ident.ogg",
+            "polka-ident"
+          ],
+          "src": [
+            "loops/idents/polka-ident.ogg",
+            "loops/idents/polka-ident.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/idents/reggae-ident.ogg",
+            "loops/idents/reggae-ident",
+            "reggae-ident.ogg",
+            "reggae-ident"
+          ],
+          "src": [
+            "loops/idents/reggae-ident.ogg",
+            "loops/idents/reggae-ident.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/idents/beat-ident.ogg",
+            "loops/idents/beat-ident",
+            "beat-ident.ogg",
+            "beat-ident"
+          ],
+          "src": [
+            "loops/idents/beat-ident.ogg",
+            "loops/idents/beat-ident.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/idents/country-ident.ogg",
+            "loops/idents/country-ident",
+            "country-ident.ogg",
+            "country-ident"
+          ],
+          "src": [
+            "loops/idents/country-ident.ogg",
+            "loops/idents/country-ident.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "loops/idents/serious-ident.ogg",
+            "loops/idents/serious-ident",
+            "serious-ident.ogg",
+            "serious-ident"
+          ],
+          "src": [
+            "loops/idents/serious-ident.ogg",
+            "loops/idents/serious-ident.mp3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "preload",
+      "assets": [
+        {
+          "alias": [
+            "preload/logo.svg",
+            "preload/logo",
+            "logo.svg",
+            "logo"
+          ],
+          "src": [
+            "preload/logo.svg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ui",
+      "assets": [
+        {
+          "alias": [
+            "ui/icons-white",
+            "icons-white"
+          ],
+          "src": [
+            "ui/icons-white.webp.json",
+            "ui/icons-white.png.json"
+          ]
+        },
+        {
+          "alias": [
+            "ui/ui-blue",
+            "ui-blue"
+          ],
+          "src": [
+            "ui/ui-blue.webp.json",
+            "ui/ui-blue.png.json"
+          ]
+        },
+        {
+          "alias": [
+            "ui/ui-extra",
+            "ui-extra"
+          ],
+          "src": [
+            "ui/ui-extra.webp.json",
+            "ui/ui-extra.png.json"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch22.ogg",
+            "ui/audio/switch22",
+            "switch22.ogg",
+            "switch22"
+          ],
+          "src": [
+            "ui/audio/switch22.ogg",
+            "ui/audio/switch22.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch36.ogg",
+            "ui/audio/switch36",
+            "switch36.ogg",
+            "switch36"
+          ],
+          "src": [
+            "ui/audio/switch36.ogg",
+            "ui/audio/switch36.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch37.ogg",
+            "ui/audio/switch37",
+            "switch37.ogg",
+            "switch37"
+          ],
+          "src": [
+            "ui/audio/switch37.ogg",
+            "ui/audio/switch37.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch23.ogg",
+            "ui/audio/switch23",
+            "switch23.ogg",
+            "switch23"
+          ],
+          "src": [
+            "ui/audio/switch23.ogg",
+            "ui/audio/switch23.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/click5.ogg",
+            "ui/audio/click5",
+            "click5.ogg",
+            "click5"
+          ],
+          "src": [
+            "ui/audio/click5.ogg",
+            "ui/audio/click5.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch35.ogg",
+            "ui/audio/switch35",
+            "switch35.ogg",
+            "switch35"
+          ],
+          "src": [
+            "ui/audio/switch35.ogg",
+            "ui/audio/switch35.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch21.ogg",
+            "ui/audio/switch21",
+            "switch21.ogg",
+            "switch21"
+          ],
+          "src": [
+            "ui/audio/switch21.ogg",
+            "ui/audio/switch21.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch20.ogg",
+            "ui/audio/switch20",
+            "switch20.ogg",
+            "switch20"
+          ],
+          "src": [
+            "ui/audio/switch20.ogg",
+            "ui/audio/switch20.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch34.ogg",
+            "ui/audio/switch34",
+            "switch34.ogg",
+            "switch34"
+          ],
+          "src": [
+            "ui/audio/switch34.ogg",
+            "ui/audio/switch34.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/click4.ogg",
+            "ui/audio/click4",
+            "click4.ogg",
+            "click4"
+          ],
+          "src": [
+            "ui/audio/click4.ogg",
+            "ui/audio/click4.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch18.ogg",
+            "ui/audio/switch18",
+            "switch18.ogg",
+            "switch18"
+          ],
+          "src": [
+            "ui/audio/switch18.ogg",
+            "ui/audio/switch18.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch30.ogg",
+            "ui/audio/switch30",
+            "switch30.ogg",
+            "switch30"
+          ],
+          "src": [
+            "ui/audio/switch30.ogg",
+            "ui/audio/switch30.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch24.ogg",
+            "ui/audio/switch24",
+            "switch24.ogg",
+            "switch24"
+          ],
+          "src": [
+            "ui/audio/switch24.ogg",
+            "ui/audio/switch24.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch25.ogg",
+            "ui/audio/switch25",
+            "switch25.ogg",
+            "switch25"
+          ],
+          "src": [
+            "ui/audio/switch25.ogg",
+            "ui/audio/switch25.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch31.ogg",
+            "ui/audio/switch31",
+            "switch31.ogg",
+            "switch31"
+          ],
+          "src": [
+            "ui/audio/switch31.ogg",
+            "ui/audio/switch31.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch19.ogg",
+            "ui/audio/switch19",
+            "switch19.ogg",
+            "switch19"
+          ],
+          "src": [
+            "ui/audio/switch19.ogg",
+            "ui/audio/switch19.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/click1.ogg",
+            "ui/audio/click1",
+            "click1.ogg",
+            "click1"
+          ],
+          "src": [
+            "ui/audio/click1.ogg",
+            "ui/audio/click1.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/click3.ogg",
+            "ui/audio/click3",
+            "click3.ogg",
+            "click3"
+          ],
+          "src": [
+            "ui/audio/click3.ogg",
+            "ui/audio/click3.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch27.ogg",
+            "ui/audio/switch27",
+            "switch27.ogg",
+            "switch27"
+          ],
+          "src": [
+            "ui/audio/switch27.ogg",
+            "ui/audio/switch27.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch33.ogg",
+            "ui/audio/switch33",
+            "switch33.ogg",
+            "switch33"
+          ],
+          "src": [
+            "ui/audio/switch33.ogg",
+            "ui/audio/switch33.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch32.ogg",
+            "ui/audio/switch32",
+            "switch32.ogg",
+            "switch32"
+          ],
+          "src": [
+            "ui/audio/switch32.ogg",
+            "ui/audio/switch32.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch26.ogg",
+            "ui/audio/switch26",
+            "switch26.ogg",
+            "switch26"
+          ],
+          "src": [
+            "ui/audio/switch26.ogg",
+            "ui/audio/switch26.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/click2.ogg",
+            "ui/audio/click2",
+            "click2.ogg",
+            "click2"
+          ],
+          "src": [
+            "ui/audio/click2.ogg",
+            "ui/audio/click2.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch6.ogg",
+            "ui/audio/switch6",
+            "switch6.ogg",
+            "switch6"
+          ],
+          "src": [
+            "ui/audio/switch6.ogg",
+            "ui/audio/switch6.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover3.ogg",
+            "ui/audio/rollover3",
+            "rollover3.ogg",
+            "rollover3"
+          ],
+          "src": [
+            "ui/audio/rollover3.ogg",
+            "ui/audio/rollover3.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover2.ogg",
+            "ui/audio/rollover2",
+            "rollover2.ogg",
+            "rollover2"
+          ],
+          "src": [
+            "ui/audio/rollover2.ogg",
+            "ui/audio/rollover2.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch7.ogg",
+            "ui/audio/switch7",
+            "switch7.ogg",
+            "switch7"
+          ],
+          "src": [
+            "ui/audio/switch7.ogg",
+            "ui/audio/switch7.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch5.ogg",
+            "ui/audio/switch5",
+            "switch5.ogg",
+            "switch5"
+          ],
+          "src": [
+            "ui/audio/switch5.ogg",
+            "ui/audio/switch5.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover1.ogg",
+            "ui/audio/rollover1",
+            "rollover1.ogg",
+            "rollover1"
+          ],
+          "src": [
+            "ui/audio/rollover1.ogg",
+            "ui/audio/rollover1.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch4.ogg",
+            "ui/audio/switch4",
+            "switch4.ogg",
+            "switch4"
+          ],
+          "src": [
+            "ui/audio/switch4.ogg",
+            "ui/audio/switch4.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover5.ogg",
+            "ui/audio/rollover5",
+            "rollover5.ogg",
+            "rollover5"
+          ],
+          "src": [
+            "ui/audio/rollover5.ogg",
+            "ui/audio/rollover5.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover4.ogg",
+            "ui/audio/rollover4",
+            "rollover4.ogg",
+            "rollover4"
+          ],
+          "src": [
+            "ui/audio/rollover4.ogg",
+            "ui/audio/rollover4.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch1.ogg",
+            "ui/audio/switch1",
+            "switch1.ogg",
+            "switch1"
+          ],
+          "src": [
+            "ui/audio/switch1.ogg",
+            "ui/audio/switch1.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch3.ogg",
+            "ui/audio/switch3",
+            "switch3.ogg",
+            "switch3"
+          ],
+          "src": [
+            "ui/audio/switch3.ogg",
+            "ui/audio/switch3.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/rollover6.ogg",
+            "ui/audio/rollover6",
+            "rollover6.ogg",
+            "rollover6"
+          ],
+          "src": [
+            "ui/audio/rollover6.ogg",
+            "ui/audio/rollover6.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch2.ogg",
+            "ui/audio/switch2",
+            "switch2.ogg",
+            "switch2"
+          ],
+          "src": [
+            "ui/audio/switch2.ogg",
+            "ui/audio/switch2.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch9.ogg",
+            "ui/audio/switch9",
+            "switch9.ogg",
+            "switch9"
+          ],
+          "src": [
+            "ui/audio/switch9.ogg",
+            "ui/audio/switch9.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch8.ogg",
+            "ui/audio/switch8",
+            "switch8.ogg",
+            "switch8"
+          ],
+          "src": [
+            "ui/audio/switch8.ogg",
+            "ui/audio/switch8.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/mouseclick1.ogg",
+            "ui/audio/mouseclick1",
+            "mouseclick1.ogg",
+            "mouseclick1"
+          ],
+          "src": [
+            "ui/audio/mouseclick1.ogg",
+            "ui/audio/mouseclick1.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch17.ogg",
+            "ui/audio/switch17",
+            "switch17.ogg",
+            "switch17"
+          ],
+          "src": [
+            "ui/audio/switch17.ogg",
+            "ui/audio/switch17.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch16.ogg",
+            "ui/audio/switch16",
+            "switch16.ogg",
+            "switch16"
+          ],
+          "src": [
+            "ui/audio/switch16.ogg",
+            "ui/audio/switch16.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch14.ogg",
+            "ui/audio/switch14",
+            "switch14.ogg",
+            "switch14"
+          ],
+          "src": [
+            "ui/audio/switch14.ogg",
+            "ui/audio/switch14.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch28.ogg",
+            "ui/audio/switch28",
+            "switch28.ogg",
+            "switch28"
+          ],
+          "src": [
+            "ui/audio/switch28.ogg",
+            "ui/audio/switch28.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/mouserelease1.ogg",
+            "ui/audio/mouserelease1",
+            "mouserelease1.ogg",
+            "mouserelease1"
+          ],
+          "src": [
+            "ui/audio/mouserelease1.ogg",
+            "ui/audio/mouserelease1.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch29.ogg",
+            "ui/audio/switch29",
+            "switch29.ogg",
+            "switch29"
+          ],
+          "src": [
+            "ui/audio/switch29.ogg",
+            "ui/audio/switch29.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch15.ogg",
+            "ui/audio/switch15",
+            "switch15.ogg",
+            "switch15"
+          ],
+          "src": [
+            "ui/audio/switch15.ogg",
+            "ui/audio/switch15.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch11.ogg",
+            "ui/audio/switch11",
+            "switch11.ogg",
+            "switch11"
+          ],
+          "src": [
+            "ui/audio/switch11.ogg",
+            "ui/audio/switch11.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch10.ogg",
+            "ui/audio/switch10",
+            "switch10.ogg",
+            "switch10"
+          ],
+          "src": [
+            "ui/audio/switch10.ogg",
+            "ui/audio/switch10.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch38.ogg",
+            "ui/audio/switch38",
+            "switch38.ogg",
+            "switch38"
+          ],
+          "src": [
+            "ui/audio/switch38.ogg",
+            "ui/audio/switch38.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch12.ogg",
+            "ui/audio/switch12",
+            "switch12.ogg",
+            "switch12"
+          ],
+          "src": [
+            "ui/audio/switch12.ogg",
+            "ui/audio/switch12.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/audio/switch13.ogg",
+            "ui/audio/switch13",
+            "switch13.ogg",
+            "switch13"
+          ],
+          "src": [
+            "ui/audio/switch13.ogg",
+            "ui/audio/switch13.mp3"
+          ]
+        },
+        {
+          "alias": [
+            "ui/icons-black",
+            "icons-black"
+          ],
+          "src": [
+            "ui/icons-black.webp.json",
+            "ui/icons-black.png.json"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.core.json",
+  "compilerOptions": {
+    // "Please don't shove this anywhere and place at the defined cache folder"
+    "tsBuildInfoFile": ".cache/tsconfig.app.tsbuildinfo",
+
+    // #Target for generation of output JS
+    "target": "ES2020",
+    // Allow use of the latest ECMAScript features
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+
+    "types": [
+      "pixi.js",
+      "vite-plugin-glsl/ext"
+    ],
+
+    "outDir": "./dist-app",
+
+    "erasableSyntaxOnly": false
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    ".cache",
+    ".vscode",
+    "dist",
+    "public"
+  ]
+}
