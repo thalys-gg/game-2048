@@ -1,4 +1,4 @@
-import type { Cell } from '@/screens/main/cell'
+import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
 import textures from '@/textures'
@@ -6,7 +6,7 @@ import textures from '@/textures'
 const pieceCount = CONFIG.rows * CONFIG.cols
 
 export class Board extends Sprite {
-  private pieces: Sprite[]
+  public pieces: FlatGrid<Sprite>
   private main: Container
   constructor () {
     super(textures.board)
@@ -14,11 +14,11 @@ export class Board extends Sprite {
     this.main = new Container()
     this.addChild(this.main)
 
-    this.pieces = []
+    this.pieces = new FlatGrid(CONFIG.cols, CONFIG.rows)
     for (let i = 0; i < pieceCount; i++) {
       const piece = Sprite.from(textures.empty)
       this.main.addChild(piece)
-      this.pieces.push(piece)
+      this.pieces.setAtIndex(i, piece)
     }
   }
 
@@ -28,12 +28,9 @@ export class Board extends Sprite {
 
     const padding = CONFIG.board.padding
 
-    for (let i = 0; i < this.pieces.length; i++) {
-      const piece = this.pieces[i]
-      const x = i % CONFIG.cols
-      const y = Math.floor(i / CONFIG.rows)
+    this.pieces.forEach((piece, x, y) => {
       piece.x = padding + x * piece.width
       piece.y = padding + y * piece.height
-    }
+    })
   }
 }

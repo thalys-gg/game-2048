@@ -191,6 +191,35 @@ export class FlatGrid<T> {
     return newGrid
   }
 
+  /**
+   * Finds a random coordinate that matches the given predicate.
+   * Useful for finding random empty cells for spawning.
+   * @param predicate Function that returns true if the cell is a candidate
+   * @returns A random Coordinate among the matches, or null if none found
+   * @example
+   * // Find random cell where value is 0
+   * const emptySpot = grid.getRandomLocation((val) => val === 0);
+   */
+  public getRandomLocation (predicate: (value: T, x: number, y: number) => boolean): Coordinate | null {
+    const indices: number[] = []
+
+    // Single pass scan to find all candidates
+    for (let i = 0; i < this.data.length; i++) {
+      // Calculate coords manually to avoid object allocation overhead during scan
+      const x = i % this.width
+      const y = Math.floor(i / this.width)
+
+      if (predicate(this.data[i], x, y)) {
+        indices.push(i)
+      }
+    }
+
+    if (indices.length === 0) return null
+
+    const randIndex = indices[Math.floor(Math.random() * indices.length)]
+    return this.getXY(randIndex)
+  }
+
   public fill (value: T): void {
     this.data.fill(value)
   }

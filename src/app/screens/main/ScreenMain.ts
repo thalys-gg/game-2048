@@ -41,6 +41,10 @@ export class ScreenMain extends Container implements IAppScreen {
     this.board.x = centerX
     this.board.y = centerY
     this.board.resize(width, height)
+
+    this.game.x = this.board.x - this.board.width * this.board.anchor.x
+    this.game.y = this.board.y - this.board.height * this.board.anchor.y
+    this.game.resize(width, height)
   }
 
   /** Prepare the screen just before showing */
