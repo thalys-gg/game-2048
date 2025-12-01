@@ -1,9 +1,9 @@
 import { FancyButton } from '@pixi/ui'
+import { waitFor } from '∆/lib/promise'
+import { ZINC } from '∆/utils/colors'
 import actions from '@/actions'
 import textures from '@/textures'
 import { Label } from '@/ui/Label'
-import { ZINC } from '∆/utils/colors'
-import { waitFor } from '∆/utils/promise'
 
 const btnTransitions = {
   hover: { props: { scale: { x: 1.03, y: 1.03 } }, duration: 100 },

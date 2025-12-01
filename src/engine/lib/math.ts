@@ -1,3 +1,5 @@
+const { log, min, max } = Math
+
 /** Get the distance between a and b points */
 export function getDistance (ax: number, ay: number, bx = 0, by = 0) {
   const dx = bx - ax
@@ -11,7 +13,12 @@ export function lerp (a: number, b: number, t: number) {
 }
 
 /** Clamp a number to minimum and maximum values */
-export function clamp (v: number, min = 0, max = 1) {
-  if (min > max) { [min, max] = [max, min] }
-  return v < min ? min : v > max ? max : v
+export function clamp (num: number, min: number = 0, max: number = 1) {
+  return num <= min ? min : num >= max ? max : num
+}
+
+
+// logarithm with any base
+export function logBase (b: number, x: number) {
+  return log(x) / log(b)
 }

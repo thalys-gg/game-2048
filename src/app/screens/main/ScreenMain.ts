@@ -4,7 +4,6 @@ import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
 import { Board } from '@/screens/main/board'
-import { Cell } from '@/screens/main/cell'
 
 /** The screen that holds the app */
 export class ScreenMain extends Container implements IAppScreen {
@@ -15,7 +14,6 @@ export class ScreenMain extends Container implements IAppScreen {
 
   public main: Container
   public board: Board
-  public pieces: Cell[]
   private paused = false
 
   constructor () {
@@ -28,13 +26,6 @@ export class ScreenMain extends Container implements IAppScreen {
     this.board.anchor.set(0.5)
     this.board.pivot.set(0.5)
     this.main.addChild(this.board)
-
-    this.pieces = []
-    for (let i = 0; i < 16; i++) {
-      const piece = new Cell()
-      this.board.addChild(piece)
-      this.pieces.push(piece)
-    }
   }
 
   /** Resize the screen, fired whenever window size changes */
