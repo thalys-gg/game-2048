@@ -1,6 +1,55 @@
 import { Texture } from 'pixi.js'
+import { CONFIG } from '@/config'
+import { render } from '@/screens/main/square'
 
 export default new class {
+
+  public get board () {
+    const width = CONFIG.board.size
+    const height = CONFIG.board.size
+    const radius = CONFIG.piece.radius
+    const color = CONFIG.theme.boardBg
+
+    return render()
+      .canvas(width, height)
+      .draw()
+      .squareRounded(0, 0, width, height, radius, color)
+      .render()
+  }
+
+  public get empty () {
+    const width = CONFIG.piece.size
+    const height = CONFIG.piece.size
+    const padding = CONFIG.piece.padding
+    const canvasWidth = width + padding * 2
+    const canvasHeight = height + padding * 2
+    const radius = CONFIG.piece.radius
+    const color = CONFIG.theme.emptyTile
+
+    return render()
+      .canvas(canvasWidth, canvasHeight)
+      .draw()
+      .squareRounded(padding, padding, width, height, radius, color)
+      .render()
+  }
+
+  public get cell () {
+    const width = CONFIG.piece.size
+    const height = CONFIG.piece.size
+    const padding = CONFIG.piece.padding
+    const canvasWidth = width + padding * 2
+    const canvasHeight = height + padding * 2
+    const radius = CONFIG.piece.radius
+    const color = CONFIG.theme.tiles[2].bg
+
+    return render()
+      .canvas(canvasWidth, canvasHeight)
+      .draw()
+      .squareRounded(padding, padding, width, height, radius, color)
+      .render()
+  }
+
+
   public btnPlay () { return Texture.from('blue/button_rectangle_gradient') }
   public btnPlayPressed () { return Texture.from('blue/button_rectangle_depth_gradient') }
 

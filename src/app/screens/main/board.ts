@@ -1,20 +1,21 @@
-import { ZINC } from '∆/utils/colors'
 import { Container, Sprite } from 'pixi.js'
-import { Empty } from '@/empty'
-import { renderSquare } from '@/square'
+import { CONFIG } from '@/config'
+import textures from '@/textures'
+
+const pieceCount = CONFIG.rows * CONFIG.cols
 
 export class Board extends Sprite {
-  private pieces: Empty[]
+  private pieces: Sprite[]
   private main: Container
-  constructor (boardSize: number, pieceSize: number) {
-    super(renderSquare(boardSize, boardSize, 10, ZINC[700]))
+  constructor () {
+    super(textures.board)
 
     this.main = new Container()
     this.addChild(this.main)
 
     this.pieces = []
-    for (let i = 0; i < 16; i++) {
-      const piece = new Empty(pieceSize)
+    for (let i = 0; i < pieceCount; i++) {
+      const piece = Sprite.from(textures.empty)
       this.main.addChild(piece)
       this.pieces.push(piece)
     }
@@ -24,12 +25,14 @@ export class Board extends Sprite {
     this.main.x = this.bounds.minX
     this.main.y = this.bounds.minY
 
-    for (let i = 0; i < 16; i++) {
+    const padding = CONFIG.board.padding
+
+    for (let i = 0; i < this.pieces.length; i++) {
       const piece = this.pieces[i]
       const x = i % 4
       const y = Math.floor(i / 4)
-      piece.x = x * piece.width
-      piece.y = y * piece.height
+      piece.x = padding + x * piece.width
+      piece.y = padding + y * piece.height
     }
   }
 
