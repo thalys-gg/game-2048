@@ -35,7 +35,7 @@ export class FlatGrid<T> {
     if (initialValue !== undefined) {
       if (typeof initialValue === 'function') {
         for (let i = 0; i < this.data.length; i++) {
-          this.data[i] = initialValue(i)
+          this.data[i] = (initialValue as (index: number) => T)(i)
         }
       } else {
         this.data.fill(initialValue)
