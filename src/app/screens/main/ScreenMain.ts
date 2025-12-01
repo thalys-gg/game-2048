@@ -4,6 +4,7 @@ import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
 import { Board } from '@/screens/main/board'
+import { Game } from '@/screens/main/game'
 
 /** The screen that holds the app */
 export class ScreenMain extends Container implements IAppScreen {
@@ -12,8 +13,9 @@ export class ScreenMain extends Container implements IAppScreen {
   /** Assets bundles required by this screen */
   public static assetBundles: TAssetBundleId[] = ['main']
 
-  public main: Container
-  public board: Board
+  private main: Container
+  private board: Board
+  private game: Game
   private paused = false
 
   constructor () {
@@ -26,6 +28,9 @@ export class ScreenMain extends Container implements IAppScreen {
     this.board.anchor.set(0.5)
     this.board.pivot.set(0.5)
     this.main.addChild(this.board)
+
+    this.game = new Game(this.board)
+    this.main.addChild(this.game)
   }
 
   /** Resize the screen, fired whenever window size changes */
@@ -64,7 +69,7 @@ export class ScreenMain extends Container implements IAppScreen {
 
   /** Show screen with animations */
   public async show (): Promise<void> {
-
+    this.game.start()
   }
 
   /** Hide screen with animations */
