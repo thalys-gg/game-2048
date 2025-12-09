@@ -43,9 +43,13 @@ export class FlatGrid<T> {
     }
   }
 
-  // ==========================================
-  // Core Indexing Utils
-  // ==========================================
+  /**
+   * Get value at (x, y). Returns null (or provided fallback) if out of bounds.
+   */
+  public get (x: number, y: number, fallback: T | null = null): T | null {
+    if (!this.isValid(x, y)) return fallback
+    return this.data[this.getIndex(x, y)]
+  }
 
   /**
    * Converts 2D coordinates to a 1D index.
@@ -56,7 +60,21 @@ export class FlatGrid<T> {
   }
 
   /**
-   * Converts a 1D index to 2D coordinates.
+   * Get value directly by 1D index
+   *
+   * @param index The 1D index to get
+   * @returns The value at the given index, or undefined if out of bounds
+   */
+  public getAtIndex (index: number): T | undefined {
+    return this.data[index]
+  }
+
+  /**
+   * Converts a 1D index to 2D coordinates
+   * Does NOT check bounds (use isValid for that)
+   *
+   * @param index The 1D index to convert
+   * @returns The 2D coordinates (x, y)
    */
   public getXY (index: number): Coordinate {
     return {
@@ -64,6 +82,31 @@ export class FlatGrid<T> {
       y: Math.floor(index / this.width),
     }
   }
+
+  /**
+   * Returns the column at the given x coordinate.
+   * @param x The x coordinate of the column.
+   * @returns The column as an array of values.
+   */
+  public getColumn (x: number): (T | null)[] {
+    return Array.from(
+      { length: this.height },
+      (_, y) => this.get(x, y),
+    )
+  }
+
+  /**
+   * Returns the row at the given y coordinate.
+   * @param y The y coordinate of the row.
+   * @returns The row as an array of values.
+   */
+  public getLine (y: number): (T | null)[] {
+    return Array.from(
+      { length: this.width },
+      (_, x) => this.get(x, y),
+    )
+  }
+
 
   /**
    * Checks if coordinates are within grid boundaries.
@@ -77,25 +120,6 @@ export class FlatGrid<T> {
    */
   public isValidIndex (index: number): boolean {
     return index >= 0 && index < this.data.length
-  }
-
-  // ==========================================
-  // Data Access
-  // ==========================================
-
-  /**
-   * Get value at (x, y). Returns null (or provided fallback) if out of bounds.
-   */
-  public get (x: number, y: number, fallback: T | null = null): T | null {
-    if (!this.isValid(x, y)) return fallback
-    return this.data[this.getIndex(x, y)]
-  }
-
-  /**
-   * Get value directly by 1D index.
-   */
-  public getAtIndex (index: number): T | undefined {
-    return this.data[index]
   }
 
   /**

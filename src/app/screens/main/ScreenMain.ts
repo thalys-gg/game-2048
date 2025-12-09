@@ -1,7 +1,6 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { Ticker } from 'pixi.js'
 import type { Direction } from '@/input'
-import { logger } from '@thalys/logger'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { InputHandler } from '@/input'
