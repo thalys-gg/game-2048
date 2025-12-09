@@ -35,16 +35,20 @@ export class UIGame extends Container {
    */
   public spawnPiece () {
     const coord = this.grid.getRandomEmpty()
-    if (!coord) return
+    if (!coord) {
+      throw new Error('[UIGame.spawnPiece] No empty cells found')
+    }
 
-    const cell = new UIPawn()
-    this.addChild(cell)
+    const pos = this._positions.get(coord.x, coord.y)
+    if (!pos) {
+      throw new Error(`[UIGame.spawnPiece] Invalid position x:${coord.x} y:${coord.y}`)
+    }
 
-    const piece = this._positions.get(coord.x, coord.y)
-    if (!piece) return
+    const cell = new UIPawn(createRandomNumber())
+    cell.x = pos.x
+    cell.y = pos.y
 
-    cell.x = piece.x
-    cell.y = piece.y
     this.grid.set(coord.x, coord.y, cell)
+    this.addChild(cell)
   }
 }
