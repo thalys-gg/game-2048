@@ -1,4 +1,5 @@
 import path from 'node:path'
+import process from 'node:process'
 
 const SYS_ROOT = path.parse(process.cwd()).root
 

@@ -126,6 +126,8 @@ export class FlatGrid<T> {
 
   /**
    * Returns all valid neighbors surrounding a cell.
+   * @param x The x coordinate of the cell.
+   * @param y The y coordinate of the cell.
    * @param diagonals If true, includes corners (8 neighbors), otherwise just NESW (4 neighbors).
    */
   public getNeighbors (x: number, y: number, diagonals: boolean = false): { x: number, y: number, value: T, index: number }[] {

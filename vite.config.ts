@@ -1,5 +1,6 @@
 import type { ConfigEnv, UserConfig } from 'vite'
 import path from 'node:path'
+import process from 'node:process'
 import { assetpackPlugin } from '#/vite/plugin/assetpack'
 import { fullReloadWhen } from '#/vite/plugin/full-reload-by-ext'
 import { defineConfig } from 'vite'
