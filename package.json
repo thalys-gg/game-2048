@@ -1,8 +1,19 @@
 {
-  "name": "mem-cards",
+  "name": "@thalys/game-2048",
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "description": "2048 Game",
+  "author": "Thalys Moisyn <thalys@ppd.gg>",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/thalys/game-2048#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thalys/game-2048.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thalys/game-2048/issues"
+  },
   "scripts": {
     "start": "bunx --bun run dev",
     "dev": "bunx --bun vite",
@@ -15,7 +26,6 @@
     "typecheck:app": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
-    "@esotericsoftware/spine-pixi-v8": "^4",
     "@pixi/layout": "^3",
     "@pixi/sound": "^6.0.1",
     "@pixi/ui": "^2.2.2",
