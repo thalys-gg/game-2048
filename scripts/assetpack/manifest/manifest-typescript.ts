@@ -75,8 +75,7 @@ export function generateManifestTypes (options: TypeScriptManifestOptions = {}):
         await fs.writeFile(outputPath, typeContent, 'utf8')
 
         console.info(`[${name}] Generated TypeScript types at: ${outputPath}`)
-      }
-      catch (error) {
+      } catch (error) {
         console.error(`[${name}] Error generating TypeScript types:`, error)
       }
     },
@@ -187,8 +186,7 @@ function extractAssetAliases (bundle: Bundle): string[] {
       for (const alias of asset.alias) {
         aliases.add(alias)
       }
-    }
-    else {
+    } else {
       aliases.add(asset.alias)
     }
   })

@@ -24,15 +24,15 @@ export interface ManifestEntry {
 }
 
 /** Concrete bundle name types */
-export type BundleName =
-  | 'main'
-  | 'memory-game-phaser'
-  | 'loops'
-  | 'preload'
-  | 'ui'
+export type BundleName
+  = | 'main'
+    | 'memory-game-phaser'
+    | 'loops'
+    | 'preload'
+    | 'ui'
 
 /** main bundle asset aliases */
-export type MainAssetAlias =  | 'bgm-main'
+export type MainAssetAlias = | 'bgm-main'
   | 'bgm-main.mp3'
   | 'logo-white'
   | 'logo-white.svg'
@@ -51,7 +51,7 @@ export type MainAssetAlias =  | 'bgm-main'
   | 'sfx-press.wav'
 
 /** memory-game-phaser bundle asset aliases */
-export type MemoryGamePhaserAssetAlias =  | 'card-flip'
+export type MemoryGamePhaserAssetAlias = | 'card-flip'
   | 'card-flip.mp3'
   | 'card-match'
   | 'card-match.mp3'
@@ -84,7 +84,7 @@ export type MemoryGamePhaserAssetAlias =  | 'card-flip'
   | 'whoosh.mp3'
 
 /** loops bundle asset aliases */
-export type LoopsAssetAlias =  | 'alpha-dance'
+export type LoopsAssetAlias = | 'alpha-dance'
   | 'alpha-dance.ogg'
   | 'beat-ident'
   | 'beat-ident.ogg'
@@ -202,13 +202,13 @@ export type LoopsAssetAlias =  | 'alpha-dance'
   | 'wacky-waiting.ogg'
 
 /** preload bundle asset aliases */
-export type PreloadAssetAlias =  | 'logo'
+export type PreloadAssetAlias = | 'logo'
   | 'logo.svg'
   | 'preload/logo'
   | 'preload/logo.svg'
 
 /** ui bundle asset aliases */
-export type UiAssetAlias =  | 'click1'
+export type UiAssetAlias = | 'click1'
   | 'click1.ogg'
   | 'click2'
   | 'click2.ogg'
@@ -422,12 +422,12 @@ export type UiAssetAlias =  | 'click1'
   | 'ui/ui-extra'
 
 /** Union of all asset aliases across all bundles */
-export type AssetAlias =
-  | MainAssetAlias
-  | MemoryGamePhaserAssetAlias
-  | LoopsAssetAlias
-  | PreloadAssetAlias
-  | UiAssetAlias
+export type AssetAlias
+  = | MainAssetAlias
+    | MemoryGamePhaserAssetAlias
+    | LoopsAssetAlias
+    | PreloadAssetAlias
+    | UiAssetAlias
 
 
 /** Type-safe bundle interface with specific asset types */
@@ -464,19 +464,19 @@ export interface TypedManifest {
 }
 
 /** Helper type to get bundle by name */
-export type GetBundle<T extends BundleName> =
-  T extends 'main' ? MainBundle :
-  T extends 'memory-game-phaser' ? MemoryGamePhaserBundle :
-  T extends 'loops' ? LoopsBundle :
-  T extends 'preload' ? PreloadBundle :
-  T extends 'ui' ? UiBundle :
-  never
+export type GetBundle<T extends BundleName>
+  = T extends 'main' ? MainBundle
+    : T extends 'memory-game-phaser' ? MemoryGamePhaserBundle
+      : T extends 'loops' ? LoopsBundle
+        : T extends 'preload' ? PreloadBundle
+          : T extends 'ui' ? UiBundle
+            : never
 
 /** Helper type to get asset aliases for a specific bundle */
-export type GetBundleAssets<T extends BundleName> =
-  T extends 'main' ? MainAssetAlias :
-  T extends 'memory-game-phaser' ? MemoryGamePhaserAssetAlias :
-  T extends 'loops' ? LoopsAssetAlias :
-  T extends 'preload' ? PreloadAssetAlias :
-  T extends 'ui' ? UiAssetAlias :
-  never
+export type GetBundleAssets<T extends BundleName>
+  = T extends 'main' ? MainAssetAlias
+    : T extends 'memory-game-phaser' ? MemoryGamePhaserAssetAlias
+      : T extends 'loops' ? LoopsAssetAlias
+        : T extends 'preload' ? PreloadAssetAlias
+          : T extends 'ui' ? UiAssetAlias
+            : never

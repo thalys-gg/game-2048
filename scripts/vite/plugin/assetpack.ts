@@ -50,8 +50,7 @@ export function assetpackPlugin () {
       // This ensures that the processed assets are served by Vite's dev server.
       if (process.platform === 'win32') {
         apConfig.output = `${publicDir}/assets/`
-      }
-      else {
+      } else {
         apConfig.output = `.${publicDir}/assets/`
       }
 
@@ -68,8 +67,7 @@ export function assetpackPlugin () {
         if (ap) { return } // Already watching
         ap = new AssetPack(apConfig)
         await ap.watch()
-      }
-      else {
+      } else {
         // In build mode, we just run assetpack once.
         await new AssetPack(apConfig).run()
       }

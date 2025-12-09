@@ -1,5 +1,5 @@
-import type { Container } from 'pixi.js'
 import type { IDistributionOptions } from '∆/layout.types'
+import type { Container } from 'pixi.js'
 import { flexColumn, flexColumnReverse, flexRow, flexRowReverse } from '∆/layout.flex'
 
 /**

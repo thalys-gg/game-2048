@@ -1,6 +1,6 @@
 import type { Board } from '@/screens/main/board'
 import { logger } from '@thalys/logger'
-import { Container, Sprite, Texture } from 'pixi.js'
+import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { Cell } from '@/screens/main/cell'
 import { GameFlatGrid } from '@/screens/main/flat-grid'

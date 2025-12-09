@@ -10,8 +10,7 @@ const ERROR = {
 export async function hasGitLFS () {
   try {
     await Bun.$`command -v git-lfs`.quiet()
-  }
-  catch (e) {
+  } catch (e) {
     logger.error(ERROR.MISSING_GIT_LFS.PRIMARY)
     logger.error(ERROR.MISSING_GIT_LFS.SECONDARY)
     // logger.error(e)

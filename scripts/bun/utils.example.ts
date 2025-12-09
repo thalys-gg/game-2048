@@ -8,8 +8,7 @@ if (import.meta.main) {
       console.log('Running example for findRootDir...')
       const root = await findProjectRoot()
       console.log('✅ Project root found:', root)
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error)
     }
   })()

@@ -1,5 +1,5 @@
-import type { Container } from 'pixi.js'
 import type { ResultGetMaxDimensions } from '∆/layout.types'
+import type { Container } from 'pixi.js'
 
 export function getMaxDimensions (children: Container[]): ResultGetMaxDimensions {
 

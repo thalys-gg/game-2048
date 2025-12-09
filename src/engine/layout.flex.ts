@@ -1,5 +1,5 @@
-import type { Container } from 'pixi.js'
 import type { IBaseOptions } from '∆/layout.types'
+import type { Container } from 'pixi.js'
 import { getMaxDimensions } from '∆/layout.utils'
 
 export function flexRow (

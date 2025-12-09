@@ -21,15 +21,15 @@
     "clean": "rm -rf bun.lock node_modules/ .cache/ .assetpack/ public/assets/ src/gen/*",
     "clean:assets": "rm -rf .assetpack/ public/assets/",
     "lint": "bunx --bun eslint",
-    "fix": "bun --bun run lint -- --fix",
+    "fix": "bunx --bun eslint --fix",
     "typecheck": "tsc --noEmit",
     "typecheck:app": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
     "@pixi/sound": "^6.0.1",
-    "@pixi/ui": "^2.2.2",
-    "gsap": "^3",
-    "motion": "12.23.3",
+    "@pixi/ui": "^2.3.2",
+    "gsap": "^3.14.1",
+    "motion": "12.23.25",
     "pixi.js": "^8.8.1"
   },
   "devDependencies": {

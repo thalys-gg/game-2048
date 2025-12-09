@@ -3,8 +3,8 @@ import type {
   ApplicationOptions,
   ExtensionMetadata,
 } from 'pixi.js'
-import { ExtensionType } from 'pixi.js'
 import { resize } from '∆/resize'
+import { ExtensionType } from 'pixi.js'
 
 const EVENTS = ['resize', 'orientationchange', 'fullscreenchange', 'visualViewport']
 

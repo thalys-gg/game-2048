@@ -22,8 +22,7 @@ export function fullReloadWhen (filetypes: string[]) {
               // console.info(`   file changed [ ${fWithOutExt} ]. Reloading...`)
               server.ws.send({ type: 'full-reload' })
               return []
-            }
-            else {
+            } else {
               // console.info(`File ${file} changed`)
             }
           }

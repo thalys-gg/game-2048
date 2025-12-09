@@ -42,8 +42,7 @@ class StorageWrapper {
     if (!str) { return undefined }
     try {
       return JSON.parse(str)
-    }
-    catch (e) {
+    } catch (e) {
       console.warn(e)
       return undefined
     }

@@ -108,8 +108,7 @@ function filterUniqueNames (manifest: Manifest, options: ManifestOptions) {
       if (bundleNames.has(bundle.name)) {
         duplicateBundleNames.add(bundle.name)
         BuildReporter.warn(`[AssetPack][manifest] Duplicate bundle name '${bundle.name}'. All bundles with that name will be renamed to their relative name instead.`)
-      }
-      else {
+      } else {
         bundleNames.add(bundle.name)
       }
     }

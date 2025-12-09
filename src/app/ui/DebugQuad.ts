@@ -1,4 +1,3 @@
-import { logger } from '@thalys/logger'
 import { Graphics } from 'pixi.js'
 
 /**
