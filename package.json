@@ -26,7 +26,6 @@
     "typecheck:app": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
-    "@pixi/layout": "^3",
     "@pixi/sound": "^6.0.1",
     "@pixi/ui": "^2.2.2",
     "gsap": "^3",
