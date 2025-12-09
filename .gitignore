@@ -11,18 +11,18 @@ node_modules
 dist
 dist-ssr
 *.local
-\.cache
+.cache
 
 # Editor directories and files
-\.vscode/*
+.vscode/*
 !.vscode/extensions.json
-\.idea
-\.DS_Store
+.idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-\.assetpack
+.assetpack
 public/assets
