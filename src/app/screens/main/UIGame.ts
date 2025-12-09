@@ -3,7 +3,7 @@ import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/input'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
-import { GameFlatGrid } from '@/flat-grid'
+import { GameFlatGrid } from '@/game-flat-grid'
 import { rollNewPawnValue } from '@/math'
 import { UIPawn } from '@/screens/main/UIPawn'
 
@@ -63,24 +63,17 @@ export class UIGame extends Container {
 
     switch (direction) {
       case 'up':
-        return false
-        // return this.moveUp()
+        return this.grid.moveUp(this._positions)
       case 'down':
-        return false
-        // return this.moveDown()
+        return this.grid.moveDown(this._positions)
       case 'left':
         return this.grid.moveLeft(this._positions)
       case 'right':
-        return false
-        // return this.moveRight()
+        return this.grid.moveRight(this._positions)
     }
   }
 
-  // Similar implementations for moveRight, moveUp, moveDown
-  // moveRight: reverse row, mergeLine, reverse back
-  // moveUp/moveDown: transpose, merge columns, transpose back
-
   private checkGameState () {
-    // Check for win (2048 tile) or game over (no moves possible)
+
   }
 }
