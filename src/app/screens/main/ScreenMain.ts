@@ -58,8 +58,7 @@ export class ScreenMain extends Container implements IAppScreen {
 
   private handleMove = (direction: Direction) => {
     if (this.paused) return
-    logger.info(direction)
-    // this.game.move(direction)
+    this.game.move(direction)
   }
 
   /** Pause gameplay - automatically fired when a popup is presented */
@@ -83,7 +82,7 @@ export class ScreenMain extends Container implements IAppScreen {
 
   /** Show screen with animations */
   public async show (): Promise<void> {
-    this.game.start()
+    this.game.show()
   }
 
   /** Hide screen with animations */
