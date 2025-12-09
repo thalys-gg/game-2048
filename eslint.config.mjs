@@ -50,7 +50,7 @@ export default antfu(
     },
     typescript: {
       filesTypeAware: ['src/**/*.{ts,tsx}'],
-      tsconfigPath: './tsconfig.json',
+      tsconfigPath: './tsconfig.app.json',
       overridesTypeAware: {
         'ts/no-use-before-define': ['off'],
         'ts/no-floating-promises': ['off'],
