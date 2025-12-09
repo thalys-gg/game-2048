@@ -1,7 +1,10 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { Ticker } from 'pixi.js'
+import type { Direction } from '@/input'
+import { logger } from '@thalys/logger'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
+import { InputHandler } from '@/input'
 import { PopupPause } from '@/popups/popup.pause'
 import { UIBoard } from '@/screens/main/UIBoard'
 import { UIGame } from '@/screens/main/UIGame'
@@ -15,6 +18,7 @@ export class ScreenMain extends Container implements IAppScreen {
   private board: UIBoard
   private game: UIGame
   private paused = false
+  private input: InputHandler
 
   constructor () {
     super()
@@ -24,6 +28,9 @@ export class ScreenMain extends Container implements IAppScreen {
 
     this.game = new UIGame(this.board.positions.clone())
     this.addChild(this.game)
+
+    this.input = new InputHandler()
+    this.input.onMove.connect(this.handleMove)
   }
 
   /** Resize the screen, fired whenever window size changes */
@@ -49,20 +56,30 @@ export class ScreenMain extends Container implements IAppScreen {
     if (this.paused) { return }
   }
 
+  private handleMove = (direction: Direction) => {
+    if (this.paused) return
+    logger.info(direction)
+    // this.game.move(direction)
+  }
+
   /** Pause gameplay - automatically fired when a popup is presented */
   public async pause () {
     this.interactiveChildren = false
     this.paused = true
+    this.input.enabled = false
   }
 
   /** Resume gameplay */
   public async resume () {
     this.interactiveChildren = true
     this.paused = false
+    this.input.enabled = true
   }
 
   /** Fully reset */
-  public reset () {}
+  public reset () {
+    this.input.destroy()
+  }
 
   /** Show screen with animations */
   public async show (): Promise<void> {
