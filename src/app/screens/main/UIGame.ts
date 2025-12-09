@@ -1,6 +1,7 @@
 import type { FlatGrid } from '∆/lib/flat-grid'
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/input'
+import { waitFor } from '∆/lib/promise'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/game-flat-grid'
@@ -17,19 +18,27 @@ export class UIGame extends Container {
   }
 
   public resize (width: number, height: number) {
-    this.grid.forEach((cell, x, y) => {
-      if (!cell) return
-      cell.resize(width, height)
+    this.grid.forEach((pawn, x, y) => {
+      if (!pawn) return
+      pawn.resize(width, height)
     })
   }
 
-  public show () {
-    this.spawnPiece()
-    this.spawnPiece()
+  public async show () {
+    const pawns = [
+      this.spawnPiece(),
+      this.spawnPiece(),
+    ]
+
+    await waitFor(1)
+
+    pawns.forEach((pawn) => {
+      pawn.show()
+    })
   }
 
   /**
-   * Spawns a new piece in a random empty cell
+   * Spawns a new piece in a random empty cells
    */
   public spawnPiece () {
     const coord = this.grid.getRandomEmpty()
@@ -42,12 +51,13 @@ export class UIGame extends Container {
       throw new Error(`[UIGame.spawnPiece] Invalid position x:${coord.x} y:${coord.y}`)
     }
 
-    const cell = new UIPawn(rollNewPawnValue())
-    cell.x = pos.x
-    cell.y = pos.y
+    const pawn = new UIPawn(rollNewPawnValue())
+    pawn.x = pos.x
+    pawn.y = pos.y
 
-    this.grid.set(coord.x, coord.y, cell)
-    this.addChild(cell)
+    this.grid.set(coord.x, coord.y, pawn)
+    this.addChild(pawn)
+    return pawn
   }
 
   public move (direction: Direction) {

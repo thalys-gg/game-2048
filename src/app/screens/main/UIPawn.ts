@@ -1,3 +1,5 @@
+import type { ObjectTarget } from 'motion'
+import { animate } from 'motion'
 import { Sprite } from 'pixi.js'
 import textures from '@/textures'
 import { Label } from '@/ui/Label'
@@ -52,6 +54,16 @@ export class UIPawn extends Sprite {
     this.addChild(this._text)
     this._text.x = this.width * 0.5
     this._text.y = this.height * 0.5
+
+    this.alpha = 0
+  }
+
+  public async show () {
+    await animate(
+      this,
+      { alpha: 1 } as ObjectTarget<this>,
+      { duration: 0.2, ease: 'backIn' },
+    )
   }
 
   /**
