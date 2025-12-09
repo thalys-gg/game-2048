@@ -1,20 +1,16 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { ObjectTarget } from 'motion/react'
-import { logger } from '@thalys/logger'
 import { animate } from 'motion'
 import { Container } from 'pixi.js'
 import { Background } from '@/screens/loading-screen/Background'
-import { Logo } from '@/screens/loading-screen/Logo'
 import { ProgressBar } from '@/screens/loading-screen/ProgressBar'
 
 /** Screen shown while loading assets */
 export class ScreenAssetLoader extends Container implements IAppScreen {
-  public definition: AppScreens = 'ScreenMemoryGame'
-  public override label: string = 'ScreenMemoryGame'
+  public definition: AppScreens = 'ScreenAssetLoader'
+  public override label: string = 'ScreenAssetLoader'
   /** Assets bundles required by this screen */
-  public static assetBundles: TAssetBundleId[] = ['preload', 'main', 'memory-game-phaser', 'ui']
-  /** The PixiJS logo */
-  private logo: Logo
+  public static assetBundles: TAssetBundleId[] = ['preload', 'main', 'ui']
   /** Progress Bar */
   private progressBar: ProgressBar
   private background: Background
@@ -28,9 +24,6 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
 
     this.progressBar = new ProgressBar()
     this.addChild(this.progressBar)
-
-    this.logo = new Logo()
-    this.addChild(this.logo)
   }
 
   public onLoad (progress: number) {
@@ -40,7 +33,6 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
 
   /** Resize the screen, fired whenever window size changes  */
   public resize (width: number, height: number) {
-    this.logo.resize(width, height)
     this.progressBar.resize(width, height)
     this.background.resize(width, height)
   }

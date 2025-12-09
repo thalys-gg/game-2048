@@ -26,62 +26,13 @@ export interface ManifestEntry {
 /** Concrete bundle name types */
 export type BundleName
   = | 'main'
-    | 'memory-game-phaser'
     | 'loops'
     | 'preload'
     | 'ui'
 
 /** main bundle asset aliases */
-export type MainAssetAlias = | 'bgm-main'
-  | 'bgm-main.mp3'
-  | 'logo-white'
-  | 'logo-white.svg'
-  | 'main/logo-white'
-  | 'main/logo-white.svg'
-  | 'main/sounds/bgm-main'
-  | 'main/sounds/bgm-main.mp3'
-  | 'main/sounds/sfx-hover'
-  | 'main/sounds/sfx-hover.wav'
-  | 'main/sounds/sfx-press'
-  | 'main/sounds/sfx-press.wav'
-  | 'main/ui'
-  | 'sfx-hover'
-  | 'sfx-hover.wav'
-  | 'sfx-press'
-  | 'sfx-press.wav'
-
-/** memory-game-phaser bundle asset aliases */
-export type MemoryGamePhaserAssetAlias = | 'card-flip'
-  | 'card-flip.mp3'
-  | 'card-match'
-  | 'card-match.mp3'
-  | 'card-mismatch'
-  | 'card-mismatch.mp3'
-  | 'card-slide'
-  | 'card-slide.mp3'
-  | 'cards'
-  | 'fat-caps-audionatix'
-  | 'fat-caps-audionatix.mp3'
-  | 'memory-game-phaser/audio/card-flip'
-  | 'memory-game-phaser/audio/card-flip.mp3'
-  | 'memory-game-phaser/audio/card-match'
-  | 'memory-game-phaser/audio/card-match.mp3'
-  | 'memory-game-phaser/audio/card-mismatch'
-  | 'memory-game-phaser/audio/card-mismatch.mp3'
-  | 'memory-game-phaser/audio/card-slide'
-  | 'memory-game-phaser/audio/card-slide.mp3'
-  | 'memory-game-phaser/audio/fat-caps-audionatix'
-  | 'memory-game-phaser/audio/fat-caps-audionatix.mp3'
-  | 'memory-game-phaser/audio/victory'
-  | 'memory-game-phaser/audio/victory.mp3'
-  | 'memory-game-phaser/audio/whoosh'
-  | 'memory-game-phaser/audio/whoosh.mp3'
-  | 'memory-game-phaser/cards'
-  | 'memory-game-phaser/ui'
-  | 'victory'
-  | 'victory.mp3'
-  | 'whoosh'
-  | 'whoosh.mp3'
+export type MainAssetAlias = | 'main/ui'
+  | 'ui'
 
 /** loops bundle asset aliases */
 export type LoopsAssetAlias = | 'alpha-dance'
@@ -424,7 +375,6 @@ export type UiAssetAlias = | 'click1'
 /** Union of all asset aliases across all bundles */
 export type AssetAlias
   = | MainAssetAlias
-    | MemoryGamePhaserAssetAlias
     | LoopsAssetAlias
     | PreloadAssetAlias
     | UiAssetAlias
@@ -440,10 +390,6 @@ export interface TypedBundle<T extends BundleName> {
 /** Concrete bundle types */
 export interface MainBundle extends TypedBundle<'main'> {
   name: 'main'
-}
-
-export interface MemoryGamePhaserBundle extends TypedBundle<'memory-game-phaser'> {
-  name: 'memory-game-phaser'
 }
 
 export interface LoopsBundle extends TypedBundle<'loops'> {
@@ -466,17 +412,15 @@ export interface TypedManifest {
 /** Helper type to get bundle by name */
 export type GetBundle<T extends BundleName>
   = T extends 'main' ? MainBundle
-    : T extends 'memory-game-phaser' ? MemoryGamePhaserBundle
-      : T extends 'loops' ? LoopsBundle
-        : T extends 'preload' ? PreloadBundle
-          : T extends 'ui' ? UiBundle
-            : never
+    : T extends 'loops' ? LoopsBundle
+      : T extends 'preload' ? PreloadBundle
+        : T extends 'ui' ? UiBundle
+          : never
 
 /** Helper type to get asset aliases for a specific bundle */
 export type GetBundleAssets<T extends BundleName>
   = T extends 'main' ? MainAssetAlias
-    : T extends 'memory-game-phaser' ? MemoryGamePhaserAssetAlias
-      : T extends 'loops' ? LoopsAssetAlias
-        : T extends 'preload' ? PreloadAssetAlias
-          : T extends 'ui' ? UiAssetAlias
-            : never
+    : T extends 'loops' ? LoopsAssetAlias
+      : T extends 'preload' ? PreloadAssetAlias
+        : T extends 'ui' ? UiAssetAlias
+          : never
