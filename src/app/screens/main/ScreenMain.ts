@@ -3,8 +3,8 @@ import type { Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
-import { Board } from '@/screens/main/board'
 import { Game } from '@/screens/main/game'
+import { UIBoard } from '@/screens/main/UIBoard'
 
 /** The screen that holds the app */
 export class ScreenMain extends Container implements IAppScreen {
@@ -12,25 +12,18 @@ export class ScreenMain extends Container implements IAppScreen {
   public override label: string = 'ScreenMain'
   /** Assets bundles required by this screen */
   public static assetBundles: TAssetBundleId[] = ['main']
-
-  private main: Container
-  private board: Board
+  private board: UIBoard
   private game: Game
   private paused = false
 
   constructor () {
     super()
 
-    this.main = new Container()
-    this.addChild(this.main)
-
-    this.board = new Board()
-    this.board.anchor.set(0.5)
-    this.board.pivot.set(0.5)
-    this.main.addChild(this.board)
+    this.board = new UIBoard()
+    this.addChild(this.board)
 
     this.game = new Game(this.board)
-    this.main.addChild(this.game)
+    this.addChild(this.game)
   }
 
   /** Resize the screen, fired whenever window size changes */
@@ -38,12 +31,12 @@ export class ScreenMain extends Container implements IAppScreen {
     const centerX = width * 0.5
     const centerY = height * 0.5
 
-    this.board.x = centerX
-    this.board.y = centerY
+    this.board.x = centerX - this.board.width * this.board.pivot.x
+    this.board.y = centerY - this.board.height * this.board.pivot.y
     this.board.resize(width, height)
 
-    this.game.x = this.board.x - this.board.width * this.board.anchor.x
-    this.game.y = this.board.y - this.board.height * this.board.anchor.y
+    this.game.x = this.board.x
+    this.game.y = this.board.y
     this.game.resize(width, height)
   }
 
@@ -58,13 +51,13 @@ export class ScreenMain extends Container implements IAppScreen {
 
   /** Pause gameplay - automatically fired when a popup is presented */
   public async pause () {
-    this.main.interactiveChildren = false
+    this.interactiveChildren = false
     this.paused = true
   }
 
   /** Resume gameplay */
   public async resume () {
-    this.main.interactiveChildren = true
+    this.interactiveChildren = true
     this.paused = false
   }
 

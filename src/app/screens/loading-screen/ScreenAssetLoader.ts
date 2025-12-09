@@ -34,7 +34,7 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
   }
 
   public onLoad (progress: number) {
-    logger.log('progress', progress)
+    // logger.log('progress', progress)
     this.progressBar.set(progress)
   }
 

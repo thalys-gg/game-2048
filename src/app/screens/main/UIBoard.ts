@@ -5,26 +5,29 @@ import textures from '@/textures'
 
 const pieceCount = CONFIG.rows * CONFIG.cols
 
-export class Board extends Sprite {
+export class UIBoard extends Container {
   public pieces: FlatGrid<Sprite>
-  private main: Container
+  private bg: Sprite
   constructor () {
-    super(textures.board)
+    super()
 
-    this.main = new Container()
-    this.addChild(this.main)
+    this.bg = Sprite.from(textures.board)
+    this.bg.label = 'Background'
+    this.pivot.set(0.5)
+    this.addChild(this.bg)
 
     this.pieces = new FlatGrid(CONFIG.cols, CONFIG.rows)
     for (let i = 0; i < pieceCount; i++) {
       const piece = Sprite.from(textures.empty)
-      this.main.addChild(piece)
+      piece.label = `Square-${i}`
+      this.addChild(piece)
       this.pieces.setAtIndex(i, piece)
     }
   }
 
   public resize (width: number, height: number) {
-    this.main.x = this.bounds.minX
-    this.main.y = this.bounds.minY
+    this.bg.x = this.bg.bounds.minX
+    this.bg.y = this.bg.bounds.minY
 
     const padding = CONFIG.board.padding
 
