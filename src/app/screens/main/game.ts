@@ -1,15 +1,18 @@
-import type { Board } from '@/screens/main/board'
-import { logger } from '@thalys/logger'
+import type { UIBoard } from '@/screens/main/UIBoard'
 import { rollFloat } from '∆/utils/random'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/screens/main/flat-grid'
 import { Pawn } from '@/screens/main/pawn'
 
+function createRandomNumber () {
+  return rollFloat() >= 0.9 ? 4 : 2
+}
+
 export class Game extends Container {
   private grid: GameFlatGrid<Pawn>
-  private board: Board
-  constructor (board: Board) {
+  private board: UIBoard
+  constructor (board: UIBoard) {
     super()
     this.board = board
     this.grid = new GameFlatGrid(CONFIG.cols, CONFIG.rows)
@@ -32,19 +35,16 @@ export class Game extends Container {
    */
   public spawnPiece () {
     const coord = this.grid.getRandomEmpty()
-    logger.info('spawnPiece', coord)
     if (!coord) return
 
     const cell = new Pawn()
     this.addChild(cell)
 
     const piece = this.board.pieces.get(coord.x, coord.y)
-    logger.info('spawnPiece', piece)
     if (!piece) return
 
     cell.x = piece.x
     cell.y = piece.y
     this.grid.set(coord.x, coord.y, cell)
-    logger.info('spawnPiece', cell, coord)
   }
 }
