@@ -1,12 +1,12 @@
-import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
+import { GameFlatGrid } from '@/screens/main/flat-grid'
 import textures from '@/textures'
 
 const pieceCount = CONFIG.rows * CONFIG.cols
 
 export class UIBoard extends Container {
-  public pieces: FlatGrid<Sprite>
+  public positions: GameFlatGrid<Sprite>
   private bg: Sprite
   constructor () {
     super()
@@ -16,12 +16,12 @@ export class UIBoard extends Container {
     this.pivot.set(0.5)
     this.addChild(this.bg)
 
-    this.pieces = new FlatGrid(CONFIG.cols, CONFIG.rows)
+    this.positions = new GameFlatGrid(CONFIG.cols, CONFIG.rows)
     for (let i = 0; i < pieceCount; i++) {
       const piece = Sprite.from(textures.empty)
       piece.label = `Square-${i}`
       this.addChild(piece)
-      this.pieces.setAtIndex(i, piece)
+      this.positions.setAtIndex(i, piece)
     }
   }
 
@@ -31,7 +31,7 @@ export class UIBoard extends Container {
 
     const padding = CONFIG.board.padding
 
-    this.pieces.forEach((piece, x, y) => {
+    this.positions.forEach((piece, x, y) => {
       piece.x = padding + x * piece.width
       piece.y = padding + y * piece.height
     })

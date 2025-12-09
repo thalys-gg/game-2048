@@ -22,7 +22,7 @@ export class ScreenMain extends Container implements IAppScreen {
     this.board = new UIBoard()
     this.addChild(this.board)
 
-    this.game = new UIGame(this.board)
+    this.game = new UIGame(this.board.positions.clone())
     this.addChild(this.game)
   }
 

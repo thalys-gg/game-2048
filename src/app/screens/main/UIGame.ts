@@ -1,4 +1,4 @@
-import type { UIBoard } from '@/screens/main/UIBoard'
+import type { Sprite } from 'pixi.js'
 import { rollFloat } from '∆/utils/random'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
@@ -11,11 +11,11 @@ function createRandomNumber () {
 
 export class UIGame extends Container {
   private grid: GameFlatGrid<UIPawn>
-  private board: UIBoard
-  constructor (board: UIBoard) {
+  private _positions: GameFlatGrid<Sprite>
+  constructor (positions: GameFlatGrid<Sprite>) {
     super()
-    this.board = board
-    this.grid = new GameFlatGrid(CONFIG.cols, CONFIG.rows)
+    this._positions = positions
+    this.grid = new GameFlatGrid<UIPawn>(CONFIG.cols, CONFIG.rows)
   }
 
   public resize (width: number, height: number) {
@@ -40,7 +40,7 @@ export class UIGame extends Container {
     const cell = new UIPawn()
     this.addChild(cell)
 
-    const piece = this.board.pieces.get(coord.x, coord.y)
+    const piece = this._positions.get(coord.x, coord.y)
     if (!piece) return
 
     cell.x = piece.x

@@ -19,7 +19,7 @@ export type GridMapper<T, U> = (value: T, x: number, y: number, index: number) =
 export class FlatGrid<T> {
   public readonly width: number
   public readonly height: number
-  private data: T[]
+  protected data: T[]
 
   /**
    * @param width The width of the grid (columns)
