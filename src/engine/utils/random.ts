@@ -21,7 +21,7 @@ const { random, floor } = Math
  * rollFloat(0, 1)     // Returns a float between 0 and 1 (like Math.random but with explicit bounds)
  * ```
  */
-export const rollFloat = function (min: number, max: number): number {
+export const rollFloat = function (min: number = 0, max: number = 1): number {
   return min + random() * (max - min)
 }
 
