@@ -6,7 +6,6 @@ import { ZINC } from '∆/utils/colors'
 import { userSettings } from '∆/utils/user.settings'
 import { Stats } from 'pixi-stats'
 import { getAppVersion, isDev } from '@/global'
-import '@/extra-modules'
 
 export async function createApplication () {
 
