@@ -4,6 +4,7 @@ import type { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
 import { ScreenMain } from '@/screens/main/ScreenMain'
+import { TestInputScreen } from '@/screens/TestInputScreen'
 
 export class Navigation {
   /** Reference to the main application */
@@ -249,6 +250,7 @@ export class Navigation {
         return null // don't save for loading screen
       case 'PopupPause':
       case 'PopupSettings':
+      case 'TestInputScreen':
       case 'ScreenMain':
       default:
         return 'ScreenMain'
@@ -264,6 +266,8 @@ export class Navigation {
         return null // don't save for loading screen
       case 'PopupPause':
       case 'PopupSettings':
+      case 'TestInputScreen':
+        return TestInputScreen
       case 'ScreenMain':
       default:
         return ScreenMain
