@@ -1,6 +1,6 @@
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
-import { GameFlatGrid } from '@/screens/main/flat-grid'
+import { GameFlatGrid } from '@/flat-grid'
 import textures from '@/textures'
 
 const pieceCount = CONFIG.rows * CONFIG.cols

@@ -2,7 +2,7 @@ import type { Sprite } from 'pixi.js'
 import { rollFloat } from '∆/utils/random'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
-import { GameFlatGrid } from '@/screens/main/flat-grid'
+import { GameFlatGrid } from '@/flat-grid'
 import { UIPawn } from '@/screens/main/UIPawn'
 
 function createRandomNumber () {
