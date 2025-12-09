@@ -3,7 +3,7 @@ import { Sprite } from 'pixi.js'
 import textures from '@/textures'
 import { Label } from '@/ui/Label'
 
-export class Cell extends Sprite {
+export class Pawn extends Sprite {
 
   private text: Label
 
@@ -11,12 +11,15 @@ export class Cell extends Sprite {
     super(textures.cell)
 
     this.text = new Label({
-      text: choose(['2', '4', '8', '16', '32', '64', '128', '256', '512', '1024', '2048', '4096']),
+      text: choose(['2', '4']),
       style: {
         fontSize: 48,
       },
     })
+    this.text.anchor.set(0.5)
     this.addChild(this.text)
+    this.text.x = this.width * 0.5
+    this.text.y = this.height * 0.5
   }
 
   public resize (width: number, height: number) {

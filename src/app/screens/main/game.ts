@@ -1,12 +1,13 @@
 import type { Board } from '@/screens/main/board'
 import { logger } from '@thalys/logger'
+import { rollFloat } from '∆/utils/random'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
-import { Cell } from '@/screens/main/cell'
 import { GameFlatGrid } from '@/screens/main/flat-grid'
+import { Pawn } from '@/screens/main/pawn'
 
 export class Game extends Container {
-  private grid: GameFlatGrid<Cell>
+  private grid: GameFlatGrid<Pawn>
   private board: Board
   constructor (board: Board) {
     super()
@@ -17,14 +18,8 @@ export class Game extends Container {
   public resize (width: number, height: number) {
     this.grid.forEach((cell, x, y) => {
       if (!cell) return
-      // const piece = this.board.pieces.get(x, y)
-      // if (!piece) return
-
-      // cell.x = piece.x
-      // cell.y = piece.y
       cell.resize(width, height)
     })
-
   }
 
   public start () {
@@ -40,7 +35,7 @@ export class Game extends Container {
     logger.info('spawnPiece', coord)
     if (!coord) return
 
-    const cell = new Cell()
+    const cell = new Pawn()
     this.addChild(cell)
 
     const piece = this.board.pieces.get(coord.x, coord.y)

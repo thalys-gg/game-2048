@@ -1,6 +1,6 @@
 import { Texture } from 'pixi.js'
 import { CONFIG } from '@/config'
-import { render } from '@/screens/main/square'
+import { render } from '@/screens/main/render'
 
 export default new class {
 
