@@ -61,16 +61,4 @@ export default new class {
   public get iconSmaller () { return Texture.from('icons/smaller') }
 
   public get popupBg () { return Texture.from('extra/button_square_depth_line') }
-
-  private _logoPixi: { normal: Texture, white: Texture }
-  public get logoPixi () {
-    if (!this._logoPixi) {
-      this._logoPixi = {
-        normal: Texture.from('logo.svg'),
-        white: Texture.from('logo-white.svg'),
-      }
-    }
-
-    return this._logoPixi
-  }
 }()
