@@ -3,14 +3,14 @@ import { rollFloat } from '∆/utils/random'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/screens/main/flat-grid'
-import { Pawn } from '@/screens/main/pawn'
+import { UIPawn } from '@/screens/main/UIPawn'
 
 function createRandomNumber () {
   return rollFloat() >= 0.9 ? 4 : 2
 }
 
 export class UIGame extends Container {
-  private grid: GameFlatGrid<Pawn>
+  private grid: GameFlatGrid<UIPawn>
   private board: UIBoard
   constructor (board: UIBoard) {
     super()
@@ -37,7 +37,7 @@ export class UIGame extends Container {
     const coord = this.grid.getRandomEmpty()
     if (!coord) return
 
-    const cell = new Pawn()
+    const cell = new UIPawn()
     this.addChild(cell)
 
     const piece = this.board.pieces.get(coord.x, coord.y)

@@ -3,7 +3,7 @@ import { Sprite } from 'pixi.js'
 import textures from '@/textures'
 import { Label } from '@/ui/Label'
 
-export class Pawn extends Sprite {
+export class UIPawn extends Sprite {
 
   private text: Label
 
