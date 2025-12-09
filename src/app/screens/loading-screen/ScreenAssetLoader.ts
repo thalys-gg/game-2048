@@ -17,7 +17,6 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
 
   constructor () {
     super()
-    this.label = 'ScreenAssetLoader'
 
     this.background = new Background()
     this.addChild(this.background)
