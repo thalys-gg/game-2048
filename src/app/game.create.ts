@@ -1,11 +1,10 @@
 import { initDevtools } from '@pixi/devtools'
-import { logger } from '@thalys/logger'
 import { CreationEngine } from '∆/engine'
 import { setEngine } from '∆/engine.singleton'
 import { ZINC } from '∆/utils/colors'
 import { userSettings } from '∆/utils/user.settings'
 import { Stats } from 'pixi-stats'
-import { getAppVersion, isDev } from '@/global'
+import { isDev } from '@/global'
 
 export async function createApplication () {
 
@@ -27,8 +26,8 @@ export async function createApplication () {
   userSettings.init()
 
   if (isDev()) {
-    logger.table(JSON.parse(JSON.stringify(import.meta.env)))
-    logger.info(JSON.parse(JSON.stringify(`App version: \n${getAppVersion()}`)))
+    // logger.table(JSON.parse(JSON.stringify(import.meta.env)))
+    // logger.info(JSON.parse(JSON.stringify(`App version: \n${getAppVersion()}`)))
     // engine.navigation.setMeasureLayer(Ruler)
   }
 
