@@ -18,7 +18,7 @@ export class UIBoard extends Container {
 
     this.positions = new FlatGrid(CONFIG.cols, CONFIG.rows)
     for (let i = 0; i < pieceCount; i++) {
-      const piece = Sprite.from(textures.empty)
+      const piece = Sprite.from(textures.getPawn(0))
       piece.label = `Square-${i}`
       this.addChild(piece)
       this.positions.setAtIndex(i, piece)

@@ -5,7 +5,7 @@ export class ProgressBar extends CircularProgressBar {
   constructor () {
     super({
       backgroundColor: CONFIG.theme.boardBg,
-      fillColor: CONFIG.theme.emptyTile,
+      fillColor: CONFIG.theme.tiles[0].bg,
       radius: 100,
       lineWidth: 15,
       value: 20,

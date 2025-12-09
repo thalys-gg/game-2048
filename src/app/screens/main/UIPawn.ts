@@ -16,7 +16,7 @@ export class UIPawn extends Sprite {
   }
 
   constructor (value: number) {
-    super(textures.cell)
+    super(textures.getPawn(value))
 
     this._value = value
     this._text = new Label({

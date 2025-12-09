@@ -17,30 +17,14 @@ export default new class {
       .render()
   }
 
-  public get empty () {
+  public getPawn (value: number) {
     const width = CONFIG.piece.size
     const height = CONFIG.piece.size
     const padding = CONFIG.piece.padding
     const canvasWidth = width + padding * 2
     const canvasHeight = height + padding * 2
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.emptyTile
-
-    return render()
-      .canvas(canvasWidth, canvasHeight)
-      .draw()
-      .squareRounded(padding, padding, width, height, radius, color)
-      .render()
-  }
-
-  public get cell () {
-    const width = CONFIG.piece.size
-    const height = CONFIG.piece.size
-    const padding = CONFIG.piece.padding
-    const canvasWidth = width + padding * 2
-    const canvasHeight = height + padding * 2
-    const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.tiles[2].bg
+    const color = CONFIG.theme.tiles[value].bg
 
     return render()
       .canvas(canvasWidth, canvasHeight)

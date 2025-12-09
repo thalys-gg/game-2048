@@ -13,7 +13,7 @@ export class ScreenMain extends Container implements IAppScreen {
   public definition: AppScreens = 'ScreenMain'
   public override label: string = 'ScreenMain'
   /** Assets bundles required by this screen */
-  public static assetBundles: TAssetBundleId[] = ['main']
+  public static assetBundles: TAssetBundleId[] = []
   private board: UIBoard
   private game: UIGame
   private paused = false
