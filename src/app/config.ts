@@ -1,27 +1,15 @@
 import { AMBER, ORANGE, SLATE, STONE, YELLOW } from '∆/utils/colors'
 
 export type TConfig = {
-  board: {
-    size: number
-    padding: number
-  }
+  board: { size: number, padding: number }
   rows: number
   cols: number
-  piece: {
-    size: number
-    radius: number
-    padding: number
-  }
+  piece: { size: number, radius: number, padding: number }
   theme: {
     boardBg: string
     textLight: string
     textDark: string
-    tiles: {
-      [key: number]: {
-        bg: string
-        text: string
-      }
-    }
+    tiles: { [key: number]: { bg: string, text: string } }
   }
 }
 
