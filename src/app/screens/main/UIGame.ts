@@ -9,7 +9,7 @@ function createRandomNumber () {
   return rollFloat() >= 0.9 ? 4 : 2
 }
 
-export class Game extends Container {
+export class UIGame extends Container {
   private grid: GameFlatGrid<Pawn>
   private board: UIBoard
   constructor (board: UIBoard) {

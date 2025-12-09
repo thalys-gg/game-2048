@@ -75,6 +75,17 @@ export function generateManifestTypes (options: TypeScriptManifestOptions = {}):
         await fs.writeFile(outputPath, typeContent, 'utf8')
 
         console.info(`[${name}] Generated TypeScript types at: ${outputPath}`)
+
+
+        // Fix generated file formatting with eslint
+        if (Bun?.version) {
+          try {
+            await Bun.$`bunx --bun eslint --fix ${outputPath}`
+          } catch (e) {
+            console.error(`[${name}] Error fixing TypeScript types:`, e)
+          }
+        }
+
       } catch (error) {
         console.error(`[${name}] Error generating TypeScript types:`, error)
       }

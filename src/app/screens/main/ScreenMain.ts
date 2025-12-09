@@ -3,8 +3,8 @@ import type { Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
-import { Game } from '@/screens/main/game'
 import { UIBoard } from '@/screens/main/UIBoard'
+import { UIGame } from '@/screens/main/UIGame'
 
 /** The screen that holds the app */
 export class ScreenMain extends Container implements IAppScreen {
@@ -13,7 +13,7 @@ export class ScreenMain extends Container implements IAppScreen {
   /** Assets bundles required by this screen */
   public static assetBundles: TAssetBundleId[] = ['main']
   private board: UIBoard
-  private game: Game
+  private game: UIGame
   private paused = false
 
   constructor () {
@@ -22,7 +22,7 @@ export class ScreenMain extends Container implements IAppScreen {
     this.board = new UIBoard()
     this.addChild(this.board)
 
-    this.game = new Game(this.board)
+    this.game = new UIGame(this.board)
     this.addChild(this.game)
   }
 
