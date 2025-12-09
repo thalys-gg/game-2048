@@ -9,6 +9,7 @@ export class UIPawn extends Sprite {
   public set value (value: number) {
     this._value = value
     this._text.text = `${value}`
+    this.texture = textures.getPawn(value)
   }
 
   public get value () {
