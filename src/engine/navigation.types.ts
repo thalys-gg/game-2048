@@ -1,4 +1,4 @@
-import type { Container, DestroyOptions, Ticker } from 'pixi.js'
+import type { Container, ContainerChild, DestroyOptions, Ticker } from 'pixi.js'
 
 export const appScreens = [
   'ScreenBase',
@@ -20,8 +20,27 @@ export type AppScreens = typeof appScreens[number]
 
 export type TAssetBundleId = 'preload' | 'main' | 'ui' | 'loops'
 
+export type ResizeSignature = {
+  screen: { width: number, height: number }
+  parent: { width: number, height: number }
+}
+
+export interface IDestroyableContainer {
+  destroy?: (opts?: DestroyOptions) => void
+}
+
+export interface IResizableContainer {
+
+  /** Resize the container */
+  resize?: ({ screen, parent }: ResizeSignature) => void
+}
+
+export interface IChild extends ContainerChild, IResizableContainer {
+
+}
+
 /** Interface for app screens */
-export interface IAppScreen extends Container {
+export interface IAppScreen extends Container, IResizableContainer {
 
   /** Screen name */
   definition: AppScreens
@@ -32,20 +51,11 @@ export interface IAppScreen extends Container {
   /** Prepare screen, before showing */
   prepare?: () => void
 
-  /** Destroy the screen */
-  destroy: (opts?: DestroyOptions) => void
-
   /** Reset screen, after hidden */
   reset?: () => void
 
   /** Method to react on assets loading progress */
   onLoad?: (progress: number) => void
-
-  /** Resize the screen */
-  resize?: ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
-  }) => void
 
   /** Show the screen */
   show?: () => Promise<void>

@@ -9,7 +9,7 @@ import { TestInputScreen } from '@/screens/TestInputScreen'
 
 export class Navigation {
   /** Reference to the main application */
-  public app!: CreationEngine
+  public engine!: CreationEngine
 
   public cLayers = new Container()
   /** Containers as layers */
@@ -52,7 +52,11 @@ export class Navigation {
   }
 
   public init (app: CreationEngine) {
-    this.app = app
+    this.engine = app
+
+    this.width = app.screen.width
+    this.height = app.screen.height
+
     this.cLayers.label = 'cLayer'
     this.cBackground.label = 'cBackground'
     this.cRuler.label = 'cRuler'
@@ -94,9 +98,14 @@ export class Navigation {
     // Setup things and pre-organize screen before showing
     if (screen.prepare) screen.prepare()
     // Trigger a first resize, if available
-    if (screen.resize) screen.resize({ screen: { width: this.width, height: this.height }, parent: { width: this.width, height: this.height } })
+    if (screen.resize) {
+      screen.resize({
+        screen: { width: this.width, height: this.height },
+        parent: { width: this.width, height: this.height },
+      })
+    }
     // Add update function if available
-    if (screen.update) this.app.ticker.add(screen.update, screen)
+    if (screen.update) this.engine.ticker.add(screen.update, screen)
 
     // Show the new screen
     if (screen.show) {
@@ -114,7 +123,7 @@ export class Navigation {
     // Hide screen if method is available
     if (screen.hide) await screen.hide()
     // Unlink update function if method is available
-    if (screen.update) this.app.ticker.remove(screen.update, screen)
+    if (screen.update) this.engine.ticker.remove(screen.update, screen)
     // Remove screen from its parent (usually app.stage, if not changed)
     if (screen.parent) screen.parent.removeChild(screen)
     // Clean up the screen so that instance can be reused again later

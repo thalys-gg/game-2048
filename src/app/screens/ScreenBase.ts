@@ -1,11 +1,11 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, IChild, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
 import type { DestroyOptions, Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
 
 
-export class ScreenBase extends Container implements IAppScreen {
+export class ScreenBase extends Container<IChild> implements IAppScreen {
 
   public static assetBundles: TAssetBundleId[] = []
   public definition: AppScreens = 'ScreenBase'
@@ -32,11 +32,16 @@ export class ScreenBase extends Container implements IAppScreen {
 
   }
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
-  }) {
+  public resize ({ screen, parent }: ResizeSignature) {
+    this.resizeChildren({ screen, parent: { width: this.width, height: this.height } })
+  }
 
+  public resizeChildren ({ screen, parent }: ResizeSignature) {
+    this.children.forEach((child) => {
+      if (child.resize) {
+        child.resize({ screen, parent })
+      }
+    })
   }
 
   public async show (): Promise<void> {

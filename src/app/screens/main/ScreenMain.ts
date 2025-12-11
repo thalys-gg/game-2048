@@ -1,4 +1,4 @@
-import type { AppScreens, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
 import type { Direction } from '@/input'
 import { InputHandler } from '@/input'
 import { UIBoard } from '@/screens/main/UIBoard'
@@ -28,21 +28,9 @@ export class ScreenMain extends ScreenBase {
     this.input.onMove.connect(this.handleMove)
   }
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
-  }) {
+  public resize ({ screen }: ResizeSignature) {
+    const parent = { width: this.width, height: this.height }
     super.resize({ screen, parent })
-    const centerX = screen.width * 0.5
-    const centerY = screen.height * 0.5
-
-    this.board.x = centerX - this.board.width * this.board.pivot.x
-    this.board.y = centerY - this.board.height * this.board.pivot.y
-    this.board.resize(screen.width, screen.height)
-
-    this.game.x = this.board.x
-    this.game.y = this.board.y
-    this.game.resize(screen.width, screen.height)
   }
 
   private handleMove = (direction: Direction) => {
@@ -68,6 +56,6 @@ export class ScreenMain extends ScreenBase {
   public async show (): Promise<void> {
     await super.show()
     await this.board.show()
-    await this.game.show()
+    // await this.game.show()
   }
 }
