@@ -5,9 +5,9 @@ import { Container, Graphics } from 'pixi.js'
 import { InputHandler } from '@/input'
 import { Label } from '@/ui/Label'
 
-export class TestInputScreen extends Container implements IAppScreen {
-  public definition: AppScreens = 'TestInputScreen'
-  public override label: string = 'TestInputScreen'
+export class ScreenInput extends Container implements IAppScreen {
+  public definition: AppScreens = 'ScreenInput'
+  public override label: string = 'ScreenInput'
   public static assetBundles: TAssetBundleId[] = ['main']
 
   private _input: InputHandler
