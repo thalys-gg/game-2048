@@ -1,4 +1,5 @@
 import type { FlatGrid } from '∆/lib/flat-grid'
+import type { ResizeSignature } from '∆/navigation.types'
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/input'
 import { waitFor } from '∆/lib/promise'
@@ -17,10 +18,12 @@ export class UIGame extends Container {
     this.grid = new GameFlatGrid<UIPawn>(CONFIG.cols, CONFIG.rows)
   }
 
-  public resize (width: number, height: number) {
+  public resize ({ screen, parent }: ResizeSignature) {
+    this.x = 0
+    this.y = 0
     this.grid.forEach((pawn, x, y) => {
       if (!pawn) return
-      pawn.resize(width, height)
+      pawn.resize({ screen, parent })
     })
   }
 
@@ -51,7 +54,7 @@ export class UIGame extends Container {
       throw new Error(`[UIGame.spawnPiece] Invalid position x:${coord.x} y:${coord.y}`)
     }
 
-    const pawn = new UIPawn(rollNewPawnValue())
+    const pawn = UIPawn.from(rollNewPawnValue())
     pawn.x = pos.x
     pawn.y = pos.y
 

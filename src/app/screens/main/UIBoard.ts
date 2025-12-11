@@ -1,5 +1,4 @@
 import type { ResizeSignature } from '∆/navigation.types'
-import { logger } from '@thalys/logger'
 import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'

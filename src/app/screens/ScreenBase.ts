@@ -17,7 +17,13 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public prepare () {
+    this.prepareChildren()
+  }
 
+  public prepareChildren () {
+    this.children.forEach((child) => {
+      child.prepare?.()
+    })
   }
 
   public destroy (opts?: DestroyOptions) {
@@ -25,7 +31,13 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public reset () {
+    this.resetChildren()
+  }
 
+  public resetChildren () {
+    this.children.forEach((child) => {
+      child.reset?.()
+    })
   }
 
   public onLoad (progress: number) {
@@ -38,18 +50,28 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
 
   public resizeChildren ({ screen, parent }: ResizeSignature) {
     this.children.forEach((child) => {
-      if (child.resize) {
-        child.resize({ screen, parent })
-      }
+      child.resize?.({ screen, parent })
     })
   }
 
   public async show (): Promise<void> {
+    this.showChildren()
+  }
 
+  public showChildren () {
+    this.children.forEach((child) => {
+      child.show?.()
+    })
   }
 
   public async hide () {
+    this.hideChildren()
+  }
 
+  public hideChildren () {
+    this.children.forEach((child) => {
+      child.hide?.()
+    })
   }
 
   public async pause () {

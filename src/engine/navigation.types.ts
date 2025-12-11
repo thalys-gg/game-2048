@@ -25,22 +25,41 @@ export type ResizeSignature = {
   parent: { width: number, height: number }
 }
 
-export interface IDestroyableContainer {
+export interface IPreparable {
+  /** Prepare container, before showing */
+  prepare?: () => void
+}
+
+export interface IResettable {
+  /** Reset container, after hidden */
+  reset?: () => void
+}
+
+export interface IPresentable {
+  /** Show the container */
+  show?: () => Promise<void>
+
+  /** Hide the container */
+  hide?: () => Promise<void>
+}
+
+export interface IDestroyable {
+  /** Destroy the container */
   destroy?: (opts?: DestroyOptions) => void
 }
 
-export interface IResizableContainer {
+export interface IResizable {
 
   /** Resize the container */
   resize?: ({ screen, parent }: ResizeSignature) => void
 }
 
-export interface IChild extends ContainerChild, IResizableContainer {
+export interface IChild extends ContainerChild, IResizable, IPresentable, IResettable, IPreparable {
 
 }
 
 /** Interface for app screens */
-export interface IAppScreen extends Container, IResizableContainer {
+export interface IAppScreen extends Container, IResizable, IPresentable, IResettable, IPreparable {
 
   /** Screen name */
   definition: AppScreens
@@ -48,20 +67,8 @@ export interface IAppScreen extends Container, IResizableContainer {
   /** Assets bundles required by this screen */
   assetBundles?: TAssetBundleId[]
 
-  /** Prepare screen, before showing */
-  prepare?: () => void
-
-  /** Reset screen, after hidden */
-  reset?: () => void
-
   /** Method to react on assets loading progress */
   onLoad?: (progress: number) => void
-
-  /** Show the screen */
-  show?: () => Promise<void>
-
-  /** Hide the screen */
-  hide?: () => Promise<void>
 
   /** Pause the screen */
   pause?: () => Promise<void>
