@@ -2,6 +2,8 @@ import { Texture } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { render } from '@/screens/main/render'
 
+const renderedPawnTextures: Record<number, Texture> = {}
+
 export default new class {
 
   public get board () {
@@ -18,6 +20,9 @@ export default new class {
   }
 
   public getPawn (value: number) {
+
+    if (renderedPawnTextures[value]) return renderedPawnTextures[value]
+
     const width = CONFIG.piece.size
     const height = CONFIG.piece.size
     const padding = CONFIG.piece.padding
@@ -26,11 +31,12 @@ export default new class {
     const radius = CONFIG.piece.radius
     const color = CONFIG.theme.tiles[value].bg
 
-    return render()
+    renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)
       .draw()
       .squareRounded(padding, padding, width, height, radius, color)
       .render()
+    return renderedPawnTextures[value]
   }
 
 
