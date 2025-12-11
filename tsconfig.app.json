@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.core.json",
+  "extends": ["./tsconfig.core.json"],
   "compilerOptions": {
     // "Please don't shove this anywhere and place at the defined cache folder"
     "tsBuildInfoFile": ".cache/tsconfig.app.tsbuildinfo",
