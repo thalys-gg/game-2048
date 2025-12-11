@@ -4,8 +4,8 @@ import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
 import { ScreenMain } from '@/screens/main/ScreenMain'
-import { ScreenPawn } from '@/screens/ScreenPawn'
-import { ScreenInput } from '@/screens/ScreenInput'
+import { ScreenPawn } from '@/debug/ScreenPawn'
+import { ScreenInput } from '@/debug/ScreenInput'
 
 export class Navigation {
   /** Reference to the main application */
