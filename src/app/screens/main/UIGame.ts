@@ -4,7 +4,6 @@ import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { anime } from '@thalys/anime-pixi'
 import { Container } from 'pixi.js'
-import { Signal } from 'typed-signals'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
 import { rollNewPawnValue } from '@/lib/math'
@@ -13,12 +12,14 @@ import { UIPawn } from '@/screens/main/UIPawn'
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
   private positions: FlatGrid<Sprite>
-  public onMerge: Signal<(value: number) => void> = new Signal()
+  public onMerge?: (value: number) => void
   constructor (positions: FlatGrid<Sprite>) {
     super()
     this.positions = positions
     this.grid = new GameFlatGrid<UIPawn>(CONFIG.cols, CONFIG.rows)
-    this.grid.onMerge.connect(this.onMerge.emit)
+    this.grid.onMerge = (value: number) => {
+      this.onMerge?.(value)
+    }
   }
 
   public resize ({ screen, parent }: ResizeSignature) {
