@@ -1,7 +1,7 @@
 import type { Sprite } from 'pixi.js'
+import type { Direction } from '@/lib/types'
 import type { UIPawn } from '@/screens/main/UIPawn'
 import { FlatGrid } from '∆/lib/flat-grid'
-
 
 export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
 
@@ -16,145 +16,39 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
     return newGrid
   }
 
-  public moveLeft (positions: FlatGrid<Sprite>): boolean {
+  public move (direction: Direction, positions: FlatGrid<Sprite>): boolean {
     let moved = false
+    const isHorizontal = direction === 'left' || direction === 'right'
+    const isReverse = direction === 'right' || direction === 'down'
 
-    for (let y = 0; y < this.height; y++) {
-      // Collect non-null values in this row
-      const row: T[] = []
-      for (let x = 0; x < this.width; x++) {
+    const primarySize = isHorizontal ? this.height : this.width
+    const secondarySize = isHorizontal ? this.width : this.height
+
+    for (let i = 0; i < primarySize; i++) {
+      const line: T[] = []
+
+      // Collect non-null values
+      for (let j = 0; j < secondarySize; j++) {
+        const idx = isReverse ? secondarySize - 1 - j : j
+        const [x, y] = isHorizontal ? [idx, i] : [i, idx]
         const cell = this.get(x, y)
-        if (cell) {
-          row.push(cell)
-        }
+        if (cell) line.push(cell)
       }
 
-      // Merge logic
-      const merged = this.mergeLine(row)
+      const merged = this.mergeLine(line)
 
-      // Place back
-      for (let x = 0; x < this.width; x++) {
-        const newCell = merged[x] ?? null
+      // Place back and update positions
+      for (let j = 0; j < secondarySize; j++) {
+        const idx = isReverse ? secondarySize - 1 - j : j
+        const [x, y] = isHorizontal ? [idx, i] : [i, idx]
+        const newCell = merged[j] ?? null
         const oldCell = this.get(x, y)
 
         if (newCell !== oldCell) moved = true
-
         this.set(x, y, newCell as T)
 
         if (newCell) {
           const pos = positions.get(x, y)!
-          // Animate to new position
-          newCell.x = pos.x
-          newCell.y = pos.y
-        }
-      }
-    }
-
-    return moved
-  }
-
-  public moveRight (positions: FlatGrid<Sprite>): boolean {
-    let moved = false
-
-    for (let y = 0; y < this.height; y++) {
-      // Collect non-null values in this row
-      const row: T[] = []
-      for (let x = this.width - 1; x >= 0; x--) {
-        const cell = this.get(x, y)
-        if (cell) {
-          row.push(cell)
-        }
-      }
-
-      // Merge logic
-      const merged = this.mergeLine(row)
-
-      // Place back
-      for (let x = this.width - 1; x >= 0; x--) {
-        const newCell = merged[this.width - 1 - x] ?? null
-        const oldCell = this.get(x, y)
-
-        if (newCell !== oldCell) moved = true
-
-        this.set(x, y, newCell as T)
-
-        if (newCell) {
-          const pos = positions.get(x, y)!
-          // Animate to new position
-          newCell.x = pos.x
-          newCell.y = pos.y
-        }
-      }
-    }
-
-    return moved
-  }
-
-  public moveUp (positions: FlatGrid<Sprite>): boolean {
-    let moved = false
-
-    for (let x = 0; x < this.width; x++) {
-      // Collect non-null values in this row
-      const row: T[] = []
-      for (let y = 0; y < this.height; y++) {
-        const cell = this.get(x, y)
-        if (cell) {
-          row.push(cell)
-        }
-      }
-
-      // Merge logic
-      const merged = this.mergeLine(row)
-
-      // Place back
-      for (let y = 0; y < this.height; y++) {
-        const newCell = merged[y] ?? null
-        const oldCell = this.get(x, y)
-
-        if (newCell !== oldCell) moved = true
-
-        this.set(x, y, newCell as T)
-
-        if (newCell) {
-          const pos = positions.get(x, y)!
-          // Animate to new position
-          newCell.x = pos.x
-          newCell.y = pos.y
-        }
-      }
-    }
-
-    return moved
-  }
-
-  public moveDown (positions: FlatGrid<Sprite>): boolean {
-    let moved = false
-
-    for (let x = 0; x < this.width; x++) {
-      // Collect non-null values in this row
-      const row: T[] = []
-      for (let y = this.height - 1; y >= 0; y--) {
-        const cell = this.get(x, y)
-        if (cell) {
-          row.push(cell)
-        }
-      }
-
-      // Merge logic
-      const merged = this.mergeLine(row)
-
-      // Place back
-      for (let y = this.height - 1; y >= 0; y--) {
-        const newCell = merged[this.height - 1 - y] ?? null
-        const oldCell = this.get(x, y)
-
-        if (newCell !== oldCell) moved = true
-
-        this.set(x, y, newCell as T)
-
-        if (newCell) {
-          const pos = positions.get(x, y)!
-          // Animate to new position
           newCell.x = pos.x
           newCell.y = pos.y
         }

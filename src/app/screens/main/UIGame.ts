@@ -1,13 +1,13 @@
 import type { FlatGrid } from '∆/lib/flat-grid'
 import type { IChild, ResizeSignature } from '∆/navigation.types'
 import type { Sprite } from 'pixi.js'
-import type { Direction } from '@/lib/input'
+import type { Direction } from '@/lib/types'
+import { anime } from '@thalys/anime-pixi'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
 import { rollNewPawnValue } from '@/lib/math'
 import { UIPawn } from '@/screens/main/UIPawn'
-import { anime } from '@thalys/anime-pixi'
 
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
@@ -62,7 +62,7 @@ export class UIGame extends Container implements IChild {
   }
 
   public move (direction: Direction) {
-    const moved = this._move(direction)
+    const moved = this.grid.move(direction, this.positions)
 
     if (moved) {
       this.spawnPiece()
@@ -70,21 +70,8 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  private _move (direction: Direction): boolean {
-
-    switch (direction) {
-      case 'up':
-        return this.grid.moveUp(this.positions)
-      case 'down':
-        return this.grid.moveDown(this.positions)
-      case 'left':
-        return this.grid.moveLeft(this.positions)
-      case 'right':
-        return this.grid.moveRight(this.positions)
-    }
-  }
-
   private checkGameState () {
+
 
   }
 }

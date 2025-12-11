@@ -1,7 +1,5 @@
+import type { Direction } from '@/lib/types'
 import { Signal } from 'typed-signals'
-
-
-export type Direction = 'up' | 'down' | 'left' | 'right'
 
 export class InputHandler {
   public readonly onMove = new Signal<(direction: Direction) => void>()

@@ -1,8 +1,8 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
-import { Container } from 'pixi.js'
-import { UIPawn } from '@/screens/main/UIPawn'
 import { anime } from '@thalys/anime-pixi'
 import { waitFor } from '∆/lib/promise'
+import { Container } from 'pixi.js'
+import { UIPawn } from '@/screens/main/UIPawn'
 
 export class ScreenPawn extends Container implements IAppScreen {
   public definition: AppScreens = 'ScreenPawn'
@@ -19,9 +19,10 @@ export class ScreenPawn extends Container implements IAppScreen {
 
   public async show () {
 
+    this.pawn.alpha = 0
+
     await waitFor(1)
 
-    this.pawn.alpha = 0
     anime`fade-in`(this.pawn).play()
   }
 
