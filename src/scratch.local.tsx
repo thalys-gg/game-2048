@@ -1,5 +1,5 @@
 import { logger } from '@thalys/logger'
-import { rollFloat } from '∆/utils/random'
+import { rollFloat } from '∆/lib/random'
 
 
 /**

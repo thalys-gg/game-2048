@@ -2,7 +2,7 @@ import type { IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { RulerOptions } from '∆/scene/stage-ruler.types'
 import type { TAnchorByPosition } from '∆/utils/pixijs.types'
 import type { Ticker } from 'pixi.js'
-import { ZINC } from '∆/utils/colors'
+import { ZINC } from '∆/lib/colors'
 import { anchorBy } from '∆/utils/pixijs'
 import { Container, Graphics, Text, TextStyle } from 'pixi.js'
 

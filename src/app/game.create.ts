@@ -1,7 +1,7 @@
 import { initDevtools } from '@pixi/devtools'
 import { CreationEngine } from '∆/engine'
 import { setEngine } from '∆/engine.singleton'
-import { ZINC } from '∆/utils/colors'
+import { ZINC } from '∆/lib/colors'
 import { userSettings } from '∆/utils/user.settings'
 import { Stats } from 'pixi-stats'
 import { isDev } from '@/global'

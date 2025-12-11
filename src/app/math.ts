@@ -1,4 +1,4 @@
-import { rollFloat } from '∆/utils/random'
+import { rollFloat } from '∆/lib/random'
 
 /**
  * Creates a random number for a new pawn on the board

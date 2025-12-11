@@ -1,4 +1,4 @@
-import { AMBER, ORANGE, SLATE, STONE, YELLOW } from '∆/utils/colors'
+import { AMBER, ORANGE, SLATE, STONE, YELLOW } from '∆/lib/colors'
 
 export type TConfig = {
   board: { size: number, padding: number }

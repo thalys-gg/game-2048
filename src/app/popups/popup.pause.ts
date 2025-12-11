@@ -1,7 +1,7 @@
 import type { FancyButton } from '@pixi/ui'
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import { engine } from '∆/engine.singleton'
-import { ZINC } from '∆/utils/colors'
+import { ZINC } from '∆/lib/colors'
 import { animate } from 'motion'
 import { BlurFilter, Container, NineSliceSprite, Sprite, Texture } from 'pixi.js'
 import buttons from '@/buttons'
