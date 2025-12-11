@@ -55,7 +55,7 @@ export class ScreenMain extends ScreenBase {
 
   public async show (): Promise<void> {
     await super.show()
-    await this.board.show()
+    // await this.board.show()
     // await this.game.show()
   }
 }

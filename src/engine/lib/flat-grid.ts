@@ -13,13 +13,13 @@ export interface Coordinate {
   y: number
 }
 
-export type GridIterator<T> = (value: T, x: number, y: number, index: number) => void
-export type GridMapper<T, U> = (value: T, x: number, y: number, index: number) => U
+export type GridIterator<T> = (value: T | null, x: number, y: number, index: number) => void
+export type GridMapper<T, U> = (value: T | null, x: number, y: number, index: number) => U
 
 export class FlatGrid<T> {
   public readonly width: number
   public readonly height: number
-  protected data: T[]
+  protected data: (T | null)[]
 
   /**
    * @param width The width of the grid (columns)
@@ -38,7 +38,7 @@ export class FlatGrid<T> {
           this.data[i] = (initialValue as (index: number) => T)(i)
         }
       } else {
-        this.data.fill(initialValue)
+        this.data.fill(initialValue || null)
       }
     }
   }
@@ -63,10 +63,10 @@ export class FlatGrid<T> {
    * Get value directly by 1D index
    *
    * @param index The 1D index to get
-   * @returns The value at the given index, or undefined if out of bounds
+   * @returns The value at the given index, or null if out of bounds
    */
-  public getAtIndex (index: number): T | undefined {
-    return this.data[index]
+  public getAtIndex (index: number): T | null {
+    return this.data[index] || null
   }
 
   /**
@@ -140,7 +140,7 @@ export class FlatGrid<T> {
     return true
   }
 
-  public get raw (): T[] {
+  public get raw (): (T | null)[] {
     return this.data
   }
 
@@ -154,7 +154,7 @@ export class FlatGrid<T> {
    * @param y The y coordinate of the cell.
    * @param diagonals If true, includes corners (8 neighbors), otherwise just NESW (4 neighbors).
    */
-  public getNeighbors (x: number, y: number, diagonals: boolean = false): { x: number, y: number, value: T, index: number }[] {
+  public getNeighbors (x: number, y: number, diagonals: boolean = false): { x: number, y: number, value: T | null, index: number }[] {
     const results = []
 
     // N, E, S, W
@@ -199,7 +199,7 @@ export class FlatGrid<T> {
   public forEach (callback: GridIterator<T>): void {
     for (let i = 0; i < this.data.length; i++) {
       const { x, y } = this.getXY(i)
-      callback(this.data[i], x, y, i)
+      callback(this.getAtIndex(i), x, y, i)
     }
   }
 
@@ -208,12 +208,10 @@ export class FlatGrid<T> {
    */
   public map<U>(callback: GridMapper<T, U>): FlatGrid<U> {
     const newGrid = new FlatGrid<U>(this.width, this.height)
-    // Direct array access for speed, but mapped calculation
-    const newData = this.data.map((val, i) => {
+    for (let i = 0; i < this.data.length; i++) {
       const { x, y } = this.getXY(i)
-      return callback(val, x, y, i)
-    })
-    newGrid.setRawData(newData)
+      newGrid.setAtIndex(i, callback(this.getAtIndex(i), x, y, i))
+    }
     return newGrid
   }
 
@@ -226,7 +224,7 @@ export class FlatGrid<T> {
    * // Find random cell where value is 0
    * const emptySpot = grid.getRandomLocation((val) => val === 0);
    */
-  public getRandomLocation (predicate: (value: T, x: number, y: number) => boolean): Coordinate | null {
+  public getRandomLocation (predicate: (value: T | null, x: number, y: number) => boolean): Coordinate | null {
     const indices: number[] = []
 
     // Single pass scan to find all candidates
@@ -235,7 +233,7 @@ export class FlatGrid<T> {
       const x = i % this.width
       const y = Math.floor(i / this.width)
 
-      if (predicate(this.data[i], x, y)) {
+      if (predicate(this.getAtIndex(i), x, y)) {
         indices.push(i)
       }
     }
@@ -246,7 +244,7 @@ export class FlatGrid<T> {
     return this.getXY(randIndex)
   }
 
-  public fill (value: T): void {
+  public fill (value: T | null): void {
     this.data.fill(value)
   }
 
@@ -268,7 +266,7 @@ export class FlatGrid<T> {
    * Useful for loading saved states.
    * Throws if length doesn't match dimensions.
    */
-  public setRawData (newData: T[]): void {
+  public setRawData (newData: (T | null)[]): void {
     if (newData.length !== this.width * this.height) {
       throw new Error(`Data length ${newData.length} does not match grid dimensions ${this.width}x${this.height}`)
     }

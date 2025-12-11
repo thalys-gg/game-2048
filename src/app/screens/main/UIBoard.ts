@@ -1,3 +1,5 @@
+import type { ResizeSignature } from '∆/navigation.types'
+import { logger } from '@thalys/logger'
 import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
@@ -5,35 +7,54 @@ import textures from '@/textures'
 
 const pieceCount = CONFIG.rows * CONFIG.cols
 
+
+function createBackground () {
+  const bg = Sprite.from(textures.board)
+  bg.label = 'Background'
+  bg.alpha = 1
+  bg.anchor.set(0.5)
+  return bg
+}
+
+function createSquare (textureIndex: number, label: string, parent: Container) {
+  const pawn = Sprite.from(textures.getPawn(textureIndex))
+  pawn.label = label
+  pawn.alpha = 1
+  parent.addChild(pawn)
+  return pawn
+}
+
 export class UIBoard extends Container {
+
   public positions: FlatGrid<Sprite>
   private bg: Sprite
   constructor () {
     super()
 
-    this.bg = Sprite.from(textures.board)
-    this.bg.label = 'Background'
-    this.pivot.set(0.5)
+    this.bg = createBackground()
     this.addChild(this.bg)
 
     this.positions = new FlatGrid(CONFIG.cols, CONFIG.rows)
-    for (let i = 0; i < pieceCount; i++) {
-      const piece = Sprite.from(textures.getPawn(0))
-      piece.label = `Square-${i}`
-      this.addChild(piece)
-      this.positions.setAtIndex(i, piece)
-    }
+    this.positions = this.positions
+      .map((value, x, y, i) =>
+        createSquare(0, `Square-${x}-${y}-${i}`, this))
   }
 
-  public resize (width: number, height: number) {
-    this.bg.x = this.bg.bounds.minX
-    this.bg.y = this.bg.bounds.minY
+  public resize ({ screen }: ResizeSignature) {
 
-    const padding = CONFIG.board.padding
+    const center = { x: screen.width * 0.5, y: screen.height * 0.5 }
 
-    this.positions.forEach((piece, x, y) => {
-      piece.x = padding + x * piece.width
-      piece.y = padding + y * piece.height
+    this.bg.x = center.x
+    this.bg.y = center.y
+
+    const bgBounds = this.bg.getBounds()
+    const startX = bgBounds.minX + CONFIG.board.padding
+    const startY = bgBounds.minY + CONFIG.board.padding
+
+    this.positions.forEach((pawn, x, y) => {
+      if (!pawn) return
+      pawn.x = startX + x * pawn.width
+      pawn.y = startY + y * pawn.height
     })
   }
 }
