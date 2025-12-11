@@ -1,9 +1,10 @@
 import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
 import type { DestroyOptions } from 'pixi.js'
-import type { Direction } from '@/lib/input'
+import type { Direction } from '@/lib/types'
 import { InputHandler } from '@/lib/input'
 import { UIBoard } from '@/screens/main/UIBoard'
 import { UIGame } from '@/screens/main/UIGame'
+import { UIScore } from '@/screens/main/UIScore'
 import { ScreenBase } from '@/screens/ScreenBase'
 
 /** The screen that holds the app */
@@ -15,6 +16,8 @@ export class ScreenMain extends ScreenBase {
   private board: UIBoard
   private game: UIGame
   private input: InputHandler
+  private score: UIScore
+  private scoreValue: number = 0
 
   constructor () {
     super()
@@ -25,8 +28,16 @@ export class ScreenMain extends ScreenBase {
     this.game = new UIGame(this.board.positions.clone())
     this.addChild(this.game)
 
+    this.game.onMerge.connect((value: number) => {
+      this.scoreValue += value
+      this.score.setText(this.scoreValue.toString())
+    })
+
     this.input = new InputHandler()
     this.input.onMove.connect(this.handleMove)
+
+    this.score = new UIScore()
+    this.addChild(this.score)
   }
 
   public override destroy (opts?: DestroyOptions): void {

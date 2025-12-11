@@ -2,11 +2,19 @@ import { AMBER, ORANGE, SLATE, STONE, YELLOW } from '∆/lib/colors'
 
 export type TConfig = {
   board: { size: number, padding: number }
+  score: {
+    width: number
+    height: number
+  }
   rows: number
   cols: number
   piece: { size: number, radius: number, padding: number }
   theme: {
     boardBg: string
+    score: {
+      bg: string
+      text: string
+    }
     textLight: string
     textDark: string
     tiles: { [key: number]: { bg: string, text: string } }
@@ -18,6 +26,11 @@ export const CONFIG: TConfig = {
   board: {
     size: 620,
     padding: 10,
+  },
+
+  score: {
+    width: 140,
+    height: 60,
   },
 
   /** The number of pieces per row */
@@ -38,6 +51,10 @@ export const CONFIG: TConfig = {
   theme: {
     /** The background color of the board */
     boardBg: STONE[800],
+    score: {
+      bg: STONE[800],
+      text: STONE[100],
+    },
     /** The text color for light tiles */
     textLight: STONE[100],
     /** The text color for dark tiles */

@@ -3,16 +3,21 @@ import { CONFIG } from '@/config'
 import { render } from '@/screens/main/render'
 
 const renderedPawnTextures: Record<number, Texture> = {}
+let renderedScoreBg: Texture
+let renderedBoardBg: Texture
 
 export default new class {
 
   public get board () {
+
+    if (renderedBoardBg) return renderedBoardBg
+
     const width = CONFIG.board.size
     const height = CONFIG.board.size
     const radius = CONFIG.piece.radius
     const color = CONFIG.theme.boardBg
 
-    return render()
+    return renderedBoardBg = render()
       .canvas(width, height)
       .draw()
       .squareRounded(0, 0, width, height, radius, color)
@@ -31,14 +36,27 @@ export default new class {
     const radius = CONFIG.piece.radius
     const color = CONFIG.theme.tiles[value].bg
 
-    renderedPawnTextures[value] = render()
+    return renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)
       .draw()
       .squareRounded(padding, padding, width, height, radius, color)
       .render()
-    return renderedPawnTextures[value]
   }
 
+  public get scoreBg () {
+
+    if (renderedScoreBg) return renderedScoreBg
+
+    const { width, height } = CONFIG.score
+    const radius = CONFIG.piece.radius
+    const color = CONFIG.theme.score.bg
+
+    return renderedScoreBg = render()
+      .canvas(width, height)
+      .draw()
+      .squareRounded(0, 0, width, height, radius, color)
+      .render()
+  }
 
   public btnPlay () { return Texture.from('blue/button_rectangle_gradient') }
   public btnPlayPressed () { return Texture.from('blue/button_rectangle_depth_gradient') }

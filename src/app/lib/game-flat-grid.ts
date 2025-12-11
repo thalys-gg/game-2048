@@ -2,9 +2,11 @@ import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import type { UIPawn } from '@/screens/main/UIPawn'
 import { FlatGrid } from '∆/lib/flat-grid'
+import { Signal } from 'typed-signals'
 
 export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
 
+  public onMerge: Signal<(value: number) => void> = new Signal()
 
   public getRandomEmpty () {
     return this.getRandomLocation(value => value === null || value === undefined)
@@ -64,9 +66,12 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
 
     while (i < line.length) {
       if (i + 1 < line.length && line[i].value === line[i + 1].value) {
+        const pawn = line[i]
+
         // Merge: double the value, remove the second
-        line[i].value *= 2
-        result.push(line[i])
+        pawn.value *= 2
+        this.onMerge.emit(pawn.value)
+        result.push(pawn)
         line[i + 1].destroy()
         i += 2
       } else {
