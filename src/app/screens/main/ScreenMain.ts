@@ -1,4 +1,5 @@
 import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
+import type { DestroyOptions } from 'pixi.js'
 import type { Direction } from '@/input'
 import { InputHandler } from '@/input'
 import { UIBoard } from '@/screens/main/UIBoard'
@@ -28,6 +29,11 @@ export class ScreenMain extends ScreenBase {
     this.input.onMove.connect(this.handleMove)
   }
 
+  public override destroy (opts?: DestroyOptions): void {
+    this.input.destroy()
+    super.destroy(opts)
+  }
+
   public resize ({ screen }: ResizeSignature) {
     const parent = { width: this.width, height: this.height }
     super.resize({ screen, parent })
@@ -46,10 +52,5 @@ export class ScreenMain extends ScreenBase {
   public async resume () {
     super.resume()
     this.input.enabled = true
-  }
-
-  public reset () {
-    super.reset()
-    this.input.destroy()
   }
 }
