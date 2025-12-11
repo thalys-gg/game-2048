@@ -1,9 +1,10 @@
 import type { CreationEngine } from '∆/engine'
 import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/navigation.types'
-import type { Ruler } from '∆/scene/stage-ruler'
+import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
 import { ScreenMain } from '@/screens/main/ScreenMain'
+import { PawnDebugScreen } from '@/screens/PawnDebugScreen'
 import { TestInputScreen } from '@/screens/TestInputScreen'
 
 export class Navigation {
@@ -32,7 +33,7 @@ export class Navigation {
   public overlay?: IAppScreen
 
   /** Measurement overlay for development */
-  public measureLayer?: IAppScreen
+  public measureLayer?: Ruler
 
   /** Current screen being displayed */
   public currentScreen?: IAppScreen
@@ -60,6 +61,9 @@ export class Navigation {
     this.cPopups.label = 'cPopups'
     this.cLoading.label = 'cLoading'
 
+    this.measureLayer = new Ruler()
+    this.cRuler.addChild(this.measureLayer)
+
     // define layers
     app.stage.addChild(this.cLayers)
     this.cLayers.addChild(this.cBackground)
@@ -80,12 +84,6 @@ export class Navigation {
   public setOverlay (ctor: IAppScreenConstructor) {
     this.overlay = new ctor() // eslint-disable-line new-cap
     this.addAndShowScreen(this.overlay, this.cScreenOverlay)
-  }
-
-  /** Set the measurement overlay layer */
-  public setRulerLayer (ctor: IAppScreenConstructor) {
-    this.measureLayer = new ctor() // eslint-disable-line new-cap
-    this.addAndShowScreen(this.measureLayer, this.cRuler)
   }
 
   /** Add screen to the stage, link update & resize functions */
@@ -247,10 +245,12 @@ export class Navigation {
       case 'ScreenAssetLoader':
       case 'OverlayUI':
       case 'Background':
+      case 'ScreenBase':
         return null // don't save for loading screen
       case 'PopupPause':
       case 'PopupSettings':
       case 'TestInputScreen':
+      case 'PawnDebugScreen':
       case 'ScreenMain':
       default:
         return 'ScreenMain'
@@ -263,11 +263,14 @@ export class Navigation {
       case 'ScreenAssetLoader':
       case 'OverlayUI':
       case 'Background':
+      case 'ScreenBase':
         return null // don't save for loading screen
-      case 'PopupPause':
-      case 'PopupSettings':
+      case 'PawnDebugScreen':
+        return PawnDebugScreen
       case 'TestInputScreen':
         return TestInputScreen
+      case 'PopupPause':
+      case 'PopupSettings':
       case 'ScreenMain':
       default:
         return ScreenMain
@@ -289,7 +292,7 @@ export class Navigation {
    */
   public toggleMeasureLayer () {
     if (this.measureLayer && 'toggle' in this.measureLayer) {
-      (this.measureLayer as Ruler).toggle()
+      this.measureLayer.toggle()
     }
   }
 }
