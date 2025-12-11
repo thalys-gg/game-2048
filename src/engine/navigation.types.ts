@@ -1,6 +1,7 @@
-import type { Container, Ticker } from 'pixi.js'
+import type { Container, DestroyOptions, Ticker } from 'pixi.js'
 
 export const appScreens = [
+  'ScreenBase',
   'ScreenMain',
   'ScreenAssetLoader',
 
@@ -11,43 +12,66 @@ export const appScreens = [
 
   'Measure',
   'TestInputScreen',
+  'PawnDebugScreen',
   'Background',
 ] as const
 
 export type AppScreens = typeof appScreens[number]
 
+export type TAssetBundleId = 'preload' | 'main' | 'ui' | 'loops'
+
 /** Interface for app screens */
 export interface IAppScreen extends Container {
+
+  /** Screen name */
   definition: AppScreens
-  /** Show the screen */
-  show?: () => Promise<void>
-  /** Hide the screen */
-  hide?: () => Promise<void>
-  /** Pause the screen */
-  pause?: () => Promise<void>
-  /** Resume the screen */
-  resume?: () => Promise<void>
+
+  /** Assets bundles required by this screen */
+  assetBundles?: TAssetBundleId[]
+
   /** Prepare screen, before showing */
   prepare?: () => void
+
+  /** Destroy the screen */
+  destroy: (opts?: DestroyOptions) => void
+
   /** Reset screen, after hidden */
   reset?: () => void
-  /** Update the screen, passing delta time/step */
-  update?: (time: Ticker) => void
-  /** Resize the screen */
-  resize?: (width: number, height: number) => void
-  /** Blur the screen */
-  blur?: () => void
-  /** Focus the screen */
-  focus?: () => void
+
   /** Method to react on assets loading progress */
   onLoad?: (progress: number) => void
-}
 
-export type TAssetBundleId = 'preload' | 'main' | 'ui' | 'memory-game-phaser'
+  /** Resize the screen */
+  resize?: ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) => void
+
+  /** Show the screen */
+  show?: () => Promise<void>
+
+  /** Hide the screen */
+  hide?: () => Promise<void>
+
+  /** Pause the screen */
+  pause?: () => Promise<void>
+
+  /** Resume the screen */
+  resume?: () => Promise<void>
+
+  /** Blur the screen */
+  blur?: () => void
+
+  /** Focus the screen */
+  focus?: () => void
+
+  /** Update the screen, passing delta time/step */
+  update?: (ticker: Ticker) => void
+}
 
 /** Interface for app screens constructors */
 export interface IAppScreenConstructor {
   new (): IAppScreen
   /** List of assets bundles required by the screen */
-  assetBundles?: TAssetBundleId[]
+  assetBundles: TAssetBundleId[]
 }
