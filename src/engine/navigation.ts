@@ -4,8 +4,8 @@ import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
 import { ScreenMain } from '@/screens/main/ScreenMain'
-import { PawnDebugScreen } from '@/screens/PawnDebugScreen'
-import { TestInputScreen } from '@/screens/TestInputScreen'
+import { ScreenPawn } from '@/screens/ScreenPawn'
+import { ScreenInput } from '@/screens/ScreenInput'
 
 export class Navigation {
   /** Reference to the main application */
@@ -258,8 +258,8 @@ export class Navigation {
         return null // don't save for loading screen
       case 'PopupPause':
       case 'PopupSettings':
-      case 'TestInputScreen':
-      case 'PawnDebugScreen':
+      case 'ScreenInput':
+      case 'ScreenPawn':
       case 'ScreenMain':
       default:
         return 'ScreenMain'
@@ -274,10 +274,10 @@ export class Navigation {
       case 'Background':
       case 'ScreenBase':
         return null // don't save for loading screen
-      case 'PawnDebugScreen':
-        return PawnDebugScreen
-      case 'TestInputScreen':
-        return TestInputScreen
+      case 'ScreenPawn':
+        return ScreenPawn
+      case 'ScreenInput':
+        return ScreenInput
       case 'PopupPause':
       case 'PopupSettings':
       case 'ScreenMain':

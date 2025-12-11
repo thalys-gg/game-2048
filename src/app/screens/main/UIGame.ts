@@ -7,6 +7,7 @@ import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/game-flat-grid'
 import { rollNewPawnValue } from '@/math'
 import { UIPawn } from '@/screens/main/UIPawn'
+import { anime } from '@thalys/anime-pixi'
 
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
@@ -54,6 +55,9 @@ export class UIGame extends Container implements IChild {
     const pawn = new UIPawn(rollNewPawnValue(), pos)
     this.grid.set(coord.x, coord.y, pawn)
     this.addChild(pawn)
+
+    pawn.alpha = 0
+    anime`fade-in`(pawn).play()
     return pawn
   }
 

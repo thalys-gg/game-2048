@@ -11,8 +11,8 @@ export const appScreens = [
   'PopupPause',
 
   'Measure',
-  'TestInputScreen',
-  'PawnDebugScreen',
+  'ScreenInput',
+  'ScreenPawn',
   'Background',
 ] as const
 
