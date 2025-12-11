@@ -1,5 +1,5 @@
+import type { GroupedSegment, IFunctionSplitResult, Segment, TSplittedInto } from '∆/scene/text.types'
 import type { ConvertedStrokeStyle, SplitOptions, TextStyle } from 'pixi.js'
-import type { GroupedSegment, IFunctionSplitResult, Segment, TSplitedInto } from '@/engine/scene/text.types'
 import { CanvasTextMetrics, Container, Matrix, Sprite, Text } from 'pixi.js'
 
 function getAlignmentOffset (alignment: string, lineWidth: number, largestLine: number): number {
@@ -83,7 +83,7 @@ function groupTextSegments (
  * @internal
  */
 export function textSplitWithEmojiReplacer (
-  options: Pick<SplitOptions, 'text' | 'style'> & { chars: TSplitedInto[] },
+  options: Pick<SplitOptions, 'text' | 'style'> & { chars: TSplittedInto[] },
 ): IFunctionSplitResult<Text | Sprite> {
   const { text, style } = options
 

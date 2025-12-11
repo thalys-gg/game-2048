@@ -1,5 +1,5 @@
 import type { FancyButton } from '@pixi/ui'
-import type { AppScreens, IAppScreen } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import { engine } from '∆/engine.singleton'
 import { ZINC } from '∆/utils/colors'
 import { animate } from 'motion'
@@ -10,6 +10,7 @@ import { Label } from '@/ui/Label'
 
 /** Popup that shows up when gameplay is paused */
 export class PopupPause extends Container implements IAppScreen {
+  public static assetBundles: TAssetBundleId[] = ['preload', 'ui']
   public definition: AppScreens = 'PopupPause'
   /** The dark semi-transparent background covering current screen */
   private bg: Sprite

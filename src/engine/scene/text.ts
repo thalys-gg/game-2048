@@ -1,8 +1,8 @@
+import type { IFunctionSplitResult, ITextEmojiOptions } from '∆/scene/text.types'
 import type { Sprite, Text } from 'pixi.js'
-import type { IFunctionSplitResult, ITextEmojiOptions } from '@/engine/scene/text.types'
+import { AbstractSplitText } from '∆/scene/text.abstract'
+import { textSplitWithEmojiReplacer } from '∆/scene/text.fn'
 import { TextStyle } from 'pixi.js'
-import { AbstractSplitText } from '@/engine/scene/text.abstract'
-import { textSplitWithEmojiReplacer } from '@/engine/scene/text.fn'
 
 export interface TextEmojiParams extends Omit<ITextEmojiOptions, 'style'> {
   style?: ITextEmojiOptions['style']
@@ -54,7 +54,7 @@ export class TextEmoji extends AbstractSplitText<Text | Sprite> {
   protected splitFn (): IFunctionSplitResult<Text | Sprite> {
     const result = textSplitWithEmojiReplacer({
       text: this._originalText,
-      style: this._style,
+      style: this._style || new TextStyle(),
       chars: this._canReuseChars ? this.chars : [],
     })
     return result

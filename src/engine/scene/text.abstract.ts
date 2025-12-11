@@ -1,8 +1,8 @@
+import type { IFunctionSplitResult, TSplittedInto } from '∆/scene/text.types'
 import type { AbstractSplitTextOptions, DestroyOptions, PointData, TextStyleOptions } from 'pixi.js'
-import type { IFunctionSplitResult, TSplitedInto } from '@/engine/scene/text.types'
 import { Container, TextStyle } from 'pixi.js'
 
-export abstract class AbstractSplitText<T extends TSplitedInto> extends Container {
+export abstract class AbstractSplitText<T extends TSplittedInto> extends Container {
   /**
    * Individual graphemes from the text provided
    */
@@ -24,7 +24,7 @@ export abstract class AbstractSplitText<T extends TSplitedInto> extends Containe
   protected _charAnchor: number | PointData
   protected _autoSplit: boolean
 
-  protected _style: TextStyle
+  protected _style: TextStyle | undefined
 
   protected _dirty: boolean = false
   protected _canReuseChars: boolean = false
@@ -140,7 +140,7 @@ export abstract class AbstractSplitText<T extends TSplitedInto> extends Containe
     this._setOrigin(value, this.chars, '_charAnchor')
   }
 
-  get style (): TextStyle {
+  get style (): TextStyle | undefined {
     return this._style
   }
 
@@ -191,7 +191,7 @@ export abstract class AbstractSplitText<T extends TSplitedInto> extends Containe
     // @ts-expect-error throwing away reference
     this.lines = null
     if (typeof options === 'boolean' ? options : options?.style) {
-      this._style.destroy(options)
+      this._style?.destroy(options)
     }
     // @ts-expect-error throwing away reference
     this._style = null

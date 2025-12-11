@@ -1,8 +1,8 @@
 import type { AbstractSplitOptions, CanvasTextMetrics, Container } from 'pixi.js'
 
-export type TSplitedInto = Container
+export type TSplittedInto = Container
 
-export interface IFunctionSplitResult<T extends TSplitedInto> {
+export interface IFunctionSplitResult<T extends TSplittedInto> {
   /** Array of individual character Text objects */
   chars: T[]
   /** Array of word containers, each containing character objects */
