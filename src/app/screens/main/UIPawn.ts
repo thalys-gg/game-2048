@@ -2,7 +2,7 @@ import type { Coordinate } from '∆/lib/flat-grid'
 import type { ObjectTarget } from 'motion'
 import { animate } from 'motion'
 import { Container, Sprite } from 'pixi.js'
-import textures from '@/textures'
+import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
 
 function createSquare (value: number, parent: Container, label?: string) {

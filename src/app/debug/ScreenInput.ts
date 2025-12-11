@@ -1,8 +1,8 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { Ticker } from 'pixi.js'
-import type { Direction } from '@/input'
+import type { Direction } from '@/lib/input'
 import { Container, Graphics } from 'pixi.js'
-import { InputHandler } from '@/input'
+import { InputHandler } from '@/lib/input'
 import { Label } from '@/ui/Label'
 
 export class ScreenInput extends Container implements IAppScreen {

@@ -3,7 +3,7 @@ import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.type
 import type { Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
-import buttons from '@/buttons'
+import buttons from '@/lib/buttons'
 import { PopupPause } from '@/popups/popup.pause'
 
 export class OverlayUI extends Container implements IAppScreen {

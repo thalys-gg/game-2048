@@ -1,8 +1,8 @@
 import { FancyButton } from '@pixi/ui'
 import { waitFor } from '∆/lib/promise'
 import { ZINC } from '∆/lib/colors'
-import actions from '@/actions'
-import textures from '@/textures'
+import actions from '@/lib/actions'
+import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
 
 const btnTransitions = {

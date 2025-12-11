@@ -2,7 +2,7 @@ import type { IChild, ResizeSignature } from '∆/navigation.types'
 import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
-import textures from '@/textures'
+import textures from '@/lib/textures'
 
 const pieceCount = CONFIG.rows * CONFIG.cols
 

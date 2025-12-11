@@ -4,7 +4,7 @@ import { setEngine } from '∆/engine.singleton'
 import { ZINC } from '∆/lib/colors'
 import { userSettings } from '∆/utils/user.settings'
 import { Stats } from 'pixi-stats'
-import { isDev } from '@/global'
+import { isDev } from '@/lib/global'
 
 export async function createApplication () {
 

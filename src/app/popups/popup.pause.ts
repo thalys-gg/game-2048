@@ -4,8 +4,8 @@ import { engine } from '∆/engine.singleton'
 import { ZINC } from '∆/lib/colors'
 import { animate } from 'motion'
 import { BlurFilter, Container, NineSliceSprite, Sprite, Texture } from 'pixi.js'
-import buttons from '@/buttons'
-import textures from '@/textures'
+import buttons from '@/lib/buttons'
+import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
 
 /** Popup that shows up when gameplay is paused */

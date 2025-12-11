@@ -4,7 +4,7 @@ import { engine } from '∆/engine.singleton'
 import { PopupPause } from '@/popups/popup.pause'
 import { PopupSettings } from '@/popups/popup.settings'
 import { ScreenMain } from '@/screens/main/ScreenMain'
-import textures from '@/textures'
+import textures from '@/lib/textures'
 
 export default new class {
   dismissPopup = () => {
