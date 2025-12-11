@@ -96,7 +96,7 @@ export class Navigation {
     // Setup things and pre-organize screen before showing
     if (screen.prepare) screen.prepare()
     // Trigger a first resize, if available
-    if (screen.resize) screen.resize(this.width, this.height)
+    if (screen.resize) screen.resize({ screen: { width: this.width, height: this.height }, parent: { width: this.width, height: this.height } })
     // Add update function if available
     if (screen.update) this.app.ticker.add(screen.update, screen)
 
@@ -164,11 +164,11 @@ export class Navigation {
   public resize (width: number, height: number) {
     this.width = width
     this.height = height
-    this.currentScreen?.resize?.(width, height)
-    this.currentPopup?.resize?.(width, height)
-    this.background?.resize?.(width, height)
-    this.overlay?.resize?.(width, height)
-    this.measureLayer?.resize?.(width, height)
+    this.currentScreen?.resize?.({ screen: { width, height }, parent: { width, height } })
+    this.currentPopup?.resize?.({ screen: { width, height }, parent: { width, height } })
+    this.background?.resize?.({ screen: { width, height }, parent: { width, height } })
+    this.overlay?.resize?.({ screen: { width, height }, parent: { width, height } })
+    this.measureLayer?.resize?.({ screen: { width, height }, parent: { width, height } })
   }
 
   /**

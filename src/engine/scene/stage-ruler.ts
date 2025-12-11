@@ -203,8 +203,11 @@ export class Ruler extends Container implements IAppScreen {
     // Update logic if needed
   }
 
-  resize (width: number, height: number): void {
-    this.buildRulers(width, height)
+  resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }): void {
+    this.buildRulers(screen.width, screen.height)
   }
 
   blur (): void {

@@ -72,9 +72,12 @@ export class TestInputScreen extends Container implements IAppScreen {
     this._drawIndicatorBg(this._indicators[direction].bg, this.ACTIVE_COLOR)
   }
 
-  public resize (width: number, height: number) {
-    const cx = width * 0.5
-    const cy = height * 0.5
+  public resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) {
+    const cx = screen.width * 0.5
+    const cy = screen.height * 0.5
     const spacing = 110
 
     this._indicators.up.bg.position.set(cx, cy - spacing)

@@ -56,11 +56,14 @@ export class PopupPause extends Container implements IAppScreen {
   }
 
   /** Resize the popup, fired whenever window size changes */
-  public resize (width: number, height: number) {
+  public resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) {
     this.bg.position.set(0)
-    this.bg.width = width
-    this.bg.height = height
-    this.panel.position.set(width * 0.5, height * 0.5)
+    this.bg.width = screen.width
+    this.bg.height = screen.height
+    this.panel.position.set(screen.width * 0.5, screen.height * 0.5)
   }
 
   /** Present the popup, animated */

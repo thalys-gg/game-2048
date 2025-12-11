@@ -42,13 +42,16 @@ export class OverlayUI extends Container implements IAppScreen {
 
   public reset () {}
 
-  public resize (width: number, height: number) {
+  public resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) {
     this.btnPause.x = 30
     this.btnPause.y = 30
     this.btnHome.x = this.btnPause.getBounds().right + 20
     this.btnHome.y = 30
 
-    this.btnSettings.x = width - 30
+    this.btnSettings.x = screen.width - 30
     this.btnSettings.y = 30
     this.btnFullScreen.x = this.btnSettings.getBounds().left - 20
     this.btnFullScreen.y = 30

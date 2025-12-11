@@ -32,14 +32,17 @@ export class ScreenMain extends Container implements IAppScreen {
     this.input.onMove.connect(this.handleMove)
   }
 
-  /** Resize the screen, fired whenever window size changes */
-  public resize (width: number, height: number) {
-    const centerX = width * 0.5
-    const centerY = height * 0.5
+  public resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) {
+    super.resize({ screen, parent })
+    const centerX = screen.width * 0.5
+    const centerY = screen.height * 0.5
 
     this.board.x = centerX - this.board.width * this.board.pivot.x
     this.board.y = centerY - this.board.height * this.board.pivot.y
-    this.board.resize(width, height)
+    this.board.resize(screen.width, screen.height)
 
     this.game.x = this.board.x
     this.game.y = this.board.y

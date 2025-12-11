@@ -26,22 +26,21 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
   }
 
   public onLoad (progress: number) {
-    // logger.log('progress', progress)
     this.progressBar.set(progress)
   }
 
-  /** Resize the screen, fired whenever window size changes  */
-  public resize (width: number, height: number) {
-    this.progressBar.resize(width, height)
-    this.background.resize(width, height)
+  public resize ({ screen, parent }: {
+    screen: { width: number, height: number }
+    parent: { width: number, height: number }
+  }) {
+    this.progressBar.resize(screen.width, screen.height)
+    this.background.resize(screen.width, screen.height)
   }
 
-  /** Show screen with animations */
   public async show () {
     this.alpha = 1
   }
 
-  /** Hide screen with animations */
   public async hide () {
     await animate(
       this,
