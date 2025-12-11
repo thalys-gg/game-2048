@@ -1,17 +1,42 @@
+import type { Coordinate } from '∆/lib/flat-grid'
 import type { ObjectTarget } from 'motion'
 import { animate } from 'motion'
-import { Sprite } from 'pixi.js'
+import { Container, Sprite } from 'pixi.js'
 import textures from '@/textures'
 import { Label } from '@/ui/Label'
+
+function createSquare (value: number, parent: Container, label?: string) {
+  const pawn = Sprite.from(textures.getPawn(value))
+  pawn.label = label || 'PawnBackground'
+  pawn.alpha = 1
+  pawn.anchor.set(0.5)
+  parent.addChild(pawn)
+  return pawn
+}
+
+function createLabel (value: number, parent: Container, label?: string) {
+  const text = new Label({
+    text: `${value}`,
+    style: {
+      fontSize: 48,
+    },
+  })
+  text.label = label || 'PawnValue'
+  text.alpha = 1
+  parent.addChild(text)
+  return text
+}
 
 /**
  * Represents a pawn (tile) in the game grid.
  * It visualizes the numeric value and the corresponding background texture.
  */
-export class UIPawn extends Sprite {
+export class UIPawn extends Container {
 
-  private _text: Label
+  private bg: Sprite
+  private text: Label
   private _value: number
+  private coords: Coordinate
 
   /**
    * Sets the value of the pawn.
@@ -21,8 +46,8 @@ export class UIPawn extends Sprite {
    */
   public set value (value: number) {
     this._value = value
-    this._text.text = `${value}`
-    this.texture = textures.getPawn(value)
+    this.text.text = `${value}`
+    this.bg.texture = textures.getPawn(value)
   }
 
   /**
@@ -40,41 +65,38 @@ export class UIPawn extends Sprite {
    *
    * @param value - The initial value of the pawn.
    */
-  constructor (value: number) {
-    super(textures.getPawn(value))
-
+  constructor (value: number, coords: Coordinate) {
+    super()
+    this.coords = coords
     this._value = value
-    this._text = new Label({
-      text: `${value}`,
-      style: {
-        fontSize: 48,
-      },
-    })
-    this._text.anchor.set(0.5)
-    this.addChild(this._text)
-    this._text.x = this.width * 0.5
-    this._text.y = this.height * 0.5
 
-    this.alpha = 0
+    this.x = coords.x
+    this.y = coords.y
+
+    this.bg = createSquare(value, this)
+    this.text = createLabel(value, this)
   }
 
   public async show () {
+    animate(this.scale, { x: 1, y: 1 }, { duration: 0.5, ease: 'backOut' })
     await animate(
       this,
       { alpha: 1 } as ObjectTarget<this>,
-      { duration: 0.2, ease: 'backIn' },
+      { duration: 0.5, ease: 'circOut' },
     )
   }
 
   /**
    * Updates the layout of the pawn's children.
-   * Re-centers the value label within the sprite.
-   *
-   * @param width - The width of the container (unused, but kept for consistency).
-   * @param height - The height of the container (unused, but kept for consistency).
+   * Re-centers the value label within the sprite
    */
-  public resize (width: number, height: number) {
-    this._text.x = this.width * 0.5
-    this._text.y = this.height * 0.5
+  public resize (coords?: Coordinate) {
+
+    if (coords) {
+      this.coords = coords
+    }
+
+    this.x = this.coords.x
+    this.y = this.coords.y
   }
 }

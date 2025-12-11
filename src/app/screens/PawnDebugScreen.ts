@@ -11,7 +11,7 @@ export class PawnDebugScreen extends Container implements IAppScreen {
   constructor () {
     super()
 
-    this.pawn = new UIPawn(2)
+    this.pawn = new UIPawn(2, { x: 0, y: 0 })
     this.addChild(this.pawn)
   }
 
