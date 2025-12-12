@@ -3,9 +3,9 @@ import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/navigati
 import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
+import { ScreenInput } from '@/screens/debug/ScreenInput'
+import { ScreenPawn } from '@/screens/debug/ScreenPawn'
 import { ScreenMain } from '@/screens/main/ScreenMain'
-import { ScreenPawn } from '@/debug/ScreenPawn'
-import { ScreenInput } from '@/debug/ScreenInput'
 
 export class Navigation {
   /** Reference to the main application */

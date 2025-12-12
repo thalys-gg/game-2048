@@ -1,6 +1,6 @@
 import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { Ticker } from 'pixi.js'
-import type { Direction } from '@/lib/input'
+import type { Direction } from '@/lib/types'
 import { Container, Graphics } from 'pixi.js'
 import { InputHandler } from '@/lib/input'
 import { Label } from '@/ui/Label'
