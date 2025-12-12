@@ -1,7 +1,7 @@
-import type { WatchedObject, WatchedProp, WatcherCallback } from '∆/utils/watch.types'
+import type { WatchedObject, WatchedProp, WatcherCallback, WatcherCallbackMap } from '∆/utils/watch.types'
 
 export function watchObject<T extends object> (obj: T): T & WatchedObject<T> {
-  const callbacks: Map<string | symbol, WatcherCallback<T>[]> = new Map()
+  const callbacks: WatcherCallbackMap<T> = new Map()
 
   const newObj = {
     ...obj,

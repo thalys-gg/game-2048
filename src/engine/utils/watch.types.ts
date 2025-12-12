@@ -13,3 +13,5 @@ export type WatchedObject<T> = {
     cb: WatcherCallback<T>,
   ) => void
 }
+
+export type WatcherCallbackMap<T extends object> = Map<string | symbol, WatcherCallback<T>[]>
