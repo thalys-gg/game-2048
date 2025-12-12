@@ -22,7 +22,7 @@
     "clean:assets": "rm -rf .assetpack/ public/assets/",
     "lint": "bunx --bun eslint",
     "fix": "bunx --bun eslint --fix",
-    "check": "tsc --noEmit -p ./tsconfig.app.json"
+    "check": "bunx --bun tsc --noEmit -p ./tsconfig.app.json"
   },
   "dependencies": {
     "@pixi/sound": "^6.0.1",
