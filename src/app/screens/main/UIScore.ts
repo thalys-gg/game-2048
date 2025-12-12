@@ -1,8 +1,12 @@
 import type { IChild, ResizeSignature } from '∆/navigation.types'
+import { logger } from '@thalys/logger'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
 import textures from '@/lib/textures'
+import { STATE } from '@/screens/main/state'
 import { Label } from '@/ui/Label'
+
+const log = logger.custom` [${'UIScore'}]`
 
 function createBackground (parent: Container) {
   const bg = Sprite.from(textures.scoreBg)
@@ -37,6 +41,11 @@ export class UIScore extends Container implements IChild {
     super()
     this.bg = createBackground(this)
     this.text = createLabel(this)
+
+    STATE.on('scoreChanged', (value, oldValue, receiver, property) => {
+      log(`from: ${oldValue} -> to: ${value}`)
+      this.text.text = `${value}`
+    })
   }
 
   public resize ({ screen }: ResizeSignature) {
@@ -51,9 +60,5 @@ export class UIScore extends Container implements IChild {
 
     this.text.x = center.x
     this.text.y = this.bg.y
-  }
-
-  public setText (text: string) {
-    this.text.text = text
   }
 }

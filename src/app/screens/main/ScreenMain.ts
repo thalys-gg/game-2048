@@ -17,7 +17,6 @@ export class ScreenMain extends ScreenBase {
   private game: UIGame
   private input: InputHandler
   private score: UIScore
-  private scoreValue: number = 0
 
   constructor () {
     super()
@@ -27,11 +26,6 @@ export class ScreenMain extends ScreenBase {
 
     this.game = new UIGame(this.board.positions.clone())
     this.addChild(this.game)
-
-    this.game.onMerge = (value: number) => {
-      this.scoreValue += value
-      this.score.setText(this.scoreValue.toString())
-    }
 
     this.input = new InputHandler()
     this.input.onMove.connect(this.handleMove)

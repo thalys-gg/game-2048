@@ -18,10 +18,11 @@ export function watchObject<T extends object> (obj: T): T & WatchedObject<T> {
   return new Proxy(newObj, {
     set (target, property, value, receiver) {
       const key = property
+      const oldValue = receiver[key]
       const result = Reflect.set(target, property, value, receiver)
       const array = callbacks.get(key)
       if (array) {
-        array.forEach(cb => cb(value, receiver[key], receiver, property))
+        array.forEach(cb => cb(value, oldValue, receiver, property))
       }
       return result
     },

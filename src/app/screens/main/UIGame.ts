@@ -7,18 +7,18 @@ import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
 import { rollNewPawnValue } from '@/lib/math'
+import { STATE } from '@/screens/main/state'
 import { UIPawn } from '@/screens/main/UIPawn'
 
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
   private positions: FlatGrid<Sprite>
-  public onMerge?: (value: number) => void
   constructor (positions: FlatGrid<Sprite>) {
     super()
     this.positions = positions
     this.grid = new GameFlatGrid<UIPawn>(CONFIG.cols, CONFIG.rows)
     this.grid.onMerge = (value: number) => {
-      this.onMerge?.(value)
+      STATE.score += value
     }
   }
 
