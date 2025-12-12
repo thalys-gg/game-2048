@@ -1,12 +1,14 @@
 import type { IChild, ResizeSignature } from '∆/navigation.types'
+import type { DestroyOptions } from 'pixi.js'
 import { logger } from '@thalys/logger'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
+import animations from '@/lib/animations'
 import textures from '@/lib/textures'
 import { STATE } from '@/screens/main/state'
 import { Label } from '@/ui/Label'
 
-const log = logger.custom` [${'UIScore'}]`
+const log = logger.custom`[ ${'UIScore'} ]`
 
 function createBackground (parent: Container) {
   const bg = Sprite.from(textures.scoreBg)
@@ -37,15 +39,23 @@ export class UIScore extends Container implements IChild {
 
   private bg: Sprite
   private text: Label
+
+  private _rollupScoreRef: ReturnType<typeof animations.rollupScore> | null = null
+
   constructor () {
     super()
     this.bg = createBackground(this)
     this.text = createLabel(this)
 
     STATE.on('scoreChanged', (value, oldValue, receiver, property) => {
-      log(`from: ${oldValue} -> to: ${value}`)
-      this.text.text = `${value}`
+      animations.rollupScore(this.text, oldValue || 0, value)
     })
+  }
+
+  public override destroy (options?: DestroyOptions | undefined) {
+    super.destroy(options)
+    this._rollupScoreRef?.destroy()
+    this._rollupScoreRef = null
   }
 
   public resize ({ screen }: ResizeSignature) {
