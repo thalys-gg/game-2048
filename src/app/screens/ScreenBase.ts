@@ -82,6 +82,13 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   public async resume () {
     this.interactiveChildren = true
     this.paused = false
+    this.resumeChildren()
+  }
+
+  public async resumeChildren () {
+    this.children.forEach((child) => {
+      child.resume?.()
+    })
   }
 
   public blur () {

@@ -31,6 +31,11 @@ export type ResizeSignature = {
   parent: { width: number, height: number }
 }
 
+export interface IResumable {
+  /** Resume container, after hidden */
+  resume?: () => Promise<void>
+}
+
 export interface IPreparable {
   /** Prepare container, before showing */
   prepare?: () => void
@@ -60,12 +65,14 @@ export interface IResizable {
   resize?: ({ screen, parent }: ResizeSignature) => void
 }
 
-export interface IChild extends ContainerChild, IResizable, IPresentable, IResettable, IPreparable {
+export interface IChild extends ContainerChild,
+  IResizable, IPresentable, IResettable, IPreparable, IResumable {
 
 }
 
 /** Interface for app screens */
-export interface IAppScreen extends Container, IResizable, IPresentable, IResettable, IPreparable {
+export interface IAppScreen extends Container, IResizable,
+  IPresentable, IResettable, IPreparable, IResumable {
 
   /** Screen name */
   definition: AppScreens
@@ -78,9 +85,6 @@ export interface IAppScreen extends Container, IResizable, IPresentable, IResett
 
   /** Pause the screen */
   pause?: () => Promise<void>
-
-  /** Resume the screen */
-  resume?: () => Promise<void>
 
   /** Blur the screen */
   blur?: () => void

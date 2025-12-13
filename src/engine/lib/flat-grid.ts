@@ -125,7 +125,7 @@ export class FlatGrid<T> {
   /**
    * Set value at (x, y). Returns false if out of bounds.
    */
-  public set (x: number, y: number, value: T): boolean {
+  public set (x: number, y: number, value: T | null): boolean {
     if (!this.isValid(x, y)) return false
     this.data[this.getIndex(x, y)] = value
     return true
@@ -134,7 +134,7 @@ export class FlatGrid<T> {
   /**
    * Set value directly at 1D index.
    */
-  public setAtIndex (index: number, value: T): boolean {
+  public setAtIndex (index: number, value: T | null): boolean {
     if (!this.isValidIndex(index)) return false
     this.data[index] = value
     return true
