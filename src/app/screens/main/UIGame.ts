@@ -149,6 +149,7 @@ export class UIGame extends Container implements IChild {
    */
   private createPawnAt (x: number, y: number, value: null): void
   private createPawnAt (x: number, y: number, value: number): UIPawn
+  private createPawnAt (x: number, y: number, value: number | null): UIPawn | void
   private createPawnAt (x: number, y: number, value: number | null): UIPawn | void {
 
     if (value === null) {

@@ -16,7 +16,7 @@ import { VolumeSlider } from '@/ui/VolumeSlider'
 
 /** Popup for volume */
 export class PopupSettings extends Container implements IAppScreen {
-  public static assetBundles: TAssetBundleId[] = ['preload', 'ui']
+  public static assetBundles: TAssetBundleId[] = ['preload']
   public definition: AppScreens = 'PopupSettings'
   /** The dark semi-transparent background covering current screen */
   private bg: Sprite

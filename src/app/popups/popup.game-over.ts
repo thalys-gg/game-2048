@@ -8,7 +8,7 @@ import { Label } from '@/ui/Label'
 
 /** Popup that shows up when gameplay is paused */
 export class GameOver extends Container implements IAppScreen {
-  public static assetBundles: TAssetBundleId[] = ['preload', 'ui']
+  public static assetBundles: TAssetBundleId[] = ['preload']
   public definition: AppScreens = 'GameOver'
   /** The dark semi-transparent background covering current screen */
   private bg: Sprite
