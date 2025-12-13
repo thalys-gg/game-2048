@@ -3,13 +3,13 @@ import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.type
 import type { Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
-import buttons from '@/lib/buttons'
 import { PopupPause } from '@/popups/popup.pause'
+import { create } from '@/screens/overlay/UI.create'
 
 export class OverlayUI extends Container implements IAppScreen {
   public definition: AppScreens = 'OverlayUI'
   public override label: string = 'OverlayUI'
-  public static assetBundles: TAssetBundleId[] = ['preload'] as TAssetBundleId[]
+  public static assetBundles: TAssetBundleId[] = ['preload', 'ui']
   protected btnPause: FancyButton
   protected btnHome: FancyButton
   protected btnSettings: FancyButton
@@ -19,16 +19,16 @@ export class OverlayUI extends Container implements IAppScreen {
   constructor () {
     super()
 
-    this.btnPause = buttons.createBtnPause
+    this.btnPause = create.createBtnPause
     this.addChild(this.btnPause)
 
-    this.btnHome = buttons.createBtnHome
+    this.btnHome = create.createBtnHome
     this.addChild(this.btnHome)
 
-    this.btnSettings = buttons.createBtnSettings
+    this.btnSettings = create.createBtnSettings
     this.addChild(this.btnSettings)
 
-    this.btnFullScreen = buttons.createBtnFullScreen
+    this.btnFullScreen = create.createBtnFullScreen
     this.addChild(this.btnFullScreen)
   }
 

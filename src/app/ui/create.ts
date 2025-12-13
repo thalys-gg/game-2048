@@ -3,6 +3,7 @@ import type { CheckOpts } from '@/ui/Check'
 import { FancyButton } from '@pixi/ui'
 import { engine } from '∆/engine.singleton'
 import { Assets, Sprite, Texture } from 'pixi.js'
+import actions from '@/lib/actions'
 import { PopupPause } from '@/popups/popup.pause'
 import { PopupSettings } from '@/popups/popup.settings'
 import { Check } from '@/ui/Check'
@@ -73,7 +74,7 @@ class _SettingsPopup {
     element.alpha = 0.2
     element.interactive = true
     element.on('pointerup', () => {
-      engine().navigation.dismissPopup()
+      actions.dismissPopup()
     })
     return element
   }

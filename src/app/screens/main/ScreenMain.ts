@@ -12,7 +12,7 @@ export class ScreenMain extends ScreenBase {
   public definition: AppScreens = 'ScreenMain'
   public override label: string = 'ScreenMain'
   /** Assets bundles required by this screen */
-  public static assetBundles: TAssetBundleId[] = []
+  public static assetBundles: TAssetBundleId[] = ['preload', 'ui', 'main', 'loops']
   private board: UIBoard
   private game: UIGame
   private input: InputHandler

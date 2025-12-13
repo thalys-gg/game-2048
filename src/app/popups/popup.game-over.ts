@@ -3,6 +3,7 @@ import { engine } from '∆/engine.singleton'
 import { animate } from 'motion'
 import { BlurFilter, Container, Sprite, Texture } from 'pixi.js'
 import { CONFIG } from '@/config'
+import actions from '@/lib/actions'
 import { Label } from '@/ui/Label'
 
 /** Popup that shows up when gameplay is paused */
@@ -35,7 +36,7 @@ export class GameOver extends Container implements IAppScreen {
 
     this.interactive = true
     this.on('pointerup', () => {
-      engine().navigation.dismissPopup()
+      actions.dismissPopup()
     })
   }
 
