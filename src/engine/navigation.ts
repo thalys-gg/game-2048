@@ -256,6 +256,7 @@ export class Navigation {
       case 'Background':
       case 'ScreenBase':
         return null // don't save for loading screen
+      case 'GameOver':
       case 'PopupPause':
       case 'PopupSettings':
       case 'ScreenInput':
@@ -278,6 +279,7 @@ export class Navigation {
         return ScreenPawn
       case 'ScreenInput':
         return ScreenInput
+      case 'GameOver':
       case 'PopupPause':
       case 'PopupSettings':
       case 'ScreenMain':

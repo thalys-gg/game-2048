@@ -9,6 +9,7 @@ export const appScreens = [
 
   'PopupSettings',
   'PopupPause',
+  'GameOver',
 
   'Measure',
   'ScreenInput',
