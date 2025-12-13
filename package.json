@@ -15,7 +15,6 @@
     "url": "https://github.com/thalys/game-2048/issues"
   },
   "scripts": {
-    "start": "bunx --bun run dev",
     "dev": "bunx --bun vite",
     "build": "bunx --bun run lint && tsc && bunx --bun vite build",
     "clean": "rm -rf bun.lock node_modules/ .cache/ .assetpack/ public/assets/ src/gen/*",
@@ -28,8 +27,7 @@
     "@pixi/sound": "^6.0.1",
     "@pixi/ui": "^2.3.2",
     "@thalys/anime-pixi": "^0.0.1",
-    "gsap": "^3.14.1",
-    "motion": "12.23.25",
+    "motion": "12.23.26",
     "pixi.js": "^8.8.1",
     "typed-signals": "^3.0.0"
   },
@@ -42,7 +40,7 @@
     "@thalys/logger": "link:@thalys/logger",
     "@types/bun": "latest",
     "@types/node": "24.0.13",
-    "eslint": "^9",
+    "eslint": "^9.39.2",
     "eslint-plugin-command": "^3",
     "eslint-plugin-format": "^1",
     "eslint-plugin-react-hooks": "^5",
@@ -50,7 +48,7 @@
     "pixi-stats": "^5.0.3",
     "typescript": "^5",
     "vite": "7.0.4",
-    "vite-plugin-devtools-json": "0.2.1",
+    "vite-plugin-devtools-json": "1.0.0",
     "vite-plugin-glsl": "^1",
     "vite-plugin-terminal": "^1"
   },
