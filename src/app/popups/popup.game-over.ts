@@ -13,20 +13,30 @@ export class GameOver extends Container implements IAppScreen {
   private bg: Sprite
   private message: Label
 
+  private blurFilter: BlurFilter = new BlurFilter({ strength: 0 })
+
   constructor () {
     super()
 
     this.bg = new Sprite(Texture.WHITE)
     this.bg.tint = 0x0
     this.bg.interactive = true
-    this.bg.alpha = 0.7
+    this.bg.alpha = 0
     this.addChild(this.bg)
 
     this.message = new Label({
       text: 'GAME OVER',
       style: { fill: CONFIG.theme.textLight, fontSize: 42 },
     })
+    this.message.pivot.y = -500
     this.addChild(this.message)
+
+    this.interactiveChildren = false
+
+    this.interactive = true
+    this.on('pointerup', () => {
+      engine().navigation.dismissPopup()
+    })
   }
 
   public resize ({ screen, parent }: {
@@ -43,22 +53,31 @@ export class GameOver extends Container implements IAppScreen {
   public async show () {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
-      currentEngine.navigation.currentScreen.filters = [
-        new BlurFilter({ strength: 5 }),
-      ]
+      currentEngine.navigation.currentScreen.filters = [this.blurFilter]
     }
+
+    animate(this.blurFilter, { strength: 5 }, { duration: 0.2, ease: 'linear' })
+    animate(this.bg, { alpha: 0.7 }, { duration: 0.2, ease: 'linear' })
+    await animate(
+      this.message.pivot,
+      { y: 0 },
+      { duration: 0.3, ease: 'backOut' },
+    )
   }
 
   public async hide () {
-    const currentEngine = engine()
-    if (currentEngine.navigation.currentScreen) {
-      currentEngine.navigation.currentScreen.filters = []
-    }
+
+    animate(this.blurFilter, { strength: 0 }, { duration: 0.2, ease: 'linear' })
     animate(this.bg, { alpha: 0 }, { duration: 0.2, ease: 'linear' })
     await animate(
       this.message.pivot,
       { y: -500 },
       { duration: 0.3, ease: 'backIn' },
     )
+
+    const currentEngine = engine()
+    if (currentEngine.navigation.currentScreen) {
+      currentEngine.navigation.currentScreen.filters = []
+    }
   }
 }

@@ -6,6 +6,7 @@ import { anime } from '@thalys/anime-pixi'
 import { logger } from '@thalys/logger'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
+import actions from '@/lib/actions'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
 import { rollNewPawnValue } from '@/lib/math'
 import { STATE } from '@/screens/main/state'
@@ -72,7 +73,9 @@ export class UIGame extends Container implements IChild {
 
   private checkGameState () {
 
-
+    if (!this.grid.hasPossibleMoves()) {
+      actions.showGameOver()
+    }
   }
 
   /**
