@@ -11,6 +11,45 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
     return this.getRandomLocation(value => value === null || value === undefined)
   }
 
+  /**
+   * Checks if there are possible moves left to be done.
+   * It checks if there are free spaces, and if not then proceeds to check if any positions can be merged.
+   * @returns {boolean} True if there are possible moves, false otherwise.
+   */
+  public hasPossibleMoves (): boolean {
+    // Check if there are free spaces
+    if (this.data.some(cell => cell === null || cell === undefined)) {
+      return true
+    }
+
+    // Check if any positions can be merged
+    for (let x = 0; x < this.width; x++) {
+      for (let y = 0; y < this.height; y++) {
+        const current = this.get(x, y)
+
+        if (!current) continue
+
+        // Check Right
+        if (x + 1 < this.width) {
+          const right = this.get(x + 1, y)
+          if (right && current.value === right.value) {
+            return true
+          }
+        }
+
+        // Check Down
+        if (y + 1 < this.height) {
+          const down = this.get(x, y + 1)
+          if (down && current.value === down.value) {
+            return true
+          }
+        }
+      }
+    }
+
+    return false
+  }
+
   public override clone (): GameFlatGrid<T> {
     const newGrid = new GameFlatGrid<T>(this.width, this.height)
     newGrid.setRawData([...this.data])
