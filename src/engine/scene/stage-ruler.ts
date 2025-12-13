@@ -1,5 +1,5 @@
-import type { IAppScreen, TAssetBundleId } from '∆/navigation.types'
 import type { RulerOptions } from '∆/scene/stage-ruler.types'
+import type { IAppScreen, TAssetBundleId } from '∆/types'
 import type { TAnchorByPosition } from '∆/utils/pixijs.types'
 import type { Ticker } from 'pixi.js'
 import { ZINC } from '∆/lib/colors'

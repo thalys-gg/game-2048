@@ -1,4 +1,4 @@
-import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/types'
 import type { DestroyOptions } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { InputHandler } from '@/lib/input'

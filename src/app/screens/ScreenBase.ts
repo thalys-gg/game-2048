@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, IChild, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, IChild, ResizeSignature, TAssetBundleId } from '∆/types'
 import type { DestroyOptions, Ticker } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'

@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import type { ObjectTarget } from 'motion/react'
 import { animate } from 'motion'
 import { Container } from 'pixi.js'

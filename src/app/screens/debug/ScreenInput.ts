@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import type { Ticker } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { Container, Graphics } from 'pixi.js'

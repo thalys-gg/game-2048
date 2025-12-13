@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import { anime } from '@thalys/anime-pixi'
 import { waitFor } from '∆/lib/promise'
 import { Container } from 'pixi.js'

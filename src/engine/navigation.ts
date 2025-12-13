@@ -1,5 +1,5 @@
 import type { CreationEngine } from '∆/engine'
-import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/types'
 import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'

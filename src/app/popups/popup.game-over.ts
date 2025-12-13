@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import { engine } from '∆/engine.singleton'
 import { animate } from 'motion'
 import { BlurFilter, Container, Sprite, Texture } from 'pixi.js'

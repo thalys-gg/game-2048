@@ -1,4 +1,4 @@
-import type { IChild, ResizeSignature } from '∆/navigation.types'
+import type { IChild, ResizeSignature } from '∆/types'
 import { FlatGrid } from '∆/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'

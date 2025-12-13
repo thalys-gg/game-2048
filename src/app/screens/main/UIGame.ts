@@ -1,5 +1,5 @@
 import type { FlatGrid } from '∆/lib/flat-grid'
-import type { IChild, ResizeSignature } from '∆/navigation.types'
+import type { IChild, ResizeSignature } from '∆/types'
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { anime } from '@thalys/anime-pixi'

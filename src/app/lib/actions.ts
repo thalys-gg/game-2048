@@ -1,5 +1,5 @@
 import type { FancyButton } from '@pixi/ui'
-import type { IAppScreenConstructor } from '∆/navigation.types'
+import type { IAppScreenConstructor } from '∆/types'
 import { engine } from '∆/engine.singleton'
 import textures from '@/lib/textures'
 import { GameOver } from '@/popups/popup.game-over'

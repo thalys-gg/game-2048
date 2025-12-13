@@ -1,4 +1,4 @@
-import type { AppScreens } from '∆/navigation.types'
+import type { AppScreens } from '∆/types'
 import { engine } from '∆/engine.singleton'
 import { storage } from '∆/storage'
 

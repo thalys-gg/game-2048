@@ -1,5 +1,5 @@
 import type { FancyButton } from '@pixi/ui'
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import type { Text } from 'pixi.js'
 import { List } from '@pixi/ui'
 import { engine } from '∆/engine.singleton'
