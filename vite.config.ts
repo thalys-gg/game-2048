@@ -1,7 +1,7 @@
 import type { ConfigEnv, UserConfig } from 'vite'
 import path from 'node:path'
 import process from 'node:process'
-import { assetpackPlugin } from '#/vite/plugin/assetpack'
+import { pluginAssetpack as assetpack } from '#/vite/plugin/assetpack-vite-plugin'
 import { fullReloadWhen } from '#/vite/plugin/full-reload-by-ext'
 import { defineConfig } from 'vite'
 import devtoolsJson from 'vite-plugin-devtools-json'
@@ -29,7 +29,7 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
       devtoolsJson(),
       glsl(),
       fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
-      assetpackPlugin(),
+      assetpack(),
     ],
     define: {
       APP_VERSION: JSON.stringify(process.env.npm_package_version),

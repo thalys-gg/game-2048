@@ -45,6 +45,13 @@ export class UIGame extends Container implements IChild {
       this.spawnPiece(),
       this.spawnPiece(),
     ]
+
+    // STATE.score = 1238
+    // this.debugFillBoard(
+    //   [1024, 64, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, null, 4, 1024, 16],
+    // )
+    // await waitFor(2)
+    // actions.showGameOver()
   }
 
   public async resume () {
@@ -94,6 +101,9 @@ export class UIGame extends Container implements IChild {
     if (!this.grid.hasPossibleMoves()) {
       actions.showGameOver()
     }
+    // log(this.grid.raw.map(pawn => pawn?.value))
+    // [1024, 64, 8, 128, 256, 32, 256, 16, 4, 4, 4, 512, 2, 2, 1024, 16]
+    // [1024, 64, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, undefined, 4, 1024, 16]
   }
 
   /**

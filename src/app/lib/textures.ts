@@ -58,15 +58,15 @@ export default new class {
       .render()
   }
 
-  public btnPlay () { return Texture.from('blue/button_rectangle_gradient') }
-  public btnPlayPressed () { return Texture.from('blue/button_rectangle_depth_gradient') }
+  public btnPlay () { return Texture.from('button_rectangle_gradient') }
+  public btnPlayPressed () { return Texture.from('button_rectangle_depth_gradient') }
 
 
-  public get iconSettings () { return Texture.from('icons/gear') }
-  public get iconHome () { return Texture.from('icons/home') }
-  public get iconLarger () { return Texture.from('icons/larger') }
-  public get iconPause () { return Texture.from('icons/pause') }
-  public get iconSmaller () { return Texture.from('icons/smaller') }
+  public get iconSettings () { return Texture.from('gear') }
+  public get iconHome () { return Texture.from('home') }
+  public get iconLarger () { return Texture.from('larger') }
+  public get iconPause () { return Texture.from('pause') }
+  public get iconSmaller () { return Texture.from('smaller') }
 
-  public get popupBg () { return Texture.from('extra/button_square_depth_line') }
+  public get popupBg () { return Texture.from('button_square_depth_line') }
 }()
