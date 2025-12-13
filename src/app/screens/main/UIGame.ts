@@ -52,17 +52,9 @@ export class UIGame extends Container implements IChild {
   public spawnPiece () {
     const coord = this.grid.getRandomEmpty()
     log(coord)
-    if (!coord) {
-      throw new Error('[UIGame.spawnPiece] No empty cells found')
-    }
+    if (!coord) { throw new Error('[UIGame.spawnPiece] No empty cells found') }
 
-    const pos = this.positions.get(coord.x, coord.y)
-    if (!pos) {
-      throw new Error(`[UIGame.spawnPiece] Invalid position x:${coord.x} y:${coord.y}`)
-    }
-    const pawn = new UIPawn(rollNewPawnValue(), pos)
-    this.grid.set(coord.x, coord.y, pawn)
-    this.addChild(pawn)
+    const pawn = this.createPawnAt(coord.x, coord.y, rollNewPawnValue())
 
     pawn.alpha = 0
     anime`fade-in`(pawn).play()
@@ -81,5 +73,61 @@ export class UIGame extends Container implements IChild {
   private checkGameState () {
 
 
+  }
+
+  /**
+   * Fills the board for debugging end-game scenarios.
+   * @param pattern - Optional 2D array of values (0 = empty cell).
+   *                  If not provided, fills with random values leaving 1 empty cell.
+   */
+  public debugFillBoard (pattern?: number[][]) {
+    // Clear existing pawns
+    this.grid.forEach((pawn) => {
+      if (pawn) {
+        this.removeChild(pawn)
+        pawn.destroy()
+      }
+    })
+    this.grid.fill(null)
+
+    if (pattern) {
+      // Use provided pattern
+      for (let y = 0; y < pattern.length; y++) {
+        for (let x = 0; x < pattern[y].length; x++) {
+          const value = pattern[y][x]
+          if (value > 0) {
+            this.createPawnAt(x, y, value)
+          }
+        }
+      }
+    } else {
+      // Fill with random values, leaving 1 empty cell
+      const emptyIndex = Math.floor(Math.random() * (CONFIG.cols * CONFIG.rows))
+      let index = 0
+
+      for (let y = 0; y < CONFIG.rows; y++) {
+        for (let x = 0; x < CONFIG.cols; x++) {
+          if (index !== emptyIndex) {
+            const value = 2 ** Math.floor(Math.random() * 10 + 1) // 2 to 2048
+            this.createPawnAt(x, y, value)
+          }
+          index++
+        }
+      }
+    }
+  }
+
+  /**
+   * Creates a pawn at the specified grid position.
+   */
+  private createPawnAt (x: number, y: number, value: number) {
+    const pos = this.positions.get(x, y)
+    if (!pos) {
+      throw new Error(`[UIGame.createPawnAt] Invalid position x:${x} y:${y}`)
+    }
+    const pawn = new UIPawn(value, pos)
+    this.grid.set(x, y, pawn)
+    this.addChild(pawn)
+    return pawn
   }
 }
