@@ -6,18 +6,7 @@
     },
     {
       "name": "main",
-      "assets": [
-        {
-          "alias": [
-            "main/ui",
-            "ui"
-          ],
-          "src": [
-            "main/ui.webp.json",
-            "main/ui.png.json"
-          ]
-        }
-      ]
+      "assets": []
     },
     {
       "name": "loops",
@@ -32,7 +21,12 @@
           "src": [
             "loops/retro/retro-beat.ogg",
             "loops/retro/retro-beat.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -44,7 +38,12 @@
           "src": [
             "loops/retro/retro-reggae.ogg",
             "loops/retro/retro-reggae.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -56,7 +55,12 @@
           "src": [
             "loops/retro/retro-mystic.ogg",
             "loops/retro/retro-mystic.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -68,7 +72,12 @@
           "src": [
             "loops/retro/retro-comedy.ogg",
             "loops/retro/retro-comedy.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -80,7 +89,12 @@
           "src": [
             "loops/retro/retro-polka.ogg",
             "loops/retro/retro-polka.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -92,7 +106,12 @@
           "src": [
             "loops/loops/night-at-the-beach.ogg",
             "loops/loops/night-at-the-beach.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -104,7 +123,12 @@
           "src": [
             "loops/loops/italian-mom.ogg",
             "loops/loops/italian-mom.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -116,7 +140,12 @@
           "src": [
             "loops/loops/game-over.ogg",
             "loops/loops/game-over.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -128,7 +157,12 @@
           "src": [
             "loops/loops/wacky-waiting.ogg",
             "loops/loops/wacky-waiting.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -140,7 +174,12 @@
           "src": [
             "loops/loops/time-driving.ogg",
             "loops/loops/time-driving.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -152,7 +191,12 @@
           "src": [
             "loops/loops/flowing-rocks.ogg",
             "loops/loops/flowing-rocks.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -164,7 +208,12 @@
           "src": [
             "loops/loops/mission-plausible.ogg",
             "loops/loops/mission-plausible.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -176,7 +225,12 @@
           "src": [
             "loops/loops/cheerful-annoyance.ogg",
             "loops/loops/cheerful-annoyance.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -188,7 +242,12 @@
           "src": [
             "loops/loops/mishief-stroll.ogg",
             "loops/loops/mishief-stroll.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -200,7 +259,12 @@
           "src": [
             "loops/loops/space-cadet.ogg",
             "loops/loops/space-cadet.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -212,7 +276,12 @@
           "src": [
             "loops/loops/swinging-pants.ogg",
             "loops/loops/swinging-pants.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -224,7 +293,12 @@
           "src": [
             "loops/loops/polka-train.ogg",
             "loops/loops/polka-train.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -236,7 +310,12 @@
           "src": [
             "loops/loops/farm-frolics.ogg",
             "loops/loops/farm-frolics.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -248,7 +327,12 @@
           "src": [
             "loops/loops/german-virtue.ogg",
             "loops/loops/german-virtue.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -260,7 +344,12 @@
           "src": [
             "loops/loops/sad-town.ogg",
             "loops/loops/sad-town.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -272,7 +361,12 @@
           "src": [
             "loops/loops/alpha-dance.ogg",
             "loops/loops/alpha-dance.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -284,7 +378,12 @@
           "src": [
             "loops/loops/infinite-descent.ogg",
             "loops/loops/infinite-descent.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -296,7 +395,12 @@
           "src": [
             "loops/loops/sad-descent.ogg",
             "loops/loops/sad-descent.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -308,7 +412,12 @@
           "src": [
             "loops/loops/drumming-sticks.ogg",
             "loops/loops/drumming-sticks.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -320,7 +429,12 @@
           "src": [
             "loops/idents/polka-ident.ogg",
             "loops/idents/polka-ident.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -332,7 +446,12 @@
           "src": [
             "loops/idents/reggae-ident.ogg",
             "loops/idents/reggae-ident.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -344,7 +463,12 @@
           "src": [
             "loops/idents/beat-ident.ogg",
             "loops/idents/beat-ident.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -356,7 +480,12 @@
           "src": [
             "loops/idents/country-ident.ogg",
             "loops/idents/country-ident.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -368,25 +497,18 @@
           "src": [
             "loops/idents/serious-ident.ogg",
             "loops/idents/serious-ident.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         }
       ]
     },
     {
       "name": "preload",
-      "assets": [
-        {
-          "alias": [
-            "preload/logo.svg",
-            "preload/logo",
-            "logo.svg",
-            "logo"
-          ],
-          "src": [
-            "preload/logo.svg"
-          ]
-        }
-      ]
+      "assets": []
     },
     {
       "name": "ui",
@@ -397,9 +519,231 @@
             "icons-white"
           ],
           "src": [
+            "ui/icons-white@0.5x.webp.json",
+            "ui/icons-white@0.5x.png.json",
             "ui/icons-white.webp.json",
             "ui/icons-white.png.json"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true,
+              "tps": true,
+              "frameNames": [
+                "white-buttonL",
+                "white-exclamation",
+                "white-scrollVertical",
+                "white-joystick",
+                "white-rewind",
+                "white-question",
+                "white-smaller",
+                "white-tablet",
+                "white-buttonX",
+                "white-joystickRight",
+                "white-movie",
+                "white-locked",
+                "white-arrowDown",
+                "white-save",
+                "white-buttonY",
+                "white-checkmark",
+                "white-next",
+                "white-musicOn",
+                "white-open",
+                "white-exitLeft",
+                "white-trashcanOpen",
+                "white-leaderboardsComplex",
+                "white-downRight",
+                "white-star",
+                "white-joystickLeft",
+                "white-wrench",
+                "white-warning",
+                "white-singleplayer",
+                "white-signal2",
+                "white-menuGrid",
+                "white-exit",
+                "white-joystickUp",
+                "white-menuList",
+                "white-zoomDefault",
+                "white-siganl1",
+                "white-massiveMultiplayer",
+                "white-signal3",
+                "white-left",
+                "white-zoomIn",
+                "white-upRight",
+                "white-power",
+                "white-contrast",
+                "white-multiplayer",
+                "white-buttonStart",
+                "white-buttonL2",
+                "white-barsHorizontal",
+                "white-phone",
+                "white-share1",
+                "white-gamepad1",
+                "white-downLeft",
+                "white-home",
+                "white-musicOff",
+                "white-upLeft",
+                "white-buttonL1",
+                "white-video",
+                "white-gamepad3",
+                "white-share2",
+                "white-cross",
+                "white-trophy",
+                "white-gamepad2",
+                "white-arrowRight",
+                "white-larger",
+                "white-pause",
+                "white-mouse",
+                "white-import",
+                "white-minus",
+                "white-return",
+                "white-down",
+                "white-gamepad4",
+                "white-audioOff",
+                "white-buttonSelect",
+                "white-buttonR",
+                "white-button3",
+                "white-fastForward",
+                "white-arrowLeft",
+                "white-export",
+                "white-leaderboardsSimple",
+                "white-gamepad",
+                "white-right",
+                "white-button2",
+                "white-unlocked",
+                "white-exitRight",
+                "white-zoomOut",
+                "white-up",
+                "white-previous",
+                "white-button1",
+                "white-zoom",
+                "white-medal1",
+                "white-scrollHorizontal",
+                "white-buttonR1",
+                "white-plus",
+                "white-arrowUp",
+                "white-target",
+                "white-trashcan",
+                "white-barsVertical",
+                "white-audioOn",
+                "white-shoppingCart",
+                "white-shoppingBasket",
+                "white-gear",
+                "white-buttonB",
+                "white-medal2",
+                "white-information",
+                "white-buttonR2",
+                "white-stop",
+                "white-buttonA"
+              ]
+            },
+            "frameNames": [
+              "white-buttonL",
+              "white-exclamation",
+              "white-scrollVertical",
+              "white-joystick",
+              "white-rewind",
+              "white-question",
+              "white-smaller",
+              "white-tablet",
+              "white-buttonX",
+              "white-joystickRight",
+              "white-movie",
+              "white-locked",
+              "white-arrowDown",
+              "white-save",
+              "white-buttonY",
+              "white-checkmark",
+              "white-next",
+              "white-musicOn",
+              "white-open",
+              "white-exitLeft",
+              "white-trashcanOpen",
+              "white-leaderboardsComplex",
+              "white-downRight",
+              "white-star",
+              "white-joystickLeft",
+              "white-wrench",
+              "white-warning",
+              "white-singleplayer",
+              "white-signal2",
+              "white-menuGrid",
+              "white-exit",
+              "white-joystickUp",
+              "white-menuList",
+              "white-zoomDefault",
+              "white-siganl1",
+              "white-massiveMultiplayer",
+              "white-signal3",
+              "white-left",
+              "white-zoomIn",
+              "white-upRight",
+              "white-power",
+              "white-contrast",
+              "white-multiplayer",
+              "white-buttonStart",
+              "white-buttonL2",
+              "white-barsHorizontal",
+              "white-phone",
+              "white-share1",
+              "white-gamepad1",
+              "white-downLeft",
+              "white-home",
+              "white-musicOff",
+              "white-upLeft",
+              "white-buttonL1",
+              "white-video",
+              "white-gamepad3",
+              "white-share2",
+              "white-cross",
+              "white-trophy",
+              "white-gamepad2",
+              "white-arrowRight",
+              "white-larger",
+              "white-pause",
+              "white-mouse",
+              "white-import",
+              "white-minus",
+              "white-return",
+              "white-down",
+              "white-gamepad4",
+              "white-audioOff",
+              "white-buttonSelect",
+              "white-buttonR",
+              "white-button3",
+              "white-fastForward",
+              "white-arrowLeft",
+              "white-export",
+              "white-leaderboardsSimple",
+              "white-gamepad",
+              "white-right",
+              "white-button2",
+              "white-unlocked",
+              "white-exitRight",
+              "white-zoomOut",
+              "white-up",
+              "white-previous",
+              "white-button1",
+              "white-zoom",
+              "white-medal1",
+              "white-scrollHorizontal",
+              "white-buttonR1",
+              "white-plus",
+              "white-arrowUp",
+              "white-target",
+              "white-trashcan",
+              "white-barsVertical",
+              "white-audioOn",
+              "white-shoppingCart",
+              "white-shoppingBasket",
+              "white-gear",
+              "white-buttonB",
+              "white-medal2",
+              "white-information",
+              "white-buttonR2",
+              "white-stop",
+              "white-buttonA"
+            ]
+          }
         },
         {
           "alias": [
@@ -407,9 +751,185 @@
             "ui-blue"
           ],
           "src": [
+            "ui/ui-blue@0.5x.webp.json",
+            "ui/ui-blue@0.5x.png.json",
             "ui/ui-blue.webp.json",
             "ui/ui-blue.png.json"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true,
+              "tps": true,
+              "frameNames": [
+                "arrow_decorative_e",
+                "arrow_decorative_w_small",
+                "arrow_basic_n_small",
+                "arrow_decorative_s",
+                "button_rectangle_depth_flat",
+                "slide_horizontal_color_section",
+                "button_square_depth_border",
+                "button_rectangle_gloss",
+                "button_square_depth_gradient",
+                "star_outline",
+                "arrow_basic_e_small",
+                "slide_horizontal_color",
+                "check_square_color",
+                "arrow_decorative_w",
+                "slide_vertical_grey_section_wide",
+                "slide_vertical_color_section",
+                "button_round_depth_flat",
+                "icon_outline_circle",
+                "button_rectangle_border",
+                "icon_square",
+                "check_square_color_cross",
+                "icon_outline_cross",
+                "arrow_basic_w_small",
+                "button_round_gradient",
+                "arrow_decorative_n_small",
+                "slide_horizontal_grey_section_wide",
+                "button_rectangle_depth_gradient",
+                "button_rectangle_flat",
+                "check_square_color_checkmark",
+                "check_square_grey_checkmark",
+                "check_round_color",
+                "slide_vertical_color",
+                "arrow_basic_n",
+                "button_square_flat",
+                "button_round_depth_border",
+                "arrow_decorative_e_small",
+                "icon_outline_checkmark",
+                "button_round_depth_gloss",
+                "button_round_line",
+                "button_square_depth_line",
+                "button_square_depth_gloss",
+                "button_square_gradient",
+                "blue-star",
+                "button_square_depth_flat",
+                "button_round_flat",
+                "arrow_basic_w",
+                "button_round_border",
+                "slide_hangle",
+                "button_round_depth_gradient",
+                "button_square_line",
+                "check_round_grey_circle",
+                "button_rectangle_depth_gloss",
+                "check_round_round_circle",
+                "button_square_border",
+                "button_rectangle_line",
+                "arrow_decorative_s_small",
+                "button_round_depth_line",
+                "icon_cross",
+                "slide_horizontal_grey",
+                "arrow_basic_e",
+                "slide_vertical_grey",
+                "arrow_basic_s",
+                "button_rectangle_gradient",
+                "slide_vertical_color_section_wide",
+                "button_rectangle_depth_border",
+                "icon_circle",
+                "button_square_gloss",
+                "icon_outline_square",
+                "slide_horizontal_grey_section",
+                "check_square_grey_cross",
+                "arrow_decorative_n",
+                "slide_vertical_grey_section",
+                "button_rectangle_depth_line",
+                "star_outline_depth",
+                "icon_checkmark",
+                "check_square_grey_square",
+                "arrow_basic_s_small",
+                "check_square_color_square",
+                "button_round_gloss",
+                "slide_horizontal_color_section_wide",
+                "check_square_grey",
+                "check_round_grey"
+              ]
+            },
+            "frameNames": [
+              "arrow_decorative_e",
+              "arrow_decorative_w_small",
+              "arrow_basic_n_small",
+              "arrow_decorative_s",
+              "button_rectangle_depth_flat",
+              "slide_horizontal_color_section",
+              "button_square_depth_border",
+              "button_rectangle_gloss",
+              "button_square_depth_gradient",
+              "star_outline",
+              "arrow_basic_e_small",
+              "slide_horizontal_color",
+              "check_square_color",
+              "arrow_decorative_w",
+              "slide_vertical_grey_section_wide",
+              "slide_vertical_color_section",
+              "button_round_depth_flat",
+              "icon_outline_circle",
+              "button_rectangle_border",
+              "icon_square",
+              "check_square_color_cross",
+              "icon_outline_cross",
+              "arrow_basic_w_small",
+              "button_round_gradient",
+              "arrow_decorative_n_small",
+              "slide_horizontal_grey_section_wide",
+              "button_rectangle_depth_gradient",
+              "button_rectangle_flat",
+              "check_square_color_checkmark",
+              "check_square_grey_checkmark",
+              "check_round_color",
+              "slide_vertical_color",
+              "arrow_basic_n",
+              "button_square_flat",
+              "button_round_depth_border",
+              "arrow_decorative_e_small",
+              "icon_outline_checkmark",
+              "button_round_depth_gloss",
+              "button_round_line",
+              "button_square_depth_line",
+              "button_square_depth_gloss",
+              "button_square_gradient",
+              "blue-star",
+              "button_square_depth_flat",
+              "button_round_flat",
+              "arrow_basic_w",
+              "button_round_border",
+              "slide_hangle",
+              "button_round_depth_gradient",
+              "button_square_line",
+              "check_round_grey_circle",
+              "button_rectangle_depth_gloss",
+              "check_round_round_circle",
+              "button_square_border",
+              "button_rectangle_line",
+              "arrow_decorative_s_small",
+              "button_round_depth_line",
+              "icon_cross",
+              "slide_horizontal_grey",
+              "arrow_basic_e",
+              "slide_vertical_grey",
+              "arrow_basic_s",
+              "button_rectangle_gradient",
+              "slide_vertical_color_section_wide",
+              "button_rectangle_depth_border",
+              "icon_circle",
+              "button_square_gloss",
+              "icon_outline_square",
+              "slide_horizontal_grey_section",
+              "check_square_grey_cross",
+              "arrow_decorative_n",
+              "slide_vertical_grey_section",
+              "button_rectangle_depth_line",
+              "star_outline_depth",
+              "icon_checkmark",
+              "check_square_grey_square",
+              "arrow_basic_s_small",
+              "check_square_color_square",
+              "button_round_gloss",
+              "slide_horizontal_color_section_wide",
+              "check_square_grey",
+              "check_round_grey"
+            ]
+          }
         },
         {
           "alias": [
@@ -417,9 +937,69 @@
             "ui-extra"
           ],
           "src": [
+            "ui/ui-extra@0.5x.webp.json",
+            "ui/ui-extra@0.5x.png.json",
             "ui/ui-extra.webp.json",
             "ui/ui-extra.png.json"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true,
+              "tps": true,
+              "frameNames": [
+                "extra-divider_edges",
+                "extra-icon_arrow_up_dark",
+                "extra-icon_arrow_down_outline",
+                "extra-input_outline_square",
+                "extra-input_rectangle",
+                "extra-button_round_depth_line",
+                "extra-icon_arrow_down_dark",
+                "extra-button_round_line",
+                "extra-icon_repeat_light",
+                "extra-button_rectangle_depth_line",
+                "extra-button_square_line",
+                "extra-input_square",
+                "extra-divider",
+                "extra-icon_play_dark",
+                "extra-icon_repeat_outline",
+                "extra-icon_arrow_up_outline",
+                "extra-icon_repeat_dark",
+                "extra-icon_play_light",
+                "extra-input_outline_rectangle",
+                "extra-button_rectangle_line",
+                "extra-icon_arrow_down_light",
+                "extra-button_square_depth_line",
+                "extra-icon_arrow_up_light",
+                "extra-icon_play_outline"
+              ]
+            },
+            "frameNames": [
+              "extra-divider_edges",
+              "extra-icon_arrow_up_dark",
+              "extra-icon_arrow_down_outline",
+              "extra-input_outline_square",
+              "extra-input_rectangle",
+              "extra-button_round_depth_line",
+              "extra-icon_arrow_down_dark",
+              "extra-button_round_line",
+              "extra-icon_repeat_light",
+              "extra-button_rectangle_depth_line",
+              "extra-button_square_line",
+              "extra-input_square",
+              "extra-divider",
+              "extra-icon_play_dark",
+              "extra-icon_repeat_outline",
+              "extra-icon_arrow_up_outline",
+              "extra-icon_repeat_dark",
+              "extra-icon_play_light",
+              "extra-input_outline_rectangle",
+              "extra-button_rectangle_line",
+              "extra-icon_arrow_down_light",
+              "extra-button_square_depth_line",
+              "extra-icon_arrow_up_light",
+              "extra-icon_play_outline"
+            ]
+          }
         },
         {
           "alias": [
@@ -431,7 +1011,12 @@
           "src": [
             "ui/audio/switch22.ogg",
             "ui/audio/switch22.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -443,7 +1028,12 @@
           "src": [
             "ui/audio/switch36.ogg",
             "ui/audio/switch36.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -455,7 +1045,12 @@
           "src": [
             "ui/audio/switch37.ogg",
             "ui/audio/switch37.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -467,7 +1062,12 @@
           "src": [
             "ui/audio/switch23.ogg",
             "ui/audio/switch23.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -479,7 +1079,12 @@
           "src": [
             "ui/audio/click5.ogg",
             "ui/audio/click5.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -491,7 +1096,12 @@
           "src": [
             "ui/audio/switch35.ogg",
             "ui/audio/switch35.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -503,7 +1113,12 @@
           "src": [
             "ui/audio/switch21.ogg",
             "ui/audio/switch21.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -515,7 +1130,12 @@
           "src": [
             "ui/audio/switch20.ogg",
             "ui/audio/switch20.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -527,7 +1147,12 @@
           "src": [
             "ui/audio/switch34.ogg",
             "ui/audio/switch34.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -539,7 +1164,12 @@
           "src": [
             "ui/audio/click4.ogg",
             "ui/audio/click4.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -551,7 +1181,12 @@
           "src": [
             "ui/audio/switch18.ogg",
             "ui/audio/switch18.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -563,7 +1198,12 @@
           "src": [
             "ui/audio/switch30.ogg",
             "ui/audio/switch30.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -575,7 +1215,12 @@
           "src": [
             "ui/audio/switch24.ogg",
             "ui/audio/switch24.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -587,7 +1232,12 @@
           "src": [
             "ui/audio/switch25.ogg",
             "ui/audio/switch25.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -599,7 +1249,12 @@
           "src": [
             "ui/audio/switch31.ogg",
             "ui/audio/switch31.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -611,7 +1266,12 @@
           "src": [
             "ui/audio/switch19.ogg",
             "ui/audio/switch19.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -623,7 +1283,12 @@
           "src": [
             "ui/audio/click1.ogg",
             "ui/audio/click1.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -635,7 +1300,12 @@
           "src": [
             "ui/audio/click3.ogg",
             "ui/audio/click3.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -647,7 +1317,12 @@
           "src": [
             "ui/audio/switch27.ogg",
             "ui/audio/switch27.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -659,7 +1334,12 @@
           "src": [
             "ui/audio/switch33.ogg",
             "ui/audio/switch33.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -671,7 +1351,12 @@
           "src": [
             "ui/audio/switch32.ogg",
             "ui/audio/switch32.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -683,7 +1368,12 @@
           "src": [
             "ui/audio/switch26.ogg",
             "ui/audio/switch26.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -695,7 +1385,12 @@
           "src": [
             "ui/audio/click2.ogg",
             "ui/audio/click2.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -707,7 +1402,12 @@
           "src": [
             "ui/audio/switch6.ogg",
             "ui/audio/switch6.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -719,7 +1419,12 @@
           "src": [
             "ui/audio/rollover3.ogg",
             "ui/audio/rollover3.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -731,7 +1436,12 @@
           "src": [
             "ui/audio/rollover2.ogg",
             "ui/audio/rollover2.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -743,7 +1453,12 @@
           "src": [
             "ui/audio/switch7.ogg",
             "ui/audio/switch7.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -755,7 +1470,12 @@
           "src": [
             "ui/audio/switch5.ogg",
             "ui/audio/switch5.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -767,7 +1487,12 @@
           "src": [
             "ui/audio/rollover1.ogg",
             "ui/audio/rollover1.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -779,7 +1504,12 @@
           "src": [
             "ui/audio/switch4.ogg",
             "ui/audio/switch4.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -791,7 +1521,12 @@
           "src": [
             "ui/audio/rollover5.ogg",
             "ui/audio/rollover5.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -803,7 +1538,12 @@
           "src": [
             "ui/audio/rollover4.ogg",
             "ui/audio/rollover4.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -815,7 +1555,12 @@
           "src": [
             "ui/audio/switch1.ogg",
             "ui/audio/switch1.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -827,7 +1572,12 @@
           "src": [
             "ui/audio/switch3.ogg",
             "ui/audio/switch3.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -839,7 +1589,12 @@
           "src": [
             "ui/audio/rollover6.ogg",
             "ui/audio/rollover6.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -851,7 +1606,12 @@
           "src": [
             "ui/audio/switch2.ogg",
             "ui/audio/switch2.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -863,7 +1623,12 @@
           "src": [
             "ui/audio/switch9.ogg",
             "ui/audio/switch9.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -875,7 +1640,12 @@
           "src": [
             "ui/audio/switch8.ogg",
             "ui/audio/switch8.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -887,7 +1657,12 @@
           "src": [
             "ui/audio/mouseclick1.ogg",
             "ui/audio/mouseclick1.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -899,7 +1674,12 @@
           "src": [
             "ui/audio/switch17.ogg",
             "ui/audio/switch17.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -911,7 +1691,12 @@
           "src": [
             "ui/audio/switch16.ogg",
             "ui/audio/switch16.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -923,7 +1708,12 @@
           "src": [
             "ui/audio/switch14.ogg",
             "ui/audio/switch14.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -935,7 +1725,12 @@
           "src": [
             "ui/audio/switch28.ogg",
             "ui/audio/switch28.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -947,7 +1742,12 @@
           "src": [
             "ui/audio/mouserelease1.ogg",
             "ui/audio/mouserelease1.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -959,7 +1759,12 @@
           "src": [
             "ui/audio/switch29.ogg",
             "ui/audio/switch29.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -971,7 +1776,12 @@
           "src": [
             "ui/audio/switch15.ogg",
             "ui/audio/switch15.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -983,7 +1793,12 @@
           "src": [
             "ui/audio/switch11.ogg",
             "ui/audio/switch11.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -995,7 +1810,12 @@
           "src": [
             "ui/audio/switch10.ogg",
             "ui/audio/switch10.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -1007,7 +1827,12 @@
           "src": [
             "ui/audio/switch38.ogg",
             "ui/audio/switch38.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -1019,7 +1844,12 @@
           "src": [
             "ui/audio/switch12.ogg",
             "ui/audio/switch12.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -1031,7 +1861,12 @@
           "src": [
             "ui/audio/switch13.ogg",
             "ui/audio/switch13.mp3"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
         },
         {
           "alias": [
@@ -1039,9 +1874,231 @@
             "icons-black"
           ],
           "src": [
+            "ui/icons-black@0.5x.webp.json",
+            "ui/icons-black@0.5x.png.json",
             "ui/icons-black.webp.json",
             "ui/icons-black.png.json"
-          ]
+          ],
+          "data": {
+            "tags": {
+              "m": true,
+              "tps": true,
+              "frameNames": [
+                "buttonStart",
+                "leaderboardsSimple",
+                "multiplayer",
+                "zoomIn",
+                "save",
+                "right",
+                "previous",
+                "joystickUp",
+                "leaderboardsComplex",
+                "unlocked",
+                "scrollHorizontal",
+                "zoomDefault",
+                "buttonR1",
+                "wrench",
+                "trashcan",
+                "star",
+                "next",
+                "open",
+                "singleplayer",
+                "barsHorizontal",
+                "buttonR2",
+                "downLeft",
+                "joystickLeft",
+                "buttonA",
+                "gamepad1",
+                "exit",
+                "phone",
+                "buttonL2",
+                "buttonB",
+                "gamepad2",
+                "video",
+                "trashcanOpen",
+                "audioOn",
+                "shoppingBasket",
+                "buttonL1",
+                "musicOff",
+                "cross",
+                "arrowUp",
+                "gamepad3",
+                "button1",
+                "rewind",
+                "arrowLeft",
+                "pause",
+                "tablet",
+                "zoomOut",
+                "button2",
+                "audioOff",
+                "gamepad4",
+                "mouse",
+                "locked",
+                "left",
+                "gamepad",
+                "minus",
+                "exitRight",
+                "exclamation",
+                "buttonR",
+                "button3",
+                "checkmark",
+                "medal1",
+                "information",
+                "target",
+                "shoppingCart",
+                "massiveMultiplayer",
+                "barsVertical",
+                "menuGrid",
+                "medal2",
+                "musicOn",
+                "downRight",
+                "home",
+                "menuList",
+                "buttonY",
+                "export",
+                "down",
+                "buttonX",
+                "smaller",
+                "power",
+                "scrollVertical",
+                "contrast",
+                "arrowDown",
+                "fastForward",
+                "buttonL",
+                "up",
+                "question",
+                "buttonSelect",
+                "joystick",
+                "zoom",
+                "upRight",
+                "return",
+                "movie",
+                "import",
+                "arrowRight",
+                "signal3",
+                "exitLeft",
+                "siganl1",
+                "joystickRight",
+                "stop",
+                "share1",
+                "signal2",
+                "trophy",
+                "larger",
+                "plus",
+                "warning",
+                "upLeft",
+                "gear",
+                "share2"
+              ]
+            },
+            "frameNames": [
+              "buttonStart",
+              "leaderboardsSimple",
+              "multiplayer",
+              "zoomIn",
+              "save",
+              "right",
+              "previous",
+              "joystickUp",
+              "leaderboardsComplex",
+              "unlocked",
+              "scrollHorizontal",
+              "zoomDefault",
+              "buttonR1",
+              "wrench",
+              "trashcan",
+              "star",
+              "next",
+              "open",
+              "singleplayer",
+              "barsHorizontal",
+              "buttonR2",
+              "downLeft",
+              "joystickLeft",
+              "buttonA",
+              "gamepad1",
+              "exit",
+              "phone",
+              "buttonL2",
+              "buttonB",
+              "gamepad2",
+              "video",
+              "trashcanOpen",
+              "audioOn",
+              "shoppingBasket",
+              "buttonL1",
+              "musicOff",
+              "cross",
+              "arrowUp",
+              "gamepad3",
+              "button1",
+              "rewind",
+              "arrowLeft",
+              "pause",
+              "tablet",
+              "zoomOut",
+              "button2",
+              "audioOff",
+              "gamepad4",
+              "mouse",
+              "locked",
+              "left",
+              "gamepad",
+              "minus",
+              "exitRight",
+              "exclamation",
+              "buttonR",
+              "button3",
+              "checkmark",
+              "medal1",
+              "information",
+              "target",
+              "shoppingCart",
+              "massiveMultiplayer",
+              "barsVertical",
+              "menuGrid",
+              "medal2",
+              "musicOn",
+              "downRight",
+              "home",
+              "menuList",
+              "buttonY",
+              "export",
+              "down",
+              "buttonX",
+              "smaller",
+              "power",
+              "scrollVertical",
+              "contrast",
+              "arrowDown",
+              "fastForward",
+              "buttonL",
+              "up",
+              "question",
+              "buttonSelect",
+              "joystick",
+              "zoom",
+              "upRight",
+              "return",
+              "movie",
+              "import",
+              "arrowRight",
+              "signal3",
+              "exitLeft",
+              "siganl1",
+              "joystickRight",
+              "stop",
+              "share1",
+              "signal2",
+              "trophy",
+              "larger",
+              "plus",
+              "warning",
+              "upLeft",
+              "gear",
+              "share2"
+            ]
+          }
         }
       ]
     }

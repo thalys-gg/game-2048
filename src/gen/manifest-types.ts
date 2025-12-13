@@ -25,14 +25,8 @@ export interface ManifestEntry {
 
 /** Concrete bundle name types */
 export type BundleName
-  = | 'main'
-    | 'loops'
-    | 'preload'
+  = | 'loops'
     | 'ui'
-
-/** main bundle asset aliases */
-export type MainAssetAlias = | 'main/ui'
-  | 'ui'
 
 /** loops bundle asset aliases */
 export type LoopsAssetAlias = | 'alpha-dance'
@@ -151,12 +145,6 @@ export type LoopsAssetAlias = | 'alpha-dance'
   | 'time-driving.ogg'
   | 'wacky-waiting'
   | 'wacky-waiting.ogg'
-
-/** preload bundle asset aliases */
-export type PreloadAssetAlias = | 'logo'
-  | 'logo.svg'
-  | 'preload/logo'
-  | 'preload/logo.svg'
 
 /** ui bundle asset aliases */
 export type UiAssetAlias = | 'click1'
@@ -374,9 +362,7 @@ export type UiAssetAlias = | 'click1'
 
 /** Union of all asset aliases across all bundles */
 export type AssetAlias
-  = | MainAssetAlias
-    | LoopsAssetAlias
-    | PreloadAssetAlias
+  = | LoopsAssetAlias
     | UiAssetAlias
 
 
@@ -388,16 +374,8 @@ export interface TypedBundle<T extends BundleName> {
 }
 
 /** Concrete bundle types */
-export interface MainBundle extends TypedBundle<'main'> {
-  name: 'main'
-}
-
 export interface LoopsBundle extends TypedBundle<'loops'> {
   name: 'loops'
-}
-
-export interface PreloadBundle extends TypedBundle<'preload'> {
-  name: 'preload'
 }
 
 export interface UiBundle extends TypedBundle<'ui'> {
@@ -411,16 +389,12 @@ export interface TypedManifest {
 
 /** Helper type to get bundle by name */
 export type GetBundle<T extends BundleName>
-  = T extends 'main' ? MainBundle
-    : T extends 'loops' ? LoopsBundle
-      : T extends 'preload' ? PreloadBundle
-        : T extends 'ui' ? UiBundle
-          : never
+  = T extends 'loops' ? LoopsBundle
+    : T extends 'ui' ? UiBundle
+      : never
 
 /** Helper type to get asset aliases for a specific bundle */
 export type GetBundleAssets<T extends BundleName>
-  = T extends 'main' ? MainAssetAlias
-    : T extends 'loops' ? LoopsAssetAlias
-      : T extends 'preload' ? PreloadAssetAlias
-        : T extends 'ui' ? UiAssetAlias
-          : never
+  = T extends 'loops' ? LoopsAssetAlias
+    : T extends 'ui' ? UiAssetAlias
+      : never
