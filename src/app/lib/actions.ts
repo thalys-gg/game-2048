@@ -2,6 +2,7 @@ import type { FancyButton } from '@pixi/ui'
 import type { IAppScreenConstructor } from '∆/navigation.types'
 import { engine } from '∆/engine.singleton'
 import textures from '@/lib/textures'
+import { GameOver } from '@/popups/popup.game-over'
 import { PopupPause } from '@/popups/popup.pause'
 import { PopupSettings } from '@/popups/popup.settings'
 import { ScreenMain } from '@/screens/main/ScreenMain'
@@ -13,9 +14,11 @@ export default new class {
 
   showScreen = (screen: IAppScreenConstructor) => { void engine().navigation.showScreen(screen) }
 
-  goToPausePopup = () => { void engine().navigation.presentPopup(PopupPause) }
+  showGameOver = () => { void engine().navigation.presentPopup(GameOver) }
 
-  goToSettings = () => { void engine().navigation.presentPopup(PopupSettings) }
+  showPausePopup = () => { void engine().navigation.presentPopup(PopupPause) }
+
+  showSettings = () => { void engine().navigation.presentPopup(PopupSettings) }
 
   goToHome = () => { void engine().navigation.showScreen(ScreenMain) }
 

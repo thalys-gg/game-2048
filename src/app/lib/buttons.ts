@@ -84,7 +84,7 @@ export default new class {
     })
 
     btn.label = 'btnPause'
-    btn.onPress.connect(actions.goToPausePopup)
+    btn.onPress.connect(actions.showPausePopup)
     return btn
   }
 
@@ -112,7 +112,7 @@ export default new class {
     })
 
     btn.label = 'btnSettings'
-    btn.onPress.connect(actions.goToSettings)
+    btn.onPress.connect(actions.showSettings)
     return btn
   }
 
