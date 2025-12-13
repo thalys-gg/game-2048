@@ -41,6 +41,7 @@ export class UIScore extends Container implements IChild {
   private text: Label
 
   private _rollupScoreRef: ReturnType<typeof animations.rollupScore> | null = null
+  private _fadeScoreRef: ReturnType<typeof animations.fadeScore> | null = null
 
   constructor () {
     super()
@@ -48,7 +49,12 @@ export class UIScore extends Container implements IChild {
     this.text = createLabel(this)
 
     STATE.on('scoreChanged', (value, oldValue, receiver, property) => {
-      animations.rollupScore(this.text, oldValue || 0, value)
+
+      if (value === 0) {
+        this._fadeScoreRef = animations.fadeScore(this.text)
+        return
+      }
+      this._rollupScoreRef = animations.rollupScore(this.text, oldValue || 0, value)
     })
   }
 
@@ -56,6 +62,8 @@ export class UIScore extends Container implements IChild {
     super.destroy(options)
     this._rollupScoreRef?.destroy()
     this._rollupScoreRef = null
+    this._fadeScoreRef?.destroy()
+    this._fadeScoreRef = null
   }
 
   public resize ({ screen }: ResizeSignature) {
