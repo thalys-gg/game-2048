@@ -3,12 +3,15 @@ import type { IChild, ResizeSignature } from '∆/navigation.types'
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { anime } from '@thalys/anime-pixi'
+import { logger } from '@thalys/logger'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
 import { rollNewPawnValue } from '@/lib/math'
 import { STATE } from '@/screens/main/state'
 import { UIPawn } from '@/screens/main/UIPawn'
+
+const log = logger.custom`[ ${'UIGame'} ]`
 
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
@@ -48,6 +51,7 @@ export class UIGame extends Container implements IChild {
    */
   public spawnPiece () {
     const coord = this.grid.getRandomEmpty()
+    log(coord)
     if (!coord) {
       throw new Error('[UIGame.spawnPiece] No empty cells found')
     }
