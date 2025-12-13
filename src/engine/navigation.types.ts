@@ -19,7 +19,7 @@ export const appScreens = [
 
 export type AppScreens = typeof appScreens[number]
 
-export type TAssetBundleId = 'preload' | 'main' | 'ui' | 'loops'
+export type TAssetBundleId = 'preload' | 'main' | 'loops'
 
 /**
  * Signature for resize events

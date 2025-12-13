@@ -9,7 +9,7 @@ import { create } from '@/screens/overlay/UI.create'
 export class OverlayUI extends Container implements IAppScreen {
   public definition: AppScreens = 'OverlayUI'
   public override label: string = 'OverlayUI'
-  public static assetBundles: TAssetBundleId[] = ['preload', 'ui']
+  public static assetBundles: TAssetBundleId[] = ['preload']
   protected btnPause: FancyButton
   protected btnHome: FancyButton
   protected btnSettings: FancyButton
