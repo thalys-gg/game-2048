@@ -1,8 +1,10 @@
 import type { FancyButton } from '@pixi/ui'
 import type { IAppScreenConstructor } from '∆/types'
+import { logger } from '@thalys/logger'
 import { engine } from '∆/engine.singleton'
 import textures from '@/lib/textures'
 import { GameOver } from '@/popups/popup.game-over'
+import { GameWon } from '@/popups/popup.game-won'
 import { PopupPause } from '@/popups/popup.pause'
 import { PopupSettings } from '@/popups/popup.settings'
 import { ScreenMain } from '@/screens/main/ScreenMain'
@@ -13,6 +15,8 @@ export default new class {
   }
 
   showScreen = (screen: IAppScreenConstructor) => { void engine().navigation.showScreen(screen) }
+
+  showGameWon = () => { void engine().navigation.presentPopup(GameWon) }
 
   showGameOver = () => { void engine().navigation.presentPopup(GameOver) }
 
@@ -34,7 +38,7 @@ export default new class {
         btn.defaultView = document.fullscreenElement ? textures.iconSmaller : textures.iconLarger
 
       } catch (err) {
-        console.error('FullScreen error:', err)
+        logger.error('FullScreen error:', err)
       }
     }
   }

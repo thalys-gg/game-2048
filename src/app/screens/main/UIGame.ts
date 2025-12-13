@@ -48,14 +48,17 @@ export class UIGame extends Container implements IChild {
 
     // STATE.score = 1238
     // this.debugFillBoard(
-    //   [1024, 64, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, null, 4, 1024, 16],
+    // [1024, 64, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, null, 4, 1024, 16],
+    // [2048, 2048, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, null, 4, 1024, 16],
     // )
     // await waitFor(2)
     // actions.showGameOver()
   }
 
   public async resume () {
-    if (!this.grid.hasPossibleMoves()) {
+    if (this.hasWon()) {
+      actions.showGameWon()
+    } else if (this.hasLost()) {
       this.reset()
     }
   }
@@ -73,20 +76,6 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  /**
-   * Spawns a new piece in a random empty cells
-   */
-  public spawnPiece () {
-    const coord = this.grid.getRandomEmpty()
-    log(coord)
-    if (!coord) { throw new Error('[UIGame.spawnPiece] No empty cells found') }
-
-    const pawn = this.createPawnAt(coord.x, coord.y, rollNewPawnValue())
-    pawn.alpha = 0
-    anime`fade-in`(pawn).play()
-    return pawn
-  }
-
   public move (direction: Direction) {
     const moved = this.grid.move(direction, this.positions)
 
@@ -96,9 +85,19 @@ export class UIGame extends Container implements IChild {
     }
   }
 
+  private hasWon () {
+    return this.grid.some(pawn => (pawn?.value || 0) >= 4096)
+  }
+
+  private hasLost () {
+    return !this.grid.hasPossibleMoves()
+  }
+
   private checkGameState () {
 
-    if (!this.grid.hasPossibleMoves()) {
+    if (this.hasWon()) {
+      actions.showGameWon()
+    } else if (this.hasLost()) {
       actions.showGameOver()
     }
     // log(this.grid.raw.map(pawn => pawn?.value))
@@ -142,6 +141,19 @@ export class UIGame extends Container implements IChild {
         }
       }
     }
+  }
+
+  /**
+   * Spawns a new piece in a random empty cells
+   */
+  public spawnPiece () {
+    const coord = this.grid.getRandomEmpty()
+    if (!coord) { throw new Error('[UIGame.spawnPiece] No empty cells found') }
+
+    const pawn = this.createPawnAt(coord.x, coord.y, rollNewPawnValue())
+    pawn.alpha = 0
+    anime`fade-in`(pawn).play()
+    return pawn
   }
 
   /**
