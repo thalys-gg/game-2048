@@ -16,7 +16,7 @@ export function assetpackPlugin () {
   // Configuration for the AssetPack instance.
   const apConfig = {
     entry: './raw-assets',
-    logLevel: 'error',
+    logLevel: 'info',
     pipes: [
       ...customAssetpackPipes(),
     ],

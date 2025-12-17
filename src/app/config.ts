@@ -1,27 +1,33 @@
-import { AMBER, ORANGE, SLATE, STONE, YELLOW } from '∆/lib/colors'
+import { getColor } from '∆/lib/colors'
 
 export type TConfig = {
+  winningValue: number
   board: { size: number, padding: number }
   score: {
     width: number
     height: number
+    /** The aspect ratio of the score to be maintained e.g. w: 144 / 1.8 == h: 80 */
+    aspect: number
   }
   rows: number
   cols: number
   piece: { size: number, radius: number, padding: number }
-  theme: {
+  themes: {
     boardBg: string
     score: {
       bg: string
       text: string
     }
-    textLight: string
-    textDark: string
+    tileText: {
+      light: string
+      dark: string
+    }
     tiles: { [key: number]: { bg: string, text: string } }
-  }
+  }[]
 }
 
 export const CONFIG: TConfig = {
+  winningValue: 4096,
   /** The size of the board */
   board: {
     size: 620,
@@ -29,8 +35,9 @@ export const CONFIG: TConfig = {
   },
 
   score: {
-    width: 140,
-    height: 60,
+    width: 144,
+    height: 80,
+    aspect: 1.8,
   },
 
   /** The number of pieces per row */
@@ -48,32 +55,39 @@ export const CONFIG: TConfig = {
     padding: 10,
   },
 
-  theme: {
-    /** The background color of the board */
-    boardBg: STONE[800],
-    score: {
-      bg: STONE[800],
-      text: STONE[100],
+  themes: [
+    {
+      boardBg: getColor('stone-800'),
+      score: {
+        bg: getColor('stone-800'),
+        text: getColor('stone-100'),
+      },
+      tileText: {
+        light: getColor('stone-100'),
+        dark: getColor('stone-800'),
+      },
+      tiles: {
+        0: { bg: getColor('stone-700'), text: getColor('stone-100') },
+        2: { bg: getColor('stone-200'), text: getColor('stone-800') },
+        4: { bg: getColor('stone-300'), text: getColor('stone-800') },
+        8: { bg: getColor('orange-200'), text: getColor('stone-800') },
+        16: { bg: getColor('orange-400'), text: getColor('stone-100') },
+        32: { bg: getColor('orange-500'), text: getColor('stone-100') },
+        64: { bg: getColor('orange-600'), text: getColor('stone-100') },
+        128: { bg: getColor('amber-300'), text: getColor('stone-800') },
+        256: { bg: getColor('amber-400'), text: getColor('stone-800') },
+        512: { bg: getColor('amber-500'), text: getColor('stone-100') },
+        1024: { bg: getColor('yellow-400'), text: getColor('stone-800') },
+        2048: { bg: getColor('yellow-500'), text: getColor('stone-100') },
+        4096: { bg: getColor('slate-900'), text: getColor('stone-100') },
+        8192: { bg: getColor('slate-900'), text: getColor('stone-100') },
+        16384: { bg: getColor('slate-900'), text: getColor('stone-100') },
+        32768: { bg: getColor('slate-900'), text: getColor('stone-100') },
+      },
     },
-    /** The text color for light tiles */
-    textLight: STONE[100],
-    /** The text color for dark tiles */
-    textDark: STONE[800],
-    /** The tiles configuration */
-    tiles: {
-      0: { bg: STONE[700], text: STONE[800] },
-      2: { bg: STONE[200], text: STONE[800] },
-      4: { bg: STONE[300], text: STONE[800] },
-      8: { bg: ORANGE[200], text: STONE[800] },
-      16: { bg: ORANGE[400], text: STONE[100] },
-      32: { bg: ORANGE[500], text: STONE[100] },
-      64: { bg: ORANGE[600], text: STONE[100] },
-      128: { bg: AMBER[300], text: STONE[800] },
-      256: { bg: AMBER[400], text: STONE[800] },
-      512: { bg: AMBER[500], text: STONE[100] },
-      1024: { bg: YELLOW[400], text: STONE[800] },
-      2048: { bg: YELLOW[500], text: STONE[100] },
-      4096: { bg: SLATE[900], text: STONE[100] },
-    },
-  },
+  ],
+}
+
+export function getTheme (index: number = 0) {
+  return CONFIG.themes[index]
 }

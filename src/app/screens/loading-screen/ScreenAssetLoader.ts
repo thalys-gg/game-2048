@@ -1,4 +1,4 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import type { ObjectTarget } from 'motion/react'
 import { animate } from 'motion'
 import { Container } from 'pixi.js'
@@ -10,7 +10,7 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
   public definition: AppScreens = 'ScreenAssetLoader'
   public override label: string = 'ScreenAssetLoader'
   /** Assets bundles required by this screen */
-  public static assetBundles: TAssetBundleId[] = ['preload', 'main', 'ui']
+  public static assetBundles: TAssetBundleId[] = ['preload', 'main']
   /** Progress Bar */
   private progressBar: ProgressBar
   private background: Background

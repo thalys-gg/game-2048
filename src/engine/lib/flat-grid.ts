@@ -13,6 +13,7 @@ export interface Coordinate {
   y: number
 }
 
+export type GridPredicate<T> = (value: T | null, x: number, y: number, index: number) => boolean
 export type GridIterator<T> = (value: T | null, x: number, y: number, index: number) => void
 export type GridMapper<T, U> = (value: T | null, x: number, y: number, index: number) => U
 
@@ -125,7 +126,7 @@ export class FlatGrid<T> {
   /**
    * Set value at (x, y). Returns false if out of bounds.
    */
-  public set (x: number, y: number, value: T): boolean {
+  public set (x: number, y: number, value: T | null): boolean {
     if (!this.isValid(x, y)) return false
     this.data[this.getIndex(x, y)] = value
     return true
@@ -134,7 +135,7 @@ export class FlatGrid<T> {
   /**
    * Set value directly at 1D index.
    */
-  public setAtIndex (index: number, value: T): boolean {
+  public setAtIndex (index: number, value: T | null): boolean {
     if (!this.isValidIndex(index)) return false
     this.data[index] = value
     return true
@@ -201,6 +202,14 @@ export class FlatGrid<T> {
       const { x, y } = this.getXY(i)
       callback(this.getAtIndex(i), x, y, i)
     }
+  }
+
+  public some (predicate: GridPredicate<T>): boolean {
+    for (let i = 0; i < this.data.length; i++) {
+      const { x, y } = this.getXY(i)
+      if (predicate(this.getAtIndex(i), x, y, i)) return true
+    }
+    return false
   }
 
   /**

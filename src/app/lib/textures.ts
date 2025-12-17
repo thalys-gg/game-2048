@@ -1,6 +1,8 @@
 import { Texture } from 'pixi.js'
-import { CONFIG } from '@/config'
+import { CONFIG, getTheme } from '@/config'
 import { render } from '@/screens/main/render'
+
+const theme = getTheme()
 
 const renderedPawnTextures: Record<number, Texture> = {}
 let renderedScoreBg: Texture
@@ -15,7 +17,7 @@ export default new class {
     const width = CONFIG.board.size
     const height = CONFIG.board.size
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.boardBg
+    const color = theme.boardBg
 
     return renderedBoardBg = render()
       .canvas(width, height)
@@ -34,7 +36,7 @@ export default new class {
     const canvasWidth = width + padding * 2
     const canvasHeight = height + padding * 2
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.tiles[value].bg
+    const color = theme.tiles[value].bg
 
     return renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)
@@ -49,7 +51,7 @@ export default new class {
 
     const { width, height } = CONFIG.score
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.score.bg
+    const color = theme.score.bg
 
     return renderedScoreBg = render()
       .canvas(width, height)
@@ -58,15 +60,15 @@ export default new class {
       .render()
   }
 
-  public btnPlay () { return Texture.from('blue/button_rectangle_gradient') }
-  public btnPlayPressed () { return Texture.from('blue/button_rectangle_depth_gradient') }
+  public btnPlay () { return Texture.from('button_rectangle_gradient') }
+  public btnPlayPressed () { return Texture.from('button_rectangle_depth_gradient') }
 
 
-  public get iconSettings () { return Texture.from('icons/gear') }
-  public get iconHome () { return Texture.from('icons/home') }
-  public get iconLarger () { return Texture.from('icons/larger') }
-  public get iconPause () { return Texture.from('icons/pause') }
-  public get iconSmaller () { return Texture.from('icons/smaller') }
+  public get iconSettings () { return Texture.from('gear') }
+  public get iconHome () { return Texture.from('home') }
+  public get iconLarger () { return Texture.from('larger') }
+  public get iconPause () { return Texture.from('pause') }
+  public get iconSmaller () { return Texture.from('smaller') }
 
-  public get popupBg () { return Texture.from('extra/button_square_depth_line') }
+  public get popupBg () { return Texture.from('button_square_depth_line') }
 }()

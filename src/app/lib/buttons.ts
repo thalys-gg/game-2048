@@ -5,7 +5,7 @@ import actions from '@/lib/actions'
 import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
 
-const btnTransitions = {
+export const btnTransitions = {
   hover: { props: { scale: { x: 1.03, y: 1.03 } }, duration: 100 },
   pressed: { props: { scale: { x: 0.97, y: 0.97 } }, duration: 100 },
 }
@@ -71,63 +71,6 @@ export default new class {
       })()
     })
     btn.onHover.connect(actions.onButtonHoverSound)
-    return btn
-  }
-
-  public get createBtnPause () {
-
-    const btn = new FancyButton({
-      defaultView: textures.iconPause,
-      anchor: 0.5,
-      scale: 0.5,
-      animations: { ...btnTransitions },
-    })
-
-    btn.label = 'btnPause'
-    btn.onPress.connect(actions.goToPausePopup)
-    return btn
-  }
-
-  public get createBtnHome () {
-
-    const btn = new FancyButton({
-      defaultView: textures.iconHome,
-      anchor: 0.5,
-      scale: 0.5,
-      animations: { ...btnTransitions },
-    })
-
-    btn.label = 'btnHome'
-    btn.onPress.connect(actions.goToHome)
-    return btn
-  }
-
-  public get createBtnSettings () {
-
-    const btn = new FancyButton({
-      defaultView: textures.iconSettings,
-      anchor: 0.5,
-      scale: 0.5,
-      animations: { ...btnTransitions },
-    })
-
-    btn.label = 'btnSettings'
-    btn.onPress.connect(actions.goToSettings)
-    return btn
-  }
-
-  public get createBtnFullScreen () {
-
-    const btn = new FancyButton({
-      defaultView: textures.iconLarger,
-      anchor: 0.5,
-      scale: 0.5,
-      animations: { ...btnTransitions },
-    })
-
-    btn.label = 'btnFullScreen'
-    const toggleFullScreen = actions.goFullScreen(btn)
-    btn.onPress.connect(() => void toggleFullScreen())
     return btn
   }
 

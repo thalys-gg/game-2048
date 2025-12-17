@@ -1,4 +1,4 @@
-import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/navigation.types'
+import type { AppScreens, ResizeSignature, TAssetBundleId } from '∆/types'
 import type { DestroyOptions } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { InputHandler } from '@/lib/input'
@@ -12,7 +12,7 @@ export class ScreenMain extends ScreenBase {
   public definition: AppScreens = 'ScreenMain'
   public override label: string = 'ScreenMain'
   /** Assets bundles required by this screen */
-  public static assetBundles: TAssetBundleId[] = []
+  public static assetBundles: TAssetBundleId[] = ['preload', 'main', 'loops']
   private board: UIBoard
   private game: UIGame
   private input: InputHandler

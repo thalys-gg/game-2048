@@ -1,5 +1,5 @@
 import type { CreationEngine } from '∆/engine'
-import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/navigation.types'
+import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/types'
 import { Ruler } from '∆/scene/stage-ruler'
 import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
@@ -256,6 +256,9 @@ export class Navigation {
       case 'Background':
       case 'ScreenBase':
         return null // don't save for loading screen
+      case 'GameOver':
+      case 'GameWon':
+      case 'PopupSimpleMessage':
       case 'PopupPause':
       case 'PopupSettings':
       case 'ScreenInput':
@@ -278,6 +281,9 @@ export class Navigation {
         return ScreenPawn
       case 'ScreenInput':
         return ScreenInput
+      case 'GameOver':
+      case 'GameWon':
+      case 'PopupSimpleMessage':
       case 'PopupPause':
       case 'PopupSettings':
       case 'ScreenMain':

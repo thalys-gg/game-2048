@@ -1,7 +1,9 @@
 import type { Label } from '@/ui/Label'
+import { waitFor } from '∆/lib/promise'
 import { animate } from 'motion'
 
 let _rollupScoreRef: ReturnType<typeof animate> | null = null
+let _fadeScoreRef: ReturnType<typeof animate> | null = null
 
 export default new class {
   rollupScore = (text: Label, from: number, to: number) => {
@@ -21,6 +23,38 @@ export default new class {
       destroy: () => {
         _rollupScoreRef?.complete()
         _rollupScoreRef = null
+      },
+    }
+  }
+
+  fadeScore = (text: Label) => {
+
+    if (_rollupScoreRef) {
+      _rollupScoreRef.complete()
+      _rollupScoreRef = null
+    }
+
+    if (_fadeScoreRef) {
+      _fadeScoreRef.complete()
+      _fadeScoreRef = null
+    }
+
+    (async () => {
+      _fadeScoreRef = animate(text, { alpha: 0 }, { duration: 0.4 })
+      await _fadeScoreRef
+
+      await waitFor(0.15)
+      text.text = '0'
+      await waitFor(0.15)
+
+      _fadeScoreRef = animate(text, { alpha: 1 }, { duration: 0.4 })
+      await _fadeScoreRef
+    })()
+
+    return {
+      destroy: () => {
+        _fadeScoreRef?.complete()
+        _fadeScoreRef = null
       },
     }
   }

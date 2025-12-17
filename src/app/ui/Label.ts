@@ -1,22 +1,40 @@
-import type { TextOptions, TextStyleOptions } from 'pixi.js'
-import { Text } from 'pixi.js'
+import type { CanvasTextOptions } from 'pixi.js'
+import { Graphics, Text } from 'pixi.js'
 
-const defaultLabelStyle: Partial<TextStyleOptions> = {
+const defaultLabelStyle: Partial<CanvasTextOptions['style']> = {
   fontFamily: 'Arial Rounded MT Bold',
   align: 'center',
 }
 
-export type LabelOptions = typeof defaultLabelStyle
+export type LabelOptions = CanvasTextOptions
 
 /**
  * A Text extension pre-formatted for this app, starting centred by default,
  * because it is the most common use in the app.
  */
 export class Label extends Text {
-  constructor (opts?: TextOptions) {
-    const style = { ...defaultLabelStyle, ...opts?.style }
-    super({ ...opts, style })
-    // Label is always centred, but this can be changed in instance afterwards
+
+  private _g: Graphics
+
+  constructor (opts?: LabelOptions) {
+
+    const { style = {}, ...rest } = opts || {}
+
+    const textOptions = {
+      style: {
+        ...defaultLabelStyle,
+        ...style,
+      },
+      ...rest,
+    }
+
+    super(textOptions)
+
+    this.pivot.set(0.5)
     this.anchor.set(0.5)
+
+    this._g = new Graphics()
+    this.addChild(this._g)
   }
 }
+
