@@ -86,7 +86,7 @@ export class UIGame extends Container implements IChild {
   }
 
   private hasWon () {
-    return this.grid.some(pawn => (pawn?.value || 0) >= 4096)
+    return this.grid.some(pawn => (pawn?.value || 0) >= CONFIG.winningValue)
   }
 
   private hasLost () {

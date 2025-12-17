@@ -1,6 +1,7 @@
 import { getColor } from '∆/lib/colors'
 
 export type TConfig = {
+  winningValue: number
   board: { size: number, padding: number }
   score: {
     width: number
@@ -26,6 +27,7 @@ export type TConfig = {
 }
 
 export const CONFIG: TConfig = {
+  winningValue: 4096,
   /** The size of the board */
   board: {
     size: 620,
