@@ -57,7 +57,7 @@ export class UIGame extends Container implements IChild {
 
   public async resume () {
     if (this.hasWon()) {
-      actions.showGameWon()
+      this.reset()
     } else if (this.hasLost()) {
       this.reset()
     }
@@ -114,7 +114,7 @@ export class UIGame extends Container implements IChild {
     // Clear existing pawns
     this.grid.forEach((pawn, x, y) => {
       if (pawn) {
-        this.removeFromParent()
+        pawn.removeFromParent()
         pawn.destroy()
         this.grid.set(x, y, null)
       }
