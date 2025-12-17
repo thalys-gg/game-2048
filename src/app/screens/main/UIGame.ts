@@ -4,6 +4,7 @@ import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import { anime } from '@thalys/anime-pixi'
 import { logger } from '@thalys/logger'
+import { waitFor } from '∆/lib/promise'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import actions from '@/lib/actions'
@@ -93,16 +94,15 @@ export class UIGame extends Container implements IChild {
     return !this.grid.hasPossibleMoves()
   }
 
-  private checkGameState () {
+  private async checkGameState () {
 
     if (this.hasWon()) {
+      await waitFor(0.3)
       actions.showGameWon()
     } else if (this.hasLost()) {
+      await waitFor(0.3)
       actions.showGameOver()
     }
-    // log(this.grid.raw.map(pawn => pawn?.value))
-    // [1024, 64, 8, 128, 256, 32, 256, 16, 4, 4, 4, 512, 2, 2, 1024, 16]
-    // [1024, 64, 8, 128, 256, 32, 256, 16, 2, 4, 8, 512, undefined, 4, 1024, 16]
   }
 
   /**
