@@ -2,9 +2,11 @@ import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
 import { engine } from '∆/engine.singleton'
 import { animate } from 'motion'
 import { BlurFilter, Container, Sprite, Texture } from 'pixi.js'
-import { CONFIG } from '@/config'
+import { getTheme } from '@/config'
 import actions from '@/lib/actions'
 import { Label } from '@/ui/Label'
+
+const theme = getTheme()
 
 export class GameWon extends Container implements IAppScreen {
   public static assetBundles: TAssetBundleId[] = ['preload']
@@ -25,7 +27,7 @@ export class GameWon extends Container implements IAppScreen {
 
     this.message = new Label({
       text: 'YOU WON!',
-      style: { fill: CONFIG.theme.textLight, fontSize: 42 },
+      style: { fill: theme.tileText.light, fontSize: 42 },
     })
     this.message.pivot.y = -500
     this.addChild(this.message)

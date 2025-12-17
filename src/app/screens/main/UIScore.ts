@@ -2,13 +2,15 @@ import type { IChild, ResizeSignature } from '∆/types'
 import type { DestroyOptions } from 'pixi.js'
 import { logger } from '@thalys/logger'
 import { Container, Sprite } from 'pixi.js'
-import { CONFIG } from '@/config'
+import { getTheme } from '@/config'
 import animations from '@/lib/animations'
 import textures from '@/lib/textures'
 import { STATE } from '@/screens/main/state'
 import { Label } from '@/ui/Label'
 
 const log = logger.custom`[ ${'UIScore'} ]`
+
+const theme = getTheme()
 
 function createBackground (parent: Container) {
   const bg = Sprite.from(textures.scoreBg)
@@ -24,7 +26,7 @@ function createLabel (parent: Container, label?: string) {
     text: '0',
     style: {
       fontSize: 28,
-      fill: CONFIG.theme.score.text,
+      fill: theme.score.text,
       align: 'center',
     },
   })

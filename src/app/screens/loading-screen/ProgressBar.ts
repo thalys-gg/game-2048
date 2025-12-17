@@ -1,11 +1,13 @@
 import { CircularProgressBar } from '@pixi/ui'
-import { CONFIG } from '@/config'
+import { getTheme } from '@/config'
+
+const theme = getTheme()
 
 export class ProgressBar extends CircularProgressBar {
   constructor () {
     super({
-      backgroundColor: CONFIG.theme.boardBg,
-      fillColor: CONFIG.theme.tiles[0].bg,
+      backgroundColor: theme.boardBg,
+      fillColor: theme.tiles[0].bg,
       radius: 100,
       lineWidth: 15,
       value: 20,

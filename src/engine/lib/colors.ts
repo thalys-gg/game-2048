@@ -313,3 +313,5 @@ export const STONE = {
   900: '#1C1917',
   950: '#0C0A09',
 } as const
+
+export * from './colors.utils'

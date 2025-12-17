@@ -1,6 +1,8 @@
 import { Texture } from 'pixi.js'
-import { CONFIG } from '@/config'
+import { CONFIG, getTheme } from '@/config'
 import { render } from '@/screens/main/render'
+
+const theme = getTheme()
 
 const renderedPawnTextures: Record<number, Texture> = {}
 let renderedScoreBg: Texture
@@ -15,7 +17,7 @@ export default new class {
     const width = CONFIG.board.size
     const height = CONFIG.board.size
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.boardBg
+    const color = theme.boardBg
 
     return renderedBoardBg = render()
       .canvas(width, height)
@@ -34,7 +36,7 @@ export default new class {
     const canvasWidth = width + padding * 2
     const canvasHeight = height + padding * 2
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.tiles[value].bg
+    const color = theme.tiles[value].bg
 
     return renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)
@@ -49,7 +51,7 @@ export default new class {
 
     const { width, height } = CONFIG.score
     const radius = CONFIG.piece.radius
-    const color = CONFIG.theme.score.bg
+    const color = theme.score.bg
 
     return renderedScoreBg = render()
       .canvas(width, height)
