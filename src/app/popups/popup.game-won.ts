@@ -6,11 +6,9 @@ import { CONFIG } from '@/config'
 import actions from '@/lib/actions'
 import { Label } from '@/ui/Label'
 
-/** Popup that shows up when gameplay is paused */
 export class GameWon extends Container implements IAppScreen {
   public static assetBundles: TAssetBundleId[] = ['preload']
   public definition: AppScreens = 'GameWon'
-  /** The dark semi-transparent background covering current screen */
   private bg: Sprite
   private message: Label
 
