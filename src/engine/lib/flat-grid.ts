@@ -39,8 +39,10 @@ export class FlatGrid<T> {
           this.data[i] = (initialValue as (index: number) => T)(i)
         }
       } else {
-        this.data.fill(initialValue || null)
+        this.data.fill(initialValue ?? null)
       }
+    } else {
+      this.data.fill(null)
     }
   }
 
@@ -49,7 +51,7 @@ export class FlatGrid<T> {
    */
   public get (x: number, y: number, fallback: T | null = null): T | null {
     if (!this.isValid(x, y)) return fallback
-    return this.data[this.getIndex(x, y)]
+    return this.data[this.getIndex(x, y)] ?? null
   }
 
   /**
@@ -67,7 +69,7 @@ export class FlatGrid<T> {
    * @returns The value at the given index, or null if out of bounds
    */
   public getAtIndex (index: number): T | null {
-    return this.data[index] || null
+    return this.data[index] ?? null
   }
 
   /**
@@ -206,10 +208,18 @@ export class FlatGrid<T> {
 
   public some (predicate: GridPredicate<T>): boolean {
     for (let i = 0; i < this.data.length; i++) {
+      const value = this.getAtIndex(i)
       const { x, y } = this.getXY(i)
-      if (predicate(this.getAtIndex(i), x, y, i)) return true
+      if (predicate(value, x, y, i)) {
+        return true
+      }
     }
     return false
+  }
+
+  public includes (value: T): boolean {
+    // eslint-disable-next-line unicorn/prefer-includes
+    return this.some(v => v === value)
   }
 
   /**
