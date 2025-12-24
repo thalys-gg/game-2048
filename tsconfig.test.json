@@ -3,12 +3,13 @@
   "extends": ["./tsconfig.core.json"],
   "compilerOptions": {
     "tsBuildInfoFile": "./.cache/tsconfig.test.tsbuildinfo",
-    "target": "ES2022",
+    "target": "es2022",
     "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+    "types": ["bun-types"],
     "outDir": "./dist-test",
     "erasableSyntaxOnly": false
   },
-  "include": ["src/test"],
+  "include": ["src/test", "src/**/*.test.ts", "src/**/*.spec.ts"],
   "exclude": [
     "node_modules",
     ".cache",

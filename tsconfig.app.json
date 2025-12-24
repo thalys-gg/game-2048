@@ -25,6 +25,8 @@
     ".cache",
     ".vscode",
     "dist",
-    "public"
+    "public",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
   ]
 }
