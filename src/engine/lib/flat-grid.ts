@@ -27,7 +27,7 @@ export class FlatGrid<T> {
    * @param height The height of the grid (rows)
    * @param initialValue Initial value to fill the grid, or a function that returns the value
    */
-  constructor (width: number, height: number, initialValue?: T | ((index: number) => T)) {
+  constructor (width: number, height: number, initialValue?: T | ((index: number) => T | null) | null) {
     this.width = Math.floor(width)
     this.height = Math.floor(height)
     // eslint-disable-next-line unicorn/no-new-array
@@ -217,7 +217,7 @@ export class FlatGrid<T> {
     return false
   }
 
-  public includes (value: T): boolean {
+  public includes (value: T | null): boolean {
     // eslint-disable-next-line unicorn/prefer-includes
     return this.some(v => v === value)
   }

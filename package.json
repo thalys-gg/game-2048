@@ -21,7 +21,9 @@
     "clean:assets": "rm -rf .assetpack/ public/assets/",
     "lint": "bunx --bun eslint",
     "fix": "bunx --bun eslint --fix",
-    "check": "bunx --bun tsc --noEmit -p ./tsconfig.app.json"
+    "check": "bunx --bun tsc --noEmit -p ./tsconfig.app.json",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
   },
   "dependencies": {
     "@pixi/sound": "^6.0.1",

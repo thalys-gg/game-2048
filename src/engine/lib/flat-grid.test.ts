@@ -175,6 +175,14 @@ describe('FlatGrid', () => {
       expect(grid.includes(100)).toBe(false)
     })
 
+    test('includes should handle null values correctly', () => {
+      const grid = new FlatGrid<number>(2, 2, null)
+      expect(grid.includes(null)).toBe(true)
+      grid.set(0, 0, 0)
+      expect(grid.includes(0)).toBe(true)
+      expect(grid.includes(null)).toBe(true)
+    })
+
     test('map should return a new grid with transformed values', () => {
       const grid = new FlatGrid(2, 2, 1)
       const doubled = grid.map(val => (val as number) * 2)
@@ -193,10 +201,16 @@ describe('FlatGrid', () => {
 
     test('getRandomLocation should find a location matching predicate', () => {
       const grid = new FlatGrid<number>(3, 3, 0)
-      grid.set(1, 1, 1) // Only one spot with 1
+      grid.set(0, 0, 1)
+      grid.set(1, 1, 1)
+      grid.set(2, 2, 1)
 
-      const loc = grid.getRandomLocation(val => val === 1)
-      expect(loc).toEqual({ x: 1, y: 1 })
+      // Test multiple times to account for randomness
+      for (let i = 0; i < 10; i++) {
+        const loc = grid.getRandomLocation(val => val === 1)
+        expect(loc).not.toBeNull()
+        expect(grid.get(loc!.x, loc!.y)).toBe(1)
+      }
 
       const notFound = grid.getRandomLocation(val => val === 99)
       expect(notFound).toBeNull()

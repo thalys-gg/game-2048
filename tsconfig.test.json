@@ -3,7 +3,7 @@
   "extends": ["./tsconfig.core.json"],
   "compilerOptions": {
     "tsBuildInfoFile": "./.cache/tsconfig.test.tsbuildinfo",
-    "target": "esnext",
+    "target": "es2022",
     "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
     "types": ["bun-types"],
     "outDir": "./dist-test",
