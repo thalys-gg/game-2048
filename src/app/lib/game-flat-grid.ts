@@ -27,7 +27,8 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
       for (let y = 0; y < this.height; y++) {
         const current = this.get(x, y)
 
-        if (!current) continue
+        if (!current)
+          continue
 
         // Check Right
         if (x + 1 < this.width) {
@@ -72,7 +73,8 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
         const idx = isReverse ? secondarySize - 1 - j : j
         const [x, y] = isHorizontal ? [idx, i] : [i, idx]
         const cell = this.get(x, y)
-        if (cell) line.push(cell)
+        if (cell)
+          line.push(cell)
       }
 
       const merged = this.mergeLine(line)
@@ -84,7 +86,8 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
         const newCell = merged[j] ?? null
         const oldCell = this.get(x, y)
 
-        if (newCell !== oldCell) moved = true
+        if (newCell !== oldCell)
+          moved = true
         this.set(x, y, newCell as T)
 
         if (newCell) {
