@@ -1,0 +1,44 @@
+# ===========================================
+# Kilo Code Ignore - 2048 Game
+# ===========================================
+
+# --- Dependencies ---
+node_modules/
+
+# --- Build Outputs ---
+dist/
+build/
+.vite/
+.cache/
+
+# --- Caches & Generated Files ---
+.cache/
+.assetpack/
+public/assets/          # Binary assets (images, sounds, atlases) - not useful for semantic search
+src/gen/                # Generated code (you already clean this)
+
+# --- Lockfiles ---
+bun.lock
+bun.lockb
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Logs & Environment ---
+*.log
+.env
+.env.*
+!.env.example
+
+# --- Test / Coverage (if you add them later) ---
+coverage/
+.nyc_output/
+test-results/
+
+# --- Misc ---
+.DS_Store
+Thumbs.db
