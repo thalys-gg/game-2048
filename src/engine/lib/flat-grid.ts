@@ -30,7 +30,7 @@ export class FlatGrid<T> {
   constructor (width: number, height: number, initialValue?: T | ((index: number) => T | null) | null) {
     this.width = Math.floor(width)
     this.height = Math.floor(height)
-    // eslint-disable-next-line unicorn/no-new-array
+    // oxlint-disable-next-line unicorn/no-new-array
     this.data = new Array(this.width * this.height)
 
     if (initialValue !== undefined) {
@@ -221,7 +221,7 @@ export class FlatGrid<T> {
   }
 
   public includes (value: T | null): boolean {
-    // eslint-disable-next-line unicorn/prefer-includes
+    // oxlint-disable-next-line unicorn/prefer-includes
     return this.some(v => v === value)
   }
 

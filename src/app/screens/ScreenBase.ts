@@ -102,7 +102,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public update (ticker: Ticker) {
-    // eslint-disable-next-line no-useless-return
+    // oxlint-disable-next-line no-useless-return
     if (this.paused) { return }
   }
 }

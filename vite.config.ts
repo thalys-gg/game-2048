@@ -1,9 +1,9 @@
-import type { ConfigEnv, UserConfig } from 'vite'
+import type { ConfigEnv, UserConfig } from 'vite-plus'
 import path from 'node:path'
 import process from 'node:process'
 import { pluginAssetpack as assetpack } from '#/vite/plugin/assetpack-vite-plugin'
 import { fullReloadWhen } from '#/vite/plugin/full-reload-by-ext'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite-plus'
 import devtoolsJson from 'vite-plugin-devtools-json'
 import glsl from 'vite-plugin-glsl'
 

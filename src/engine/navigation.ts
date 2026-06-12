@@ -80,13 +80,13 @@ export class Navigation {
 
   /** Set the default background screen */
   public setBackground (ctor: IAppScreenConstructor) {
-    this.background = new ctor() // eslint-disable-line new-cap
+    this.background = new ctor() // oxlint-disable-line new-cap
     this.addAndShowScreen(this.background, this.cBackground)
   }
 
   /** Set the overlay layer */
   public setOverlay (ctor: IAppScreenConstructor) {
-    this.overlay = new ctor() // eslint-disable-line new-cap
+    this.overlay = new ctor() // oxlint-disable-line new-cap
     this.addAndShowScreen(this.overlay, this.cScreenOverlay)
   }
 
@@ -200,7 +200,7 @@ export class Navigation {
     if (this.currentPopup)
       await this.hideAndRemoveScreen(this.currentPopup)
 
-    this.currentPopup = new ctor() // eslint-disable-line new-cap
+    this.currentPopup = new ctor() // oxlint-disable-line new-cap
     await this.addAndShowScreen(this.currentPopup, this.cPopups)
   }
 

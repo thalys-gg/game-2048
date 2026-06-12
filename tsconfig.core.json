@@ -10,8 +10,6 @@
     "moduleDetection": "force",
     "useDefineForClassFields": true,
 
-    "baseUrl": "./",
-
     // Browser is target so use latest standard (get's transpiled according to #Target)
     "module": "ESNext",
     "moduleResolution": "bundler",
