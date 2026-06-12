@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": ["./tsconfig.core.json"],
   "compilerOptions": {
-    "tsBuildInfoFile": "./.cache/tsconfig.test.tsbuildinfo",
+    "tsBuildInfoFile": ".cache/tsconfig.test.tsbuildinfo",
     "target": "es2022",
     "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
     "types": ["bun-types"],
