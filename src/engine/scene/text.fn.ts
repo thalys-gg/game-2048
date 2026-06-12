@@ -49,7 +49,8 @@ function groupTextSegments (
       return
     }
 
-    if (!isNewline) matchedLine += segment
+    if (!isNewline)
+      matchedLine += segment
 
     const metric = CanvasTextMetrics.measureText(segment, textStyle)
 

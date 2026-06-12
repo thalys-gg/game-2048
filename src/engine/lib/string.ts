@@ -132,7 +132,7 @@ export function toTitleCase (text: string) {
  * @param str - The string to check.
  * @returns `true` if the string is invalid, otherwise `false`.
  */
-export const isInvalid = (str: string | null | undefined): boolean => {
+export function isInvalid (str: string | null | undefined): boolean {
   if (!str) { return true } // TODO: Test performance and safety
   if (typeof str !== 'string') { return true }
   if (str.length === 0) { return true }
@@ -140,7 +140,7 @@ export const isInvalid = (str: string | null | undefined): boolean => {
   return str.trim().length === 0
 }
 
-export const remove = (str: string, toRemove: string) => {
+export function remove (str: string, toRemove: string) {
   return str.replace(toRemove, '')
 }
 

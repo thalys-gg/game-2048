@@ -50,7 +50,8 @@ export class FlatGrid<T> {
    * Get value at (x, y). Returns null (or provided fallback) if out of bounds.
    */
   public get (x: number, y: number, fallback: T | null = null): T | null {
-    if (!this.isValid(x, y)) return fallback
+    if (!this.isValid(x, y))
+      return fallback
     return this.data[this.getIndex(x, y)] ?? null
   }
 
@@ -129,7 +130,8 @@ export class FlatGrid<T> {
    * Set value at (x, y). Returns false if out of bounds.
    */
   public set (x: number, y: number, value: T | null): boolean {
-    if (!this.isValid(x, y)) return false
+    if (!this.isValid(x, y))
+      return false
     this.data[this.getIndex(x, y)] = value
     return true
   }
@@ -138,7 +140,8 @@ export class FlatGrid<T> {
    * Set value directly at 1D index.
    */
   public setAtIndex (index: number, value: T | null): boolean {
-    if (!this.isValidIndex(index)) return false
+    if (!this.isValidIndex(index))
+      return false
     this.data[index] = value
     return true
   }
@@ -257,7 +260,8 @@ export class FlatGrid<T> {
       }
     }
 
-    if (indices.length === 0) return null
+    if (indices.length === 0)
+      return null
 
     const randIndex = indices[Math.floor(Math.random() * indices.length)]
     return this.getXY(randIndex)
@@ -309,7 +313,8 @@ export class FlatGrid<T> {
    * Static helper to create a grid from a 2D array (T[][]).
    */
   public static from2DArray<T>(matrix: T[][]): FlatGrid<T> {
-    if (matrix.length === 0) return new FlatGrid<T>(0, 0)
+    if (matrix.length === 0)
+      return new FlatGrid<T>(0, 0)
     const height = matrix.length
     const width = matrix[0].length
     const grid = new FlatGrid<T>(width, height)

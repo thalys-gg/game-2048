@@ -52,7 +52,8 @@ export class UIBoard extends Container implements IChild {
     const startY = bgBounds.minY + CONFIG.board.padding
 
     this.positions.forEach((pawn, x, y) => {
-      if (!pawn) return
+      if (!pawn)
+        return
       const w = pawn.width
       const h = pawn.height
       pawn.x = startX + w * 0.5 + x * pawn.width

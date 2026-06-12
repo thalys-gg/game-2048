@@ -12,7 +12,8 @@ export default new class {
 
   public get board () {
 
-    if (renderedBoardBg) return renderedBoardBg
+    if (renderedBoardBg)
+      return renderedBoardBg
 
     const width = CONFIG.board.size
     const height = CONFIG.board.size
@@ -28,7 +29,8 @@ export default new class {
 
   public getPawn (value: number) {
 
-    if (renderedPawnTextures[value]) return renderedPawnTextures[value]
+    if (renderedPawnTextures[value])
+      return renderedPawnTextures[value]
 
     const width = CONFIG.piece.size
     const height = CONFIG.piece.size
@@ -47,7 +49,8 @@ export default new class {
 
   public get scoreBg () {
 
-    if (renderedScoreBg) return renderedScoreBg
+    if (renderedScoreBg)
+      return renderedScoreBg
 
     const { width, height } = CONFIG.score
     const radius = CONFIG.piece.radius

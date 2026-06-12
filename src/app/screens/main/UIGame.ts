@@ -29,7 +29,8 @@ export class UIGame extends Container implements IChild {
 
   public resize ({ screen, parent }: ResizeSignature) {
     this.grid.forEach((pawn, x, y) => {
-      if (!pawn) return
+      if (!pawn)
+        return
 
       const pos = this.positions.get(x, y)
       if (!pos) {
@@ -67,7 +68,8 @@ export class UIGame extends Container implements IChild {
   public reset () {
     STATE.score = 0
     this.grid.forEach((pawn, x, y) => {
-      if (!pawn) return
+      if (!pawn)
+        return
       this.positions.get(x, y)?.removeChild(pawn)
       pawn.destroy()
     })

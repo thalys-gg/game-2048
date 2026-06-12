@@ -41,7 +41,8 @@ class StorageWrapper {
   public getObject (key: string) {
     const str = this.getString(key)
 
-    if (!str) return undefined
+    if (!str)
+      return undefined
 
     try {
       return JSON.parse(str)

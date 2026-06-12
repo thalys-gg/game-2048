@@ -96,7 +96,8 @@ export class Navigation {
     container.addChild(screen)
 
     // Setup things and pre-organize screen before showing
-    if (screen.prepare) screen.prepare()
+    if (screen.prepare)
+      screen.prepare()
     // Trigger a first resize, if available
     if (screen.resize) {
       screen.resize({
@@ -105,7 +106,8 @@ export class Navigation {
       })
     }
     // Add update function if available
-    if (screen.update) this.engine.ticker.add(screen.update, screen)
+    if (screen.update)
+      this.engine.ticker.add(screen.update, screen)
 
     // Show the new screen
     if (screen.show) {
@@ -121,13 +123,17 @@ export class Navigation {
     screen.interactiveChildren = false
 
     // Hide screen if method is available
-    if (screen.hide) await screen.hide()
+    if (screen.hide)
+      await screen.hide()
     // Unlink update function if method is available
-    if (screen.update) this.engine.ticker.remove(screen.update, screen)
+    if (screen.update)
+      this.engine.ticker.remove(screen.update, screen)
     // Remove screen from its parent (usually app.stage, if not changed)
-    if (screen.parent) screen.parent.removeChild(screen)
+    if (screen.parent)
+      screen.parent.removeChild(screen)
     // Clean up the screen so that instance can be reused again later
-    if (screen.reset) screen.reset()
+    if (screen.reset)
+      screen.reset()
   }
 
   /**
@@ -136,7 +142,8 @@ export class Navigation {
    */
   public async showScreen (ctor: IAppScreenConstructor) {
     // Block interactivity in current screen
-    if (this.currentScreen) this.currentScreen.interactiveChildren = false
+    if (this.currentScreen)
+      this.currentScreen.interactiveChildren = false
 
     // Load assets for the new screen, if available
     if (ctor.assetBundles) {
@@ -148,16 +155,19 @@ export class Navigation {
       })
     }
 
-    if (this.currentScreen?.onLoad) this.currentScreen.onLoad(100)
+    if (this.currentScreen?.onLoad)
+      this.currentScreen.onLoad(100)
     // If there is a screen already created, hide and destroy it
-    if (this.currentScreen) await this.hideAndRemoveScreen(this.currentScreen)
+    if (this.currentScreen)
+      await this.hideAndRemoveScreen(this.currentScreen)
 
     // Create the new screen and add that to the stage
     this.currentScreen = BigPool.get(ctor)
     await this.addAndShowScreen(this.currentScreen, this.cScreen)
 
     const ref = this.crossReference(this.currentScreen.definition)
-    if (ref === null) return
+    if (ref === null)
+      return
 
     userSettings.setLastScreen(ref)
     this.stackScreenState(ref)
@@ -187,7 +197,8 @@ export class Navigation {
       await this.currentScreen.pause?.()
     }
 
-    if (this.currentPopup) await this.hideAndRemoveScreen(this.currentPopup)
+    if (this.currentPopup)
+      await this.hideAndRemoveScreen(this.currentPopup)
 
     this.currentPopup = new ctor() // eslint-disable-line new-cap
     await this.addAndShowScreen(this.currentPopup, this.cPopups)
@@ -197,7 +208,8 @@ export class Navigation {
    * Dismiss current popup, if there is one
    */
   public async dismissPopup () {
-    if (!this.currentPopup) return
+    if (!this.currentPopup)
+      return
     const popup = this.currentPopup
     this.currentPopup = undefined
     await this.hideAndRemoveScreen(popup)

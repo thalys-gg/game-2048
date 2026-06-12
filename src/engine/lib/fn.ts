@@ -3,16 +3,11 @@ export const toN = (n: number): { length: number } => ({ length: n })
 
 type MapFunction<T> = (value: unknown, index: number) => T
 
-export const arrFrom = <T>(
-  n: number,
-  to: MapFunction<T> = (toZero as unknown as MapFunction<T>),
-): T[] => Array.from(toN(n), to)
+export function arrFrom<T> (n: number, to: MapFunction<T> = (toZero as unknown as MapFunction<T>)): T[] {
+  return Array.from(toN(n), to)
+}
 
-export const arrSelfFrom = <T>(
-  n: number,
-  to: MapFunction<T> = (toZero as unknown as MapFunction<T>),
-  target: T[],
-): T[] => {
+export function arrSelfFrom<T> (n: number, to: MapFunction<T> = (toZero as unknown as MapFunction<T>), target: T[]): T[] {
   for (let i = 0; i < n; i++) {
     target[i] = to(undefined, i)
   }

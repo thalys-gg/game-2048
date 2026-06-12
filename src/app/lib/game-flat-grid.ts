@@ -88,7 +88,7 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
 
         if (newCell !== oldCell)
           moved = true
-        this.set(x, y, newCell as T)
+        this.set(x, y, newCell)
 
         if (newCell) {
           const pos = positions.get(x, y)!

@@ -32,8 +32,10 @@ export class InputHandler {
   public set enabled (value: boolean) { this._enabled = value }
 
   private _onKeyDown = (e: KeyboardEvent) => {
-    if (!this._enabled) return
-    if (this._waitForKeyUp[e.code]) return
+    if (!this._enabled)
+      return
+    if (this._waitForKeyUp[e.code])
+      return
 
     const direction = this._keyMap[e.code]
     if (direction) {

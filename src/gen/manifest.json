@@ -598,7 +598,6 @@
                 "smaller",
                 "larger",
                 "gear",
-                "button_square_depth_line",
                 "panel-027",
                 "panel-026",
                 "panel-018",
@@ -631,6 +630,7 @@
                 "panel-003",
                 "panel-002",
                 "panel-016",
+                "button_square_depth_line",
                 "button_rectangle_depth_gradient",
                 "button_rectangle_gradient"
               ]
@@ -641,7 +641,6 @@
               "smaller",
               "larger",
               "gear",
-              "button_square_depth_line",
               "panel-027",
               "panel-026",
               "panel-018",
@@ -674,6 +673,7 @@
               "panel-003",
               "panel-002",
               "panel-016",
+              "button_square_depth_line",
               "button_rectangle_depth_gradient",
               "button_rectangle_gradient"
             ]

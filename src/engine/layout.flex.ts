@@ -13,7 +13,8 @@ export function flexRow (
   } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0) return
+  if (N === 0)
+    return
 
   const dimension = 'width'
   const position = 'x'
@@ -40,7 +41,8 @@ export function flexRowReverse (
   } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0) return
+  if (N === 0)
+    return
 
   const dimension = 'width'
   const position = 'x'
@@ -68,7 +70,8 @@ export function flexColumn (
   } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0) return
+  if (N === 0)
+    return
 
   const position = 'y'
   const dimension = 'height'
@@ -95,7 +98,8 @@ export function flexColumnReverse (
   } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0) return
+  if (N === 0)
+    return
 
   const dimension = 'height'
   const position = 'y'
