@@ -1,9 +1,5 @@
-declare const globalThis: {
-  __PIXI_TEST_VERSION__: string | undefined
-}
-
 export function getAppVersion(): string {
-  return globalThis.__PIXI_TEST_VERSION__ ?? '?.?.?'
+  return (globalThis as { __PIXI_TEST_VERSION__?: string }).__PIXI_TEST_VERSION__ ?? '?.?.?'
 }
 
 export function isDev(): boolean {

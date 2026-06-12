@@ -81,13 +81,13 @@ export function generateManifestTypes(
 
         console.info(`[${name}] Generated TypeScript types at: ${outputPath}`)
 
-        // Fix generated file formatting with eslint
-        if (Bun?.version) {
-          try {
-            await Bun.$`bunx --bun eslint --fix ${outputPath}`
-          } catch (e) {
-            console.error(`[${name}] Error fixing TypeScript types:`, e)
-          }
+        // Format the generated file (works under both Bun and Node)
+        try {
+          const { execFile } = await import('node:child_process')
+          const { promisify } = await import('node:util')
+          await promisify(execFile)('vp', ['fmt', outputPath])
+        } catch (e) {
+          console.error(`[${name}] Error formatting TypeScript types:`, e)
         }
       } catch (error) {
         console.error(`[${name}] Error generating TypeScript types:`, error)

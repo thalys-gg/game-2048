@@ -14,10 +14,7 @@
             "beat-ident.ogg",
             "beat-ident"
           ],
-          "src": [
-            "loops/idents/beat-ident.ogg",
-            "loops/idents/beat-ident.mp3"
-          ],
+          "src": ["loops/idents/beat-ident.ogg", "loops/idents/beat-ident.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -31,10 +28,7 @@
             "country-ident.ogg",
             "country-ident"
           ],
-          "src": [
-            "loops/idents/country-ident.ogg",
-            "loops/idents/country-ident.mp3"
-          ],
+          "src": ["loops/idents/country-ident.ogg", "loops/idents/country-ident.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -48,10 +42,7 @@
             "polka-ident.ogg",
             "polka-ident"
           ],
-          "src": [
-            "loops/idents/polka-ident.ogg",
-            "loops/idents/polka-ident.mp3"
-          ],
+          "src": ["loops/idents/polka-ident.ogg", "loops/idents/polka-ident.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -65,10 +56,7 @@
             "reggae-ident.ogg",
             "reggae-ident"
           ],
-          "src": [
-            "loops/idents/reggae-ident.ogg",
-            "loops/idents/reggae-ident.mp3"
-          ],
+          "src": ["loops/idents/reggae-ident.ogg", "loops/idents/reggae-ident.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -82,10 +70,7 @@
             "serious-ident.ogg",
             "serious-ident"
           ],
-          "src": [
-            "loops/idents/serious-ident.ogg",
-            "loops/idents/serious-ident.mp3"
-          ],
+          "src": ["loops/idents/serious-ident.ogg", "loops/idents/serious-ident.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -99,10 +84,7 @@
             "alpha-dance.ogg",
             "alpha-dance"
           ],
-          "src": [
-            "loops/loops/alpha-dance.ogg",
-            "loops/loops/alpha-dance.mp3"
-          ],
+          "src": ["loops/loops/alpha-dance.ogg", "loops/loops/alpha-dance.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -116,10 +98,7 @@
             "cheerful-annoyance.ogg",
             "cheerful-annoyance"
           ],
-          "src": [
-            "loops/loops/cheerful-annoyance.ogg",
-            "loops/loops/cheerful-annoyance.mp3"
-          ],
+          "src": ["loops/loops/cheerful-annoyance.ogg", "loops/loops/cheerful-annoyance.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -133,10 +112,7 @@
             "drumming-sticks.ogg",
             "drumming-sticks"
           ],
-          "src": [
-            "loops/loops/drumming-sticks.ogg",
-            "loops/loops/drumming-sticks.mp3"
-          ],
+          "src": ["loops/loops/drumming-sticks.ogg", "loops/loops/drumming-sticks.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -150,10 +126,7 @@
             "farm-frolics.ogg",
             "farm-frolics"
           ],
-          "src": [
-            "loops/loops/farm-frolics.ogg",
-            "loops/loops/farm-frolics.mp3"
-          ],
+          "src": ["loops/loops/farm-frolics.ogg", "loops/loops/farm-frolics.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -167,10 +140,7 @@
             "flowing-rocks.ogg",
             "flowing-rocks"
           ],
-          "src": [
-            "loops/loops/flowing-rocks.ogg",
-            "loops/loops/flowing-rocks.mp3"
-          ],
+          "src": ["loops/loops/flowing-rocks.ogg", "loops/loops/flowing-rocks.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -184,10 +154,7 @@
             "game-over.ogg",
             "game-over"
           ],
-          "src": [
-            "loops/loops/game-over.ogg",
-            "loops/loops/game-over.mp3"
-          ],
+          "src": ["loops/loops/game-over.ogg", "loops/loops/game-over.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -201,10 +168,7 @@
             "german-virtue.ogg",
             "german-virtue"
           ],
-          "src": [
-            "loops/loops/german-virtue.ogg",
-            "loops/loops/german-virtue.mp3"
-          ],
+          "src": ["loops/loops/german-virtue.ogg", "loops/loops/german-virtue.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -218,10 +182,7 @@
             "infinite-descent.ogg",
             "infinite-descent"
           ],
-          "src": [
-            "loops/loops/infinite-descent.ogg",
-            "loops/loops/infinite-descent.mp3"
-          ],
+          "src": ["loops/loops/infinite-descent.ogg", "loops/loops/infinite-descent.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -235,10 +196,7 @@
             "italian-mom.ogg",
             "italian-mom"
           ],
-          "src": [
-            "loops/loops/italian-mom.ogg",
-            "loops/loops/italian-mom.mp3"
-          ],
+          "src": ["loops/loops/italian-mom.ogg", "loops/loops/italian-mom.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -252,10 +210,7 @@
             "mishief-stroll.ogg",
             "mishief-stroll"
           ],
-          "src": [
-            "loops/loops/mishief-stroll.ogg",
-            "loops/loops/mishief-stroll.mp3"
-          ],
+          "src": ["loops/loops/mishief-stroll.ogg", "loops/loops/mishief-stroll.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -269,10 +224,7 @@
             "mission-plausible.ogg",
             "mission-plausible"
           ],
-          "src": [
-            "loops/loops/mission-plausible.ogg",
-            "loops/loops/mission-plausible.mp3"
-          ],
+          "src": ["loops/loops/mission-plausible.ogg", "loops/loops/mission-plausible.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -286,10 +238,7 @@
             "night-at-the-beach.ogg",
             "night-at-the-beach"
           ],
-          "src": [
-            "loops/loops/night-at-the-beach.ogg",
-            "loops/loops/night-at-the-beach.mp3"
-          ],
+          "src": ["loops/loops/night-at-the-beach.ogg", "loops/loops/night-at-the-beach.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -303,10 +252,7 @@
             "polka-train.ogg",
             "polka-train"
           ],
-          "src": [
-            "loops/loops/polka-train.ogg",
-            "loops/loops/polka-train.mp3"
-          ],
+          "src": ["loops/loops/polka-train.ogg", "loops/loops/polka-train.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -320,10 +266,7 @@
             "sad-descent.ogg",
             "sad-descent"
           ],
-          "src": [
-            "loops/loops/sad-descent.ogg",
-            "loops/loops/sad-descent.mp3"
-          ],
+          "src": ["loops/loops/sad-descent.ogg", "loops/loops/sad-descent.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -331,16 +274,8 @@
           }
         },
         {
-          "alias": [
-            "loops/loops/sad-town.ogg",
-            "loops/loops/sad-town",
-            "sad-town.ogg",
-            "sad-town"
-          ],
-          "src": [
-            "loops/loops/sad-town.ogg",
-            "loops/loops/sad-town.mp3"
-          ],
+          "alias": ["loops/loops/sad-town.ogg", "loops/loops/sad-town", "sad-town.ogg", "sad-town"],
+          "src": ["loops/loops/sad-town.ogg", "loops/loops/sad-town.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -354,10 +289,7 @@
             "space-cadet.ogg",
             "space-cadet"
           ],
-          "src": [
-            "loops/loops/space-cadet.ogg",
-            "loops/loops/space-cadet.mp3"
-          ],
+          "src": ["loops/loops/space-cadet.ogg", "loops/loops/space-cadet.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -371,10 +303,7 @@
             "swinging-pants.ogg",
             "swinging-pants"
           ],
-          "src": [
-            "loops/loops/swinging-pants.ogg",
-            "loops/loops/swinging-pants.mp3"
-          ],
+          "src": ["loops/loops/swinging-pants.ogg", "loops/loops/swinging-pants.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -388,10 +317,7 @@
             "time-driving.ogg",
             "time-driving"
           ],
-          "src": [
-            "loops/loops/time-driving.ogg",
-            "loops/loops/time-driving.mp3"
-          ],
+          "src": ["loops/loops/time-driving.ogg", "loops/loops/time-driving.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -405,10 +331,7 @@
             "wacky-waiting.ogg",
             "wacky-waiting"
           ],
-          "src": [
-            "loops/loops/wacky-waiting.ogg",
-            "loops/loops/wacky-waiting.mp3"
-          ],
+          "src": ["loops/loops/wacky-waiting.ogg", "loops/loops/wacky-waiting.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -422,10 +345,7 @@
             "retro-beat.ogg",
             "retro-beat"
           ],
-          "src": [
-            "loops/retro/retro-beat.ogg",
-            "loops/retro/retro-beat.mp3"
-          ],
+          "src": ["loops/retro/retro-beat.ogg", "loops/retro/retro-beat.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -439,10 +359,7 @@
             "retro-comedy.ogg",
             "retro-comedy"
           ],
-          "src": [
-            "loops/retro/retro-comedy.ogg",
-            "loops/retro/retro-comedy.mp3"
-          ],
+          "src": ["loops/retro/retro-comedy.ogg", "loops/retro/retro-comedy.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -456,10 +373,7 @@
             "retro-mystic.ogg",
             "retro-mystic"
           ],
-          "src": [
-            "loops/retro/retro-mystic.ogg",
-            "loops/retro/retro-mystic.mp3"
-          ],
+          "src": ["loops/retro/retro-mystic.ogg", "loops/retro/retro-mystic.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -473,10 +387,7 @@
             "retro-polka.ogg",
             "retro-polka"
           ],
-          "src": [
-            "loops/retro/retro-polka.ogg",
-            "loops/retro/retro-polka.mp3"
-          ],
+          "src": ["loops/retro/retro-polka.ogg", "loops/retro/retro-polka.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -490,10 +401,7 @@
             "retro-reggae.ogg",
             "retro-reggae"
           ],
-          "src": [
-            "loops/retro/retro-reggae.ogg",
-            "loops/retro/retro-reggae.mp3"
-          ],
+          "src": ["loops/retro/retro-reggae.ogg", "loops/retro/retro-reggae.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -512,10 +420,7 @@
             "sfx-hover.wav",
             "sfx-hover"
           ],
-          "src": [
-            "main/sounds/sfx-hover.ogg",
-            "main/sounds/sfx-hover.mp3"
-          ],
+          "src": ["main/sounds/sfx-hover.ogg", "main/sounds/sfx-hover.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -529,10 +434,7 @@
             "sfx-press.wav",
             "sfx-press"
           ],
-          "src": [
-            "main/sounds/sfx-press.ogg",
-            "main/sounds/sfx-press.mp3"
-          ],
+          "src": ["main/sounds/sfx-press.ogg", "main/sounds/sfx-press.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -546,10 +448,7 @@
             "sfx-scrolling.wav",
             "sfx-scrolling"
           ],
-          "src": [
-            "main/sounds/sfx-scrolling.ogg",
-            "main/sounds/sfx-scrolling.mp3"
-          ],
+          "src": ["main/sounds/sfx-scrolling.ogg", "main/sounds/sfx-scrolling.mp3"],
           "data": {
             "tags": {
               "m": true
@@ -568,9 +467,7 @@
             "Kenney-Future-Narrow.ttf",
             "Kenney-Future-Narrow"
           ],
-          "src": [
-            "preload/Kenney-Future-Narrow.ttf"
-          ],
+          "src": ["preload/Kenney-Future-Narrow.ttf"],
           "data": {
             "tags": {
               "m": true
@@ -584,9 +481,7 @@
             "Kenney-Future.ttf",
             "Kenney-Future"
           ],
-          "src": [
-            "preload/Kenney-Future.ttf"
-          ],
+          "src": ["preload/Kenney-Future.ttf"],
           "data": {
             "tags": {
               "m": true
@@ -594,10 +489,7 @@
           }
         },
         {
-          "alias": [
-            "preload/ui",
-            "ui"
-          ],
+          "alias": ["preload/ui", "ui"],
           "src": [
             "preload/ui@0.5x.webp.json",
             "preload/ui@0.5x.png.json",

@@ -96,8 +96,8 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   public focus() {}
 
   public update(ticker: Ticker) {
-    // oxlint-disable-next-line no-useless-return
     if (this.paused) {
+      // oxlint-disable-next-line no-useless-return
       return
     }
   }

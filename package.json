@@ -18,8 +18,16 @@
     "#/*": "./scripts/*"
   },
   "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
     "clean": "rm -rf bun.lock node_modules/ .cache/ .assetpack/ public/assets/ src/gen/*",
     "clean:assets": "rm -rf .assetpack/ public/assets/",
+    "lint": "vp lint",
+    "fix": "vp check --fix",
+    "check": "vp check",
+    "test": "vp test",
+    "test:watch": "vp test watch",
     "prepare": "vp config"
   },
   "dependencies": {
@@ -36,6 +44,7 @@
     "@thalys/logger": "^1.0.3",
     "@types/node": "^24",
     "bun-types": "^1.3.14",
+    "oxlint": "^1.69.0",
     "pixi-stats": "^5.1.7",
     "typescript": "^5",
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",

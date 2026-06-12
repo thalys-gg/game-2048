@@ -6,6 +6,7 @@ import { fullReloadWhen } from './scripts/vite/plugin/full-reload-by-ext'
 import { defineConfig } from 'vite-plus'
 import devtoolsJson from 'vite-plugin-devtools-json'
 import glsl from 'vite-plugin-glsl'
+import lintConfig from './oxlint.config'
 
 export default defineConfig(async (_configEnv: ConfigEnv) => {
   return {
@@ -34,12 +35,7 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
     define: {
       APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
-    lint: {
-      options: {
-        typeAware: true,
-        typeCheck: true,
-      },
-    },
+    lint: lintConfig,
     fmt: {
       singleQuote: true,
       semi: false,
