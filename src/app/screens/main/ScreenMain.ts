@@ -18,7 +18,7 @@ export class ScreenMain extends ScreenBase {
   private input: InputHandler
   private score: UIScore
 
-  constructor () {
+  constructor() {
     super()
 
     this.board = new UIBoard()
@@ -34,28 +34,27 @@ export class ScreenMain extends ScreenBase {
     this.addChild(this.score)
   }
 
-  public override destroy (opts?: DestroyOptions): void {
+  public override destroy(opts?: DestroyOptions): void {
     this.input.destroy()
     super.destroy(opts)
   }
 
-  public resize ({ screen }: ResizeSignature) {
+  public resize({ screen }: ResizeSignature) {
     const parent = { width: this.width, height: this.height }
     super.resize({ screen, parent })
   }
 
   private handleMove = (direction: Direction) => {
-    if (this.paused)
-      return
+    if (this.paused) return
     this.game.move(direction)
   }
 
-  public async pause () {
+  public async pause() {
     super.pause()
     this.input.enabled = false
   }
 
-  public async resume () {
+  public async resume() {
     super.resume()
     this.input.enabled = true
   }

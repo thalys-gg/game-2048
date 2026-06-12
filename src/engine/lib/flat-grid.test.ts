@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'bun:test'
+import { describe, expect, test } from 'vite-plus/test'
 import { FlatGrid } from './flat-grid'
 
 describe('FlatGrid', () => {
@@ -30,7 +30,7 @@ describe('FlatGrid', () => {
     })
 
     test('should initialize with generator function', () => {
-      const grid = new FlatGrid<number>(2, 2, index => index)
+      const grid = new FlatGrid<number>(2, 2, (index) => index)
       expect(grid.get(0, 0)).toBe(0) // index 0
       expect(grid.get(1, 0)).toBe(1) // index 1
       expect(grid.get(0, 1)).toBe(2) // index 2
@@ -76,7 +76,7 @@ describe('FlatGrid', () => {
     // Setup a grid for testing
     // 0 1 2
     // 3 4 5
-    const createGrid = () => new FlatGrid<number>(3, 2, i => i)
+    const createGrid = () => new FlatGrid<number>(3, 2, (i) => i)
 
     test('get/set should work for valid coordinates', () => {
       const grid = createGrid()
@@ -120,14 +120,14 @@ describe('FlatGrid', () => {
     // 0 1 2
     // 3 4 5
     // 6 7 8
-    const grid = new FlatGrid<number>(3, 3, i => i)
+    const grid = new FlatGrid<number>(3, 3, (i) => i)
 
     test('getNeighbors should return 4 neighbors (no diagonals)', () => {
       // Center (1,1) -> 4
       // Neighbors: 1(N), 5(E), 7(S), 3(W)
       const neighbors = grid.getNeighbors(1, 1, false)
       expect(neighbors).toHaveLength(4)
-      const values = neighbors.map(n => n.value).sort((a, b) => (a as number) - (b as number))
+      const values = neighbors.map((n) => n.value).sort((a, b) => (a as number) - (b as number))
       expect(values).toEqual([1, 3, 5, 7])
     })
 
@@ -136,7 +136,7 @@ describe('FlatGrid', () => {
       // Neighbors: All others
       const neighbors = grid.getNeighbors(1, 1, true)
       expect(neighbors).toHaveLength(8)
-      const values = neighbors.map(n => n.value).sort((a, b) => (a as number) - (b as number))
+      const values = neighbors.map((n) => n.value).sort((a, b) => (a as number) - (b as number))
       expect(values).toEqual([0, 1, 2, 3, 5, 6, 7, 8])
     })
 
@@ -145,14 +145,14 @@ describe('FlatGrid', () => {
       // Neighbors (no diag): 1(E), 3(S)
       const neighbors = grid.getNeighbors(0, 0, false)
       expect(neighbors).toHaveLength(2)
-      expect(neighbors.map(n => n.value)).toContain(1)
-      expect(neighbors.map(n => n.value)).toContain(3)
+      expect(neighbors.map((n) => n.value)).toContain(1)
+      expect(neighbors.map((n) => n.value)).toContain(3)
 
       // Top-Left (0,0) -> 0
       // Neighbors (diag): 1(E), 3(S), 4(SE)
       const neighborsDiag = grid.getNeighbors(0, 0, true)
       expect(neighborsDiag).toHaveLength(3)
-      expect(neighborsDiag.map(n => n.value)).toContain(4)
+      expect(neighborsDiag.map((n) => n.value)).toContain(4)
     })
   })
 
@@ -185,7 +185,7 @@ describe('FlatGrid', () => {
 
     test('map should return a new grid with transformed values', () => {
       const grid = new FlatGrid(2, 2, 1)
-      const doubled = grid.map(val => (val as number) * 2)
+      const doubled = grid.map((val) => (val as number) * 2)
 
       expect(doubled).not.toBe(grid) // Reference check
       expect(doubled.get(0, 0)).toBe(2)
@@ -207,12 +207,12 @@ describe('FlatGrid', () => {
 
       // Test multiple times to account for randomness
       for (let i = 0; i < 10; i++) {
-        const loc = grid.getRandomLocation(val => val === 1)
+        const loc = grid.getRandomLocation((val) => val === 1)
         expect(loc).not.toBeNull()
         expect(grid.get(loc!.x, loc!.y)).toBe(1)
       }
 
-      const notFound = grid.getRandomLocation(val => val === 99)
+      const notFound = grid.getRandomLocation((val) => val === 99)
       expect(notFound).toBeNull()
     })
   })

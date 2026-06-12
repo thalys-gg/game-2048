@@ -12,22 +12,24 @@ export class DebugQuad extends Graphics {
   private _strokeColor: number
   private _strokeWidth: number
 
-  constructor (options: {
-    width?: number
-    height?: number
-    fillColor?: number
-    fillAlpha?: number
-    strokeColor?: number
-    strokeWidth?: number
-  } = {}) {
+  constructor(
+    options: {
+      width?: number
+      height?: number
+      fillColor?: number
+      fillAlpha?: number
+      strokeColor?: number
+      strokeWidth?: number
+    } = {},
+  ) {
     super()
     this.label = 'DebugQuad'
 
     this._width = options.width ?? 100
     this._height = options.height ?? 100
-    this._fillColor = options.fillColor ?? 0xDE3249
+    this._fillColor = options.fillColor ?? 0xde3249
     this._fillAlpha = options.fillAlpha ?? 0.2
-    this._strokeColor = options.strokeColor ?? 0xFF0000
+    this._strokeColor = options.strokeColor ?? 0xff0000
     this._strokeWidth = options.strokeWidth ?? 2
 
     this.draw()
@@ -36,7 +38,7 @@ export class DebugQuad extends Graphics {
   /**
    * Updates the debug quad dimensions and redraws it
    */
-  public updateSize (width: number, height: number): void {
+  public updateSize(width: number, height: number): void {
     this._width = width
     this._height = height
     this.draw()
@@ -45,7 +47,7 @@ export class DebugQuad extends Graphics {
   /**
    * Updates the debug quad to match its parent container dimensions
    */
-  public updateToParentSize (): void {
+  public updateToParentSize(): void {
     if (this.parent) {
       // Temporarily remove self to get parent bounds without the debug quad
       const parent = this.parent
@@ -64,18 +66,31 @@ export class DebugQuad extends Graphics {
   /**
    * Updates the debug quad colors and redraws it
    */
-  public updateColors (fillColor?: number, fillAlpha?: number, strokeColor?: number, strokeWidth?: number): void {
-    if (fillColor !== undefined) { this._fillColor = fillColor }
-    if (fillAlpha !== undefined) { this._fillAlpha = fillAlpha }
-    if (strokeColor !== undefined) { this._strokeColor = strokeColor }
-    if (strokeWidth !== undefined) { this._strokeWidth = strokeWidth }
+  public updateColors(
+    fillColor?: number,
+    fillAlpha?: number,
+    strokeColor?: number,
+    strokeWidth?: number,
+  ): void {
+    if (fillColor !== undefined) {
+      this._fillColor = fillColor
+    }
+    if (fillAlpha !== undefined) {
+      this._fillAlpha = fillAlpha
+    }
+    if (strokeColor !== undefined) {
+      this._strokeColor = strokeColor
+    }
+    if (strokeWidth !== undefined) {
+      this._strokeWidth = strokeWidth
+    }
     this.draw()
   }
 
   /**
    * Redraws the debug quad with current settings
    */
-  private draw (): void {
+  private draw(): void {
     this.clear()
     this.rect(0, 0, this._width, this._height)
     this.fill({ color: this._fillColor, alpha: this._fillAlpha })

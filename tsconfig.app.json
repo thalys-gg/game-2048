@@ -10,10 +10,7 @@
     // Allow use of the latest ECMAScript features
     "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
 
-    "types": [
-      "pixi.js",
-      "vite-plugin-glsl/ext"
-    ],
+    "types": ["pixi.js", "vite-plugin-glsl/ext"],
 
     "outDir": "./dist-app",
 

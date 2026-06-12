@@ -14,7 +14,7 @@ space(1)
  * Finally, it logs the distribution of these buckets, showing the count and percentage
  * of hits for each bucket.
  */
-async function rollFloatTest (iterations = 1000000) {
+async function rollFloatTest(iterations = 1000000) {
   const counts: Record<string, number> = {}
   for (let i = 0; i < iterations; i++) {
     const float = rollFloat()

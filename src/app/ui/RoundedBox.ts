@@ -1,11 +1,11 @@
 import { Container, NineSliceSprite, Texture } from 'pixi.js'
 
 const defaultRoundedBoxOptions = {
-  color: 0xFFFFFF,
+  color: 0xffffff,
   width: 350,
   height: 600,
   shadow: true,
-  shadowColor: 0xA0A0A0,
+  shadowColor: 0xa0a0a0,
   shadowOffset: 22,
 }
 
@@ -20,7 +20,7 @@ export class RoundedBox extends Container {
   /** Optional shadow matching the box image, with y offest */
   private shadow?: NineSliceSprite
 
-  constructor (options: Partial<RoundedBoxOptions> = {}) {
+  constructor(options: Partial<RoundedBoxOptions> = {}) {
     super()
     const opts = { ...defaultRoundedBoxOptions, ...options }
     this.image = new NineSliceSprite({
@@ -55,12 +55,12 @@ export class RoundedBox extends Container {
   }
 
   /** Get the base width, without counting the shadow */
-  public get boxWidth () {
+  public get boxWidth() {
     return this.image.width
   }
 
   /** Get the base height, without counting the shadow */
-  public get boxHeight () {
+  public get boxHeight() {
     return this.image.height
   }
 }

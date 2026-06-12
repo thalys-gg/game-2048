@@ -1,8 +1,13 @@
-import type { GroupedSegment, IFunctionSplitResult, Segment, TSplittedInto } from '∆/scene/text.types'
+import type {
+  GroupedSegment,
+  IFunctionSplitResult,
+  Segment,
+  TSplittedInto,
+} from '∆/scene/text.types'
 import type { ConvertedStrokeStyle, SplitOptions, TextStyle } from 'pixi.js'
 import { CanvasTextMetrics, Container, Matrix, Sprite, Text } from 'pixi.js'
 
-function getAlignmentOffset (alignment: string, lineWidth: number, largestLine: number): number {
+function getAlignmentOffset(alignment: string, lineWidth: number, largestLine: number): number {
   switch (alignment) {
     case 'center':
       return (largestLine - lineWidth) / 2
@@ -14,7 +19,7 @@ function getAlignmentOffset (alignment: string, lineWidth: number, largestLine: 
   }
 }
 
-function isNewlineCharacter (char: string): boolean {
+function isNewlineCharacter(char: string): boolean {
   return char === '\r' || char === '\n' || char === '\r\n'
 }
 
@@ -26,7 +31,7 @@ function isNewlineCharacter (char: string): boolean {
  * @param textStyle - The text style to use for measurements
  * @returns Array of grouped segments containing line information
  */
-function groupTextSegments (
+function groupTextSegments(
   segments: string[],
   measuredText: { lines: string[] },
   textStyle: TextStyle,
@@ -41,7 +46,7 @@ function groupTextSegments (
   textStyle.wordWrap = false
 
   segments.forEach((segment) => {
-    const isWhitespace = (/^\s*$/).test(segment)
+    const isWhitespace = /^\s*$/.test(segment)
     const isNewline = isNewlineCharacter(segment)
     const isSpaceAtStart = matchedLine.length === 0 && isWhitespace
 
@@ -49,8 +54,7 @@ function groupTextSegments (
       return
     }
 
-    if (!isNewline)
-      matchedLine += segment
+    if (!isNewline) matchedLine += segment
 
     const metric = CanvasTextMetrics.measureText(segment, textStyle)
 
@@ -83,31 +87,36 @@ function groupTextSegments (
  * @returns An array of Text objects representing the split segments.
  * @internal
  */
-export function textSplitWithEmojiReplacer (
+export function textSplitWithEmojiReplacer(
   options: Pick<SplitOptions, 'text' | 'style'> & { chars: TSplittedInto[] },
 ): IFunctionSplitResult<Text | Sprite> {
   const { text, style } = options
 
-  const existingChars: Text[] = options.chars.filter(child => child instanceof Text)
+  const existingChars: Text[] = options.chars.filter((child) => child instanceof Text)
   const textStyle = style as TextStyle
 
   const _emoji: string[] = []
-  const _text = text.split(/\s/).map(
-    (word) => {
+  const _text = text
+    .split(/\s/)
+    .map((word) => {
       if (word[0] === '{' && word.at(-1) === '}') {
         _emoji.push(word.slice(1, -1))
         return '∆  '
       }
       return word
-    },
-  ).join(' ')
+    })
+    .join(' ')
 
   // measure the entire text to get the layout
   const measuredText = CanvasTextMetrics.measureText(_text, textStyle)
   // split the text into segments
   const segments = CanvasTextMetrics.graphemeSegmenter(_text)
   // now group the segments into lines based on measured lines
-  const groupedSegments: GroupedSegment[] = groupTextSegments(segments, measuredText, textStyle.clone())
+  const groupedSegments: GroupedSegment[] = groupTextSegments(
+    segments,
+    measuredText,
+    textStyle.clone(),
+  )
 
   const alignment = textStyle.align
   const largestLine = measuredText.lineWidths.reduce((max, line) => Math.max(max, line), 0)
@@ -171,12 +180,12 @@ export function textSplitWithEmojiReplacer (
           char.text = segment.char
           char.style = textStyle
           char.setFromMatrix(Matrix.IDENTITY)
-          char.x = xOffset - currentWordContainer.x - (dropShadowDistance * i)
+          char.x = xOffset - currentWordContainer.x - dropShadowDistance * i
         } else {
           char = new Text({
             text: segment.char,
             style: textStyle,
-            x: xOffset - currentWordContainer.x - (dropShadowDistance * i),
+            x: xOffset - currentWordContainer.x - dropShadowDistance * i,
           })
         }
 

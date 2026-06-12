@@ -19,10 +19,10 @@ type Path = (string | symbol)[]
 type ChangeType = 'SET' | 'DELETE' | 'ADD'
 
 export interface ChangeEvent<T, K extends WatchedProp<T>> {
-  type: ChangeType    // What kind of change happened
-  value: T[K]         // The new value (undefined for DELETE)
+  type: ChangeType // What kind of change happened
+  value: T[K] // The new value (undefined for DELETE)
   previousValue: T[K] // The old value
-  target: T           // The object that was modified
+  target: T // The object that was modified
 }
 
 export type WatcherCallback<T, K extends WatchedProp<T>> = (event: ChangeEvent<T, K>) => void
@@ -48,7 +48,6 @@ watched.on('firstNameChanged', (firstName) => {
 })
 
 watched.firstName = 'Amanda'
-
 
 await waitFor(1)
 watched.firstName = 'Joaquim'

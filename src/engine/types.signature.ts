@@ -3,7 +3,7 @@
  */
 export type ResizeSignature = {
   /** The screen dimensions */
-  screen: { width: number, height: number }
+  screen: { width: number; height: number }
   /** The parent container dimensions */
-  parent: { width: number, height: number }
+  parent: { width: number; height: number }
 }

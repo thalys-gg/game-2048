@@ -9,7 +9,7 @@ const SYS_ROOT = path.parse(process.cwd()).root
  * @param filename - The name of the file to search for (e.g., 'package.json').
  * @returns An object with a `from` method to start the search.
  */
-export function searchUpFor (filename: string) {
+export function searchUpFor(filename: string) {
   return {
     /**
      * Asynchronously searches for the specified file starting from `startDir`.
@@ -17,7 +17,7 @@ export function searchUpFor (filename: string) {
      * @param leafDir - The absolute path of the directory to start the search from.
      * @returns A promise that resolves with the absolute path of the directory containing the file, or null if not found.
      */
-    async from (leafDir: string = import.meta.dir): Promise<string | null> {
+    async from(leafDir: string = import.meta.dir): Promise<string | null> {
       let currentDir = leafDir
 
       while (true) {
@@ -49,7 +49,7 @@ export function searchUpFor (filename: string) {
  * @returns {Promise<string>} A promise that resolves with the absolute path to the project root.
  * @throws {Error} If the `package.json` file cannot be found.
  */
-export async function findProjectRoot (): Promise<string> {
+export async function findProjectRoot(): Promise<string> {
   const startDir = import.meta.dir
   const root = await searchUpFor('package.json').from(startDir)
 

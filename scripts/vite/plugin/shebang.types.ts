@@ -1,3 +1,1 @@
-export interface ShebangOptions {
-
-}
+export interface ShebangOptions {}

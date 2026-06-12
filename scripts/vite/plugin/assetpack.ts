@@ -12,14 +12,12 @@ import { customAssetpackPipes } from '../../assetpack/pipe'
  *
  * @returns {Plugin} The Vite plugin object.
  */
-export function assetpackPlugin () {
+export function assetpackPlugin() {
   // Configuration for the AssetPack instance.
   const apConfig = {
     entry: './raw-assets',
     logLevel: 'info',
-    pipes: [
-      ...customAssetpackPipes(),
-    ],
+    pipes: [...customAssetpackPipes()],
   } as AssetPackConfig
 
   // The Vite command mode ('serve' or 'build').
@@ -35,14 +33,18 @@ export function assetpackPlugin () {
      * This hook is used to set the output path for AssetPack based on Vite's public directory.
      * @param {ResolvedConfig} resolvedConfig - The resolved Vite configuration.
      */
-    configResolved (resolvedConfig) {
+    configResolved(resolvedConfig) {
       mode = resolvedConfig.command
 
       // If publicDir is not set, we can't determine the output path.
-      if (!resolvedConfig.publicDir) { return }
+      if (!resolvedConfig.publicDir) {
+        return
+      }
 
       // If output path is already configured, do nothing.
-      if (apConfig.output) { return }
+      if (apConfig.output) {
+        return
+      }
 
       // remove the root from the public dir
       const publicDir = resolvedConfig.publicDir.replace(process.cwd(), '')
@@ -65,7 +67,9 @@ export function assetpackPlugin () {
     buildStart: async () => {
       if (mode === 'serve') {
         // In serve mode, we want to watch for changes.
-        if (ap) { return } // Already watching
+        if (ap) {
+          return
+        } // Already watching
         ap = new AssetPack(apConfig)
         await ap.watch()
       } else {

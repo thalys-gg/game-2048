@@ -27,7 +27,11 @@ export class FlatGrid<T> {
    * @param height The height of the grid (rows)
    * @param initialValue Initial value to fill the grid, or a function that returns the value
    */
-  constructor (width: number, height: number, initialValue?: T | ((index: number) => T | null) | null) {
+  constructor(
+    width: number,
+    height: number,
+    initialValue?: T | ((index: number) => T | null) | null,
+  ) {
     this.width = Math.floor(width)
     this.height = Math.floor(height)
     // oxlint-disable-next-line unicorn/no-new-array
@@ -49,9 +53,8 @@ export class FlatGrid<T> {
   /**
    * Get value at (x, y). Returns null (or provided fallback) if out of bounds.
    */
-  public get (x: number, y: number, fallback: T | null = null): T | null {
-    if (!this.isValid(x, y))
-      return fallback
+  public get(x: number, y: number, fallback: T | null = null): T | null {
+    if (!this.isValid(x, y)) return fallback
     return this.data[this.getIndex(x, y)] ?? null
   }
 
@@ -59,7 +62,7 @@ export class FlatGrid<T> {
    * Converts 2D coordinates to a 1D index.
    * Does NOT check bounds (use isValid for that).
    */
-  public getIndex (x: number, y: number): number {
+  public getIndex(x: number, y: number): number {
     return y * this.width + x
   }
 
@@ -69,7 +72,7 @@ export class FlatGrid<T> {
    * @param index The 1D index to get
    * @returns The value at the given index, or null if out of bounds
    */
-  public getAtIndex (index: number): T | null {
+  public getAtIndex(index: number): T | null {
     return this.data[index] ?? null
   }
 
@@ -80,7 +83,7 @@ export class FlatGrid<T> {
    * @param index The 1D index to convert
    * @returns The 2D coordinates (x, y)
    */
-  public getXY (index: number): Coordinate {
+  public getXY(index: number): Coordinate {
     return {
       x: index % this.width,
       y: Math.floor(index / this.width),
@@ -92,11 +95,8 @@ export class FlatGrid<T> {
    * @param x The x coordinate of the column.
    * @returns The column as an array of values.
    */
-  public getColumn (x: number): (T | null)[] {
-    return Array.from(
-      { length: this.height },
-      (_, y) => this.get(x, y),
-    )
+  public getColumn(x: number): (T | null)[] {
+    return Array.from({ length: this.height }, (_, y) => this.get(x, y))
   }
 
   /**
@@ -104,34 +104,29 @@ export class FlatGrid<T> {
    * @param y The y coordinate of the row.
    * @returns The row as an array of values.
    */
-  public getLine (y: number): (T | null)[] {
-    return Array.from(
-      { length: this.width },
-      (_, x) => this.get(x, y),
-    )
+  public getLine(y: number): (T | null)[] {
+    return Array.from({ length: this.width }, (_, x) => this.get(x, y))
   }
-
 
   /**
    * Checks if coordinates are within grid boundaries.
    */
-  public isValid (x: number, y: number): boolean {
+  public isValid(x: number, y: number): boolean {
     return x >= 0 && x < this.width && y >= 0 && y < this.height
   }
 
   /**
    * Checks if a 1D index is within bounds.
    */
-  public isValidIndex (index: number): boolean {
+  public isValidIndex(index: number): boolean {
     return index >= 0 && index < this.data.length
   }
 
   /**
    * Set value at (x, y). Returns false if out of bounds.
    */
-  public set (x: number, y: number, value: T | null): boolean {
-    if (!this.isValid(x, y))
-      return false
+  public set(x: number, y: number, value: T | null): boolean {
+    if (!this.isValid(x, y)) return false
     this.data[this.getIndex(x, y)] = value
     return true
   }
@@ -139,14 +134,13 @@ export class FlatGrid<T> {
   /**
    * Set value directly at 1D index.
    */
-  public setAtIndex (index: number, value: T | null): boolean {
-    if (!this.isValidIndex(index))
-      return false
+  public setAtIndex(index: number, value: T | null): boolean {
+    if (!this.isValidIndex(index)) return false
     this.data[index] = value
     return true
   }
 
-  public get raw (): (T | null)[] {
+  public get raw(): (T | null)[] {
     return this.data
   }
 
@@ -160,7 +154,11 @@ export class FlatGrid<T> {
    * @param y The y coordinate of the cell.
    * @param diagonals If true, includes corners (8 neighbors), otherwise just NESW (4 neighbors).
    */
-  public getNeighbors (x: number, y: number, diagonals: boolean = false): { x: number, y: number, value: T | null, index: number }[] {
+  public getNeighbors(
+    x: number,
+    y: number,
+    diagonals: boolean = false,
+  ): { x: number; y: number; value: T | null; index: number }[] {
     const results = []
 
     // N, E, S, W
@@ -174,9 +172,9 @@ export class FlatGrid<T> {
     if (diagonals) {
       offsets.push(
         { dx: -1, dy: -1 }, // NW
-        { dx: 1, dy: -1 },  // NE
-        { dx: 1, dy: 1 },   // SE
-        { dx: -1, dy: 1 },   // SW
+        { dx: 1, dy: -1 }, // NE
+        { dx: 1, dy: 1 }, // SE
+        { dx: -1, dy: 1 }, // SW
       )
     }
 
@@ -202,14 +200,14 @@ export class FlatGrid<T> {
   // Functional Methods
   // ==========================================
 
-  public forEach (callback: GridIterator<T>): void {
+  public forEach(callback: GridIterator<T>): void {
     for (let i = 0; i < this.data.length; i++) {
       const { x, y } = this.getXY(i)
       callback(this.getAtIndex(i), x, y, i)
     }
   }
 
-  public some (predicate: GridPredicate<T>): boolean {
+  public some(predicate: GridPredicate<T>): boolean {
     for (let i = 0; i < this.data.length; i++) {
       const value = this.getAtIndex(i)
       const { x, y } = this.getXY(i)
@@ -220,9 +218,9 @@ export class FlatGrid<T> {
     return false
   }
 
-  public includes (value: T | null): boolean {
+  public includes(value: T | null): boolean {
     // oxlint-disable-next-line unicorn/prefer-includes
-    return this.some(v => v === value)
+    return this.some((v) => v === value)
   }
 
   /**
@@ -246,7 +244,9 @@ export class FlatGrid<T> {
    * // Find random cell where value is 0
    * const emptySpot = grid.getRandomLocation((val) => val === 0);
    */
-  public getRandomLocation (predicate: (value: T | null, x: number, y: number) => boolean): Coordinate | null {
+  public getRandomLocation(
+    predicate: (value: T | null, x: number, y: number) => boolean,
+  ): Coordinate | null {
     const indices: number[] = []
 
     // Single pass scan to find all candidates
@@ -260,14 +260,13 @@ export class FlatGrid<T> {
       }
     }
 
-    if (indices.length === 0)
-      return null
+    if (indices.length === 0) return null
 
     const randIndex = indices[Math.floor(Math.random() * indices.length)]
     return this.getXY(randIndex)
   }
 
-  public fill (value: T | null): void {
+  public fill(value: T | null): void {
     this.data.fill(value)
   }
 
@@ -278,7 +277,7 @@ export class FlatGrid<T> {
   /**
    * Deep copy if T is primitive, shallow copy of references if T is object.
    */
-  public clone (): FlatGrid<T> {
+  public clone(): FlatGrid<T> {
     const newGrid = new FlatGrid<T>(this.width, this.height)
     newGrid.setRawData([...this.data])
     return newGrid
@@ -289,9 +288,11 @@ export class FlatGrid<T> {
    * Useful for loading saved states.
    * Throws if length doesn't match dimensions.
    */
-  public setRawData (newData: (T | null)[]): void {
+  public setRawData(newData: (T | null)[]): void {
     if (newData.length !== this.width * this.height) {
-      throw new Error(`Data length ${newData.length} does not match grid dimensions ${this.width}x${this.height}`)
+      throw new Error(
+        `Data length ${newData.length} does not match grid dimensions ${this.width}x${this.height}`,
+      )
     }
     this.data = newData
   }
@@ -299,7 +300,7 @@ export class FlatGrid<T> {
   /**
    * Debug visualization
    */
-  public toString (): string {
+  public toString(): string {
     let output = ''
     for (let y = 0; y < this.height; y++) {
       const rowStart = y * this.width
@@ -313,8 +314,7 @@ export class FlatGrid<T> {
    * Static helper to create a grid from a 2D array (T[][]).
    */
   public static from2DArray<T>(matrix: T[][]): FlatGrid<T> {
-    if (matrix.length === 0)
-      return new FlatGrid<T>(0, 0)
+    if (matrix.length === 0) return new FlatGrid<T>(0, 0)
     const height = matrix.length
     const width = matrix[0].length
     const grid = new FlatGrid<T>(width, height)

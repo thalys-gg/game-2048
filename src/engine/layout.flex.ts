@@ -2,19 +2,11 @@ import type { IBaseOptions } from '∆/layout.types'
 import type { Container } from 'pixi.js'
 import { getMaxDimensions } from '∆/layout.utils'
 
-export function flexRow (
-  container: Container,
-  options: IBaseOptions,
-): void {
-
-  const {
-    children,
-    childrenSize,
-  } = getMaxDimensions(container.children)
+export function flexRow(container: Container, options: IBaseOptions): void {
+  const { children, childrenSize } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0)
-    return
+  if (N === 0) return
 
   const dimension = 'width'
   const position = 'x'
@@ -30,19 +22,11 @@ export function flexRow (
   })
 }
 
-export function flexRowReverse (
-  container: Container,
-  options: IBaseOptions,
-): void {
-
-  const {
-    children,
-    childrenSize,
-  } = getMaxDimensions(container.children)
+export function flexRowReverse(container: Container, options: IBaseOptions): void {
+  const { children, childrenSize } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0)
-    return
+  if (N === 0) return
 
   const dimension = 'width'
   const position = 'x'
@@ -59,19 +43,11 @@ export function flexRowReverse (
   })
 }
 
-export function flexColumn (
-  container: Container,
-  options: IBaseOptions,
-): void {
-
-  const {
-    children,
-    childrenSize,
-  } = getMaxDimensions(container.children)
+export function flexColumn(container: Container, options: IBaseOptions): void {
+  const { children, childrenSize } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0)
-    return
+  if (N === 0) return
 
   const position = 'y'
   const dimension = 'height'
@@ -87,19 +63,11 @@ export function flexColumn (
   })
 }
 
-export function flexColumnReverse (
-  container: Container,
-  options: IBaseOptions,
-): void {
-
-  const {
-    children,
-    childrenSize,
-  } = getMaxDimensions(container.children)
+export function flexColumnReverse(container: Container, options: IBaseOptions): void {
+  const { children, childrenSize } = getMaxDimensions(container.children)
 
   const N = children.length
-  if (N === 0)
-    return
+  if (N === 0) return
 
   const dimension = 'height'
   const position = 'y'

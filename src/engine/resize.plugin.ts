@@ -1,8 +1,4 @@
-import type {
-  Application,
-  ApplicationOptions,
-  ExtensionMetadata,
-} from 'pixi.js'
+import type { Application, ApplicationOptions, ExtensionMetadata } from 'pixi.js'
 import { resize } from '∆/resize'
 import { ExtensionType } from 'pixi.js'
 
@@ -30,7 +26,7 @@ export class CreationResizePlugin {
    * Initialize the plugin with scope of application instance
    * @param {object} [options] - See application options
    */
-  public static init (options: ApplicationOptions): void {
+  public static init(options: ApplicationOptions): void {
     const app = this as unknown as Application
 
     Object.defineProperty(
@@ -41,7 +37,7 @@ export class CreationResizePlugin {
        * renderer's view element to match width and height.
        */
       {
-        set (dom: Window | HTMLElement) {
+        set(dom: Window | HTMLElement) {
           EVENTS.forEach((event) => {
             globalThis.window.removeEventListener(event, app.queueResize)
             this._resizeTo = dom
@@ -52,7 +48,7 @@ export class CreationResizePlugin {
 
           app.resize()
         },
-        get () {
+        get() {
           return this._resizeTo
         },
       },
@@ -130,14 +126,13 @@ export class CreationResizePlugin {
       letterbox: true,
       ...options.resizeOptions,
     }
-    app.resizeTo
-      = options.resizeTo || (null as unknown as Window | HTMLElement)
+    app.resizeTo = options.resizeTo || (null as unknown as Window | HTMLElement)
   }
 
   /**
    * Clean up the ticker, scoped to application
    */
-  public static destroy (): void {
+  public static destroy(): void {
     const app = this as unknown as Application
 
     globalThis.removeEventListener('resize', app.queueResize)

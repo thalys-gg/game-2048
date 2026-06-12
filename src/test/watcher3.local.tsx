@@ -22,11 +22,11 @@ type Path = (string | symbol)[]
 type ChangeType = 'SET' | 'DELETE' | 'ADD'
 
 export interface ChangeEvent {
-  path: Path          // The path to the property that changed
-  type: ChangeType    // What kind of change happened
-  value: any          // The new value (undefined for DELETE)
-  previousValue: any  // The old value
-  target: object      // The object that was modified
+  path: Path // The path to the property that changed
+  type: ChangeType // What kind of change happened
+  value: any // The new value (undefined for DELETE)
+  previousValue: any // The old value
+  target: object // The object that was modified
 }
 
 export type WatcherCallback = (event: ChangeEvent) => void
@@ -41,10 +41,7 @@ export type WatcherCallback = (event: ChangeEvent) => void
  * @param callback - Function called on any change.
  * @returns A proxied version of the target.
  */
-export function createWatchedObject<T extends object> (
-  target: T,
-  callback: WatcherCallback,
-): T {
+export function createWatchedObject<T extends object>(target: T, callback: WatcherCallback): T {
   // Map to store proxies for nested objects to ensure object identity stability
   const proxyCache = new WeakMap<object, object>()
 
@@ -53,9 +50,9 @@ export function createWatchedObject<T extends object> (
    * @param obj - The current object being proxied.
    * @param path - The path to reach this object from the root.
    */
-  function createHandler (obj: any, path: Path): any {
+  function createHandler(obj: any, path: Path): any {
     return {
-      get (target: any, property: string | symbol, receiver: any) {
+      get(target: any, property: string | symbol, receiver: any) {
         const value = Reflect.get(target, property, receiver)
 
         // If the value is an object (and not null), we need to proxy it too
@@ -68,10 +65,7 @@ export function createWatchedObject<T extends object> (
           }
 
           // Create a new proxy for the nested object
-          const nestedProxy = new Proxy(
-            value,
-            createHandler(value, [...path, property]),
-          )
+          const nestedProxy = new Proxy(value, createHandler(value, [...path, property]))
 
           proxyCache.set(value, nestedProxy)
           return nestedProxy
@@ -80,7 +74,7 @@ export function createWatchedObject<T extends object> (
         return value
       },
 
-      set (target: any, property: string | symbol, value: any, receiver: any) {
+      set(target: any, property: string | symbol, value: any, receiver: any) {
         const previousValue = Reflect.get(target, property, receiver)
         const newPath = [...path, property]
 
@@ -105,7 +99,7 @@ export function createWatchedObject<T extends object> (
         return result
       },
 
-      deleteProperty (target: any, property: string | symbol) {
+      deleteProperty(target: any, property: string | symbol) {
         const previousValue = Reflect.get(target, property)
         const newPath = [...path, property]
 
@@ -133,13 +127,12 @@ export function createWatchedObject<T extends object> (
   return rootProxy
 }
 
-
 // ==========================================
 // Usage Examples
 // ==========================================
 
 // Run this function to see it in action
-function runDemo () {
+function runDemo() {
   log('--- Starting Watched Object Demo ---')
   space()
 

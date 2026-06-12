@@ -1,8 +1,7 @@
 import type { PluginOptions } from '@assetpack/core'
 
 /** Represents a bundle of assets in the manifest. */
-export interface Bundle
-{
+export interface Bundle {
   /** The name of the bundle. */
   name: string
   /** An array of asset entries belonging to this bundle. */
@@ -12,15 +11,13 @@ export interface Bundle
 }
 
 /** Represents the complete asset manifest structure. */
-export interface Manifest
-{
+export interface Manifest {
   /** An array of asset bundles. */
   bundles: Bundle[]
 }
 
 /** Represents a single asset entry within a manifest bundle. */
-export interface ManifestEntry
-{
+export interface ManifestEntry {
   /** The alias or aliases that can be used to retrieve the asset. */
   alias: string | string[]
   /** The source path or paths of the asset files. */
@@ -32,9 +29,7 @@ export interface ManifestEntry
 }
 
 /** Defines the options for the manifest generation plugin. */
-export interface ManifestOptions extends PluginOptions
-{
-
+export interface ManifestOptions extends PluginOptions {
   /**
    * The output location for the generated typescript definitions.
    * If unset, does not generate

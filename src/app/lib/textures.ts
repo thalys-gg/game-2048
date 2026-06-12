@@ -8,29 +8,24 @@ const renderedPawnTextures: Record<number, Texture> = {}
 let renderedScoreBg: Texture
 let renderedBoardBg: Texture
 
-export default new class {
-
-  public get board () {
-
-    if (renderedBoardBg)
-      return renderedBoardBg
+export default new (class {
+  public get board() {
+    if (renderedBoardBg) return renderedBoardBg
 
     const width = CONFIG.board.size
     const height = CONFIG.board.size
     const radius = CONFIG.piece.radius
     const color = theme.boardBg
 
-    return renderedBoardBg = render()
+    return (renderedBoardBg = render()
       .canvas(width, height)
       .draw()
       .squareRounded(0, 0, width, height, radius, color)
-      .render()
+      .render())
   }
 
-  public getPawn (value: number) {
-
-    if (renderedPawnTextures[value])
-      return renderedPawnTextures[value]
+  public getPawn(value: number) {
+    if (renderedPawnTextures[value]) return renderedPawnTextures[value]
 
     const width = CONFIG.piece.size
     const height = CONFIG.piece.size
@@ -40,38 +35,51 @@ export default new class {
     const radius = CONFIG.piece.radius
     const color = theme.tiles[value].bg
 
-    return renderedPawnTextures[value] = render()
+    return (renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)
       .draw()
       .squareRounded(padding, padding, width, height, radius, color)
-      .render()
+      .render())
   }
 
-  public get scoreBg () {
-
-    if (renderedScoreBg)
-      return renderedScoreBg
+  public get scoreBg() {
+    if (renderedScoreBg) return renderedScoreBg
 
     const { width, height } = CONFIG.score
     const radius = CONFIG.piece.radius
     const color = theme.score.bg
 
-    return renderedScoreBg = render()
+    return (renderedScoreBg = render()
       .canvas(width, height)
       .draw()
       .squareRounded(0, 0, width, height, radius, color)
-      .render()
+      .render())
   }
 
-  public btnPlay () { return Texture.from('button_rectangle_gradient') }
-  public btnPlayPressed () { return Texture.from('button_rectangle_depth_gradient') }
+  public btnPlay() {
+    return Texture.from('button_rectangle_gradient')
+  }
+  public btnPlayPressed() {
+    return Texture.from('button_rectangle_depth_gradient')
+  }
 
+  public get iconSettings() {
+    return Texture.from('gear')
+  }
+  public get iconHome() {
+    return Texture.from('home')
+  }
+  public get iconLarger() {
+    return Texture.from('larger')
+  }
+  public get iconPause() {
+    return Texture.from('pause')
+  }
+  public get iconSmaller() {
+    return Texture.from('smaller')
+  }
 
-  public get iconSettings () { return Texture.from('gear') }
-  public get iconHome () { return Texture.from('home') }
-  public get iconLarger () { return Texture.from('larger') }
-  public get iconPause () { return Texture.from('pause') }
-  public get iconSmaller () { return Texture.from('smaller') }
-
-  public get popupBg () { return Texture.from('button_square_depth_line') }
-}()
+  public get popupBg() {
+    return Texture.from('button_square_depth_line')
+  }
+})()

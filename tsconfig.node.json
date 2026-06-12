@@ -5,17 +5,7 @@
     // "Please don't shove this anywhere and place at the defined cache folder"
     "tsBuildInfoFile": ".cache/tsconfig.node.tsbuildinfo",
 
-    "types": [
-      "@assetpack/core",
-      "vite-plugin-glsl/ext",
-      "vite",
-      "bun",
-      "node"
-    ]
+    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun-types", "node"]
   },
-  "include": [
-    "vite.config.ts",
-    "eslint.config.mjs",
-    "scripts/**/*"
-  ]
+  "include": ["vite.config.ts", "scripts/**/*"]
 }

@@ -1,6 +1,30 @@
-import { AMBER, BLUE, CYAN, EMERALD, FUCHSIA, GRAY, GREEN, INDIGO, LIME, NEUTRAL, ORANGE, PINK, PURPLE, RED, ROSE, SKY, SLATE, STONE, TEAL, VIOLET, YELLOW, ZINC } from '∆/lib/colors.definitions'
+import {
+  AMBER,
+  BLUE,
+  CYAN,
+  EMERALD,
+  FUCHSIA,
+  GRAY,
+  GREEN,
+  INDIGO,
+  LIME,
+  NEUTRAL,
+  ORANGE,
+  PINK,
+  PURPLE,
+  RED,
+  ROSE,
+  SKY,
+  SLATE,
+  STONE,
+  TEAL,
+  VIOLET,
+  YELLOW,
+  ZINC,
+} from '∆/lib/colors.definitions'
 
-type TColorName = 'red'
+type TColorName =
+  | 'red'
   | 'green'
   | 'blue'
   | 'orange'
@@ -23,7 +47,8 @@ type TColorName = 'red'
   | 'neutral'
   | 'stone'
 
-type TColorNumber = '50'
+type TColorNumber =
+  | '50'
   | '100'
   | '200'
   | '300'
@@ -60,7 +85,7 @@ const COLORS = {
   stone: STONE,
 } as const
 
-export function getColor (colorWithNumber: `${TColorName}-${TColorNumber}`) {
+export function getColor(colorWithNumber: `${TColorName}-${TColorNumber}`) {
   const [color, number] = colorWithNumber.split('-') as [TColorName, TColorNumber]
   return COLORS[color][number]
 }

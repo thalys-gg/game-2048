@@ -5,7 +5,7 @@ import { generateManifestTypes } from '#/assetpack/manifest/manifest-typescript'
 import { AssetPack } from '@assetpack/core'
 import { pixiPipes } from '@assetpack/core/pixi'
 
-export function pluginAssetpack () {
+export function pluginAssetpack() {
   const apConfig = {
     entry: './raw-assets',
     cache: true,
@@ -38,12 +38,10 @@ export function pluginAssetpack () {
 
   return {
     name: 'vite-plugin-assetpack',
-    configResolved (resolvedConfig) {
+    configResolved(resolvedConfig) {
       mode = resolvedConfig.command
-      if (!resolvedConfig.publicDir)
-        return
-      if (apConfig.output)
-        return
+      if (!resolvedConfig.publicDir) return
+      if (apConfig.output) return
       // remove the root from the public dir
       const publicDir = resolvedConfig.publicDir.replace(process.cwd(), '')
 
@@ -55,9 +53,7 @@ export function pluginAssetpack () {
     },
     buildStart: async () => {
       if (mode === 'serve') {
-
-        if (assetPack)
-          return
+        if (assetPack) return
 
         assetPack = new AssetPack(apConfig)
         await assetPack.watch()

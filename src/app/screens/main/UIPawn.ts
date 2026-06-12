@@ -8,7 +8,7 @@ import { Label } from '@/ui/Label'
 
 const theme = getTheme()
 
-function createSquare (value: number, parent: Container, label?: string) {
+function createSquare(value: number, parent: Container, label?: string) {
   const pawn = Sprite.from(textures.getPawn(value))
   pawn.label = label || 'PawnBackground'
   pawn.alpha = 1
@@ -17,7 +17,7 @@ function createSquare (value: number, parent: Container, label?: string) {
   return pawn
 }
 
-function createLabel (value: number, parent: Container, label?: string) {
+function createLabel(value: number, parent: Container, label?: string) {
   const text = new Label({
     text: `${value}`,
     style: {
@@ -36,7 +36,6 @@ function createLabel (value: number, parent: Container, label?: string) {
  * It visualizes the numeric value and the corresponding background texture.
  */
 export class UIPawn extends Container {
-
   private bg: Sprite
   private text: Label
   private _value: number
@@ -48,7 +47,7 @@ export class UIPawn extends Container {
    *
    * @param value - The new numeric value for the pawn.
    */
-  public set value (value: number) {
+  public set value(value: number) {
     this._value = value
     this.text.style.fill = theme.tiles[value].text
     this.text.text = `${value}`
@@ -60,7 +59,7 @@ export class UIPawn extends Container {
    *
    * @returns The numeric value of the pawn.
    */
-  public get value () {
+  public get value() {
     return this._value
   }
 
@@ -70,7 +69,7 @@ export class UIPawn extends Container {
    *
    * @param value - The initial value of the pawn.
    */
-  constructor (value: number, coords: Coordinate) {
+  constructor(value: number, coords: Coordinate) {
     super()
     this.coords = coords
     this._value = value
@@ -82,21 +81,16 @@ export class UIPawn extends Container {
     this.text = createLabel(value, this)
   }
 
-  public async show () {
+  public async show() {
     animate(this.scale, { x: 1, y: 1 }, { duration: 0.5, ease: 'backOut' })
-    await animate(
-      this,
-      { alpha: 1 } as ObjectTarget<this>,
-      { duration: 0.5, ease: 'circOut' },
-    )
+    await animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: 0.5, ease: 'circOut' })
   }
 
   /**
    * Updates the layout of the pawn's children.
    * Re-centers the value label within the sprite
    */
-  public resize (coords?: Coordinate) {
-
+  public resize(coords?: Coordinate) {
     if (coords) {
       this.coords = coords
     }

@@ -7,12 +7,12 @@ import type { Plugin } from 'vite-plus'
  * @param filetypes - extensions that will be matched
  * @returns a vite plugin
  */
-export function fullReloadWhen (filetypes: string[]) {
+export function fullReloadWhen(filetypes: string[]) {
   return {
     change: (): Plugin => {
       return {
         name: 'trigger--full-reload',
-        handleHotUpdate (ctx) {
+        handleHotUpdate(ctx) {
           const { file, server } = ctx
 
           for (const ext of filetypes) {

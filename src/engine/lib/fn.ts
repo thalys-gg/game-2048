@@ -3,11 +3,18 @@ export const toN = (n: number): { length: number } => ({ length: n })
 
 type MapFunction<T> = (value: unknown, index: number) => T
 
-export function arrFrom<T> (n: number, to: MapFunction<T> = (toZero as unknown as MapFunction<T>)): T[] {
+export function arrFrom<T>(
+  n: number,
+  to: MapFunction<T> = toZero as unknown as MapFunction<T>,
+): T[] {
   return Array.from(toN(n), to)
 }
 
-export function arrSelfFrom<T> (n: number, to: MapFunction<T> = (toZero as unknown as MapFunction<T>), target: T[]): T[] {
+export function arrSelfFrom<T>(
+  n: number,
+  to: MapFunction<T> = toZero as unknown as MapFunction<T>,
+  target: T[],
+): T[] {
   for (let i = 0; i < n; i++) {
     target[i] = to(undefined, i)
   }
@@ -15,15 +22,14 @@ export function arrSelfFrom<T> (n: number, to: MapFunction<T> = (toZero as unkno
 }
 
 // Context injector HOF
-export function withContext<T, A extends any[], R> (
+export function withContext<T, A extends any[], R>(
   fn: (...args: [...A, T]) => R,
   context: T,
 ): (...args: A) => R {
   return (...args: A) => fn(...args, context)
 }
 
-
-export function allowContinueAt (target: number) {
+export function allowContinueAt(target: number) {
   let sum = 0
   return (value: number): boolean => {
     sum += value
@@ -35,7 +41,7 @@ export function allowContinueAt (target: number) {
   }
 }
 
-export function throttle<T extends (...args: any[]) => any> (
+export function throttle<T extends (...args: any[]) => any>(
   fn: T,
   delay = 100,
 ): (...args: Parameters<T>) => void {

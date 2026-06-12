@@ -30,11 +30,9 @@ export interface IDestroyable {
 }
 
 export interface IResizable {
-
   /** Resize the container */
   resize?: ({ screen, parent }: ResizeSignature) => void
 }
 
-export interface IChild extends ContainerChild,
-  IResizable, IPresentable, IResettable, IPreparable, IResumable {
-}
+export interface IChild
+  extends ContainerChild, IResizable, IPresentable, IResettable, IPreparable, IResumable {}

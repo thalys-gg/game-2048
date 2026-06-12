@@ -10,10 +10,8 @@ export const btnTransitions = {
   pressed: { props: { scale: { x: 0.97, y: 0.97 } }, duration: 100 },
 }
 
-export default new class {
-
-  public createBtnPlay (text: string, onPress: () => void) {
-
+export default new (class {
+  public createBtnPlay(text: string, onPress: () => void) {
     const textColor = ZINC[100]
     const disabled = false
     const padding = 0
@@ -74,8 +72,7 @@ export default new class {
     return btn
   }
 
-  public createBtnPopupDone (text: string, fontSize: number = 50) {
-
+  public createBtnPopupDone(text: string, fontSize: number = 50) {
     const btn = new FancyButton({
       defaultView: textures.btnPlay(),
       pressedView: textures.btnPlayPressed(),
@@ -99,5 +96,4 @@ export default new class {
     })
     return btn
   }
-
-}()
+})()

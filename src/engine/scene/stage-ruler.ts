@@ -20,7 +20,6 @@ const _options: RulerOptions = {
 }
 
 export class Ruler extends Container implements IAppScreen {
-
   public static assetBundles: TAssetBundleId[] = []
 
   public static options = Object.assign({}, _options)
@@ -42,7 +41,7 @@ export class Ruler extends Container implements IAppScreen {
   private labels: Container = new Container()
   private crosshair: Graphics = new Graphics()
 
-  constructor (options?: Partial<RulerOptions>) {
+  constructor(options?: Partial<RulerOptions>) {
     super()
 
     if (options) {
@@ -62,7 +61,7 @@ export class Ruler extends Container implements IAppScreen {
   /**
    * Creates ruler-style measurement guides with ticks and labels
    */
-  buildRulers (width: number, height: number) {
+  buildRulers(width: number, height: number) {
     const { showCrosshair, backgroundColor, showHorizontal, showVertical } = Ruler.options
 
     // Clear existing graphics
@@ -86,7 +85,7 @@ export class Ruler extends Container implements IAppScreen {
     }
   }
 
-  private buildHorizontalRuler (width: number) {
+  private buildHorizontalRuler(width: number) {
     const { majorTick, minorTick, microTick, showLabels, rulerColor } = Ruler.options
 
     for (let x = 0; x <= width; x += microTick) {
@@ -107,7 +106,8 @@ export class Ruler extends Container implements IAppScreen {
         strokeWidth = 1
       }
 
-      this.rulers.moveTo(x, 30 - tickHeight)
+      this.rulers
+        .moveTo(x, 30 - tickHeight)
         .lineTo(x, 30)
         .stroke({ color: rulerColor, width: strokeWidth })
     }
@@ -116,7 +116,7 @@ export class Ruler extends Container implements IAppScreen {
     this.rulers.moveTo(0, 30).lineTo(width, 30).stroke({ color: rulerColor, width: 2 })
   }
 
-  private buildVerticalRuler (height: number) {
+  private buildVerticalRuler(height: number) {
     const { majorTick, minorTick, microTick, showLabels, rulerColor } = Ruler.options
 
     for (let y = 0; y <= height; y += microTick) {
@@ -137,7 +137,8 @@ export class Ruler extends Container implements IAppScreen {
         strokeWidth = 1
       }
 
-      this.rulers.moveTo(30 - tickWidth, y)
+      this.rulers
+        .moveTo(30 - tickWidth, y)
         .lineTo(30, y)
         .stroke({ color: rulerColor, width: strokeWidth })
     }
@@ -146,29 +147,29 @@ export class Ruler extends Container implements IAppScreen {
     this.rulers.moveTo(30, 0).lineTo(30, height).stroke({ color: rulerColor, width: 2 })
   }
 
-  private buildCrosshair (width: number, height: number) {
-
+  private buildCrosshair(width: number, height: number) {
     const { rulerColor } = Ruler.options
 
     const centerX = width / 2
     const centerY = height / 2
 
     // Horizontal crosshair line
-    this.crosshair.moveTo(30, centerY)
+    this.crosshair
+      .moveTo(30, centerY)
       .lineTo(width, centerY)
       .stroke({ color: rulerColor, width: 1, alpha: 0.5 })
 
     // Vertical crosshair line
-    this.crosshair.moveTo(centerX, 30)
+    this.crosshair
+      .moveTo(centerX, 30)
       .lineTo(centerX, height)
       .stroke({ color: rulerColor, width: 1, alpha: 0.5 })
 
     // Center point marker
-    this.crosshair.circle(centerX, centerY, 3)
-      .fill({ color: rulerColor, alpha: 0.7 })
+    this.crosshair.circle(centerX, centerY, 3).fill({ color: rulerColor, alpha: 0.7 })
   }
 
-  private addLabel (text: string, x: number, y: number, anchorPosition: TAnchorByPosition = 'left') {
+  private addLabel(text: string, x: number, y: number, anchorPosition: TAnchorByPosition = 'left') {
     const style = this.textStyle
     const label = new Text({ text, style })
     anchorBy(label, anchorPosition)
@@ -180,48 +181,51 @@ export class Ruler extends Container implements IAppScreen {
   }
 
   // AppScreen interface methods
-  async show (): Promise<void> {
+  async show(): Promise<void> {
     this.visible = true
   }
 
-  async hide (): Promise<void> {
+  async hide(): Promise<void> {
     this.visible = false
   }
 
-  prepare (): void {
+  prepare(): void {
     // Setup initial state
   }
 
-  reset (): void {
+  reset(): void {
     // Clean up state
     this.rulers.clear()
     this.crosshair.clear()
     this.labels.removeChildren()
   }
 
-  update (ticker: Ticker): void {
+  update(ticker: Ticker): void {
     // Update logic if needed
   }
 
-  resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }): void {
     this.buildRulers(screen.width, screen.height)
   }
 
-  blur (): void {
+  blur(): void {
     this.alpha = 0.5
   }
 
-  focus (): void {
+  focus(): void {
     this.alpha = 0.8
   }
 
   /**
    * Toggle visibility of the measurement overlay
    */
-  toggle (): void {
+  toggle(): void {
     this.visible = !this.visible
   }
 }

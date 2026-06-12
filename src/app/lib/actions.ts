@@ -9,26 +9,37 @@ import { PopupPause } from '@/popups/popup.pause'
 import { PopupSettings } from '@/popups/popup.settings'
 import { ScreenMain } from '@/screens/main/ScreenMain'
 
-export default new class {
+export default new (class {
   dismissPopup = () => {
     void engine().navigation.dismissPopup()
   }
 
-  showScreen = (screen: IAppScreenConstructor) => { void engine().navigation.showScreen(screen) }
+  showScreen = (screen: IAppScreenConstructor) => {
+    void engine().navigation.showScreen(screen)
+  }
 
-  showGameWon = () => { void engine().navigation.presentPopup(GameWon) }
+  showGameWon = () => {
+    void engine().navigation.presentPopup(GameWon)
+  }
 
-  showGameOver = () => { void engine().navigation.presentPopup(GameOver) }
+  showGameOver = () => {
+    void engine().navigation.presentPopup(GameOver)
+  }
 
-  showPausePopup = () => { void engine().navigation.presentPopup(PopupPause) }
+  showPausePopup = () => {
+    void engine().navigation.presentPopup(PopupPause)
+  }
 
-  showSettings = () => { void engine().navigation.presentPopup(PopupSettings) }
+  showSettings = () => {
+    void engine().navigation.presentPopup(PopupSettings)
+  }
 
-  goToHome = () => { void engine().navigation.showScreen(ScreenMain) }
+  goToHome = () => {
+    void engine().navigation.showScreen(ScreenMain)
+  }
 
   goFullScreen = (btn: FancyButton) => {
-
-    return async function toggleFullScreen () {
+    return async function toggleFullScreen() {
       try {
         if (!document.fullscreenElement) {
           await document.documentElement.requestFullscreen()
@@ -36,7 +47,6 @@ export default new class {
           await document.exitFullscreen()
         }
         btn.defaultView = document.fullscreenElement ? textures.iconSmaller : textures.iconLarger
-
       } catch (err) {
         logger.error('FullScreen error:', err)
       }
@@ -50,4 +60,4 @@ export default new class {
   onBtnPressSound = () => {
     engine().audio.sfx.play('main/sounds/sfx-press.wav')
   }
-}()
+})()

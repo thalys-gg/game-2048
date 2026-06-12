@@ -12,7 +12,7 @@ const log = logger.custom`[ ${'UIScore'} ]`
 
 const theme = getTheme()
 
-function createBackground (parent: Container) {
+function createBackground(parent: Container) {
   const bg = Sprite.from(textures.scoreBg)
   bg.label = 'ScoreBackground'
   bg.alpha = 1
@@ -20,7 +20,7 @@ function createBackground (parent: Container) {
   return bg
 }
 
-function createLabelTitle (parent: Container, text?: string, label?: string) {
+function createLabelTitle(parent: Container, text?: string, label?: string) {
   const _text = new Label({
     text: text || 'Score',
     style: {
@@ -36,7 +36,7 @@ function createLabelTitle (parent: Container, text?: string, label?: string) {
   return _text
 }
 
-function createLabelValue (parent: Container, text?: string, label?: string) {
+function createLabelValue(parent: Container, text?: string, label?: string) {
   const _text = new Label({
     text: text || '0',
     style: {
@@ -52,7 +52,6 @@ function createLabelValue (parent: Container, text?: string, label?: string) {
 }
 
 export class UIScore extends Container implements IChild {
-
   private bg: Sprite
   private textTitle: Label
   private textValue: Label
@@ -60,7 +59,7 @@ export class UIScore extends Container implements IChild {
   private _rollupScoreRef: ReturnType<typeof animations.rollupScore> | null = null
   private _fadeScoreRef: ReturnType<typeof animations.fadeScore> | null = null
 
-  constructor () {
+  constructor() {
     super()
     this.pivot.set(0.5)
     this.bg = createBackground(this)
@@ -68,7 +67,6 @@ export class UIScore extends Container implements IChild {
     this.textValue = createLabelValue(this, '0')
 
     STATE.on('scoreChanged', (value, oldValue, receiver, property) => {
-
       if (value === 0) {
         this._fadeScoreRef = animations.fadeScore(this.textValue)
         return
@@ -77,7 +75,7 @@ export class UIScore extends Container implements IChild {
     })
   }
 
-  public override destroy (options?: DestroyOptions | undefined) {
+  public override destroy(options?: DestroyOptions) {
     super.destroy(options)
     this._rollupScoreRef?.destroy()
     this._rollupScoreRef = null
@@ -85,8 +83,7 @@ export class UIScore extends Container implements IChild {
     this._fadeScoreRef = null
   }
 
-  public resize ({ screen, parent }: ResizeSignature) {
-
+  public resize({ screen, parent }: ResizeSignature) {
     this.x = screen.width * 0.5 - this.bg.width * this.pivot.x
     this.y = 45
 

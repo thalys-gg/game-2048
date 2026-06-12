@@ -15,7 +15,7 @@ type ButtonOptions = typeof defaultButtonOptions
  * The big rectangle button, with a label, idle and pressed states
  */
 export class Button extends FancyButton {
-  constructor (options: Partial<ButtonOptions> = {}) {
+  constructor(options: Partial<ButtonOptions> = {}) {
     const opts = { ...defaultButtonOptions, ...options }
 
     super({
@@ -25,7 +25,7 @@ export class Button extends FancyButton {
       text: new Label({
         text: opts.text,
         style: {
-          fill: 0x4A4A4A,
+          fill: 0x4a4a4a,
           align: 'center',
           fontSize: opts.fontSize,
         },
@@ -58,11 +58,11 @@ export class Button extends FancyButton {
     this.onHover.connect(this.handleHover.bind(this))
   }
 
-  private handleHover () {
+  private handleHover() {
     engine().audio.sfx.play('main/sounds/sfx-hover.wav')
   }
 
-  private handleDown () {
+  private handleDown() {
     engine().audio.sfx.play('main/sounds/sfx-press.wav')
   }
 }

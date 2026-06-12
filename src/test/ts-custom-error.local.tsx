@@ -9,16 +9,12 @@ space(1)
 // WIP
 
 // Shows up in the error when someone passes an object that already has `on`
-type HasOnError
-  = 'Invalid object: property "on" already exists. '
-    & 'Use a different name or remove the existing "on" property.'
+type HasOnError = 'Invalid object: property "on" already exists. ' &
+  'Use a different name or remove the existing "on" property.'
 
-type EnsureNoOn<T extends object>
-  = 'on' extends keyof T
-    ? HasOnError
-    : T
+type EnsureNoOn<T extends object> = 'on' extends keyof T ? HasOnError : T
 
-function addOn<T extends object> (obj: EnsureNoOn<T>) {
+function addOn<T extends object>(obj: EnsureNoOn<T>) {
   return {
     ...obj,
     on: (event: string, handler: () => void) => {

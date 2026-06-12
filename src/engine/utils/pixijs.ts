@@ -1,8 +1,10 @@
 import type { TAnchorByPosition } from '∆/utils/pixijs.types'
 import type { ObservablePoint } from 'pixi.js'
 
-
-export function anchorBy<T extends { anchor: ObservablePoint }> (self: T, position: TAnchorByPosition) {
+export function anchorBy<T extends { anchor: ObservablePoint }>(
+  self: T,
+  position: TAnchorByPosition,
+) {
   switch (position) {
     case 'top':
       self.anchor.set(0.5, 1.0)

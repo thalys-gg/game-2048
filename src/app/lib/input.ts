@@ -23,19 +23,21 @@ export class InputHandler {
 
   private _waitForKeyUp: Record<string, boolean> = {}
 
-  constructor () {
+  constructor() {
     globalThis.window.addEventListener('keydown', this._onKeyDown)
     globalThis.window.addEventListener('keyup', this._onKeyUp)
   }
 
-  public get enabled () { return this._enabled }
-  public set enabled (value: boolean) { this._enabled = value }
+  public get enabled() {
+    return this._enabled
+  }
+  public set enabled(value: boolean) {
+    this._enabled = value
+  }
 
   private _onKeyDown = (e: KeyboardEvent) => {
-    if (!this._enabled)
-      return
-    if (this._waitForKeyUp[e.code])
-      return
+    if (!this._enabled) return
+    if (this._waitForKeyUp[e.code]) return
 
     const direction = this._keyMap[e.code]
     if (direction) {
@@ -49,7 +51,7 @@ export class InputHandler {
     this._waitForKeyUp[e.code] = false
   }
 
-  public destroy () {
+  public destroy() {
     globalThis.window.removeEventListener('keydown', this._onKeyDown)
     globalThis.window.removeEventListener('keyup', this._onKeyUp)
     this.onMove.disconnectAll()

@@ -1,8 +1,4 @@
-import type {
-  ApplicationOptions,
-  DestroyOptions,
-  RendererDestroyOptions,
-} from 'pixi.js'
+import type { ApplicationOptions, DestroyOptions, RendererDestroyOptions } from 'pixi.js'
 import { sound } from '@pixi/sound'
 import { CreationAudioPlugin } from '∆/audio.plugin'
 import { CreationNavigationPlugin } from '∆/navigation.plugin'
@@ -31,7 +27,7 @@ extensions.add(CreationNavigationPlugin)
  */
 export class CreationEngine extends Application {
   /** Initialize the application */
-  public override async init (opts: Partial<ApplicationOptions>) {
+  public override async init(opts: Partial<ApplicationOptions>) {
     opts.resizeTo ??= globalThis.window
     opts.resolution ??= getResolution()
 
@@ -47,12 +43,12 @@ export class CreationEngine extends Application {
     await Assets.loadBundle('preload')
 
     // List all existing bundles names
-    const allBundles = manifest.bundles.map(item => item.name)
+    const allBundles = manifest.bundles.map((item) => item.name)
     // Start up background loading of all bundles
     Assets.backgroundLoadBundle(allBundles)
   }
 
-  public override destroy (
+  public override destroy(
     rendererDestroyOptions: RendererDestroyOptions = false,
     options: DestroyOptions = false,
   ): void {
