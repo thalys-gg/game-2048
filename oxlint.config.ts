@@ -33,6 +33,7 @@ export default defineConfig({
     WorkletGlobalScope: 'readonly',
   },
   ignorePatterns: [
+    'src/gen/**',
     '**/logs',
     '**/*.log',
     '**/npm-debug.log*',
