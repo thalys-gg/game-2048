@@ -1,7 +1,8 @@
 import type { OxlintOverride } from 'vite-plus/lint'
 
-// Imported by vite.config.ts (`lint` block) — Vite+ only reads lint config from
-// there; a standalone oxlint config file is ignored once that block exists.
+// The `**/*.ts(x)` lint override — disables core rules made redundant by the
+// TypeScript compiler and enables typescript-eslint rules. Composed into the
+// override array in oxlint.overrides.ts.
 export const oxlint_typescript: OxlintOverride = {
   files: ['**/*.ts', '**/*.mts', '**/*.cts', '**/*.tsx'],
   rules: {

@@ -1,9 +1,9 @@
 import type { OxlintOverride } from 'vite-plus/lint'
 import { oxlint_typescript } from './oxlint.overrides.typescript'
 
-// Imported by vite.config.ts (`lint` block) — Vite+ only reads lint config from
-// there; a standalone oxlint config file is ignored once that block exists.
-export const oxlint_config: OxlintOverride[] = [
+// File-scoped lint overrides, composed into `overrides` of oxlint.config.ts.
+// The large `**/*.ts(x)` block lives in oxlint.overrides.typescript.ts.
+export const oxlint_overrides: OxlintOverride[] = [
   oxlint_typescript,
   {
     files: ['src/**/*.{ts,tsx}'],
