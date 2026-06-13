@@ -24,27 +24,13 @@ export interface ManifestEntry {
 }
 
 /** Concrete bundle name types */
-export type BundleName
-  = | 'main'
-    | 'loops'
-    | 'preload'
-
-/** main bundle asset aliases */
-export type MainAssetAlias = | 'main/sounds/sfx-hover'
-  | 'main/sounds/sfx-hover.wav'
-  | 'main/sounds/sfx-press'
-  | 'main/sounds/sfx-press.wav'
-  | 'main/sounds/sfx-scrolling'
-  | 'main/sounds/sfx-scrolling.wav'
-  | 'sfx-hover'
-  | 'sfx-hover.wav'
-  | 'sfx-press'
-  | 'sfx-press.wav'
-  | 'sfx-scrolling'
-  | 'sfx-scrolling.wav'
+export type BundleName =
+  | 'loops'
+  | 'main'
+  | 'preload'
 
 /** loops bundle asset aliases */
-export type LoopsAssetAlias = | 'alpha-dance'
+export type LoopsAssetAlias =  | 'alpha-dance'
   | 'alpha-dance.ogg'
   | 'beat-ident'
   | 'beat-ident.ogg'
@@ -161,8 +147,22 @@ export type LoopsAssetAlias = | 'alpha-dance'
   | 'wacky-waiting'
   | 'wacky-waiting.ogg'
 
+/** main bundle asset aliases */
+export type MainAssetAlias =  | 'main/sounds/sfx-hover'
+  | 'main/sounds/sfx-hover.wav'
+  | 'main/sounds/sfx-press'
+  | 'main/sounds/sfx-press.wav'
+  | 'main/sounds/sfx-scrolling'
+  | 'main/sounds/sfx-scrolling.wav'
+  | 'sfx-hover'
+  | 'sfx-hover.wav'
+  | 'sfx-press'
+  | 'sfx-press.wav'
+  | 'sfx-scrolling'
+  | 'sfx-scrolling.wav'
+
 /** preload bundle asset aliases */
-export type PreloadAssetAlias = | 'Kenney-Future'
+export type PreloadAssetAlias =  | 'Kenney-Future'
   | 'Kenney-Future-Narrow'
   | 'Kenney-Future-Narrow.ttf'
   | 'Kenney-Future.ttf'
@@ -174,10 +174,10 @@ export type PreloadAssetAlias = | 'Kenney-Future'
   | 'ui'
 
 /** Union of all asset aliases across all bundles */
-export type AssetAlias
-  = | MainAssetAlias
-    | LoopsAssetAlias
-    | PreloadAssetAlias
+export type AssetAlias =
+  | LoopsAssetAlias
+  | MainAssetAlias
+  | PreloadAssetAlias
 
 
 /** Type-safe bundle interface with specific asset types */
@@ -188,12 +188,12 @@ export interface TypedBundle<T extends BundleName> {
 }
 
 /** Concrete bundle types */
-export interface MainBundle extends TypedBundle<'main'> {
-  name: 'main'
-}
-
 export interface LoopsBundle extends TypedBundle<'loops'> {
   name: 'loops'
+}
+
+export interface MainBundle extends TypedBundle<'main'> {
+  name: 'main'
 }
 
 export interface PreloadBundle extends TypedBundle<'preload'> {
@@ -206,15 +206,15 @@ export interface TypedManifest {
 }
 
 /** Helper type to get bundle by name */
-export type GetBundle<T extends BundleName>
-  = T extends 'main' ? MainBundle
-    : T extends 'loops' ? LoopsBundle
-      : T extends 'preload' ? PreloadBundle
-        : never
+export type GetBundle<T extends BundleName> =
+  T extends 'loops' ? LoopsBundle :
+  T extends 'main' ? MainBundle :
+  T extends 'preload' ? PreloadBundle :
+  never
 
 /** Helper type to get asset aliases for a specific bundle */
-export type GetBundleAssets<T extends BundleName>
-  = T extends 'main' ? MainAssetAlias
-    : T extends 'loops' ? LoopsAssetAlias
-      : T extends 'preload' ? PreloadAssetAlias
-        : never
+export type GetBundleAssets<T extends BundleName> =
+  T extends 'loops' ? LoopsAssetAlias :
+  T extends 'main' ? MainAssetAlias :
+  T extends 'preload' ? PreloadAssetAlias :
+  never

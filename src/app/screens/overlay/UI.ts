@@ -16,7 +16,7 @@ export class OverlayUI extends Container implements IAppScreen {
   protected btnFullScreen: FancyButton
   protected paused = false
 
-  constructor () {
+  constructor() {
     super()
 
     this.btnPause = create.createBtnPause
@@ -32,19 +32,26 @@ export class OverlayUI extends Container implements IAppScreen {
     this.addChild(this.btnFullScreen)
   }
 
-  public prepare () {}
+  public prepare() {}
 
-  public update (time: Ticker) {}
+  public update(time: Ticker) {}
 
-  public async pause () { this.paused = true }
+  public async pause() {
+    this.paused = true
+  }
 
-  public async resume () { this.paused = false }
+  public async resume() {
+    this.paused = false
+  }
 
-  public reset () {}
+  public reset() {}
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     this.btnPause.x = 30
     this.btnPause.y = 30
@@ -57,7 +64,7 @@ export class OverlayUI extends Container implements IAppScreen {
     this.btnFullScreen.y = 30
   }
 
-  public blur () {
+  public blur() {
     if (!engine().navigation.currentPopup) {
       engine().navigation.presentPopup(PopupPause)
     }

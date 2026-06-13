@@ -22,7 +22,8 @@ export type TEntriesOf<T> = {
 }[keyof T][]
 
 // eslint-disable-next-line ts/no-unsafe-function-type
-export function isFunction (obj: unknown): obj is Function { // Depending on the project and use-case you might want to change the `any` to `unknown`
+export function isFunction(obj: unknown): obj is Function {
+  // Depending on the project and use-case you might want to change the `any` to `unknown`
   return typeof obj === 'function'
 }
 

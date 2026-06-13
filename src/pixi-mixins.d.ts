@@ -1,8 +1,6 @@
 import type { BGM, SFX } from '∆/audio'
 import type { Navigation } from '∆/navigation'
-import type {
-  ResizePluginOptions,
-} from 'pixi.js'
+import type { ResizePluginOptions } from 'pixi.js'
 
 // Custom utility type:
 export type DeepRequired<T> = Required<{
@@ -38,5 +36,3 @@ declare global {
     interface ApplicationOptions extends CreationResizePluginOptions {}
   }
 }
-
-export {}

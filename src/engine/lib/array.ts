@@ -1,5 +1,4 @@
-export function shuffle<T> (array: T[], rand: () => number = Math.random): T[] {
-
+export function shuffle<T>(array: T[], rand: () => number = Math.random): T[] {
   const result = array.slice()
 
   let length = array.length
@@ -13,7 +12,7 @@ export function shuffle<T> (array: T[], rand: () => number = Math.random): T[] {
   return result
 }
 
-export function uniques<T> (arr: T[]) {
+export function uniques<T>(arr: T[]) {
   return Array.from(new Set(arr))
 }
 
@@ -22,11 +21,11 @@ export function uniques<T> (arr: T[]) {
  * @param arr - The array to choose from
  * @returns The randomly selected item
  */
-export function choose<T> (arr: T[], rand: () => number = Math.random): T {
+export function choose<T>(arr: T[], rand: () => number = Math.random): T {
   return arr[Math.floor(rand() * arr.length)]
 }
 
-export function randomPick<T> (arr: T[], count: number) {
+export function randomPick<T>(arr: T[], count: number) {
   return shuffle(arr.slice()).slice(0, count)
 }
 
@@ -38,18 +37,15 @@ export function randomPick<T> (arr: T[], count: number) {
  * @param {number} max - The maximum index (default: array.length - 1).
  * @returns {*} - The randomly selected element.
  */
-export function pick<T> (array: T[], min: number = 0, max: number = array.length - 1): T {
+export function pick<T>(array: T[], min: number = 0, max: number = array.length - 1): T {
   const randomIndex = Math.floor(Math.random() * (max - min + 1)) + min
   return array[randomIndex]
 }
 
 // Generic toMap function that converts an array to a Map
 // Uses a key selector function to determine the map keys
-export function toMap<T, K> (
-  array: readonly T[],
-  keySelector: (item: T) => K,
-): Map<K, T> {
-  return new Map(array.map(item => [keySelector(item), item] as const))
+export function toMap<T, K>(array: readonly T[], keySelector: (item: T) => K): Map<K, T> {
+  return new Map(array.map((item) => [keySelector(item), item] as const))
 }
 
 /**
@@ -79,13 +75,10 @@ export function toMap<T, K> (
  *  @see {@link https://en.wikipedia.org/wiki/Fisher-Yates_shuffle} for more details on the algorithm.
  *  @complexity Time: O(n), Space: O(1)
  */
-export function shuffleInPlace<T> (
-  array: T[],
-  rand: () => number = Math.random,
-): T[] {
+export function shuffleInPlace<T>(array: T[], rand: () => number = Math.random): T[] {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]
+    const j = Math.floor(rand() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
   return array
 }
@@ -129,17 +122,14 @@ export function shuffleInPlace<T> (
  *  @returns {T[]} A new array containing the shuffled elements
  *  @complexity Time: O(n), Space: O(n).
  */
-export function shuffleCopy<T> (
-  array: T[],
-  rand: () => number = Math.random,
-): T[] {
+export function shuffleCopy<T>(array: T[], rand: () => number = Math.random): T[] {
   // copy
   const result = array.slice()
   let length = array.length
 
   while (length > 0) {
     // Pick a random index from the remaining elements
-    const i = Math.floor(rand() * length--)// while decrementing length for the next iteration
+    const i = Math.floor(rand() * length--) // while decrementing length for the next iteration
 
     // Swap the random element with the current element
     const temp = result[length]
@@ -150,19 +140,23 @@ export function shuffleCopy<T> (
   return result
 }
 
-export function isIdentical<T> (a: T[], b: T[]) {
-  if (a.length !== b.length) { return false }
+export function isIdentical<T>(a: T[], b: T[]) {
+  if (a.length !== b.length) {
+    return false
+  }
 
   let i = a.length
   while (i--) {
-    if (a[i] !== b[i]) { return false }
+    if (a[i] !== b[i]) {
+      return false
+    }
   }
 
   return true
 }
 
-export function count<T> (array: T[], value: T) {
-  return array.filter(v => v === value).length
+export function count<T>(array: T[], value: T) {
+  return array.filter((v) => v === value).length
 }
 
 /**
@@ -170,7 +164,7 @@ export function count<T> (array: T[], value: T) {
  * @param arr - The array to choose from
  * @returns The randomly selected item
  */
-export function chooseFrom<T> (arr: T[], rand: () => number = Math.random): T {
+export function chooseFrom<T>(arr: T[], rand: () => number = Math.random): T {
   const index = Math.floor(rand() * arr.length)
   const result = arr[index]
   if (result === undefined) {
@@ -179,7 +173,7 @@ export function chooseFrom<T> (arr: T[], rand: () => number = Math.random): T {
   return result
 }
 
-export function pickProps<T> (array: T[], props: (keyof T)[]): T[] {
+export function pickProps<T>(array: T[], props: (keyof T)[]): T[] {
   return array.map((item) => {
     const newItem: Partial<T> = {}
     for (const prop of props) {

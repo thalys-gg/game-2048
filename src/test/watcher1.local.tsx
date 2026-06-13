@@ -13,34 +13,29 @@ space(1)
 type Prop<T> = keyof T & string
 type Callback<T> = <K extends Prop<T>>(newValue: T[K]) => void
 type PropEventSource<T> = {
-  on: <K extends Prop<T>>(
-    eventName: `${K}Changed`,
-    cb: Callback<T>,
-  ) => void
+  on: <K extends Prop<T>>(eventName: `${K}Changed`, cb: Callback<T>) => void
 }
 
-function makeWatchedObject<T extends object> (obj: T): T & PropEventSource<T> {
+function makeWatchedObject<T extends object>(obj: T): T & PropEventSource<T> {
   const callbacks: Map<string, Callback<T>[]> = new Map()
 
   const newObj = {
     ...obj,
-    on<K extends Prop<T>> (
-      eventName: `${K}Changed`,
-      cb: Callback<T>,
-    ) {
+    on<K extends Prop<T>>(eventName: `${K}Changed`, cb: Callback<T>) {
       const key = eventName.replace('Changed', '')
-      if (!callbacks.has(key)) { callbacks.set(key, []) }
+      if (!callbacks.has(key)) {
+        callbacks.set(key, [])
+      }
       callbacks.get(key)!.push(cb)
     },
   }
 
-
   return new Proxy(newObj, {
-    set (target, prop, newValue, receiver) {
+    set(target, prop, newValue, receiver) {
       const key = String(prop)
       const array = callbacks.get(key)
       if (array) {
-        array.forEach(cb => cb(newValue))
+        array.forEach((cb) => cb(newValue))
       }
       return Reflect.set(target, prop, newValue, receiver)
     },

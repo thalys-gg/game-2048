@@ -1,32 +1,43 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["./tsconfig.core.json"],
   "compilerOptions": {
-    // "Please don't shove this anywhere and place at the defined cache folder"
-    "tsBuildInfoFile": ".cache/tsconfig.app.tsbuildinfo",
-
-    // #Target for generation of output JS
+    // Type-check target; Vite handles actual transpilation for the browser
     "target": "ES2020",
-    // Allow use of the latest ECMAScript features
     "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
 
-    "types": [
-      "pixi.js",
-      "vite-plugin-glsl/ext"
-    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
 
-    "outDir": "./dist-app",
+    "paths": {
+      "∆/*": ["./src/engine/*"],
+      "@/*": ["./src/app/*"],
+      "#/*": ["./scripts/*"]
+    },
 
-    "erasableSyntaxOnly": false
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "checkJs": true,
+
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noUncheckedSideEffectImports": false,
+
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": false,
+    "skipLibCheck": true,
+
+    // Browser-safe globals only — Bun/Node types live in tsconfig.node.json
+    "types": ["pixi.js", "vite-plugin-glsl/ext"]
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    ".cache",
-    ".vscode",
-    "dist",
-    "public",
-    "src/**/*.test.ts",
-    "src/**/*.spec.ts"
-  ]
+  "exclude": ["node_modules", ".cache", "dist", "public"]
 }

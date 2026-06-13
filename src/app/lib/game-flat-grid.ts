@@ -4,11 +4,10 @@ import type { UIPawn } from '@/screens/main/UIPawn'
 import { FlatGrid } from '∆/lib/flat-grid'
 
 export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
-
   public onMerge?: (value: number) => void
 
-  public getRandomEmpty () {
-    return this.getRandomLocation(value => value === null || value === undefined)
+  public getRandomEmpty() {
+    return this.getRandomLocation((value) => value === null || value === undefined)
   }
 
   /**
@@ -16,9 +15,9 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
    * It checks if there are free spaces, and if not then proceeds to check if any positions can be merged.
    * @returns {boolean} True if there are possible moves, false otherwise.
    */
-  public hasPossibleMoves (): boolean {
+  public hasPossibleMoves(): boolean {
     // Check if there are free spaces
-    if (this.data.some(cell => cell === null || cell === undefined)) {
+    if (this.data.some((cell) => cell === null || cell === undefined)) {
       return true
     }
 
@@ -27,8 +26,7 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
       for (let y = 0; y < this.height; y++) {
         const current = this.get(x, y)
 
-        if (!current)
-          continue
+        if (!current) continue
 
         // Check Right
         if (x + 1 < this.width) {
@@ -51,13 +49,13 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
     return false
   }
 
-  public override clone (): GameFlatGrid<T> {
+  public override clone(): GameFlatGrid<T> {
     const newGrid = new GameFlatGrid<T>(this.width, this.height)
     newGrid.setRawData([...this.data])
     return newGrid
   }
 
-  public move (direction: Direction, positions: FlatGrid<Sprite>): boolean {
+  public move(direction: Direction, positions: FlatGrid<Sprite>): boolean {
     let moved = false
     const isHorizontal = direction === 'left' || direction === 'right'
     const isReverse = direction === 'right' || direction === 'down'
@@ -73,8 +71,7 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
         const idx = isReverse ? secondarySize - 1 - j : j
         const [x, y] = isHorizontal ? [idx, i] : [i, idx]
         const cell = this.get(x, y)
-        if (cell)
-          line.push(cell)
+        if (cell) line.push(cell)
       }
 
       const merged = this.mergeLine(line)
@@ -86,8 +83,7 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
         const newCell = merged[j] ?? null
         const oldCell = this.get(x, y)
 
-        if (newCell !== oldCell)
-          moved = true
+        if (newCell !== oldCell) moved = true
         this.set(x, y, newCell)
 
         if (newCell) {
@@ -101,7 +97,7 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
     return moved
   }
 
-  public mergeLine (line: T[]): (T | null)[] {
+  public mergeLine(line: T[]): (T | null)[] {
     const result: (T | null)[] = []
     let i = 0
 

@@ -8,10 +8,7 @@ export type WatcherCallback<T> = <K extends WatchedProp<T>>(
 ) => void
 
 export type WatchedObject<T> = {
-  on: <K extends WatchedProp<T>>(
-    eventName: `${K}Changed`,
-    cb: WatcherCallback<T>,
-  ) => void
+  on: <K extends WatchedProp<T>>(eventName: `${K}Changed`, cb: WatcherCallback<T>) => void
 }
 
 export type WatcherCallbackMap<T extends object> = Map<string | symbol, WatcherCallback<T>[]>

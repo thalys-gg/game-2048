@@ -2,7 +2,7 @@ import { getColor } from '∆/lib/colors'
 
 export type TConfig = {
   winningValue: number
-  board: { size: number, padding: number }
+  board: { size: number; padding: number }
   score: {
     width: number
     height: number
@@ -11,7 +11,7 @@ export type TConfig = {
   }
   rows: number
   cols: number
-  piece: { size: number, radius: number, padding: number }
+  piece: { size: number; radius: number; padding: number }
   themes: {
     boardBg: string
     score: {
@@ -22,7 +22,7 @@ export type TConfig = {
       light: string
       dark: string
     }
-    tiles: { [key: number]: { bg: string, text: string } }
+    tiles: { [key: number]: { bg: string; text: string } }
   }[]
 }
 
@@ -88,6 +88,6 @@ export const CONFIG: TConfig = {
   ],
 }
 
-export function getTheme (index: number = 0) {
+export function getTheme(index: number = 0) {
   return CONFIG.themes[index]
 }

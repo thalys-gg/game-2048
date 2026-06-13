@@ -21,7 +21,7 @@ export class PopupPause extends Container implements IAppScreen {
   /** Button that closes the popup */
   private doneButton: FancyButton
 
-  constructor () {
+  constructor() {
     super()
 
     this.bg = new Sprite(Texture.WHITE)
@@ -57,9 +57,12 @@ export class PopupPause extends Container implements IAppScreen {
   }
 
   /** Resize the popup, fired whenever window size changes */
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     this.bg.position.set(0)
     this.bg.width = screen.width
@@ -68,28 +71,22 @@ export class PopupPause extends Container implements IAppScreen {
   }
 
   /** Present the popup, animated */
-  public async show () {
+  public async show() {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
-      currentEngine.navigation.currentScreen.filters = [
-        new BlurFilter({ strength: 5 }),
-      ]
+      currentEngine.navigation.currentScreen.filters = [new BlurFilter({ strength: 5 })]
     }
 
     this.panel.pivot.y = 0
   }
 
   /** Dismiss the popup, animated */
-  public async hide () {
+  public async hide() {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
       currentEngine.navigation.currentScreen.filters = []
     }
     animate(this.bg, { alpha: 0 }, { duration: 0.2, ease: 'linear' })
-    await animate(
-      this.panel.pivot,
-      { y: -500 },
-      { duration: 0.3, ease: 'backIn' },
-    )
+    await animate(this.panel.pivot, { y: -500 }, { duration: 0.3, ease: 'backIn' })
   }
 }

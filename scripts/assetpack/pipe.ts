@@ -1,19 +1,9 @@
 import type { AssetPipe } from '@assetpack/core'
 import { audio } from '@assetpack/core/ffmpeg'
-import {
-  compress,
-  mipmap,
-} from '@assetpack/core/image'
+import { compress, mipmap } from '@assetpack/core/image'
 import { json } from '@assetpack/core/json'
-import {
-  spineAtlasCompress,
-  spineAtlasManifestMod,
-  spineAtlasMipmap,
-} from '@assetpack/core/spine'
-import {
-  texturePacker,
-  texturePackerCompress,
-} from '@assetpack/core/texture-packer'
+import { spineAtlasCompress, spineAtlasManifestMod, spineAtlasMipmap } from '@assetpack/core/spine'
+import { texturePacker, texturePackerCompress } from '@assetpack/core/texture-packer'
 import { webfont } from '@assetpack/core/webfont'
 import { generatePixiManifest } from './manifest/manifest'
 import { generateManifestTypes } from './manifest/manifest-typescript'
@@ -22,9 +12,8 @@ import { generateManifestTypes } from './manifest/manifest-typescript'
  * Returns an array of plugins that can be used by AssetPack to process assets
  * for a PixiJS project.
  */
-export function customAssetpackPipes () {
+export function customAssetpackPipes() {
   const pipes = [
-
     webfont(),
 
     audio(),
@@ -51,11 +40,9 @@ export function customAssetpackPipes () {
     spineAtlasMipmap({
       resolutions: { default: 1 },
     }),
-
   ] as AssetPipe[]
 
   pipes.push(
-
     compress({
       png: true,
       jpg: true,

@@ -37,7 +37,7 @@ export class PopupSettings extends Container implements IAppScreen {
   /** Slider that changes sound effects volume */
   private sfxSlider: VolumeSlider
 
-  constructor () {
+  constructor() {
     super()
 
     this.bg = new Sprite(Texture.WHITE)
@@ -110,9 +110,12 @@ export class PopupSettings extends Container implements IAppScreen {
   }
 
   /** Resize the popup, fired whenever window size changes */
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     this.bg.position.set(0)
     this.bg.width = screen.width
@@ -122,33 +125,27 @@ export class PopupSettings extends Container implements IAppScreen {
   }
 
   /** Set things up just before showing the popup */
-  public prepare () {
+  public prepare() {
     this.masterSlider.value = userSettings.getMasterVolume() * 100
     this.bgmSlider.value = userSettings.getBgmVolume() * 100
     this.sfxSlider.value = userSettings.getSfxVolume() * 100
   }
 
   /** Present the popup, animated */
-  public async show () {
+  public async show() {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
-      currentEngine.navigation.currentScreen.filters = [
-        new BlurFilter({ strength: 4 }),
-      ]
+      currentEngine.navigation.currentScreen.filters = [new BlurFilter({ strength: 4 })]
     }
 
     this.bg.alpha = 0
     this.panel.pivot.y = -400
     animate(this.bg, { alpha: 0.8 }, { duration: 0.2, ease: 'linear' })
-    await animate(
-      this.panel.pivot,
-      { y: 0 },
-      { duration: 0.3, ease: 'backOut' },
-    )
+    await animate(this.panel.pivot, { y: 0 }, { duration: 0.3, ease: 'backOut' })
   }
 
   /** Dismiss the popup, animated */
-  public async hide () {
+  public async hide() {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
       currentEngine.navigation.currentScreen.filters = []

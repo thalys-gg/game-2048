@@ -18,7 +18,7 @@ const log = logger.custom`[ ${'UIGame'} ]`
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
   private positions: FlatGrid<Sprite>
-  constructor (positions: FlatGrid<Sprite>) {
+  constructor(positions: FlatGrid<Sprite>) {
     super()
     this.positions = positions
     this.grid = new GameFlatGrid<UIPawn>(CONFIG.cols, CONFIG.rows)
@@ -27,10 +27,9 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  public resize ({ screen, parent }: ResizeSignature) {
+  public resize({ screen, parent }: ResizeSignature) {
     this.grid.forEach((pawn, x, y) => {
-      if (!pawn)
-        return
+      if (!pawn) return
 
       const pos = this.positions.get(x, y)
       if (!pos) {
@@ -42,11 +41,8 @@ export class UIGame extends Container implements IChild {
     })
   }
 
-  public async show () {
-    const pawns = [
-      this.spawnPiece(),
-      this.spawnPiece(),
-    ]
+  public async show() {
+    const pawns = [this.spawnPiece(), this.spawnPiece()]
 
     // STATE.score = 1238
     // this.debugFillBoard(
@@ -57,7 +53,7 @@ export class UIGame extends Container implements IChild {
     // actions.showGameOver()
   }
 
-  public async resume () {
+  public async resume() {
     if (this.hasWon()) {
       this.reset()
     } else if (this.hasLost()) {
@@ -65,11 +61,10 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  public reset () {
+  public reset() {
     STATE.score = 0
     this.grid.forEach((pawn, x, y) => {
-      if (!pawn)
-        return
+      if (!pawn) return
       this.positions.get(x, y)?.removeChild(pawn)
       pawn.destroy()
     })
@@ -79,7 +74,7 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  public move (direction: Direction) {
+  public move(direction: Direction) {
     const moved = this.grid.move(direction, this.positions)
 
     if (moved) {
@@ -88,16 +83,15 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  private hasWon () {
-    return this.grid.some(pawn => (pawn?.value || 0) >= CONFIG.winningValue)
+  private hasWon() {
+    return this.grid.some((pawn) => (pawn?.value || 0) >= CONFIG.winningValue)
   }
 
-  private hasLost () {
+  private hasLost() {
     return !this.grid.hasPossibleMoves()
   }
 
-  private async checkGameState () {
-
+  private async checkGameState() {
     if (this.hasWon()) {
       await waitFor(0.3)
       actions.showGameWon()
@@ -112,7 +106,7 @@ export class UIGame extends Container implements IChild {
    * @param pattern - Optional 2D array of values (0 = empty cell).
    *                  If not provided, fills with random values leaving 1 empty cell.
    */
-  public debugFillBoard (pattern?: (number | null)[]) {
+  public debugFillBoard(pattern?: (number | null)[]) {
     // Clear existing pawns
     this.grid.forEach((pawn, x, y) => {
       if (pawn) {
@@ -148,9 +142,11 @@ export class UIGame extends Container implements IChild {
   /**
    * Spawns a new piece in a random empty cells
    */
-  public spawnPiece () {
+  public spawnPiece() {
     const coord = this.grid.getRandomEmpty()
-    if (!coord) { throw new Error('[UIGame.spawnPiece] No empty cells found') }
+    if (!coord) {
+      throw new Error('[UIGame.spawnPiece] No empty cells found')
+    }
 
     const pawn = this.createPawnAt(coord.x, coord.y, rollNewPawnValue())
     pawn.alpha = 0
@@ -161,11 +157,10 @@ export class UIGame extends Container implements IChild {
   /**
    * Creates a pawn at the specified grid position.
    */
-  private createPawnAt (x: number, y: number, value: null): void
-  private createPawnAt (x: number, y: number, value: number): UIPawn
-  private createPawnAt (x: number, y: number, value: number | null): UIPawn | void
-  private createPawnAt (x: number, y: number, value: number | null): UIPawn | void {
-
+  private createPawnAt(x: number, y: number, value: null): void
+  private createPawnAt(x: number, y: number, value: number): UIPawn
+  private createPawnAt(x: number, y: number, value: number | null): UIPawn | void
+  private createPawnAt(x: number, y: number, value: number | null): UIPawn | void {
     if (value === null) {
       this.grid.set(x, y, null)
       return

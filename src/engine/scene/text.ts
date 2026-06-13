@@ -9,7 +9,6 @@ export interface TextEmojiParams extends Omit<ITextEmojiOptions, 'style'> {
 }
 
 export class TextEmoji extends AbstractSplitText<Text | Sprite> {
-
   /**
    * Default configuration options for TextEmoji instances.
    */
@@ -22,7 +21,7 @@ export class TextEmoji extends AbstractSplitText<Text | Sprite> {
     charAnchor: 0, // Top-left alignment
   }
 
-  constructor (config: TextEmojiParams) {
+  constructor(config: TextEmojiParams) {
     const options: ITextEmojiOptions = {
       ...TextEmoji.defaultOptions,
       ...config,
@@ -38,7 +37,7 @@ export class TextEmoji extends AbstractSplitText<Text | Sprite> {
    * @returns A new TextEmoji instance
    * @example
    */
-  public static from (text: Text, options?: Omit<ITextEmojiOptions, 'text' | 'style'>): TextEmoji {
+  public static from(text: Text, options?: Omit<ITextEmojiOptions, 'text' | 'style'>): TextEmoji {
     const completeOptions: ITextEmojiOptions = {
       ...TextEmoji.defaultOptions,
       ...options,
@@ -51,7 +50,7 @@ export class TextEmoji extends AbstractSplitText<Text | Sprite> {
     })
   }
 
-  protected splitFn (): IFunctionSplitResult<Text | Sprite> {
+  protected splitFn(): IFunctionSplitResult<Text | Sprite> {
     const result = textSplitWithEmojiReplacer({
       text: this._originalText,
       style: this._style || new TextStyle(),

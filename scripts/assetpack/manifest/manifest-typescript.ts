@@ -1,9 +1,12 @@
 import type { Bundle, Manifest } from '#/assetpack/manifest/types'
-import type {
-  AssetPipe,
-  PipeSystem,
-} from '@assetpack/core'
-import { FILE_HEADER, INTERFACE_BUNDLE, INTERFACE_MANIFEST, INTERFACE_MANIFEST_ENTRY, INTERFACE_TYPED_BUNDLE } from '#/assetpack/manifest/manifest-typescript.const'
+import type { AssetPipe, PipeSystem } from '@assetpack/core'
+import {
+  FILE_HEADER,
+  INTERFACE_BUNDLE,
+  INTERFACE_MANIFEST,
+  INTERFACE_MANIFEST_ENTRY,
+  INTERFACE_TYPED_BUNDLE,
+} from '#/assetpack/manifest/manifest-typescript.const'
 import { path } from '@assetpack/core'
 import fs from 'fs-extra'
 
@@ -33,7 +36,9 @@ const DEFAULT_OPTS: TypeScriptManifestOptions = {
  * @param options - Configuration options for the TypeScript generator.
  * @returns An AssetPack pipe for TypeScript type generation.
  */
-export function generateManifestTypes (options: TypeScriptManifestOptions = {}): AssetPipe<TypeScriptManifestOptions> {
+export function generateManifestTypes(
+  options: TypeScriptManifestOptions = {},
+): AssetPipe<TypeScriptManifestOptions> {
   const name = 'manifest-typescript'
 
   return {
@@ -47,18 +52,18 @@ export function generateManifestTypes (options: TypeScriptManifestOptions = {}):
      * The finish hook is called after all assets have been processed.
      * It reads the manifest and generates TypeScript types.
      */
-    async finish (_asset, options, pipeSystem: PipeSystem) {
+    async finish(_asset, options, pipeSystem: PipeSystem) {
       const outDir = path.dirname(options.output)
-      const manifestPath = outDir === '.'
-        ? path.joinSafe(pipeSystem.outputPath, options.manifestPath)
-        : options.manifestPath
+      const manifestPath =
+        outDir === '.'
+          ? path.joinSafe(pipeSystem.outputPath, options.manifestPath)
+          : options.manifestPath
 
-      const outputPath = outDir === '.'
-        ? path.joinSafe(pipeSystem.outputPath, options.output)
-        : options.output
+      const outputPath =
+        outDir === '.' ? path.joinSafe(pipeSystem.outputPath, options.output) : options.output
 
       // Check if manifest file exists
-      if (!await fs.pathExists(manifestPath)) {
+      if (!(await fs.pathExists(manifestPath))) {
         console.warn(`[${name}] Manifest file not found at: ${manifestPath}`)
         return
       }
@@ -76,16 +81,14 @@ export function generateManifestTypes (options: TypeScriptManifestOptions = {}):
 
         console.info(`[${name}] Generated TypeScript types at: ${outputPath}`)
 
-
-        // Fix generated file formatting with eslint
-        if (Bun?.version) {
-          try {
-            await Bun.$`bunx --bun eslint --fix ${outputPath}`
-          } catch (e) {
-            console.error(`[${name}] Error fixing TypeScript types:`, e)
-          }
+        // Format the generated file (works under both Bun and Node)
+        try {
+          const { execFile } = await import('node:child_process')
+          const { promisify } = await import('node:util')
+          await promisify(execFile)('vp', ['fmt', outputPath])
+        } catch (e) {
+          console.error(`[${name}] Error formatting TypeScript types:`, e)
         }
-
       } catch (error) {
         console.error(`[${name}] Error generating TypeScript types:`, error)
       }
@@ -96,32 +99,37 @@ export function generateManifestTypes (options: TypeScriptManifestOptions = {}):
 /**
  * Generates the TypeScript content from a manifest object.
  */
-function generateTypeScriptContent (manifest: Manifest): string {
-  const bundles = manifest.bundles.filter(bundle => bundle.assets.length > 0)
+function generateTypeScriptContent(manifest: Manifest): string {
+  const bundles = manifest.bundles.filter((bundle) => bundle.assets.length > 0)
 
   // Extract bundle names
-  const bundleNames = bundles.map(bundle => `'${bundle.name}'`).join('\n  | ')
+  const bundleNames = bundles.map((bundle) => `'${bundle.name}'`).join('\n  | ')
 
   // Generate asset alias types for each bundle
-  const bundleAssetTypes = bundles.map((bundle) => {
-    const assetAliases = extractAssetAliases(bundle)
-    if (assetAliases.length === 0) { return null }
+  const bundleAssetTypes = bundles
+    .map((bundle) => {
+      const assetAliases = extractAssetAliases(bundle)
+      if (assetAliases.length === 0) {
+        return null
+      }
 
-    const typeName = getBundleAssetTypeName(bundle.name)
-    const aliases = assetAliases.map(alias => `  | '${alias}'`).join('\n')
+      const typeName = getBundleAssetTypeName(bundle.name)
+      const aliases = assetAliases.map((alias) => `  | '${alias}'`).join('\n')
 
-    return `/** ${bundle.name} bundle asset aliases */
+      return `/** ${bundle.name} bundle asset aliases */
 export type ${typeName} =${aliases}`
-  }).filter(Boolean)
+    })
+    .filter(Boolean)
 
   // Generate union type of all asset aliases
   const allAssetTypeNames = bundles
-    .filter(bundle => extractAssetAliases(bundle).length > 0)
-    .map(bundle => getBundleAssetTypeName(bundle.name))
+    .filter((bundle) => extractAssetAliases(bundle).length > 0)
+    .map((bundle) => getBundleAssetTypeName(bundle.name))
 
-  const allAssetAliasesUnion = allAssetTypeNames.length > 0
-    ? allAssetTypeNames.map(name => `  | ${name}`).join('\n')
-    : '  | never'
+  const allAssetAliasesUnion =
+    allAssetTypeNames.length > 0
+      ? allAssetTypeNames.map((name) => `  | ${name}`).join('\n')
+      : '  | never'
 
   // Generate concrete bundle interfaces
   const bundleInterfaces = bundles.map((bundle) => {
@@ -134,13 +142,15 @@ export type ${typeName} =${aliases}`
   })
 
   // Generate helper types
-  const getBundleTypeMap = bundles.map((bundle) => {
-    const interfaceName = getBundleInterfaceName(bundle.name)
-    return `  T extends '${bundle.name}' ? ${interfaceName} :`
-  }).join('\n')
+  const getBundleTypeMap = bundles
+    .map((bundle) => {
+      const interfaceName = getBundleInterfaceName(bundle.name)
+      return `  T extends '${bundle.name}' ? ${interfaceName} :`
+    })
+    .join('\n')
 
   const getBundleAssetsTypeMap = bundles
-    .filter(bundle => extractAssetAliases(bundle).length > 0)
+    .filter((bundle) => extractAssetAliases(bundle).length > 0)
     .map((bundle) => {
       const assetTypeName = getBundleAssetTypeName(bundle.name)
       return `  T extends '${bundle.name}' ? ${assetTypeName} :`
@@ -189,7 +199,7 @@ ${getBundleAssetsTypeMap}
 /**
  * Extracts unique asset aliases from a bundle, using the shortest alias for each asset.
  */
-function extractAssetAliases (bundle: Bundle): string[] {
+function extractAssetAliases(bundle: Bundle): string[] {
   const aliases = new Set<string>()
 
   bundle.assets.forEach((asset) => {
@@ -208,23 +218,23 @@ function extractAssetAliases (bundle: Bundle): string[] {
 /**
  * Generates a TypeScript type name for bundle asset aliases.
  */
-function getBundleAssetTypeName (bundleName: string): string {
+function getBundleAssetTypeName(bundleName: string): string {
   return `${toPascalCase(bundleName)}AssetAlias`
 }
 
 /**
  * Generates a TypeScript interface name for a bundle.
  */
-function getBundleInterfaceName (bundleName: string): string {
+function getBundleInterfaceName(bundleName: string): string {
   return `${toPascalCase(bundleName)}Bundle`
 }
 
 /**
  * Converts a string to PascalCase.
  */
-function toPascalCase (str: string): string {
+function toPascalCase(str: string): string {
   return str
     .split(/[-_\s]+/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('')
 }

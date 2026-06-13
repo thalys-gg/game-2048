@@ -82,9 +82,7 @@ class _SettingsPopup {
   checks = new Checks()
 }
 
-class _PausePopup {
-
-}
+class _PausePopup {}
 
 class Popups {
   Pause = new _PausePopup()

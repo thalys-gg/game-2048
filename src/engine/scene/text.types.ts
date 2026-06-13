@@ -13,14 +13,12 @@ export interface IFunctionSplitResult<T extends TSplittedInto> {
 
 export interface ITextEmojiOptions extends AbstractSplitOptions {}
 
-export interface Segment
-{
+export interface Segment {
   char: string
   metric: CanvasTextMetrics
 }
 
-export interface GroupedSegment
-{
+export interface GroupedSegment {
   line: string
   chars: Segment[]
   width: number

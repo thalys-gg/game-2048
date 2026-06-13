@@ -7,10 +7,7 @@ import { flexColumn, flexColumnReverse, flexRow, flexRowReverse } from '∆/layo
  * @param container - The parent container whose children will be distributed
  * @param options - Optional configuration for distribution
  */
-export function flex (
-  container: Container,
-  options: IDistributionOptions = {},
-): void {
+export function flex(container: Container, options: IDistributionOptions = {}): void {
   const { direction = 'row', ...rest } = options
 
   switch (direction) {

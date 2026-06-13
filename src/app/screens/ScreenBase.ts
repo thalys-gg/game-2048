@@ -4,105 +4,101 @@ import { engine } from '∆/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
 
-
 export class ScreenBase extends Container<IChild> implements IAppScreen {
-
   public static assetBundles: TAssetBundleId[] = []
   public definition: AppScreens = 'ScreenBase'
   public override label: string = 'ScreenBase'
   protected paused = false
 
-  constructor () {
+  constructor() {
     super()
   }
 
-  public prepare () {
+  public prepare() {
     this.prepareChildren()
   }
 
-  public prepareChildren () {
+  public prepareChildren() {
     this.children.forEach((child) => {
       child.prepare?.()
     })
   }
 
-  public destroy (opts?: DestroyOptions) {
+  public destroy(opts?: DestroyOptions) {
     this.destroy(opts)
   }
 
-  public reset () {
+  public reset() {
     this.resetChildren()
   }
 
-  public resetChildren () {
+  public resetChildren() {
     this.children.forEach((child) => {
       child.reset?.()
     })
   }
 
-  public onLoad (progress: number) {
+  public onLoad(progress: number) {}
 
-  }
-
-  public resize ({ screen, parent }: ResizeSignature) {
+  public resize({ screen, parent }: ResizeSignature) {
     this.resizeChildren({ screen, parent: { width: this.width, height: this.height } })
   }
 
-  public resizeChildren ({ screen, parent }: ResizeSignature) {
+  public resizeChildren({ screen, parent }: ResizeSignature) {
     this.children.forEach((child) => {
       child.resize?.({ screen, parent })
     })
   }
 
-  public async show (): Promise<void> {
+  public async show(): Promise<void> {
     this.showChildren()
   }
 
-  public showChildren () {
+  public showChildren() {
     this.children.forEach((child) => {
       child.show?.()
     })
   }
 
-  public async hide () {
+  public async hide() {
     this.hideChildren()
   }
 
-  public hideChildren () {
+  public hideChildren() {
     this.children.forEach((child) => {
       child.hide?.()
     })
   }
 
-  public async pause () {
+  public async pause() {
     this.interactiveChildren = false
     this.paused = true
   }
 
-  public async resume () {
+  public async resume() {
     this.interactiveChildren = true
     this.paused = false
     this.resumeChildren()
   }
 
-  public async resumeChildren () {
+  public async resumeChildren() {
     this.children.forEach((child) => {
       child.resume?.()
     })
   }
 
-  public blur () {
+  public blur() {
     if (!engine().navigation.currentPopup) {
       engine().navigation.presentPopup(PopupPause)
     }
   }
 
-  public focus () {
+  public focus() {}
 
-  }
-
-  public update (ticker: Ticker) {
-    // eslint-disable-next-line no-useless-return
-    if (this.paused) { return }
+  public update(ticker: Ticker) {
+    if (this.paused) {
+      // oxlint-disable-next-line no-useless-return
+      return
+    }
   }
 }

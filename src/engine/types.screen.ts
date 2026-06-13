@@ -1,4 +1,11 @@
-import type { IPreparable, IPresentable, IResettable, IResizable, IResumable, TAssetBundleId } from '∆/types'
+import type {
+  IPreparable,
+  IPresentable,
+  IResettable,
+  IResizable,
+  IResumable,
+  TAssetBundleId,
+} from '∆/types'
 import type { Container, Ticker } from 'pixi.js'
 
 export const appScreens = [
@@ -20,11 +27,10 @@ export const appScreens = [
   'Background',
 ] as const
 
-export type AppScreens = typeof appScreens[number]
+export type AppScreens = (typeof appScreens)[number]
 /** Interface for app screens */
-export interface IAppScreen extends Container, IResizable,
-  IPresentable, IResettable, IPreparable, IResumable {
-
+export interface IAppScreen
+  extends Container, IResizable, IPresentable, IResettable, IPreparable, IResumable {
   /** Screen name */
   definition: AppScreens
 

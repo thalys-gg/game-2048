@@ -1,8 +1,8 @@
 import type { ShebangOptions } from '#/vite/plugin/shebang.types'
-import type { Plugin } from 'vite'
+import type { Plugin } from 'vite-plus'
 import { SHEBANG } from '#/vite/plugin/shebang.regex'
 
-export function shebang (opts: ShebangOptions = {}): Plugin {
+export function shebang(opts: ShebangOptions = {}): Plugin {
   // A map to store the shebang for each entry point
   const shebangs = new Map<string, string>()
 

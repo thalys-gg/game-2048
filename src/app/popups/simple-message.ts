@@ -16,7 +16,7 @@ export class PopupSimpleMessage extends Container implements IAppScreen {
 
   private blurFilter: BlurFilter = new BlurFilter({ strength: 0 })
 
-  constructor (text: string) {
+  constructor(text: string) {
     super()
 
     this.bg = new Sprite(Texture.WHITE)
@@ -40,9 +40,12 @@ export class PopupSimpleMessage extends Container implements IAppScreen {
     })
   }
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     this.bg.position.set(0)
     this.bg.width = screen.width
@@ -51,7 +54,7 @@ export class PopupSimpleMessage extends Container implements IAppScreen {
     this.message.position.set(screen.width * 0.5, screen.height * 0.5)
   }
 
-  public async show () {
+  public async show() {
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {
       currentEngine.navigation.currentScreen.filters = [this.blurFilter]
@@ -59,22 +62,13 @@ export class PopupSimpleMessage extends Container implements IAppScreen {
 
     animate(this.blurFilter, { strength: 5 }, { duration: 0.2, ease: 'linear' })
     animate(this.bg, { alpha: 0.7 }, { duration: 0.2, ease: 'linear' })
-    await animate(
-      this.message.pivot,
-      { y: 0 },
-      { duration: 0.3, ease: 'backOut' },
-    )
+    await animate(this.message.pivot, { y: 0 }, { duration: 0.3, ease: 'backOut' })
   }
 
-  public async hide () {
-
+  public async hide() {
     animate(this.blurFilter, { strength: 0 }, { duration: 0.2, ease: 'linear' })
     animate(this.bg, { alpha: 0 }, { duration: 0.2, ease: 'linear' })
-    await animate(
-      this.message.pivot,
-      { y: -500 },
-      { duration: 0.3, ease: 'backIn' },
-    )
+    await animate(this.message.pivot, { y: -500 }, { duration: 0.3, ease: 'backIn' })
 
     const currentEngine = engine()
     if (currentEngine.navigation.currentScreen) {

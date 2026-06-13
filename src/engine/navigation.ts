@@ -41,17 +41,17 @@ export class Navigation {
   /** Current popup being displayed */
   public currentPopup?: IAppScreen
 
-  destroy () {
+  destroy() {
     globalThis.window.removeEventListener('keydown', this._onKeyDown)
     globalThis.window.removeEventListener('popstate', this._onPopState)
   }
 
-  constructor () {
+  constructor() {
     globalThis.window.addEventListener('keydown', this._onKeyDown)
     globalThis.window.addEventListener('popstate', this._onPopState)
   }
 
-  public init (app: CreationEngine) {
+  public init(app: CreationEngine) {
     this.engine = app
 
     this.width = app.screen.width
@@ -79,25 +79,24 @@ export class Navigation {
   }
 
   /** Set the default background screen */
-  public setBackground (ctor: IAppScreenConstructor) {
-    this.background = new ctor() // eslint-disable-line new-cap
+  public setBackground(ctor: IAppScreenConstructor) {
+    this.background = new ctor() // oxlint-disable-line new-cap
     this.addAndShowScreen(this.background, this.cBackground)
   }
 
   /** Set the overlay layer */
-  public setOverlay (ctor: IAppScreenConstructor) {
-    this.overlay = new ctor() // eslint-disable-line new-cap
+  public setOverlay(ctor: IAppScreenConstructor) {
+    this.overlay = new ctor() // oxlint-disable-line new-cap
     this.addAndShowScreen(this.overlay, this.cScreenOverlay)
   }
 
   /** Add screen to the stage, link update & resize functions */
-  private async addAndShowScreen (screen: IAppScreen, container: Container) {
+  private async addAndShowScreen(screen: IAppScreen, container: Container) {
     // Add screen to stage
     container.addChild(screen)
 
     // Setup things and pre-organize screen before showing
-    if (screen.prepare)
-      screen.prepare()
+    if (screen.prepare) screen.prepare()
     // Trigger a first resize, if available
     if (screen.resize) {
       screen.resize({
@@ -106,8 +105,7 @@ export class Navigation {
       })
     }
     // Add update function if available
-    if (screen.update)
-      this.engine.ticker.add(screen.update, screen)
+    if (screen.update) this.engine.ticker.add(screen.update, screen)
 
     // Show the new screen
     if (screen.show) {
@@ -118,32 +116,27 @@ export class Navigation {
   }
 
   /** Remove screen from the stage, unlink update & resize functions */
-  private async hideAndRemoveScreen (screen: IAppScreen) {
+  private async hideAndRemoveScreen(screen: IAppScreen) {
     // Prevent interaction in the screen
     screen.interactiveChildren = false
 
     // Hide screen if method is available
-    if (screen.hide)
-      await screen.hide()
+    if (screen.hide) await screen.hide()
     // Unlink update function if method is available
-    if (screen.update)
-      this.engine.ticker.remove(screen.update, screen)
+    if (screen.update) this.engine.ticker.remove(screen.update, screen)
     // Remove screen from its parent (usually app.stage, if not changed)
-    if (screen.parent)
-      screen.parent.removeChild(screen)
+    if (screen.parent) screen.parent.removeChild(screen)
     // Clean up the screen so that instance can be reused again later
-    if (screen.reset)
-      screen.reset()
+    if (screen.reset) screen.reset()
   }
 
   /**
    * Hide current screen (if there is one) and present a new screen.
    * Any class that matches AppScreen interface can be used here.
    */
-  public async showScreen (ctor: IAppScreenConstructor) {
+  public async showScreen(ctor: IAppScreenConstructor) {
     // Block interactivity in current screen
-    if (this.currentScreen)
-      this.currentScreen.interactiveChildren = false
+    if (this.currentScreen) this.currentScreen.interactiveChildren = false
 
     // Load assets for the new screen, if available
     if (ctor.assetBundles) {
@@ -155,19 +148,16 @@ export class Navigation {
       })
     }
 
-    if (this.currentScreen?.onLoad)
-      this.currentScreen.onLoad(100)
+    if (this.currentScreen?.onLoad) this.currentScreen.onLoad(100)
     // If there is a screen already created, hide and destroy it
-    if (this.currentScreen)
-      await this.hideAndRemoveScreen(this.currentScreen)
+    if (this.currentScreen) await this.hideAndRemoveScreen(this.currentScreen)
 
     // Create the new screen and add that to the stage
     this.currentScreen = BigPool.get(ctor)
     await this.addAndShowScreen(this.currentScreen, this.cScreen)
 
     const ref = this.crossReference(this.currentScreen.definition)
-    if (ref === null)
-      return
+    if (ref === null) return
 
     userSettings.setLastScreen(ref)
     this.stackScreenState(ref)
@@ -178,7 +168,7 @@ export class Navigation {
    * @param width Viewport width
    * @param height Viewport height
    */
-  public resize (width: number, height: number) {
+  public resize(width: number, height: number) {
     this.width = width
     this.height = height
     this.currentScreen?.resize?.({ screen: { width, height }, parent: { width, height } })
@@ -191,25 +181,23 @@ export class Navigation {
   /**
    * Show up a popup over current screen
    */
-  public async presentPopup (ctor: IAppScreenConstructor) {
+  public async presentPopup(ctor: IAppScreenConstructor) {
     if (this.currentScreen) {
       this.currentScreen.interactiveChildren = false
       await this.currentScreen.pause?.()
     }
 
-    if (this.currentPopup)
-      await this.hideAndRemoveScreen(this.currentPopup)
+    if (this.currentPopup) await this.hideAndRemoveScreen(this.currentPopup)
 
-    this.currentPopup = new ctor() // eslint-disable-line new-cap
+    this.currentPopup = new ctor() // oxlint-disable-line new-cap
     await this.addAndShowScreen(this.currentPopup, this.cPopups)
   }
 
   /**
    * Dismiss current popup, if there is one
    */
-  public async dismissPopup () {
-    if (!this.currentPopup)
-      return
+  public async dismissPopup() {
+    if (!this.currentPopup) return
     const popup = this.currentPopup
     this.currentPopup = undefined
     await this.hideAndRemoveScreen(popup)
@@ -222,7 +210,7 @@ export class Navigation {
   /**
    * Blur screens when lose focus
    */
-  public blur () {
+  public blur() {
     this.currentScreen?.blur?.()
     this.currentPopup?.blur?.()
     this.background?.blur?.()
@@ -233,7 +221,7 @@ export class Navigation {
   /**
    * Focus screens
    */
-  public focus () {
+  public focus() {
     this.currentScreen?.focus?.()
     this.currentPopup?.focus?.()
     this.background?.focus?.()
@@ -241,7 +229,7 @@ export class Navigation {
     this.measureLayer?.focus?.()
   }
 
-  private stackScreenState (value: AppScreens) {
+  private stackScreenState(value: AppScreens) {
     history.pushState({ page: value }, value)
   }
 
@@ -317,7 +305,7 @@ export class Navigation {
   /**
    * Toggle the measurement overlay visibility
    */
-  public toggleMeasureLayer () {
+  public toggleMeasureLayer() {
     if (this.measureLayer && 'toggle' in this.measureLayer) {
       this.measureLayer.toggle()
     }

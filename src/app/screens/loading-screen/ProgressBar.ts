@@ -4,7 +4,7 @@ import { getTheme } from '@/config'
 const theme = getTheme()
 
 export class ProgressBar extends CircularProgressBar {
-  constructor () {
+  constructor() {
     super({
       backgroundColor: theme.boardBg,
       fillColor: theme.tiles[0].bg,
@@ -20,11 +20,11 @@ export class ProgressBar extends CircularProgressBar {
     this.y += -this.height / 2
   }
 
-  public resize (width: number, height: number) {
+  public resize(width: number, height: number) {
     this.position.set(width * 0.5, height * 0.5)
   }
 
-  public set (progress: number) {
+  public set(progress: number) {
     this.progress = progress
   }
 }

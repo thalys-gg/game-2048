@@ -2,22 +2,20 @@ import { engine } from '∆/engine.singleton'
 import { Container, Graphics } from 'pixi.js'
 
 export class Background extends Container {
-  constructor () {
+  constructor() {
     super()
 
     this.config()
     this.drawSquare()
   }
 
-  private config () {
+  private config() {
     this.pivot.set(0.5)
   }
 
-  resize (width: number, height: number) {
+  resize(width: number, height: number) {}
 
-  }
-
-  private drawSquare () {
+  private drawSquare() {
     const { screen } = engine()
     const { width, height } = screen
     const color = '#1E1E1E'

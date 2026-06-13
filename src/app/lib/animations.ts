@@ -5,9 +5,8 @@ import { animate } from 'motion'
 let _rollupScoreRef: ReturnType<typeof animate> | null = null
 let _fadeScoreRef: ReturnType<typeof animate> | null = null
 
-export default new class {
+export default new (class {
   rollupScore = (text: Label, from: number, to: number) => {
-
     if (_rollupScoreRef) {
       _rollupScoreRef.complete()
       _rollupScoreRef = null
@@ -28,7 +27,6 @@ export default new class {
   }
 
   fadeScore = (text: Label) => {
-
     if (_rollupScoreRef) {
       _rollupScoreRef.complete()
       _rollupScoreRef = null
@@ -39,7 +37,7 @@ export default new class {
       _fadeScoreRef = null
     }
 
-    (async () => {
+    ;(async () => {
       _fadeScoreRef = animate(text, { alpha: 0 }, { duration: 0.4 })
       await _fadeScoreRef
 
@@ -58,4 +56,4 @@ export default new class {
       },
     }
   }
-}()
+})()

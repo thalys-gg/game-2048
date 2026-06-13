@@ -30,7 +30,8 @@ const magenta = (text: string) => `${colors.fg.magenta}${text}${colors.reset}`
 const red = (text: string) => `${colors.fg.red}${text}${colors.reset}`
 const bold = (text: string) => `${colors.bright}${text}${colors.reset}`
 
-console.log(magenta(`
+console.log(
+  magenta(`
 /**
  * =================================================================================
  * ${bold(yellow('Example usage of getManifestName from ./utils.ts'))}
@@ -39,7 +40,8 @@ console.log(magenta(`
  * To run this example, execute the following command in your terminal:
  * ${cyan('bun run scripts/assetpack/manifest/utils.example.ts')}
  *
- */`))
+ */`),
+)
 
 console.log(yellow('--- Example 1: Extracting manifest name from a nested asset ---'))
 
@@ -79,7 +81,8 @@ console.log(`
   Resulting Manifest Name: ${red(manifestName3 === null ? 'null' : `"${manifestName3}"`)}
 `)
 
-console.log(magenta(`
+console.log(
+  magenta(`
 /**
  * =================================================================================
  * This allows you to programmatically assign assets to different manifests,
@@ -88,4 +91,5 @@ console.log(magenta(`
  * and then load the "level1" manifest only when the player enters that level.
  * =================================================================================
  */
-`))
+`),
+)

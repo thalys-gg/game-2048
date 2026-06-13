@@ -13,11 +13,9 @@ export type LabelOptions = CanvasTextOptions
  * because it is the most common use in the app.
  */
 export class Label extends Text {
-
   private _g: Graphics
 
-  constructor (opts?: LabelOptions) {
-
+  constructor(opts?: LabelOptions) {
     const { style = {}, ...rest } = opts || {}
 
     const textOptions = {
@@ -75,4 +73,3 @@ export class Label extends Text {
   //   return debugGraphic
   // }
 }
-

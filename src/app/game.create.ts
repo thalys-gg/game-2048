@@ -6,8 +6,7 @@ import { userSettings } from '∆/utils/user.settings'
 import { Stats } from 'pixi-stats'
 import { isDev } from '@/lib/global'
 
-export async function createApplication () {
-
+export async function createApplication() {
   const engine = new CreationEngine()
   setEngine(engine)
 

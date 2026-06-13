@@ -2,8 +2,7 @@ import type { ColorSource } from 'pixi.js'
 import { engine } from '∆/engine.singleton'
 import { Graphics, GraphicsContext, RenderTexture } from 'pixi.js'
 
-export function render () {
-
+export function render() {
   let gc: GraphicsContext
   let g: Graphics
   let rt: RenderTexture
@@ -11,8 +10,7 @@ export function render () {
   let height: number
 
   const api = {
-
-    canvas (w: number, h: number, color: ColorSource = 0x000000, alpha = 0) {
+    canvas(w: number, h: number, color: ColorSource = 0x000000, alpha = 0) {
       width = w
       height = h
       gc = new GraphicsContext()
@@ -21,9 +19,17 @@ export function render () {
       return api
     },
 
-    draw () {
+    draw() {
       return {
-        squareRounded (x: number, y: number, width: number, height: number, radius: number, color: string, alpha: number = 1) {
+        squareRounded(
+          x: number,
+          y: number,
+          width: number,
+          height: number,
+          radius: number,
+          color: string,
+          alpha: number = 1,
+        ) {
           g = new Graphics(gc)
           g.roundRect(x, y, width, height, radius)
           g.fill({ color, alpha })
@@ -32,7 +38,7 @@ export function render () {
       }
     },
 
-    render () {
+    render() {
       const rt = RenderTexture.create({
         width,
         height,

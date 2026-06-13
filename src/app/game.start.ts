@@ -4,9 +4,7 @@ import { ScreenAssetLoader } from '@/screens/loading-screen/ScreenAssetLoader'
 import { ScreenMain } from '@/screens/main/ScreenMain'
 import { OverlayUI } from '@/screens/overlay/UI'
 
-
-export async function start () {
-
+export async function start() {
   const { navigation } = engine()
 
   await navigation.showScreen(ScreenAssetLoader)
@@ -15,4 +13,3 @@ export async function start () {
 
   logger.info('Starting 2048 game...')
 }
-

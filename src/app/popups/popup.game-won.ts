@@ -4,7 +4,7 @@ import { PopupSimpleMessage } from '@/popups/simple-message'
 export class GameWon extends PopupSimpleMessage implements IAppScreen {
   public static assetBundles: TAssetBundleId[] = ['preload']
   public definition: AppScreens = 'GameWon'
-  constructor () {
+  constructor() {
     super('YOU WON!')
   }
 }

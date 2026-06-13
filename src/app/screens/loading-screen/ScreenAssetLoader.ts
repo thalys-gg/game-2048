@@ -15,7 +15,7 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
   private progressBar: ProgressBar
   private background: Background
 
-  constructor () {
+  constructor() {
     super()
 
     this.background = new Background()
@@ -25,31 +25,30 @@ export class ScreenAssetLoader extends Container implements IAppScreen {
     this.addChild(this.progressBar)
   }
 
-  public onLoad (progress: number) {
+  public onLoad(progress: number) {
     this.progressBar.set(progress)
   }
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     this.progressBar.resize(screen.width, screen.height)
     this.background.resize(screen.width, screen.height)
   }
 
-  public async show () {
+  public async show() {
     this.alpha = 1
   }
 
-  public async hide () {
-    await animate(
-      this,
-      { alpha: 0 } as ObjectTarget<this>,
-      {
-        duration: 0.3,
-        ease: 'linear',
-        delay: 1,
-      },
-    )
+  public async hide() {
+    await animate(this, { alpha: 0 } as ObjectTarget<this>, {
+      duration: 0.3,
+      ease: 'linear',
+      delay: 1,
+    })
   }
 }

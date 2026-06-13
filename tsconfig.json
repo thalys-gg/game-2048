@@ -1,24 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.core.json",
-  "compilerOptions": {
-    "tsBuildInfoFile": ".cache/tsconfig.tsbuildinfo",
-    "paths": {
-      "∆/*": ["./src/engine/*"],
-      "@/*": ["./src/app/*"],
-      "#/*": ["./scripts/*"]
-    }
-  },
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.test.json"
-    }
-  ],
-  "files": []
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }

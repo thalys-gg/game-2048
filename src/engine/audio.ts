@@ -16,19 +16,16 @@ export class BGM {
   private volume = 1
 
   /** Play a background music, fading out and stopping the previous, if there is one */
-  public async play (alias: string, options?: PlayOptions) {
+  public async play(alias: string, options?: PlayOptions) {
     // Do nothing if the requested music is already being played
-    if (this.currentAlias === alias)
-      return
+    if (this.currentAlias === alias) return
 
     // Fade out then stop current music
     if (this.current) {
       const current = this.current
-      animate(current, { volume: 0 }, { duration: 1, ease: 'linear' }).then(
-        () => {
-          current.stop()
-        },
-      )
+      animate(current, { volume: 0 }, { duration: 1, ease: 'linear' }).then(() => {
+        current.stop()
+      })
     }
 
     // Find out the new instance to be played
@@ -38,22 +35,20 @@ export class BGM {
     this.currentAlias = alias
     this.current.play({ loop: true, ...options })
     this.current.volume = 0
-    animate(
-      this.current,
-      { volume: this.volume },
-      { duration: 1, ease: 'linear' },
-    )
+    animate(this.current, { volume: this.volume }, { duration: 1, ease: 'linear' })
   }
 
   /** Get background music volume */
-  public getVolume () {
+  public getVolume() {
     return this.volume
   }
 
   /** Set background music volume */
-  public setVolume (v: number) {
+  public setVolume(v: number) {
     this.volume = v
-    if (this.current) { this.current.volume = this.volume }
+    if (this.current) {
+      this.current.volume = this.volume
+    }
   }
 }
 
@@ -68,18 +63,18 @@ export class SFX {
   private volume = 1
 
   /** Play an one-shot sound effect */
-  public play (alias: string, options?: PlayOptions) {
+  public play(alias: string, options?: PlayOptions) {
     const volume = this.volume * (options?.volume ?? 1)
     sound.play(alias, { ...options, volume })
   }
 
   /** Set sound effects volume */
-  public getVolume () {
+  public getVolume() {
     return this.volume
   }
 
   /** Set sound effects volume. Does not affect instances that are currently playing */
-  public setVolume (v: number) {
+  public setVolume(v: number) {
     this.volume = v
   }
 }

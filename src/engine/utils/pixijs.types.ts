@@ -1,6 +1,1 @@
-export type TAnchorByPosition
-  = | 'top'
-    | 'bottom'
-    | 'left'
-    | 'right'
-    | 'center'
+export type TAnchorByPosition = 'top' | 'bottom' | 'left' | 'right' | 'center'

@@ -11,7 +11,7 @@ export class ScreenInput extends Container implements IAppScreen {
   public static assetBundles: TAssetBundleId[] = ['main']
 
   private _input: InputHandler
-  private _indicators: Record<Direction, { bg: Graphics, label: Label }>
+  private _indicators: Record<Direction, { bg: Graphics; label: Label }>
   private _activeTimers: Record<Direction, number> = {
     up: 0,
     down: 0,
@@ -19,12 +19,12 @@ export class ScreenInput extends Container implements IAppScreen {
     right: 0,
   }
 
-  private readonly ACTIVE_COLOR = 0x00FF00
+  private readonly ACTIVE_COLOR = 0x00ff00
   private readonly INACTIVE_COLOR = 0x333333
-  private readonly TEXT_COLOR = 0xFFFFFF
+  private readonly TEXT_COLOR = 0xffffff
   private readonly FLASH_DURATION = 10 // frames
 
-  constructor () {
+  constructor() {
     super()
     this._input = new InputHandler()
     this._input.enabled = false // Enable only when shown
@@ -45,7 +45,7 @@ export class ScreenInput extends Container implements IAppScreen {
     this._input.onMove.connect(this._onInputMove)
   }
 
-  private _createIndicator (text: string): { bg: Graphics, label: Label } {
+  private _createIndicator(text: string): { bg: Graphics; label: Label } {
     const bg = new Graphics()
     // Initial draw
     this._drawIndicatorBg(bg, this.INACTIVE_COLOR)
@@ -62,7 +62,7 @@ export class ScreenInput extends Container implements IAppScreen {
     return { bg, label }
   }
 
-  private _drawIndicatorBg (g: Graphics, color: number) {
+  private _drawIndicatorBg(g: Graphics, color: number) {
     g.clear()
     g.roundRect(-50, -50, 100, 100, 10).fill(color)
   }
@@ -72,9 +72,12 @@ export class ScreenInput extends Container implements IAppScreen {
     this._drawIndicatorBg(this._indicators[direction].bg, this.ACTIVE_COLOR)
   }
 
-  public resize ({ screen, parent }: {
-    screen: { width: number, height: number }
-    parent: { width: number, height: number }
+  public resize({
+    screen,
+    parent,
+  }: {
+    screen: { width: number; height: number }
+    parent: { width: number; height: number }
   }) {
     const cx = screen.width * 0.5
     const cy = screen.height * 0.5
@@ -86,7 +89,7 @@ export class ScreenInput extends Container implements IAppScreen {
     this._indicators.right.bg.position.set(cx + spacing, cy)
   }
 
-  public update (ticker: Ticker) {
+  public update(ticker: Ticker) {
     for (const d of ['up', 'down', 'left', 'right'] as Direction[]) {
       if (this._activeTimers[d] > 0) {
         this._activeTimers[d] -= ticker.deltaTime
@@ -97,11 +100,11 @@ export class ScreenInput extends Container implements IAppScreen {
     }
   }
 
-  public async show (): Promise<void> {
+  public async show(): Promise<void> {
     this._input.enabled = true
   }
 
-  public async hide (): Promise<void> {
+  public async hide(): Promise<void> {
     this._input.enabled = false
   }
 }

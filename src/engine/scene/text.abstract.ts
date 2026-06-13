@@ -29,16 +29,8 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
   protected _dirty: boolean = false
   protected _canReuseChars: boolean = false
 
-  constructor (config: AbstractSplitTextOptions) {
-    const {
-      text,
-      style,
-      autoSplit,
-      lineAnchor,
-      wordAnchor,
-      charAnchor,
-      ...options
-    } = config
+  constructor(config: AbstractSplitTextOptions) {
+    const { text, style, autoSplit, lineAnchor, wordAnchor, charAnchor, ...options } = config
 
     super(options)
     this.chars = []
@@ -55,9 +47,9 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
     this.style = style
   }
 
-  protected abstract splitFn (): IFunctionSplitResult<T>
+  protected abstract splitFn(): IFunctionSplitResult<T>
 
-  public split (): void {
+  public split(): void {
     const res: IFunctionSplitResult<T> = this.splitFn()
 
     this.chars = res.chars
@@ -75,13 +67,13 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
     this._canReuseChars = true
   }
 
-  get text (): string {
+  get text(): string {
     return this._originalText
   }
 
-  set text (value: string) {
+  set text(value: string) {
     this._originalText = value
-    this.lines.forEach(line => line.destroy({ children: true }))
+    this.lines.forEach((line) => line.destroy({ children: true }))
     this.lines.length = 0
     this.words.length = 0
     this.chars.length = 0
@@ -90,7 +82,7 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
     this.onTextUpdate()
   }
 
-  private _setOrigin (
+  private _setOrigin(
     value: number | PointData,
     elements: Array<Container>,
     property: '_lineAnchor' | '_wordAnchor' | '_charAnchor',
@@ -107,8 +99,8 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
       const localBounds = element.getLocalBounds()
 
       // Calculate origin position relative to the bounds
-      const originX = localBounds.minX + (localBounds.width * originPoint.x)
-      const originY = localBounds.minY + (localBounds.height * originPoint.y)
+      const originX = localBounds.minX + localBounds.width * originPoint.x
+      const originY = localBounds.minY + localBounds.height * originPoint.y
 
       element.origin.set(originX, originY)
     })
@@ -116,44 +108,44 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
     this[property] = value
   }
 
-  get lineAnchor (): number | PointData {
+  get lineAnchor(): number | PointData {
     return this._lineAnchor
   }
 
-  set lineAnchor (value: number | PointData) {
+  set lineAnchor(value: number | PointData) {
     this._setOrigin(value, this.lines, '_lineAnchor')
   }
 
-  get wordAnchor (): number | PointData {
+  get wordAnchor(): number | PointData {
     return this._wordAnchor
   }
 
-  set wordAnchor (value: number | PointData) {
+  set wordAnchor(value: number | PointData) {
     this._setOrigin(value, this.words, '_wordAnchor')
   }
 
-  get charAnchor (): number | PointData {
+  get charAnchor(): number | PointData {
     return this._charAnchor
   }
 
-  set charAnchor (value: number | PointData) {
+  set charAnchor(value: number | PointData) {
     this._setOrigin(value, this.chars, '_charAnchor')
   }
 
-  get style (): TextStyle | undefined {
+  get style(): TextStyle | undefined {
     return this._style
   }
 
-  set style (style: TextStyle | Partial<TextStyle> | TextStyleOptions) {
+  set style(style: TextStyle | Partial<TextStyle> | TextStyleOptions) {
     style ||= {}
 
     this._style = new TextStyle(style)
 
     // tidy up word/line containers, characters can be reused
-    this.words.forEach(word => word.destroy())
+    this.words.forEach((word) => word.destroy())
     this.words.length = 0
 
-    this.lines.forEach(line => line.destroy())
+    this.lines.forEach((line) => line.destroy())
     this.lines.length = 0
 
     this._canReuseChars = true
@@ -161,7 +153,7 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
     this.onTextUpdate()
   }
 
-  protected onTextUpdate (): void {
+  protected onTextUpdate(): void {
     this._dirty = true
     this._autoSplit && this.split()
   }
@@ -179,7 +171,7 @@ export abstract class AbstractSplitText<T extends TSplittedInto> extends Contain
    * text.destroy({ children: true, style: false });
    * ```
    */
-  public override destroy (options?: DestroyOptions): void {
+  public override destroy(options?: DestroyOptions): void {
     super.destroy(options)
     this.chars.length = 0
     // @ts-expect-error throwing away reference
