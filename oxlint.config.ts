@@ -1,8 +1,8 @@
-import { defineConfig } from 'oxlint'
+import type { OxlintConfig } from 'vite-plus/lint'
 
 // Imported by vite.config.ts (`lint` block) — Vite+ only reads lint config from
 // there; a standalone oxlint config file is ignored once that block exists.
-export default defineConfig({
+export const oxlint_config: OxlintConfig = {
   plugins: ['oxc', 'typescript', 'unicorn', 'react', 'node', 'jsdoc', 'import'],
   jsPlugins: [
     {
@@ -32,68 +32,6 @@ export default defineConfig({
     sampleRate: 'readonly',
     WorkletGlobalScope: 'readonly',
   },
-  ignorePatterns: [
-    'src/gen/**',
-    '**/logs',
-    '**/*.log',
-    '**/npm-debug.log*',
-    '**/yarn-debug.log*',
-    '**/yarn-error.log*',
-    '**/pnpm-debug.log*',
-    '**/lerna-debug.log*',
-    '**/node_modules',
-    '**/dist',
-    '**/dist-ssr',
-    '**/*.local',
-    '**/.cache',
-    '.vscode/*',
-    '!.vscode/extensions.json',
-    '**/.idea',
-    '**/.DS_Store',
-    '**/*.suo',
-    '**/*.ntvs*',
-    '**/*.njsproj',
-    '**/*.sln',
-    '**/*.sw?',
-    '**/.assetpack',
-    'public/assets',
-    '**/.claude',
-    '**/package-lock.json',
-    '**/yarn.lock',
-    '**/pnpm-lock.yaml',
-    '**/bun.lockb',
-    '**/output',
-    '**/coverage',
-    '**/temp',
-    '**/.temp',
-    '**/tmp',
-    '**/.tmp',
-    '**/.history',
-    '**/.vitepress/cache',
-    '**/.nuxt',
-    '**/.next',
-    '**/.svelte-kit',
-    '**/.vercel',
-    '**/.changeset',
-    '**/.output',
-    '**/.vite-inspect',
-    '**/.yarn',
-    '**/vite.config.*.timestamp-*',
-    '**/CHANGELOG*.md',
-    '**/*.min.*',
-    '**/LICENSE*',
-    '**/__snapshots__',
-    '**/auto-import?(s).d.ts',
-    '**/components.d.ts',
-    '!src/*.local.{ts,tsx}',
-    '.assetpack',
-    '.cache',
-    'build',
-    'dist',
-    'llms',
-    'node_modules',
-    'out',
-  ],
   rules: {
     'accessor-pairs': [
       'error',
@@ -637,4 +575,10 @@ export default defineConfig({
       jsPlugins: [],
     },
   ],
-})
+
+  // Oxlint auto-reads .gitignore, so paths covered there (node_modules, dist,
+  // .cache, .assetpack, public/assets, logs, editor dirs, .claude…) don't need
+  // repeating. List only what's NOT gitignored but must still be skipped:
+  // src/gen is generated yet committed, so gitignore can't cover it.
+  ignorePatterns: ['src/gen/**'],
+}

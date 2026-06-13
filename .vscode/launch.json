@@ -1,0 +1,32 @@
+{
+  // "--profile-directory=PROFILE_NAME", // Launches Chrome with a specified user profile, allowing distinct development settings and extensions for debugging.
+  // "--incognito", // Opens the browser in incognito mode to avoid caching and persistent cookies.
+  // "--disable-extensions", // Ensures all Chrome extensions are disabled, useful for isolating issues triggered by extensions.
+  // "--headless", // Runs Chrome in headless mode without a user interface; best for automated test scenarios.
+  // "--remote-debugging-port=PORT", // Specifies the port to accept remote debugging connections, required in advanced workflows and for attaching debuggers.
+  // "--disable-web-security", // Disables web security features such as CORS—use only for local testing as it reduces browser security.
+  // "--start-maximized", // Launches the window maximized for better visibility in development.
+  // "--no-first-run", // Skips the initial Chrome welcome page.
+  // "--auto-open-devtools-for-tabs", // Opens DevTools automatically for each new tab, providing instant access to debugging tools.
+  // "--user-data-dir=FOLDER", // Starts Chrome with a custom user data directory, ensuring an isolated browsing experience for each session.
+  // "--enable-precise-memory-info", // Enables pixi-stat to show memory allocated
+
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "dev",
+      "request": "launch",
+      "type": "chrome",
+      "internalConsoleOptions": "neverOpen",
+      "url": "http://localhost:3212",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${userHome}/dev/.chrome-for-vscode/Default",
+      "runtimeArgs": [
+        "--enable-features=DevToolsWellKnown,DevToolsAutomaticFileSystems",
+        "--auto-open-devtools-for-tabs"
+        // "--enable-precise-memory-info"
+      ]
+    }
+  ]
+}

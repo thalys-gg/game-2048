@@ -5,7 +5,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ESNext"],
-    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun-types", "node"],
+    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun", "node"],
     // Scripts are executed directly via type stripping, so keep syntax erasable
     "erasableSyntaxOnly": true
   },

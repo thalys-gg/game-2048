@@ -1,0 +1,74 @@
+{
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  // [vite] resolves the source map locations for the temporary Vite config file
+  "debug.javascript.terminalOptions": {
+    "resolveSourceMapLocations": [
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+      "**/node_modules/.vite-temp/**",
+      "**/.cache/vite/**"
+    ]
+  },
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/.DS_Store": false,
+    "**/Thumbs.db": false,
+    "**/CVS": false,
+    "**/.ruby-lsp": false,
+    "**/.idea": false,
+    ".assetpack": false,
+    ".cache": false,
+    ".claude": false,
+    ".github": false,
+    ".idea": false,
+    ".vite": false,
+    ".vscode": false,
+    "node_modules": false
+  },
+  "explorerExclude.backup": {},
+  "workbench.tree.indent": 20,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".env": "*.env, .env.*, .envrc",
+    ".gitignore": ".gitattributes, .gitmodules, *ignore, .ignore*, .editorconfig",
+    "package.json": "eslint.config.*, .gitignore, .gitattributes, bunfig.toml, bun.lock, pnpm-lock.yaml, pnpm-workspace.yaml, package-lock.json, .editorconfig, CLAUDE.md, GEMINI.md, TASKS.md, LICENSE*, README*",
+    "tsconfig.json": "tsconfig.*.json",
+    "vite.config.ts": "index*.html, oxlint.*, .prettier*",
+    "*.tsx": "$(capture).ts, $(capture).*.ts, $(capture).*.tsx, $(capture)_*.ts, $(capture)_*.tsx, $(capture).css, $(capture).module.css, $(capture).less, $(capture).module.less, $(capture).module.less.d.ts, $(capture).scss, $(capture).module.scss, $(capture).module.scss.d.ts, $(capture).css.ts, $(capture).html, $(capture)*.md,",
+    "*.ts": "$(capture)*.mjs,$(capture)*.js, $(capture).d.ts.map, $(capture).*.ts, $(capture).*.tsx, $(capture)_*.js, $(capture)_*.ts, $(capture)*.md,",
+    "*.mts": "$(capture).mts.map, $(capture).*.mts, $(capture)_*.mts",
+    "*.jsx": "$(capture).js, $(capture).*.jsx, $(capture)_*.js, $(capture)_*.jsx, $(capture).module.css, $(capture).less, $(capture).module.less, $(capture).module.less.d.ts, $(capture).scss, $(capture).module.scss, $(capture).module.scss.d.ts",
+    "*.mjs": "$(capture).mjs.map, $(capture).*.mjs, $(capture)_*.mjs",
+    "*.js": "$(capture).js.map, $(capture).*.js, $(capture)_*.js, $(capture).d.ts, $(capture).js.flow",
+    "*.cjs": "$(capture).cjs.map, $(capture).*.cjs, $(capture)_*.cjs",
+    "*.webp": "$(capture)*.png, $(capture)*.json",
+    "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
+  },
+  "cSpell.words": ["NESW", "pipx"],
+  "python.defaultInterpreterPath": "${workspaceFolder}/.vscode/mise-tools/python",
+  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview",
+  "npm.scriptRunner": "vp",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "oxc.fmt.configPath": "./vite.config.ts",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  }
+}
