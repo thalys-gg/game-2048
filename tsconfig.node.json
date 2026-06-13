@@ -1,11 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["./tsconfig.core.json"],
+  // Tooling that runs under Bun/Node: vite config, lint config, scripts
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    // "Please don't shove this anywhere and place at the defined cache folder"
-    "tsBuildInfoFile": ".cache/tsconfig.node.tsbuildinfo",
-
-    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun-types", "node"]
+    "target": "ES2022",
+    "lib": ["ESNext"],
+    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun-types", "node"],
+    // Scripts are executed directly via type stripping, so keep syntax erasable
+    "erasableSyntaxOnly": true
   },
-  "include": ["vite.config.ts", "scripts/**/*"]
+  "include": ["vite.config.ts", "oxlint.config.ts", "scripts/**/*"]
 }
