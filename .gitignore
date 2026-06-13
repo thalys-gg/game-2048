@@ -31,3 +31,5 @@ public/assets
 
 .claude
 .agents
+.vercel
+.env*
