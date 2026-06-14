@@ -48,10 +48,9 @@
     "*.webp": "$(capture)*.png, $(capture)*.json",
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
-  "cSpell.words": ["NESW", "pipx"],
-  "python.defaultInterpreterPath": "${workspaceFolder}/.vscode/mise-tools/python",
-  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview",
+  "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
   "npm.scriptRunner": "vp",
+
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
