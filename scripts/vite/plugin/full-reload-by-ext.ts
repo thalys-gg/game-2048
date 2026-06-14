@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite-plus'
+import type { Plugin } from 'vite'
 
 /**
  * Triggers a full-reload when are detected changes in

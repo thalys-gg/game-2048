@@ -1,13 +1,12 @@
 # 2048
 
-A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, using [Vite+](https://viteplus.dev/) as the toolchain and [Bun](https://bun.sh/) as the package manager.
+A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, using [Vite](https://vite.dev/) as the toolchain and [Bun](https://bun.sh/) as the package manager.
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Vite+](https://viteplus.dev/guide/) (`vp` CLI): `curl -fsSL https://vite.plus | bash`
-- [Bun](https://bun.sh/) (detected automatically by `vp` from the lockfile)
+- [Bun](https://bun.sh/) — package manager and script runtime: `curl -fsSL https://bun.sh/install | bash`
 
 ### Installation
 
@@ -16,28 +15,30 @@ A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, us
 git clone <repository-url>
 cd 2048_game
 
-# Install dependencies (also installs the pre-commit hook)
-vp install
+# Install dependencies
+bun install
 ```
 
 ### Development
 
 ```bash
 # Start the dev server on http://localhost:3212
-vp dev
+bun run dev
 
-# Format, lint, and type-check (add --fix to autofix)
-vp check
+# Lint (oxlint) and type-check (tsc)
+bun run lint
+bun run typecheck
 
-# Run tests (vp test watch for watch mode)
-vp test
+# Autofix lint + format (oxlint --fix + oxfmt)
+bun run fix
+
+# Run tests (bun run test:watch for watch mode)
+bun run test
 
 # Build for production / preview the build
-vp build
-vp preview
+bun run build
+bun run preview
 ```
-
-The same commands are available as `bun run dev`, `bun run check`, etc.
 
 ### Project Layout
 

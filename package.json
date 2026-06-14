@@ -14,14 +14,18 @@
     "url": "git+https://github.com/thalys/game-2048.git"
   },
   "type": "module",
+  "imports": {
+    "#/*": "./scripts/*"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf bun.lock node_modules/ .cache/ .assetpack/ public/assets/ src/gen/*",
     "clean:assets": "rm -rf .assetpack/ public/assets/",
-    "lint": "oxlint ./**.{ts,tsx}",
-    "fix": "oxlint ./**.{ts,tsx} --fix; oxfmt ./ --no-error-on-unmatched-pattern --write",
+    "lint": "oxlint -c oxlint.config.ts",
+    "fix": "oxlint -c oxlint.config.ts --fix; oxfmt ./ --no-error-on-unmatched-pattern --write",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
@@ -40,6 +44,7 @@
     "@types/bun": "^1.3.14",
     "@types/node": "^24.13.2",
     "@typescript/native-preview": "7.0.0-dev.20260613.1",
+    "oxfmt": "^0.52.0",
     "oxlint": "^1.69.0",
     "typescript": "^6",
     "vite": "^8.0.16",

@@ -1,5 +1,5 @@
 import type { OxlintOverride } from 'oxlint'
-import { oxlint_typescript } from './oxlint.overrides.typescript'
+import { oxlint_typescript } from './oxlint.overrides.typescript.ts'
 
 // File-scoped lint overrides, composed into `overrides` of oxlint.config.ts.
 // The large `**/*.ts(x)` block lives in oxlint.overrides.typescript.ts.

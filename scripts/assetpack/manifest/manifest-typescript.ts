@@ -85,7 +85,7 @@ export function generateManifestTypes(
         try {
           const { execFile } = await import('node:child_process')
           const { promisify } = await import('node:util')
-          await promisify(execFile)('vp', ['fmt', outputPath])
+          await promisify(execFile)('oxfmt', [outputPath, '--write'])
         } catch (e) {
           console.error(`[${name}] Error formatting TypeScript types:`, e)
         }
