@@ -1,4 +1,4 @@
-import type { OxlintOverride } from 'vite-plus/lint'
+import type { OxlintOverride } from 'oxlint'
 
 // The `**/*.ts(x)` lint override — disables core rules made redundant by the
 // TypeScript compiler and enables typescript-eslint rules. Composed into the

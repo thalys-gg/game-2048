@@ -1,4 +1,4 @@
-import type { DummyRuleMap } from 'vite-plus/lint'
+import type { DummyRuleMap } from 'oxlint'
 
 // JSDoc rules (oxlint plugin: `jsdoc`, from eslint-plugin-jsdoc).
 export const jsdoc_rules: DummyRuleMap = {

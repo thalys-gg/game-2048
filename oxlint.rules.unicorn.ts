@@ -1,4 +1,4 @@
-import type { DummyRuleMap } from 'vite-plus/lint'
+import type { DummyRuleMap } from 'oxlint'
 
 // Unicorn rules (oxlint plugin: `unicorn`, from eslint-plugin-unicorn).
 export const unicorn_rules: DummyRuleMap = {

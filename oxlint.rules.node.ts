@@ -1,4 +1,4 @@
-import type { DummyRuleMap } from 'vite-plus/lint'
+import type { DummyRuleMap } from 'oxlint'
 
 // Node rules (oxlint plugin: `node`, from eslint-plugin-n).
 export const node_rules: DummyRuleMap = {

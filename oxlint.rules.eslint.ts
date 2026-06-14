@@ -1,4 +1,4 @@
-import type { DummyRuleMap } from 'vite-plus/lint'
+import type { DummyRuleMap } from 'oxlint'
 
 // ESLint core rules (oxlint plugin: `eslint`, on by default).
 // Spread into the base `rules` of oxlint.config.ts.
@@ -14,7 +14,7 @@ export const eslint_rules: DummyRuleMap = {
   'block-scoped-var': 'error',
   'constructor-super': 'error',
   'default-case-last': 'error',
-  eqeqeq: ['error', 'smart'],
+  'eqeqeq': ['error', 'smart'],
   'new-cap': [
     'error',
     {
@@ -232,6 +232,6 @@ export const eslint_rules: DummyRuleMap = {
     },
   ],
   'vars-on-top': 'error',
-  yoda: ['error', 'never'],
+  'yoda': ['error', 'never'],
   'no-implicit-globals': ['error'],
 }

@@ -1,4 +1,4 @@
-import type { OxlintOverride } from 'vite-plus/lint'
+import type { OxlintOverride } from 'oxlint'
 import { oxlint_typescript } from './oxlint.overrides.typescript'
 
 // File-scoped lint overrides, composed into `overrides` of oxlint.config.ts.

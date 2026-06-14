@@ -1,4 +1,4 @@
-import type { OxlintConfig } from 'vite-plus/lint'
+import type { OxlintConfig } from 'oxlint'
 import { eslint_rules } from './oxlint.rules.eslint'
 import { import_rules } from './oxlint.rules.import'
 import { jsdoc_rules } from './oxlint.rules.jsdoc'

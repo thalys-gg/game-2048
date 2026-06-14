@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "quoteProps": "consistent",
+  "semi": false,
+  "embeddedLanguageFormatting": "auto",
+  "tabWidth": 2,
+  "ignorePatterns": [".serena"]
+}

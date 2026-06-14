@@ -1,6 +1,7 @@
 {
   "js/ts.preferences.importModuleSpecifier": "non-relative",
   "js/ts.updateImportsOnFileMove.enabled": "always",
+
   // [vite] resolves the source map locations for the temporary Vite config file
   "debug.javascript.terminalOptions": {
     "resolveSourceMapLocations": [
@@ -10,7 +11,7 @@
       "**/.cache/vite/**"
     ]
   },
-  "explorerExclude.backup": {},
+
   "workbench.tree.indent": 20,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,

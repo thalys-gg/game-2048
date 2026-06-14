@@ -1,13 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // Scripts are executed directly via type stripping, so keep syntax erasable
+    "erasableSyntaxOnly": true,
+    "lib": ["ESNext"],
+    "target": "ES2022",
+    "types": [
+      "@assetpack/core",
+      "vite-plugin-glsl/ext",
+      "vite",
+      "bun",
+      "node",
+      "oxlint",
+      "oxfmt",
+      "vitest"
+    ]
+  },
   // Tooling that runs under Bun/Node: vite config, lint config, scripts
   "extends": "./tsconfig.app.json",
-  "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ESNext"],
-    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun", "node"],
-    // Scripts are executed directly via type stripping, so keep syntax erasable
-    "erasableSyntaxOnly": true
-  },
   "include": ["vite.config.ts", "oxlint.*", "scripts/**/*"]
 }
