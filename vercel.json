@@ -3,11 +3,5 @@
   "bunVersion": "1.3",
   "framework": "vite",
   "installCommand": "CI=true bun install",
-  "buildCommand": "vite build",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "buildCommand": "vite build"
 }
