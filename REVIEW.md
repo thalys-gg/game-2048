@@ -25,14 +25,14 @@
 - **Warning:** missing input/bounds validation, unsafe defaults, untested edge cases in
   board logic, per-frame allocations, listeners left attached, missing cleanup in screen
   lifecycle, or hand-edited generated files.
-- **Do not flag** formatting or style the tooling already enforces. `vp check` owns
-  formatting (oxfmt), lint/import-order (oxlint), and type-checking (tsgolint / TS-Go) —
-  there is no separate `tsc` step.
+- **Do not flag** formatting or style the tooling already enforces: oxfmt owns formatting,
+  oxlint owns lint/import-order (`bun run lint`/`bun run fix`), and `bun run typecheck`
+  owns type-checking (`tsc --noEmit`).
 
 ## Verification expectations
 
 - New or changed game rules need **Vitest tests asserting the observable result** — final
-  board state and score, not internals (`src/**/*.test.ts`, run with `vp test`).
+  board state and score, not internals (`src/**/*.test.ts`, run with `bun run test`).
 - Asset changes must go through AssetPack: edit `raw-assets/` and regenerate; never edit
   `public/assets/` or `src/gen/` directly.
 - Screen/UI changes should preserve lifecycle and resize behavior: screens extend

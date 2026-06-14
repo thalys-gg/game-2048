@@ -1,5 +1,5 @@
 import type { AssetPackConfig } from '@assetpack/core'
-import type { Plugin, ResolvedConfig } from 'vite-plus'
+import type { Plugin, ResolvedConfig } from 'vite'
 import process from 'node:process'
 import { AssetPack } from '@assetpack/core'
 import { customAssetpackPipes } from '../../assetpack/pipe'

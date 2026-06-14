@@ -1,5 +1,5 @@
 import type { ShebangOptions } from '#/vite/plugin/shebang.types'
-import type { Plugin } from 'vite-plus'
+import type { Plugin } from 'vite'
 import { SHEBANG } from '#/vite/plugin/shebang.regex'
 
 export function shebang(opts: ShebangOptions = {}): Plugin {

@@ -1,32 +1,20 @@
-<!--VITE PLUS START-->
+# 2048 Game
 
-# Using Vite+, the Unified Toolchain for the Web
-
-This project is using Vite+, a unified toolchain built on top of Vite, Rolldown, Vitest, tsdown, Oxlint, Oxfmt, and Vite Task. Vite+ wraps runtime management, package management, and frontend tooling in a single global CLI called `vp`. Vite+ is distinct from Vite, and it invokes Vite through `vp dev` and `vp build`. Run `vp help` to print a list of commands and `vp <command> --help` for information about a specific command.
-
-Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.dev/guide/.
+A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manager and script runtime; Vite is the bundler/dev server, with oxlint + oxfmt for lint/format and Vitest for tests.
 
 ## Review Checklist
 
-- [ ] Run `vp install` after pulling remote changes and before getting started.
-- [ ] Run `vp check` and `vp test` to format, lint, type check and test changes.
-- [ ] Check if there are `vite.config.ts` tasks or `package.json` scripts necessary for validation, run via `vp run <script>`.
-- [ ] If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor` and include its output when asking for help.
-
-<!--VITE PLUS END-->
-
-# 2048 Game
-
-A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manager and script runtime; Vite+ (`vp`) is the toolchain.
+- [ ] Run `bun install` after pulling remote changes and before getting started.
+- [ ] Run `bun run lint`, `bun run typecheck`, and `bun run test` to lint, type-check, and test changes (`bun run fix` to autofix lint + format).
 
 ## Commands
 
-- `vp dev` — dev server on port **3212** (AssetPack runs as a Vite plugin and watches `raw-assets/`)
-- `vp check` — format + lint + type-check in one pass (`--fix` to autofix); this replaces tsc/eslint/prettier
-- `vp test` — Vitest, single run (`vp test watch` for watch mode)
-- `vp build` / `vp preview` — production build / serve it locally
+- `bun run dev` — dev server on port **3212** (AssetPack runs as a Vite plugin and watches `raw-assets/`)
+- `bun run lint` — oxlint (`oxlint -c oxlint.config.ts`); `bun run fix` autofixes lint and runs oxfmt
+- `bun run typecheck` — type-check both tsconfig projects (`tsc --noEmit` on app + node)
+- `bun run test` — Vitest, single run (`bun run test:watch` for watch mode)
+- `bun run build` / `bun run preview` — production build / serve it locally
 - `bun run clean` — wipe deps, caches, and generated assets; `bun run clean:assets` for asset caches only
-- Pre-commit hook (`.vite-hooks/pre-commit`) runs `vp staged` → `vp check --fix` on staged `.ts/.tsx`
 
 ## Path Aliases
 
@@ -50,13 +38,13 @@ Defined in three places that must stay in sync: `vite.config.ts` (`resolve.alias
 
 ## Tooling Configuration
 
-- `vite.config.ts` is the single config hub: Vite server/plugins, `lint`, `fmt` (no semicolons, single quotes), `staged`.
-- Lint rules live in `oxlint.config.ts`, imported into the `lint` block. **Vite+ ignores standalone oxlint config files** — config only takes effect through that import.
+- `vite.config.ts` holds Vite server/plugin config. Format rules (no semicolons, single quotes) live in `.oxfmtrc.json`.
+- Lint config is `oxlint.config.ts` (a TS config with a `default` export), loaded via `oxlint -c oxlint.config.ts` in the `lint`/`fix` scripts. Its relative imports use explicit `.ts` extensions because Node (which oxlint uses to load the config) won't resolve extensionless paths. Rules are split into `oxlint.rules.<plugin>.ts` and overrides into `oxlint.overrides*.ts`.
 - Oxlint override `files` globs must be plain globs (`scripts/**`); extglob patterns like `*.?([cm])ts` silently match nothing.
 - `unicorn/number-literal-case` stays off: it wants uppercase hex, oxfmt enforces lowercase.
 - tsconfigs (3): `tsconfig.json` (solution file only), `tsconfig.app.json` (all of `src/` incl. tests; browser-safe types only), `tsconfig.node.json` (extends app; `scripts/` + root configs; adds `bun-types`/`node`). The split keeps Bun/Node globals out of browser code — don't merge them.
 
 ## Testing
 
-- Test files: `src/**/*.test.ts`, imports from `'vite-plus/test'` (Vitest API), run with `vp test`.
+- Test files: `src/**/*.test.ts`, imports from `'vitest'`, run with `bun run test`.
 - `src/test/*.local.tsx` are scratch/experiment files, not tests.
