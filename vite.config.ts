@@ -19,9 +19,9 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
     },
     resolve: {
       alias: {
-        '∆': path.resolve(__dirname, './src/engine'),
-        '@': path.resolve(__dirname, './src/app'),
-        '#': path.resolve(__dirname, './scripts'),
+        '∆': path.resolve(import.meta.dir, 'src/engine'),
+        '@': path.resolve(import.meta.dir, 'src/app'),
+        '#': path.resolve(import.meta.dir, 'scripts'),
       },
     },
     plugins: [
