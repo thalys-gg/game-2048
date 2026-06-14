@@ -6,7 +6,6 @@ import { fullReloadWhen } from '#/vite/plugin/full-reload-by-ext.ts'
 import { defineConfig } from 'vite'
 import devtoolsJson from 'vite-plugin-devtools-json'
 import glsl from 'vite-plugin-glsl'
-import { defaultInclude } from 'vitest/config'
 
 export default defineConfig(async (_configEnv: ConfigEnv) => {
   return {
@@ -20,29 +19,19 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
     },
     resolve: {
       alias: {
-        '∆': resolve(import.meta.dir, 'src/engine'),
-        '@': resolve(import.meta.dir, 'src/app'),
-        '#': resolve(import.meta.dir, 'scripts'),
+        '∆': resolve(import.meta.dirname, 'src/engine'),
+        '@': resolve(import.meta.dirname, 'src/app'),
+        '#': resolve(import.meta.dirname, 'scripts'),
       },
     },
-    build: {
-      rolldownOptions: {
-        input: {
-          main: resolve(import.meta.dirname, 'index.html'),
-        },
-      },
-      plugins: [
-        devtoolsJson(),
-        glsl(),
-        fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
-        assetpack(),
-      ],
-      define: {
-        APP_VERSION: JSON.stringify(env.npm_package_version),
-      },
-      test: {
-        include: [resolve(import.meta.dir, 'src/test')],
-      },
+    plugins: [
+      devtoolsJson(),
+      glsl(),
+      fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
+      assetpack(),
+    ],
+    define: {
+      APP_VERSION: JSON.stringify(env.npm_package_version),
     },
   }
 })
