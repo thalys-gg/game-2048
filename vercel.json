@@ -3,11 +3,12 @@
   "bunVersion": "1.3",
   "framework": "vite",
   "outputDirectory": "dist/",
-  "installCommand": "bun i",
+  "installCommand": "bun install --ignore-scripts",
+  "buildCommand": "bun run prepare && bun run build",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "dist/index.html"
+      "destination": "/index.html"
     }
   ]
 }

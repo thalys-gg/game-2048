@@ -31,8 +31,8 @@
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
   "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
-  "npm.scriptRunner": "vp",
 
+  "npm.scriptRunner": "vp",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
