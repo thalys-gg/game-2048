@@ -33,7 +33,7 @@
   },
   "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
 
-  "npm.scriptRunner": "vp",
+  "npm.scriptRunner": "bun",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
@@ -47,7 +47,7 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "oxc.fmt.configPath": "./vite.config.ts",
+  "oxc.fmt.configPath": ".oxfmtrc.json",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "editor.codeActionsOnSave": {

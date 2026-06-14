@@ -3,7 +3,6 @@ import { CreationEngine } from '∆/engine'
 import { setEngine } from '∆/engine.singleton'
 import { ZINC } from '∆/lib/colors'
 import { userSettings } from '∆/utils/user.settings'
-import { Stats } from 'pixi-stats'
 import { isDev } from '@/lib/global'
 
 export async function createApplication() {
@@ -19,7 +18,6 @@ export async function createApplication() {
   })
 
   initDevtools({ app: engine })
-  const stats = new Stats(engine.renderer)
 
   // Initialize the user settings
   userSettings.init()
