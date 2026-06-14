@@ -1,11 +1,12 @@
 import type { ConfigEnv, UserConfig } from 'vite'
-import path from 'node:path'
-import process from 'node:process'
+import { resolve } from 'node:path'
+import { env } from 'node:process'
 import { pluginAssetpack as assetpack } from '#/vite/plugin/assetpack-vite-plugin'
 import { fullReloadWhen } from '#/vite/plugin/full-reload-by-ext.ts'
 import { defineConfig } from 'vite'
 import devtoolsJson from 'vite-plugin-devtools-json'
 import glsl from 'vite-plugin-glsl'
+import { defaultInclude } from 'vitest/config'
 
 export default defineConfig(async (_configEnv: ConfigEnv) => {
   return {
@@ -19,19 +20,29 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
     },
     resolve: {
       alias: {
-        '∆': path.resolve(import.meta.dirname, 'src/engine'),
-        '@': path.resolve(import.meta.dirname, 'src/app'),
-        '#': path.resolve(import.meta.dirname, 'scripts'),
+        '∆': resolve(import.meta.dir, 'src/engine'),
+        '@': resolve(import.meta.dir, 'src/app'),
+        '#': resolve(import.meta.dir, 'scripts'),
       },
     },
-    plugins: [
-      devtoolsJson(),
-      glsl(),
-      fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
-      assetpack(),
-    ],
-    define: {
-      APP_VERSION: JSON.stringify(process.env.npm_package_version),
+    build: {
+      rolldownOptions: {
+        input: {
+          main: resolve(import.meta.dirname, 'index.html'),
+        },
+      },
+      plugins: [
+        devtoolsJson(),
+        glsl(),
+        fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
+        assetpack(),
+      ],
+      define: {
+        APP_VERSION: JSON.stringify(env.npm_package_version),
+      },
+      test: {
+        include: [resolve(import.meta.dir, 'src/test')],
+      },
     },
   }
 })
