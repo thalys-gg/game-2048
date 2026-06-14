@@ -10,24 +10,6 @@
       "**/.cache/vite/**"
     ]
   },
-  "files.exclude": {
-    "**/.git": false,
-    "**/.svn": false,
-    "**/.hg": false,
-    "**/.DS_Store": false,
-    "**/Thumbs.db": false,
-    "**/CVS": false,
-    "**/.ruby-lsp": false,
-    "**/.idea": false,
-    ".assetpack": false,
-    ".cache": false,
-    ".claude": false,
-    ".github": false,
-    ".idea": false,
-    ".vite": false,
-    ".vscode": false,
-    "node_modules": false
-  },
   "explorerExclude.backup": {},
   "workbench.tree.indent": 20,
   "explorer.fileNesting.enabled": true,
