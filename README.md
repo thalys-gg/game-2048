@@ -2,6 +2,12 @@
 
 A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, using [Vite](https://vite.dev/) as the toolchain and [Bun](https://bun.sh/) as the package manager.
 
+## Documentation
+
+- [Architecture](docs/architecture.md) — layered diagram and the engine↔game boundary
+- [Documentation standard](docs/DOCUMENTATION.md) — how this repo is documented
+- [Decisions](docs/decisions/) — ADRs recording the *why*
+
 ## Getting Started
 
 ### Prerequisites

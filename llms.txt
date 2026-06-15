@@ -1,0 +1,18 @@
+# 2048 game
+
+> A 2048 puzzle game built with pixi.js 8 + TypeScript (Vite + Bun). A reusable "Creation Engine" (`src/engine`, the `∆` alias) is the long-term shared layer; the game itself lives in `src/app` (the `@` alias) and depends on the engine one way.
+
+## Start here
+- [AGENTS.md](AGENTS.md): commands, path aliases, architecture summary, tooling gotchas
+- [docs/architecture.md](docs/architecture.md): layered diagram + the engine↔game boundary
+- [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md): how this repo is documented (the standard)
+
+## Decisions (why)
+- [docs/decisions/0001](docs/decisions/0001-adopt-layered-documentation-standard.md): layered, dual-audience documentation standard
+- [docs/decisions/0002](docs/decisions/0002-extract-shared-engine-and-asset-pipeline.md): extract asset pipeline + engine into shared @thalys packages
+
+## Source layout
+- `src/engine` (∆): reusable engine — pixi.js Application wrapper, navigation, layout, scene, lib, utils. Must not import from `@/`.
+- `src/app` (@): the game — screens, reactive STATE, board UI (UIBoard/UIPawn/UIScore/UIGame), popups, ui widgets
+- `scripts` (#): build tooling (AssetPack/Vite plugins)
+- `src/gen`: generated asset manifest (never edit by hand); `raw-assets`: source assets

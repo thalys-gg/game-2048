@@ -2,6 +2,13 @@
 
 A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manager and script runtime; Vite is the bundler/dev server, with oxlint + oxfmt for lint/format and Vitest for tests.
 
+## Documentation
+
+- [docs/architecture.md](docs/architecture.md) — layered diagram + the engine↔game boundary
+- [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md) — the documentation standard (how this repo is documented)
+- [docs/decisions/](docs/decisions/) — ADRs (the *why* behind key choices)
+- [llms.txt](llms.txt) — curated index for LLM agents
+
 ## Review Checklist
 
 - [ ] Run `bun install` after pulling remote changes and before getting started.
