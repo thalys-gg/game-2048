@@ -42,5 +42,6 @@
   "editor.formatOnSaveMode": "file",
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "explicit"
-  }
+  },
+  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview"
 }
