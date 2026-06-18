@@ -5,5 +5,7 @@
   "semi": false,
   "embeddedLanguageFormatting": "auto",
   "tabWidth": 2,
-  "ignorePatterns": [".serena"]
+  "ignorePatterns": [
+    ".serena"
+  ]
 }

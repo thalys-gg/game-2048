@@ -20,7 +20,12 @@
     "*.webp": "$(capture)*.png, $(capture)*.json",
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
-  "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
+  "cSpell.words": [
+    "glsl",
+    "NESW",
+    "oxlint",
+    "pipx"
+  ],
   "npm.scriptRunner": "bun",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {
@@ -41,17 +46,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "explicit"
   },
-  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview",
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    ".cache": true,
-    ".agents": true,
-    ".claude": true,
-    ".vercel": true
-  },
-  "explorerExclude.backup": {}
+  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview"
 }
