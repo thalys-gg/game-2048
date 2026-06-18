@@ -1,4 +1,5 @@
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
+import type { IAppScreen } from '∆/types'
+import type { AppScreens, TAssetBundleId } from '@/screens/screens.types'
 import { engine } from '∆/engine.singleton'
 import { animate } from 'motion'
 import { BlurFilter, Container, Sprite, Texture } from 'pixi.js'

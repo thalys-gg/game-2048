@@ -1,9 +1,11 @@
 import { initDevtools } from '@pixi/devtools'
+import { Assets } from 'pixi.js'
 import { CreationEngine } from '∆/engine'
 import { setEngine } from '∆/engine.singleton'
 import { ZINC } from '∆/lib/colors'
 import { userSettings } from '∆/utils/user.settings'
 import { isDev } from '@/lib/global'
+import manifest from '../gen/manifest.json'
 
 export async function createApplication() {
   const engine = new CreationEngine()
@@ -16,6 +18,12 @@ export async function createApplication() {
     hello: isDev(),
     powerPreference: 'high-performance',
   })
+
+  // Init PixiJS assets with this game's asset manifest, then preload the
+  // `preload` bundle and background-load the rest.
+  await Assets.init({ manifest, basePath: 'assets' })
+  await Assets.loadBundle('preload')
+  Assets.backgroundLoadBundle(manifest.bundles.map((item) => item.name))
 
   initDevtools({ app: engine })
 

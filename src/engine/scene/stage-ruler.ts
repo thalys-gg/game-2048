@@ -1,5 +1,4 @@
 import type { RulerOptions } from '∆/scene/stage-ruler.types'
-import type { IAppScreen, TAssetBundleId } from '∆/types'
 import type { TAnchorByPosition } from '∆/utils/pixijs.types'
 import type { Ticker } from 'pixi.js'
 import { ZINC } from '∆/lib/colors'
@@ -19,9 +18,7 @@ const _options: RulerOptions = {
   backgroundColor: ZINC[900],
 }
 
-export class Ruler extends Container implements IAppScreen {
-  public static assetBundles: TAssetBundleId[] = []
-
+export class Ruler extends Container {
   public static options = Object.assign({}, _options)
 
   private textStyle = new TextStyle({

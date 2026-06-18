@@ -4,8 +4,7 @@ import { CreationAudioPlugin } from '∆/audio.plugin'
 import { CreationNavigationPlugin } from '∆/navigation.plugin'
 import { CreationResizePlugin } from '∆/resize.plugin'
 import { getResolution } from '∆/utils/getResolution'
-import { Application, Assets, extensions, ResizePlugin } from 'pixi.js'
-import manifest from '../gen/manifest.json'
+import { Application, extensions, ResizePlugin } from 'pixi.js'
 import 'pixi.js/app'
 
 extensions.remove(ResizePlugin)
@@ -23,7 +22,8 @@ extensions.add(CreationNavigationPlugin)
  * - Resize handling
  * - Visibility change handling (pause/resume sounds)
  *
- * It also initializes the PixiJS application and loads any assets in the `preload` bundle.
+ * Asset bootstrapping (manifest init + bundle loading) is intentionally left to
+ * the consuming game, keeping the engine free of any generated asset manifest.
  */
 export class CreationEngine extends Application {
   /** Initialize the application */
@@ -37,15 +37,6 @@ export class CreationEngine extends Application {
     document.getElementById('pixi-container')!.appendChild(this.canvas)
     // Add a visibility listener, so the app can pause sounds and screens
     document.addEventListener('visibilitychange', this.visibilityChange)
-
-    // Init PixiJS assets with this asset manifest
-    await Assets.init({ manifest, basePath: 'assets' })
-    await Assets.loadBundle('preload')
-
-    // List all existing bundles names
-    const allBundles = manifest.bundles.map((item) => item.name)
-    // Start up background loading of all bundles
-    Assets.backgroundLoadBundle(allBundles)
   }
 
   public override destroy(

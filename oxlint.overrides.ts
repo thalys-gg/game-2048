@@ -56,6 +56,26 @@ export const oxlint_overrides: OxlintOverride[] = [
     },
   },
   {
+    // Engine boundary: src/engine must stay game-agnostic and independently
+    // extractable. Forbid imports from game code (@/ -> src/app, ../app) and
+    // the generated asset manifest (../gen). Inject game specifics instead.
+    files: ['src/engine/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@/**', '**/app/**', '**/gen', '**/gen/**'],
+              message:
+                'Engine code (src/engine) must not import from game code (@/, ../app) or generated assets (../gen). Inject game-specific behavior via config instead.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: [
       '**/__tests__/**',
       '**/*.spec.ts',
