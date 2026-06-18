@@ -6,7 +6,7 @@ A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manage
 
 - [docs/architecture.md](docs/architecture.md) — layered diagram + the engine↔game boundary
 - [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md) — the documentation standard (how this repo is documented)
-- [docs/decisions/](docs/decisions/) — ADRs (the *why* behind key choices)
+- [docs/decisions/](docs/decisions/) — ADRs (the _why_ behind key choices)
 - [llms.txt](llms.txt) — curated index for LLM agents
 
 ## Review Checklist

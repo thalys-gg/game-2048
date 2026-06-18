@@ -6,7 +6,7 @@ A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, us
 
 - [Architecture](docs/architecture.md) — layered diagram and the engine↔game boundary
 - [Documentation standard](docs/DOCUMENTATION.md) — how this repo is documented
-- [Decisions](docs/decisions/) — ADRs recording the *why*
+- [Decisions](docs/decisions/) — ADRs recording the _why_
 
 ## Getting Started
 

@@ -12,7 +12,7 @@ decided during Stage 3, not now.
 ## Decisions (locked)
 
 - **Distribution target:** separate git repo, published to npm under `@thalys`.
-  This happens *after* in-repo decoupling; the immediate work is decoupling.
+  This happens _after_ in-repo decoupling; the immediate work is decoupling.
 - **Navigation:** screen-agnostic — string screen ids + game-injected routing.
 - **Asset init:** moves **out of the engine entirely** into the game.
 - **user.settings:** split — engine keeps generic volume settings; game owns
@@ -57,6 +57,7 @@ specifiers only change at extraction time (Stage 3).
 ## Stage 1 — Remove every game→engine seam (in repo, behavior-preserving)
 
 ### 1.1 Screen types (`types.screen.ts`)
+
 - [ ] Remove the `appScreens` const array and the `AppScreens` union from the
       engine.
 - [ ] `IAppScreen.definition: string` (was `AppScreens`).
@@ -67,16 +68,17 @@ specifiers only change at extraction time (Stage 3).
       type-safety; game screens set `definition` to those string literals.
 
 ### 1.2 Navigation (`navigation.ts`, `navigation.plugin.ts`)
+
 - [ ] Delete `@/screens/*` imports and the `AppScreens`/`userSettings` imports.
 - [ ] Introduce a game-supplied routing config injected at init, e.g.:
-      ```ts
-      interface NavigationConfig {
-        getBackScreen?: () => IAppScreenConstructor          // _onPopState target
-        resolveLastScreen?: (id: string) => IAppScreenConstructor | null
-        persistLastScreen?: (id: string) => void
-        shouldPersist?: (id: string) => boolean              // replaces crossReference filter
-      }
-      ```
+      `ts
+    interface NavigationConfig {
+      getBackScreen?: () => IAppScreenConstructor          // _onPopState target
+      resolveLastScreen?: (id: string) => IAppScreenConstructor | null
+      persistLastScreen?: (id: string) => void
+      shouldPersist?: (id: string) => boolean              // replaces crossReference filter
+    }
+    `
       Exact shape finalized during implementation; principle = engine holds no
       game screen knowledge.
 - [ ] `_onKeyDown`/`_onPopState` call `config.getBackScreen()` instead of
@@ -93,6 +95,7 @@ specifiers only change at extraction time (Stage 3).
       `matchRefScreen` / back-target / last-session logic) and register it.
 
 ### 1.3 Asset init (`engine.ts`, `types.asset.ts`)
+
 - [ ] Remove `import manifest from '../gen/manifest.json'` and the
       `Assets.init` / `loadBundle('preload')` / `backgroundLoadBundle` block
       from `engine.ts`. `engine.init` shrinks to: `super.init`, canvas append,
@@ -105,6 +108,7 @@ specifiers only change at extraction time (Stage 3).
       game's `src/gen/manifest.json`.
 
 ### 1.4 user.settings (`utils/user.settings.ts`)
+
 - [ ] Keep a generic `UserSettings` in the engine for master/bgm/sfx volume
       (built on `engine().audio` + `storage`); remove `AppScreens`,
       `getLastScreen`, `setLastScreen`.
@@ -112,11 +116,13 @@ specifiers only change at extraction time (Stage 3).
       the new navigation router config (1.2).
 
 ### 1.5 stage-ruler (`scene/stage-ruler.ts`)
+
 - [ ] Remove `import type { IAppScreen, TAssetBundleId }` and any reliance on
       screen/asset types; keep it a self-contained dev overlay
       (`Ruler` + `RulerOptions`).
 
 ### 1.6 Validate Stage 1
+
 - [ ] `bun run typecheck` (app + node) passes.
 - [ ] `bun run lint` passes.
 - [ ] `bun run test` passes (incl. `flat-grid.test.ts`).
@@ -145,17 +151,18 @@ specifiers only change at extraction time (Stage 3).
 Candidate module groupings (from the audited dependency graph; pure-TS groups
 are the easiest first extractions):
 
-| Group | Files | External deps |
-| --- | --- | --- |
-| `lib` | array, math, random, fn, promise, string, object, colors(.definitions/.utils), flat-grid, types | none (pure TS) |
-| `reactivity` | utils/watch, utils/watch.types | none |
-| `storage` | storage | none |
-| `layout` | layout, layout.flex, layout.utils, layout.types | pixi.js |
-| `scene` | sprite(.ts/.animated/.DOOM), text(.ts/.abstract/.fn/.types), stage-ruler | pixi.js |
-| `pixi-utils` | utils/pixijs(.types), utils/assets, utils/getResolution | pixi.js, @pixi/sound |
-| `engine-core` | engine, engine.singleton, audio(+plugin), navigation(+plugin), resize(+plugin), types.* | pixi.js, @pixi/sound, motion |
+| Group         | Files                                                                                           | External deps                |
+| ------------- | ----------------------------------------------------------------------------------------------- | ---------------------------- |
+| `lib`         | array, math, random, fn, promise, string, object, colors(.definitions/.utils), flat-grid, types | none (pure TS)               |
+| `reactivity`  | utils/watch, utils/watch.types                                                                  | none                         |
+| `storage`     | storage                                                                                         | none                         |
+| `layout`      | layout, layout.flex, layout.utils, layout.types                                                 | pixi.js                      |
+| `scene`       | sprite(.ts/.animated/.DOOM), text(.ts/.abstract/.fn/.types), stage-ruler                        | pixi.js                      |
+| `pixi-utils`  | utils/pixijs(.types), utils/assets, utils/getResolution                                         | pixi.js, @pixi/sound         |
+| `engine-core` | engine, engine.singleton, audio(+plugin), navigation(+plugin), resize(+plugin), types.\*        | pixi.js, @pixi/sound, motion |
 
 Decision to make during this stage (the deferred "as we go" item):
+
 - **One package vs several.** Recommended starting point: extract the pure-TS
   groups (`lib`, `reactivity`, `storage`) first as low-risk standalone packages,
   then decide whether the pixi groups ship as one `engine` package or several.
@@ -165,6 +172,7 @@ Decision to make during this stage (the deferred "as we go" item):
   tooling parity (oxlint/oxfmt/tsc/vitest).
 
 Extraction mechanics (per package, once boundaries are chosen):
+
 - [ ] New git repo; move files; set up build + publish (npm, `@thalys` scope).
 - [ ] Replace the game's `∆/*` (and any subpath) imports with the published
       package specifier(s); update `tsconfig.app.json` `paths`, `vite.config.ts`
