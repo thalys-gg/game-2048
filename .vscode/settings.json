@@ -20,12 +20,7 @@
     "*.webp": "$(capture)*.png, $(capture)*.json",
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
-  "cSpell.words": [
-    "glsl",
-    "NESW",
-    "oxlint",
-    "pipx"
-  ],
+  "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
   "npm.scriptRunner": "bun",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {

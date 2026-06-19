@@ -72,13 +72,13 @@ specifiers only change at extraction time (Stage 3).
 - [ ] Delete `@/screens/*` imports and the `AppScreens`/`userSettings` imports.
 - [ ] Introduce a game-supplied routing config injected at init, e.g.:
       `ts
-    interface NavigationConfig {
-      getBackScreen?: () => IAppScreenConstructor          // _onPopState target
-      resolveLastScreen?: (id: string) => IAppScreenConstructor | null
-      persistLastScreen?: (id: string) => void
-      shouldPersist?: (id: string) => boolean              // replaces crossReference filter
-    }
-    `
+interface NavigationConfig {
+  getBackScreen?: () => IAppScreenConstructor          // _onPopState target
+  resolveLastScreen?: (id: string) => IAppScreenConstructor | null
+  persistLastScreen?: (id: string) => void
+  shouldPersist?: (id: string) => boolean              // replaces crossReference filter
+}
+`
       Exact shape finalized during implementation; principle = engine holds no
       game screen knowledge.
 - [ ] `_onKeyDown`/`_onPopState` call `config.getBackScreen()` instead of
