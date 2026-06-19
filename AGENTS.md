@@ -12,6 +12,7 @@ A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manage
 ## Review Checklist
 
 - [ ] Run `bun install` after pulling remote changes and before getting started.
+- [ ] **Fresh clone only:** run `bun run dev` (or `bun run build`) once before `bun run typecheck` — AssetPack must generate `src/gen/manifest.json` before TypeScript can resolve the asset-manifest import in `src/app/game.create.ts`. (`src/gen/manifest-types.ts` is a committed stub so the type-only import in `screens.types.ts` works without a build.)
 - [ ] Run `bun run lint`, `bun run typecheck`, and `bun run test` to lint, type-check, and test changes (`bun run fix` to autofix lint + format).
 
 ## Commands

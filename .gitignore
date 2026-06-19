@@ -35,3 +35,4 @@ public/assets
 .env*
 
 src/gen/*
+!src/gen/manifest-types.ts
