@@ -76,8 +76,8 @@ export function generatePixiManifest(
       // Ensure all asset aliases are unique across the entire manifest.
       filterUniqueNames(manifest, options)
 
-      // Write the final manifest to a JSON file.
-      await fs.writeJSON(newFileName, manifest, { spaces: 2 })
+      // Write the final manifest to a JSON file (outputJSON creates parent dirs if missing).
+      await fs.outputJSON(newFileName, manifest, { spaces: 2 })
     },
   }
 }

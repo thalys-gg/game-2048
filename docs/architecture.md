@@ -34,13 +34,13 @@ flowchart TB
 
 ## Layers
 
-| Layer | Alias | Path | Responsibility |
-| ----- | ----- | ---- | -------------- |
-| Game | `@/*` | `src/app/` | The 2048 game: screens, reactive `STATE`, board UI, popups, widgets. |
-| Engine | `∆/*` | `src/engine/` | "Creation Engine": a thin wrapper over the pixi.js `Application` plus navigation, layout, scene helpers, and utilities. |
-| Build tooling | `#/*` | `scripts/` | AssetPack/Vite plugins and build scripts (runtime-agnostic on the Vite plugin chain). |
-| Generated | — | `src/gen/` | Asset manifest + types produced by AssetPack. Never edited by hand. |
-| Source assets | — | `raw-assets/` | Inputs to AssetPack; output is gitignored `public/assets/`. |
+| Layer         | Alias | Path          | Responsibility                                                                                                          |
+| ------------- | ----- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Game          | `@/*` | `src/app/`    | The 2048 game: screens, reactive `STATE`, board UI, popups, widgets.                                                    |
+| Engine        | `∆/*` | `src/engine/` | "Creation Engine": a thin wrapper over the pixi.js `Application` plus navigation, layout, scene helpers, and utilities. |
+| Build tooling | `#/*` | `scripts/`    | AssetPack/Vite plugins and build scripts (runtime-agnostic on the Vite plugin chain).                                   |
+| Generated     | —     | `src/gen/`    | Asset manifest + types produced by AssetPack. Never edited by hand.                                                     |
+| Source assets | —     | `raw-assets/` | Inputs to AssetPack; output is gitignored `public/assets/`.                                                             |
 
 ## The boundary that matters
 

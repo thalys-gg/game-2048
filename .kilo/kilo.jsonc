@@ -9,4 +9,7 @@
       "url": "https://mcp.context7.com/mcp",
     },
   },
+  "commit_message": {
+    "prompt": "RULES:\n1. Keep the first line under 72 characters\n2. Use 2 spaces for indentation of bullet points\n3. Use imperative mood (\"add\" not \"added\" or \"adds\")\n4. No period at the end of subject line or sentences\n5. Do not over-explain the changes",
+  },
 }

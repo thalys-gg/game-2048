@@ -1,11 +1,7 @@
 import type { CreationEngine } from '∆/engine'
-import type { AppScreens, IAppScreen, IAppScreenConstructor } from '∆/types'
+import type { IAppScreen, IAppScreenConstructor, NavigationConfig } from '∆/types'
 import { Ruler } from '∆/scene/stage-ruler'
-import { userSettings } from '∆/utils/user.settings'
 import { Assets, BigPool, Container } from 'pixi.js'
-import { ScreenInput } from '@/screens/debug/ScreenInput'
-import { ScreenPawn } from '@/screens/debug/ScreenPawn'
-import { ScreenMain } from '@/screens/main/ScreenMain'
 
 export class Navigation {
   /** Reference to the main application */
@@ -40,6 +36,14 @@ export class Navigation {
 
   /** Current popup being displayed */
   public currentPopup?: IAppScreen
+
+  /** Game-supplied routing/persistence config (see {@link NavigationConfig}) */
+  private config: NavigationConfig = {}
+
+  /** Inject the game's routing/persistence behavior */
+  public configure(config: NavigationConfig) {
+    this.config = config
+  }
 
   destroy() {
     globalThis.window.removeEventListener('keydown', this._onKeyDown)
@@ -156,10 +160,10 @@ export class Navigation {
     this.currentScreen = BigPool.get(ctor)
     await this.addAndShowScreen(this.currentScreen, this.cScreen)
 
-    const ref = this.crossReference(this.currentScreen.definition)
+    const ref = this.config.resolvePersistId?.(this.currentScreen.definition) ?? null
     if (ref === null) return
 
-    userSettings.setLastScreen(ref)
+    this.config.persistScreen?.(ref)
     this.stackScreenState(ref)
   }
 
@@ -229,7 +233,7 @@ export class Navigation {
     this.measureLayer?.focus?.()
   }
 
-  private stackScreenState(value: AppScreens) {
+  private stackScreenState(value: string) {
     history.pushState({ page: value }, value)
   }
 
@@ -244,62 +248,14 @@ export class Navigation {
   private _onPopState = (e?: PopStateEvent) => {
     e?.preventDefault()
     // This fires when the user hits the browser/Android back button.
-    // logger.log('Back button pressed. Emitting "goBack" signal.')
-    this.showScreen(ScreenMain)
-  }
-
-  private crossReference = (screen: AppScreens): AppScreens | null => {
-    switch (screen) {
-      case 'Measure':
-      case 'ScreenAssetLoader':
-      case 'OverlayUI':
-      case 'Background':
-      case 'ScreenBase':
-        return null // don't save for loading screen
-      case 'GameOver':
-      case 'GameWon':
-      case 'PopupSimpleMessage':
-      case 'PopupPause':
-      case 'PopupSettings':
-      case 'ScreenInput':
-      case 'ScreenPawn':
-      case 'ScreenMain':
-      default:
-        return 'ScreenMain'
-    }
-  }
-
-  private matchRefScreen = (screen: AppScreens): IAppScreenConstructor | null => {
-    switch (screen) {
-      case 'Measure':
-      case 'ScreenAssetLoader':
-      case 'OverlayUI':
-      case 'Background':
-      case 'ScreenBase':
-        return null // don't save for loading screen
-      case 'ScreenPawn':
-        return ScreenPawn
-      case 'ScreenInput':
-        return ScreenInput
-      case 'GameOver':
-      case 'GameWon':
-      case 'PopupSimpleMessage':
-      case 'PopupPause':
-      case 'PopupSettings':
-      case 'ScreenMain':
-      default:
-        return ScreenMain
-    }
+    const back = this.config.getBackScreen?.()
+    if (back) void this.showScreen(back)
   }
 
   public showLastSessionScreen = async () => {
-    const lastScreen: AppScreens = userSettings.getLastScreen()
-    const ref = this.crossReference(lastScreen)
-    if (!ref) {
-      await this.showScreen(ScreenMain)
-      return
-    }
-    await this.showScreen(this.matchRefScreen(ref) || ScreenMain)
+    const last = this.config.getPersistedScreen?.()
+    const ctor = (last ? this.config.resolveScreen?.(last) : null) ?? this.config.getBackScreen?.()
+    if (ctor) await this.showScreen(ctor)
   }
 
   /**

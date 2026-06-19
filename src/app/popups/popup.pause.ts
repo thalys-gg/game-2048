@@ -1,5 +1,6 @@
 import type { FancyButton } from '@pixi/ui'
-import type { AppScreens, IAppScreen, TAssetBundleId } from '∆/types'
+import type { IAppScreen } from '∆/types'
+import type { AppScreens, TAssetBundleId } from '@/screens/screens.types'
 import { engine } from '∆/engine.singleton'
 import { ZINC } from '∆/lib/colors'
 import { animate } from 'motion'

@@ -33,3 +33,6 @@ public/assets
 .agents
 .vercel
 .env*
+
+src/gen/*
+!src/gen/manifest-types.ts

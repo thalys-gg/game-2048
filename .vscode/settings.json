@@ -1,7 +1,6 @@
 {
   "js/ts.preferences.importModuleSpecifier": "non-relative",
   "js/ts.updateImportsOnFileMove.enabled": "always",
-
   "workbench.tree.indent": 20,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
@@ -22,7 +21,6 @@
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
   "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
-
   "npm.scriptRunner": "bun",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "[javascript]": {
