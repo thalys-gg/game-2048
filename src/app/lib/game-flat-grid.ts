@@ -1,7 +1,7 @@
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import type { UIPawn } from '@/screens/main/UIPawn'
-import { FlatGrid } from '∆/lib/flat-grid'
+import { FlatGrid } from '@thalys/pixi-shared/lib/flat-grid'
 
 export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
   public onMerge?: (value: number) => void

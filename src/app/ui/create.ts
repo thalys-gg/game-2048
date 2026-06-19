@@ -1,7 +1,7 @@
 import type { Spritesheet } from 'pixi.js'
 import type { CheckOpts } from '@/ui/Check'
 import { FancyButton } from '@pixi/ui'
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { Assets, Sprite, Texture } from 'pixi.js'
 import actions from '@/lib/actions'
 import { PopupPause } from '@/popups/popup.pause'

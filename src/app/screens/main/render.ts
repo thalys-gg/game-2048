@@ -1,5 +1,5 @@
 import type { ColorSource } from 'pixi.js'
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { Graphics, GraphicsContext, RenderTexture } from 'pixi.js'
 
 export function render() {

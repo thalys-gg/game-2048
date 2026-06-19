@@ -1,5 +1,5 @@
 import { logger } from '@thalys/logger'
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { navigationConfig } from '@/screens/navigation.config'
 import { ScreenAssetLoader } from '@/screens/loading-screen/ScreenAssetLoader'
 import { ScreenMain } from '@/screens/main/ScreenMain'

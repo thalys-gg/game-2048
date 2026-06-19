@@ -1,4 +1,4 @@
-import type { Coordinate } from '∆/lib/flat-grid'
+import type { Coordinate } from '@thalys/pixi-shared/lib/flat-grid'
 import type { ObjectTarget } from 'motion'
 import { animate } from 'motion'
 import { Container, Sprite } from 'pixi.js'

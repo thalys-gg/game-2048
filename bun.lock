@@ -8,6 +8,7 @@
         "@pixi/sound": "^6.0.1",
         "@pixi/ui": "^2.3.2",
         "@thalys/anime-pixi": "^0.0.1",
+        "@thalys/pixi-shared": "^0.1.0",
         "motion": "^12.40.0",
         "pixi.js": "^8.19.0",
         "typed-signals": "^3.0.0",
@@ -384,6 +385,8 @@
     "@thalys/anime-pixi": ["@thalys/anime-pixi@0.0.1", "https://npm.pkg.github.com/download/@thalys/anime-pixi/0.0.1/faaf47dc80d2bd13fabf855c17744a3dd1a7dd6b", { "peerDependencies": { "motion": "^12.23.26", "pixi.js": "^8.8.1" } }, "sha512-p+tyTl3s5XDnJRGNZGyFmOI9VaCs+arcITq9ikcDp8L852eHaI49SHl0dVkZwLpraL/84LLH+HjSOalDR7dDAQ=="],
 
     "@thalys/logger": ["@thalys/logger@1.0.3", "https://npm.pkg.github.com/download/@thalys/logger/1.0.3/60bfcc30d69c82bba2374255edb1c3a12b760b73", { "dependencies": { "ansi-escapes": "^7.1.1", "ansi-regex": "^6.2.2", "chalk": "^5" } }, "sha512-MK0X1l7CtXYRg9kgMcoOiShYhpOXY7HVD23KFl2kOjSLORi808DNjXBGASXMS8kuuSceffeI0SLCAU4BpuPpZA=="],
+
+    "@thalys/pixi-shared": ["@thalys/pixi-shared@0.1.0", "https://npm.pkg.github.com/download/@thalys/pixi-shared/0.1.0/f7b543b7567bed1b5de362fabc2231abb3717383", { "peerDependencies": { "@pixi/sound": "^6.0.0", "motion": "^12.0.0", "pixi.js": "^8.0.0" } }, "sha512-7BPXXw/suhK6GcdfbM0HbScVJ7HgVjlPauu9TztuB62MsYKFDxjoTK37dNPXXSyGySzUZzTueh5/En2DYHhmnw=="],
 
     "@tokenizer/inflate": ["@tokenizer/inflate@0.4.1", "", { "dependencies": { "debug": "^4.4.3", "token-types": "^6.1.1" } }, "sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA=="],
 

@@ -1,6 +1,6 @@
 import { FancyButton } from '@pixi/ui'
-import { ZINC } from '∆/lib/colors'
-import { waitFor } from '∆/lib/promise'
+import { ZINC } from '@thalys/pixi-shared/lib/colors'
+import { waitFor } from '@thalys/pixi-shared/lib/promise'
 import actions from '@/lib/actions'
 import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'

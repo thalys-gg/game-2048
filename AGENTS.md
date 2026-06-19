@@ -26,19 +26,20 @@ A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manage
 
 ## Path Aliases
 
-| Alias | Target        | Layer                |
-| ----- | ------------- | -------------------- |
-| `∆/*` | `src/engine/` | reusable engine code |
-| `@/*` | `src/app/`    | game code            |
-| `#/*` | `scripts/`    | build tooling        |
+| Alias | Target     | Layer         |
+| ----- | ---------- | ------------- |
+| `@/*` | `src/app/` | game code     |
+| `#/*` | `scripts/` | build tooling |
 
-Defined in three places that must stay in sync: `vite.config.ts` (`resolve.alias`), `tsconfig.app.json` (`paths`), and package.json `imports` (`#/*` only — needed because Node, not Bun, loads `vite.config.ts` and its plugin imports).
+Defined in two places that must stay in sync: `vite.config.ts` (`resolve.alias`) and `tsconfig.app.json` (`paths`). `#/*` is also in `package.json` `imports` (needed because Node, not Bun, loads `vite.config.ts` and its plugin imports).
+
+The engine (`∆`) alias has been removed — the engine is now the `@thalys/pixi-shared` npm package, imported by its full subpath (e.g. `@thalys/pixi-shared/engine`, `@thalys/pixi-shared/lib/flat-grid`).
 
 ## Architecture
 
 `src/main.ts` → `@/game` → `createApplication()` + `start()`.
 
-- **`src/engine/`** — "Creation Engine": a thin wrapper around `pixi.js` `Application` (`engine.ts`, singleton in `engine.singleton.ts`). Audio, navigation, and resize are installed as PixiJS extensions (`*.plugin.ts`). `navigation.ts` manages screen lifecycle (`showScreen`, overlays). Also: flex-style layout (`layout.*`), scene helpers (`scene/` — sprites, text), generic utilities (`lib/` — `FlatGrid`, colors, math, random) and `utils/` (`watchObject` reactive state, storage, volume settings). Engine code is game-agnostic and independently extractable: it must not import from `@/`, `../app`, or the generated `../gen` manifest — a `no-restricted-imports` override scoped to `src/engine/**` enforces this. Game-specific behavior (screen routing/persistence via `navigation.configure(...)`, asset manifest init) is injected by the game; screen ids are plain strings (`IAppScreen.definition`), with the game owning its `AppScreens` union in `@/screens/screens.types`.
+- **`@thalys/pixi-shared`** — "Creation Engine" npm package: a thin wrapper around `pixi.js` `Application` (`engine`, singleton in `engine.singleton`). Audio, navigation, and resize are installed as PixiJS extensions (`*.plugin`). `navigation` manages screen lifecycle (`showScreen`, overlays). Also: flex-style layout (`layout.*`), scene helpers (`scene/` — sprites, text), generic utilities (`lib/` — `FlatGrid`, colors, math, random) and `utils/` (`watchObject` reactive state, storage, volume settings). Game-specific behavior (screen routing/persistence via `navigation.configure(...)`, asset manifest init) is injected by the game; screen ids are plain strings (`IAppScreen.definition`), with the game owning its `AppScreens` union in `@/screens/screens.types`. The PixiMixins namespace augmentation (`.audio`, `.navigation`, `.resizeOptions` on `Application`) lives in `src/pixi-mixins.d.ts`.
 - **`src/app/`** — the game. Screens in `screens/` (`loading-screen`, `main`, `overlay`, `debug`) extend `screens/ScreenBase.ts`. Gameplay lives in `screens/main/`: `state.ts` (reactive `STATE` via `watchObject`), `UIBoard`/`UIPawn`/`UIScore`/`UIGame`, `render.ts`; board logic builds on the engine's `FlatGrid` via `lib/game-flat-grid.ts`. Modal dialogs in `popups/`, widget library in `ui/`.
 - **`src/gen/`** — GENERATED asset manifest + types (by the AssetPack pipeline). Never edit by hand.
 - **`scripts/`** — tooling, runs under Bun directly _and_ under Node when Vite loads it (keep code runtime-agnostic on the vite-plugin import chain; `Bun.*` is only safe in files executed exclusively by Bun, e.g. `scripts/bun/git/hooks/`).

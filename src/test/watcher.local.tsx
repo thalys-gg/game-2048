@@ -1,8 +1,8 @@
 /* eslint-disable antfu/no-top-level-await */
-import type { WatchedProp } from '∆/utils/watch.types'
+import type { WatchedProp } from '@thalys/pixi-shared/utils/watch.types'
 import { blue, blueBright, logger } from '@thalys/logger'
-import { waitFor } from '∆/lib/promise'
-import { watchObject } from '∆/utils/watch'
+import { waitFor } from '@thalys/pixi-shared/lib/promise'
+import { watchObject } from '@thalys/pixi-shared/utils/watch'
 
 const log = logger.custom` [${blue('SCRATCH')}]`
 const logEvent = logger.custom` [${blueBright('EVENT')}]`

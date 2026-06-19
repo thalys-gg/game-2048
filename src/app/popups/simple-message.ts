@@ -1,6 +1,6 @@
-import type { IAppScreen } from '∆/types'
+import type { IAppScreen } from '@thalys/pixi-shared/types'
 import type { AppScreens, TAssetBundleId } from '@/screens/screens.types'
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { animate } from 'motion'
 import { BlurFilter, Container, Sprite, Texture } from 'pixi.js'
 import { getTheme } from '@/config'

@@ -1,5 +1,5 @@
-import type { IChild, ResizeSignature } from '∆/types'
-import { FlatGrid } from '∆/lib/flat-grid'
+import type { IChild, ResizeSignature } from '@thalys/pixi-shared/types'
+import { FlatGrid } from '@thalys/pixi-shared/lib/flat-grid'
 import { Container, Sprite } from 'pixi.js'
 import { CONFIG } from '@/config'
 import textures from '@/lib/textures'

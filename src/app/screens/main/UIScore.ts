@@ -1,4 +1,4 @@
-import type { IChild, ResizeSignature } from '∆/types'
+import type { IChild, ResizeSignature } from '@thalys/pixi-shared/types'
 import type { DestroyOptions } from 'pixi.js'
 import { logger } from '@thalys/logger'
 import { Container, Sprite } from 'pixi.js'

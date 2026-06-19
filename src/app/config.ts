@@ -1,4 +1,4 @@
-import { getColor } from '∆/lib/colors'
+import { getColor } from '@thalys/pixi-shared/lib/colors'
 
 export type TConfig = {
   winningValue: number

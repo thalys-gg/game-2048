@@ -1,7 +1,8 @@
 # 0002 — Extract the asset pipeline and engine into shared @thalys packages
 
-- Status: accepted (roadmap)
+- Status: partially implemented
 - Date: 2026-06-14
+- Updated: 2026-06-19
 
 ## Context
 
@@ -18,9 +19,20 @@ Extract the shared layers into the `@thalys` package scope (alongside `@thalys/e
 
 **Packaging:** start as a **single** `@thalys` package; **split into multiple packages later** as the surface grows and clearer sub-boundaries emerge.
 
+## Implementation
+
+**Engine extraction — complete (2026-06-19):**
+
+- `src/engine/` deleted from this repo; all 50 `∆/` import lines in `src/app/` rewritten to `@thalys/pixi-shared/<subpath>`.
+- Package published at `@thalys/pixi-shared@0.1.0` (GitHub Packages, restricted).
+- The `∆` path alias removed from `vite.config.ts` and `tsconfig.app.json`.
+- `src/pixi-mixins.d.ts` kept in this repo (imports types from the package) to apply the PixiMixins global namespace augmentation that TypeScript needs to type `Application.audio` / `.navigation` / `.resizeOptions`.
+
+**Asset pipeline extraction — pending.**
+
 ## Consequences
 
-- One maintained source of truth for the engine and asset pipeline; games stay thin.
+- One maintained source of truth for the engine; games stay thin.
 - Up-front cost: package scaffolding, versioning/publishing, and migrating each game to consume the package.
 - Forces the engine's public API to be made explicit (a net good for documentation and for LLM agents).
 - The eventual one-package → many-packages split will be its own migration; keep module boundaries clean now to make it cheap later.

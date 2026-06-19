@@ -1,6 +1,6 @@
-import type { IAppScreenConstructor, NavigationConfig } from '∆/types'
+import type { IAppScreenConstructor, NavigationConfig } from '@thalys/pixi-shared/types'
 import type { AppScreens } from '@/screens/screens.types'
-import { storage } from '∆/storage'
+import { storage } from '@thalys/pixi-shared/storage'
 import { ScreenInput } from '@/screens/debug/ScreenInput'
 import { ScreenPawn } from '@/screens/debug/ScreenPawn'
 import { ScreenMain } from '@/screens/main/ScreenMain'

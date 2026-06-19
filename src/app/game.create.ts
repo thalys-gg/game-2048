@@ -1,9 +1,9 @@
 import { initDevtools } from '@pixi/devtools'
 import { Assets } from 'pixi.js'
-import { CreationEngine } from '∆/engine'
-import { setEngine } from '∆/engine.singleton'
-import { ZINC } from '∆/lib/colors'
-import { userSettings } from '∆/utils/user.settings'
+import { CreationEngine } from '@thalys/pixi-shared/engine'
+import { setEngine } from '@thalys/pixi-shared/engine.singleton'
+import { ZINC } from '@thalys/pixi-shared/lib/colors'
+import { userSettings } from '@thalys/pixi-shared/utils/user.settings'
 import { isDev } from '@/lib/global'
 import manifest from '../gen/manifest.json'
 

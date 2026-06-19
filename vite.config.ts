@@ -19,7 +19,6 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
     },
     resolve: {
       alias: {
-        '∆': resolve(import.meta.dirname, 'src/engine'),
         '@': resolve(import.meta.dirname, 'src/app'),
         '#': resolve(import.meta.dirname, 'scripts'),
       },

@@ -1,5 +1,5 @@
 import { blue, blueBright, logger } from '@thalys/logger'
-import { rollFloat } from '∆/lib/random'
+import { rollFloat } from '@thalys/pixi-shared/lib/random'
 
 const log = logger.custom` [${blue('SCRATCH')}]`
 const logEvent = logger.custom` [${blueBright('EVENT')}]`

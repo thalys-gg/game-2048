@@ -1,5 +1,5 @@
 import type { Label } from '@/ui/Label'
-import { waitFor } from '∆/lib/promise'
+import { waitFor } from '@thalys/pixi-shared/lib/promise'
 import { animate } from 'motion'
 
 let _rollupScoreRef: ReturnType<typeof animate> | null = null

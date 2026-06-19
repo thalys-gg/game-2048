@@ -1,4 +1,4 @@
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { Container, Graphics } from 'pixi.js'
 
 export class Background extends Container {

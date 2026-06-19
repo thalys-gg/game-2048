@@ -26,13 +26,14 @@
     "lint": "oxlint -c oxlint.config.ts",
     "fix": "oxlint -c oxlint.config.ts --fix; oxfmt ./ --no-error-on-unmatched-pattern --write",
     "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest watch"
   },
   "dependencies": {
     "@pixi/sound": "^6.0.1",
     "@pixi/ui": "^2.3.2",
     "@thalys/anime-pixi": "^0.0.1",
+    "@thalys/pixi-shared": "^0.1.0",
     "motion": "^12.40.0",
     "pixi.js": "^8.19.0",
     "typed-signals": "^3.0.0"

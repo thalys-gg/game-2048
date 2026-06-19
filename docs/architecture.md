@@ -15,7 +15,7 @@ flowchart TB
     g4["popups · ui widgets"]
   end
 
-  subgraph engine["creation engine · src/engine (∆) — reusable"]
+  subgraph engine["@thalys/pixi-shared — npm package (external)"]
     e1["engine.ts + singleton<br/>pixi.js Application wrapper"]
     e2["plugins: audio · navigation · resize"]
     e3["layout (flex) · scene: sprite · text"]
@@ -34,16 +34,16 @@ flowchart TB
 
 ## Layers
 
-| Layer         | Alias | Path          | Responsibility                                                                                                          |
-| ------------- | ----- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Game          | `@/*` | `src/app/`    | The 2048 game: screens, reactive `STATE`, board UI, popups, widgets.                                                    |
-| Engine        | `∆/*` | `src/engine/` | "Creation Engine": a thin wrapper over the pixi.js `Application` plus navigation, layout, scene helpers, and utilities. |
-| Build tooling | `#/*` | `scripts/`    | AssetPack/Vite plugins and build scripts (runtime-agnostic on the Vite plugin chain).                                   |
-| Generated     | —     | `src/gen/`    | Asset manifest + types produced by AssetPack. Never edited by hand.                                                     |
-| Source assets | —     | `raw-assets/` | Inputs to AssetPack; output is gitignored `public/assets/`.                                                             |
+| Layer         | Alias | Path                  | Responsibility                                                                                                                          |
+| ------------- | ----- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Game          | `@/*` | `src/app/`            | The 2048 game: screens, reactive `STATE`, board UI, popups, widgets.                                                                    |
+| Engine        | —     | `@thalys/pixi-shared` | "Creation Engine" npm package: pixi.js `Application` wrapper, navigation, layout, scene helpers, utilities. Imported by subpath export. |
+| Build tooling | `#/*` | `scripts/`            | AssetPack/Vite plugins and build scripts (runtime-agnostic on the Vite plugin chain).                                                   |
+| Generated     | —     | `src/gen/`            | Asset manifest + types produced by AssetPack. Never edited by hand.                                                                     |
+| Source assets | —     | `raw-assets/`         | Inputs to AssetPack; output is gitignored `public/assets/`.                                                                             |
 
 ## The boundary that matters
 
-**The engine never imports from `@/` (game code).** The dependency flows one way: game → engine. That single invariant is what makes `src/engine/` extractable into a shared package without untangling game logic.
+Game code imports from `@thalys/pixi-shared` subpaths (e.g. `@thalys/pixi-shared/engine`, `@thalys/pixi-shared/lib/flat-grid`). The engine package has no knowledge of the game — it is a generic PixiJS wrapper. Game-specific behaviour (screen routing, asset manifest init) is injected by the game at startup.
 
-See [ADR 0002](decisions/0002-extract-shared-engine-and-asset-pipeline.md) for the plan to extract the asset pipeline and engine into reusable `@thalys` packages.
+See [ADR 0002](decisions/0002-extract-shared-engine-and-asset-pipeline.md) — engine extraction is complete as of v0.1.0.

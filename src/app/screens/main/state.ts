@@ -1,4 +1,4 @@
-import { watchObject } from '∆/utils/watch'
+import { watchObject } from '@thalys/pixi-shared/utils/watch'
 
 const STATE = watchObject({
   score: 0,

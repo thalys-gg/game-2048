@@ -1,4 +1,4 @@
-import type { IAppScreen } from '∆/types'
+import type { IAppScreen } from '@thalys/pixi-shared/types'
 import type { AppScreens, TAssetBundleId } from '@/screens/screens.types'
 import type { Ticker } from 'pixi.js'
 import type { Direction } from '@/lib/types'

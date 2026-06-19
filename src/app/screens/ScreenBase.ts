@@ -1,7 +1,7 @@
-import type { IAppScreen, IChild, ResizeSignature } from '∆/types'
+import type { IAppScreen, IChild, ResizeSignature } from '@thalys/pixi-shared/types'
 import type { AppScreens, TAssetBundleId } from '@/screens/screens.types'
 import type { DestroyOptions, Ticker } from 'pixi.js'
-import { engine } from '∆/engine.singleton'
+import { engine } from '@thalys/pixi-shared/engine.singleton'
 import { Container } from 'pixi.js'
 import { PopupPause } from '@/popups/popup.pause'
 
