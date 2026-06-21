@@ -35,7 +35,7 @@ function makeWatchedObject<T extends object>(obj: T): T & PropEventSource<T> {
       const key = String(prop)
       const array = callbacks.get(key)
       if (array) {
-        array.forEach((cb) => cb(newValue))
+        array.forEach(cb => cb(newValue))
       }
       return Reflect.set(target, prop, newValue, receiver)
     },
@@ -50,7 +50,7 @@ const person = {
 
 const watched = makeWatchedObject(person)
 
-watched.on('firstNameChanged', (firstName) => {
+watched.on('firstNameChanged', firstName => {
   logEvent(`firstName was changed to ${firstName}!`)
   setTimeout(() => {
     log(person)

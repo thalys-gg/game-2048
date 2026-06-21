@@ -7,17 +7,18 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
   public onMerge?: (value: number) => void
 
   public getRandomEmpty() {
-    return this.getRandomLocation((value) => value === null || value === undefined)
+    return this.getRandomLocation(value => value === null || value === undefined)
   }
 
   /**
-   * Checks if there are possible moves left to be done.
-   * It checks if there are free spaces, and if not then proceeds to check if any positions can be merged.
+   * Checks if there are possible moves left to be done. It checks if there are free spaces, and if not then proceeds to
+   * check if any positions can be merged.
+   *
    * @returns {boolean} True if there are possible moves, false otherwise.
    */
   public hasPossibleMoves(): boolean {
     // Check if there are free spaces
-    if (this.data.some((cell) => cell === null || cell === undefined)) {
+    if (this.data.some(cell => cell === null || cell === undefined)) {
       return true
     }
 

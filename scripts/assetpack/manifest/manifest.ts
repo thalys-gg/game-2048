@@ -18,8 +18,7 @@ const TAGS = {
 }
 
 /**
- * Generates a Pixi-compatible asset manifest file.
- * This pipe collects asset information and organizes it into bundles,
+ * Generates a Pixi-compatible asset manifest file. This pipe collects asset information and organizes it into bundles,
  * then writes the output to a JSON file.
  *
  * @param options - Overrides for the default manifest options.
@@ -40,15 +39,11 @@ export function generatePixiManifest(
     },
     tags: TAGS,
 
-    /**
-     * The finish hook is called after all assets have been processed.
-     * It orchestrates the creation of the manifest.
-     */
+    /** The finish hook is called after all assets have been processed. It orchestrates the creation of the manifest. */
     async finish(asset: Asset, options, pipeSystem: PipeSystem) {
       const outDir = path.dirname(options.output)
       // Determine the final output path for the manifest file.
-      const newFileName =
-        outDir === '.' ? path.joinSafe(pipeSystem.outputPath, options.output) : options.output
+      const newFileName = outDir === '.' ? path.joinSafe(pipeSystem.outputPath, options.output) : options.output
 
       // Create a default bundle for assets that don't belong to a specific bundle.
       const defaultBundle: Bundle = {
@@ -83,10 +78,9 @@ export function generatePixiManifest(
 }
 
 /**
- * Filters asset aliases to ensure they are unique across all bundles in the manifest.
- * If duplicate bundle names are found when using 'short' nameStyle, it warns the user
- * and renames the conflicting bundles to their full relative path to avoid ambiguity.
- * It also ensures that each asset's alias list is unique.
+ * Filters asset aliases to ensure they are unique across all bundles in the manifest. If duplicate bundle names are
+ * found when using 'short' nameStyle, it warns the user and renames the conflicting bundles to their full relative path
+ * to avoid ambiguity. It also ensures that each asset's alias list is unique.
  *
  * @param manifest - The manifest object to process.
  * @param options - The manifest options.
@@ -99,7 +93,7 @@ function filterUniqueNames(manifest: Manifest, options: ManifestOptions) {
   const duplicateBundleNames = new Set<string>()
 
   // First pass: collect all asset aliases and identify duplicate bundle names.
-  manifest.bundles.forEach((bundle) => {
+  manifest.bundles.forEach(bundle => {
     // Check for duplicate bundle names if using the 'short' naming style.
     if (isNameStyleShort) {
       if (bundleNames.has(bundle.name)) {
@@ -113,19 +107,17 @@ function filterUniqueNames(manifest: Manifest, options: ManifestOptions) {
     }
 
     // Map each asset to its list of aliases.
-    bundle.assets.forEach((asset) => nameMap.set(asset, asset.alias as string[]))
+    bundle.assets.forEach(asset => nameMap.set(asset, asset.alias as string[]))
   })
 
   // This logic is to ensure that the alias arrays themselves are unique, not just their contents.
   // It's a bit complex, but it prevents different assets from having the exact same set of aliases.
   const arrays = Array.from(nameMap.values())
-  const sets = arrays.map((arr) => new Set(arr))
-  const uniqueArrays = arrays.map((arr, i) =>
-    arr.filter((x) => sets.every((set, j) => j === i || !set.has(x))),
-  )
+  const sets = arrays.map(arr => new Set(arr))
+  const uniqueArrays = arrays.map((arr, i) => arr.filter(x => sets.every((set, j) => j === i || !set.has(x))))
 
   // Second pass: apply the unique names and rename duplicate bundles.
-  manifest.bundles.forEach((bundle) => {
+  manifest.bundles.forEach(bundle => {
     if (isNameStyleShort) {
       // If a bundle name was found to be a duplicate, switch to its relative name.
       if (duplicateBundleNames.has(bundle.name)) {
@@ -134,18 +126,17 @@ function filterUniqueNames(manifest: Manifest, options: ManifestOptions) {
     }
 
     // Assign the filtered, unique alias list back to each asset.
-    bundle.assets.forEach((asset) => {
+    bundle.assets.forEach(asset => {
       const names = nameMap.get(asset) as string[]
 
-      asset.alias = uniqueArrays.find((arr) => arr.every((x) => names.includes(x))) as string[]
+      asset.alias = uniqueArrays.find(arr => arr.every(x => names.includes(x))) as string[]
     })
   })
 }
 
 /**
- * Constructs a relative path for an asset, which can be used as a bundle name.
- * It traverses up the asset's parent chain until it reaches the entry path,
- * building the relative path along the way.
+ * Constructs a relative path for an asset, which can be used as a bundle name. It traverses up the asset's parent chain
+ * until it reaches the entry path, building the relative path along the way.
  *
  * @param asset - The asset for which to generate a relative name.
  * @param entryPath - The root entry path of the asset processing.
@@ -204,10 +195,7 @@ function collectAssets(
   // Check if the current asset is marked as a new bundle root (`{m}` tag).
   if (asset.metaData[tags!.manifest]) {
     localBundle = {
-      name:
-        options.nameStyle === 'relative'
-          ? getRelativeBundleName(asset, entryPath)
-          : stripTags(asset.filename),
+      name: options.nameStyle === 'relative' ? getRelativeBundleName(asset, entryPath) : stripTags(asset.filename),
       assets: [],
     }
 
@@ -232,9 +220,7 @@ function collectAssets(
   // Process only if the asset has transformed children (i.e., it's a folder with content).
   if (asset.transformChildren.length > 0) {
     // Filter out any final assets that are marked to be ignored by the manifest.
-    const finalManifestAssets = finalAssets.filter(
-      (finalAsset) => !finalAsset.inheritedMetaData[tags!.mIgnore],
-    )
+    const finalManifestAssets = finalAssets.filter(finalAsset => !finalAsset.inheritedMetaData[tags!.mIgnore])
 
     if (finalManifestAssets.length === 0) {
       return
@@ -255,14 +241,14 @@ function collectAssets(
     bundleAssets.push({
       alias: getShortNames(stripTags(path.relative(entryPath, asset.path)), options),
       src: finalManifestAssets
-        .map((finalAsset) => path.relative(outputPath, finalAsset.path))
+        .map(finalAsset => path.relative(outputPath, finalAsset.path))
         .sort((a, b) => b.localeCompare(a)), // Sort to ensure consistent output
       data: options.includeMetaData ? metadata : undefined,
     })
   }
 
   // Recursively process all child assets.
-  asset.children.forEach((child) => {
+  asset.children.forEach(child => {
     collectAssets(child, options, outputPath, entryPath, bundles, localBundle, tags, internalTags)
   })
 }

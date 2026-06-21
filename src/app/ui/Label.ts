@@ -9,8 +9,8 @@ const defaultLabelStyle: Partial<CanvasTextOptions['style']> = {
 export type LabelOptions = CanvasTextOptions
 
 /**
- * A Text extension pre-formatted for this app, starting centred by default,
- * because it is the most common use in the app.
+ * A Text extension pre-formatted for this app, starting centred by default, because it is the most common use in the
+ * app.
  */
 export class Label extends Text {
   private _g: Graphics
@@ -49,6 +49,7 @@ export class Label extends Text {
 
   /**
    * Draws a debug rectangle around a PixiJS container (like Text)
+   *
    * @param {PIXI.Container} target - The object to debug
    * @param {PIXI.Container} parent - The stage or container to add the graphic to
    * @param {number} color - Hex color of the rectangle (default: 0xff0000)

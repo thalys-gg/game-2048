@@ -1,11 +1,10 @@
 import type { Plugin } from 'vite'
 
 /**
- * Triggers a full-reload when are detected changes in
- * the passed file types
+ * Triggers a full-reload when are detected changes in the passed file types
  *
- * @param filetypes - extensions that will be matched
- * @returns a vite plugin
+ * @param filetypes - Extensions that will be matched
+ * @returns A vite plugin
  */
 export function fullReloadWhen(filetypes: string[]) {
   return {

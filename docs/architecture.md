@@ -1,6 +1,7 @@
 # Architecture
 
-A visual companion to the architecture notes in [AGENTS.md](../AGENTS.md). For commands, path aliases, and tooling details, see AGENTS.md; this page focuses on how the pieces fit and the boundaries that matter.
+A visual companion to the architecture notes in [AGENTS.md](../AGENTS.md). For commands, path aliases, and tooling
+details, see AGENTS.md; this page focuses on how the pieces fit and the boundaries that matter.
 
 ## Overview
 
@@ -44,6 +45,8 @@ flowchart TB
 
 ## The boundary that matters
 
-Game code imports from `@thalys/pixi-shared` subpaths (e.g. `@thalys/pixi-shared/engine`, `@thalys/pixi-shared/lib/flat-grid`). The engine package has no knowledge of the game — it is a generic PixiJS wrapper. Game-specific behaviour (screen routing, asset manifest init) is injected by the game at startup.
+Game code imports from `@thalys/pixi-shared` subpaths (e.g. `@thalys/pixi-shared/engine`,
+`@thalys/pixi-shared/lib/flat-grid`). The engine package has no knowledge of the game — it is a generic PixiJS wrapper.
+Game-specific behaviour (screen routing, asset manifest init) is injected by the game at startup.
 
 See [ADR 0002](decisions/0002-extract-shared-engine-and-asset-pipeline.md) — engine extraction is complete as of v0.1.0.

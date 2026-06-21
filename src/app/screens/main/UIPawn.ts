@@ -31,10 +31,7 @@ function createLabel(value: number, parent: Container, label?: string) {
   return text
 }
 
-/**
- * Represents a pawn (tile) in the game grid.
- * It visualizes the numeric value and the corresponding background texture.
- */
+/** Represents a pawn (tile) in the game grid. It visualizes the numeric value and the corresponding background texture. */
 export class UIPawn extends Container {
   private bg: Sprite
   private text: Label
@@ -42,8 +39,7 @@ export class UIPawn extends Container {
   private coords: Coordinate
 
   /**
-   * Sets the value of the pawn.
-   * Updates the internal value, the text label, and the sprite texture.
+   * Sets the value of the pawn. Updates the internal value, the text label, and the sprite texture.
    *
    * @param value - The new numeric value for the pawn.
    */
@@ -64,8 +60,8 @@ export class UIPawn extends Container {
   }
 
   /**
-   * Creates a new UIPawn instance.
-   * Initializes the sprite with the correct texture and places the text label in the center.
+   * Creates a new UIPawn instance. Initializes the sprite with the correct texture and places the text label in the
+   * center.
    *
    * @param value - The initial value of the pawn.
    */
@@ -86,10 +82,7 @@ export class UIPawn extends Container {
     await animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: 0.5, ease: 'circOut' })
   }
 
-  /**
-   * Updates the layout of the pawn's children.
-   * Re-centers the value label within the sprite
-   */
+  /** Updates the layout of the pawn's children. Re-centers the value label within the sprite */
   public resize(coords?: Coordinate) {
     if (coords) {
       this.coords = coords

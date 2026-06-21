@@ -33,9 +33,7 @@ export class UIBoard extends Container implements IChild {
     this.addChild(this.bg)
 
     this.positions = new FlatGrid(CONFIG.cols, CONFIG.rows)
-    this.positions = this.positions.map((value, x, y, i) =>
-      createSquare(0, `Square-${x}-${y}-${i}`, this),
-    )
+    this.positions = this.positions.map((value, x, y, i) => createSquare(0, `Square-${x}-${y}-${i}`, this))
   }
 
   public resize({ screen }: ResizeSignature) {

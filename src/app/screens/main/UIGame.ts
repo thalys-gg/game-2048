@@ -84,7 +84,7 @@ export class UIGame extends Container implements IChild {
   }
 
   private hasWon() {
-    return this.grid.some((pawn) => (pawn?.value || 0) >= CONFIG.winningValue)
+    return this.grid.some(pawn => (pawn?.value || 0) >= CONFIG.winningValue)
   }
 
   private hasLost() {
@@ -103,8 +103,9 @@ export class UIGame extends Container implements IChild {
 
   /**
    * Fills the board for debugging end-game scenarios.
-   * @param pattern - Optional 2D array of values (0 = empty cell).
-   *                  If not provided, fills with random values leaving 1 empty cell.
+   *
+   * @param pattern - Optional 2D array of values (0 = empty cell). If not provided, fills with random values leaving 1
+   *   empty cell.
    */
   public debugFillBoard(pattern?: (number | null)[]) {
     // Clear existing pawns
@@ -139,9 +140,7 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  /**
-   * Spawns a new piece in a random empty cells
-   */
+  /** Spawns a new piece in a random empty cells */
   public spawnPiece() {
     const coord = this.grid.getRandomEmpty()
     if (!coord) {
@@ -154,9 +153,7 @@ export class UIGame extends Container implements IChild {
     return pawn
   }
 
-  /**
-   * Creates a pawn at the specified grid position.
-   */
+  /** Creates a pawn at the specified grid position. */
   private createPawnAt(x: number, y: number, value: null): void
   private createPawnAt(x: number, y: number, value: number): UIPawn
   private createPawnAt(x: number, y: number, value: number | null): UIPawn | void

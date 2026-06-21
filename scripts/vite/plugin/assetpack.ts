@@ -5,10 +5,9 @@ import { AssetPack } from '@assetpack/core'
 import { customAssetpackPipes } from '../../assetpack/pipe'
 
 /**
- * A Vite plugin that integrates AssetPack for asset bundling and processing.
- * This plugin configures and runs AssetPack based on the Vite command (serve or build).
- * In 'serve' mode, it watches for asset changes.
- * In 'build' mode, it performs a one-time asset build.
+ * A Vite plugin that integrates AssetPack for asset bundling and processing. This plugin configures and runs AssetPack
+ * based on the Vite command (serve or build). In 'serve' mode, it watches for asset changes. In 'build' mode, it
+ * performs a one-time asset build.
  *
  * @returns {Plugin} The Vite plugin object.
  */
@@ -29,8 +28,9 @@ export function assetpackPlugin() {
     name: 'vite-plugin-assetpack',
 
     /**
-     * Resolves the final configuration.
-     * This hook is used to set the output path for AssetPack based on Vite's public directory.
+     * Resolves the final configuration. This hook is used to set the output path for AssetPack based on Vite's public
+     * directory.
+     *
      * @param {ResolvedConfig} resolvedConfig - The resolved Vite configuration.
      */
     configResolved(resolvedConfig) {
@@ -61,8 +61,8 @@ export function assetpackPlugin() {
     },
 
     /**
-     * The buildStart hook is called at the beginning of a build.
-     * It initializes AssetPack either in watch mode (for 'serve') or run mode (for 'build').
+     * The buildStart hook is called at the beginning of a build. It initializes AssetPack either in watch mode (for
+     * 'serve') or run mode (for 'build').
      */
     buildStart: async () => {
       if (mode === 'serve') {
@@ -78,10 +78,7 @@ export function assetpackPlugin() {
       }
     },
 
-    /**
-     * The buildEnd hook is called at the end of a build.
-     * It stops the AssetPack watcher if it's running.
-     */
+    /** The buildEnd hook is called at the end of a build. It stops the AssetPack watcher if it's running. */
     buildEnd: async () => {
       if (ap) {
         await ap.stop()

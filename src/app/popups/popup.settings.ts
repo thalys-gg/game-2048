@@ -89,21 +89,21 @@ export class PopupSettings extends Container implements IAppScreen {
     this.panel.addChild(this.layout)
 
     this.masterSlider = new VolumeSlider('Master Volume')
-    this.masterSlider.onUpdate.connect((v) => {
+    this.masterSlider.onUpdate.connect(v => {
       userSettings.setMasterVolume(v / 100)
       this.soundScrolling()
     })
     this.layout.addChild(this.masterSlider)
 
     this.bgmSlider = new VolumeSlider('BGM Volume')
-    this.bgmSlider.onUpdate.connect((v) => {
+    this.bgmSlider.onUpdate.connect(v => {
       userSettings.setBgmVolume(v / 100)
       this.soundScrolling()
     })
     this.layout.addChild(this.bgmSlider)
 
     this.sfxSlider = new VolumeSlider('SFX Volume')
-    this.sfxSlider.onUpdate.connect((v) => {
+    this.sfxSlider.onUpdate.connect(v => {
       userSettings.setSfxVolume(v / 100)
       this.soundScrolling()
     })

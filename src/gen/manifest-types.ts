@@ -1,7 +1,4 @@
-/**
- * Auto-generated TypeScript types for asset manifest
- * Generated from manifest.json - DO NOT EDIT MANUALLY
- */
+/** Auto-generated TypeScript types for asset manifest Generated from manifest.json - DO NOT EDIT MANUALLY */
 
 /** Base manifest structure */
 export interface Manifest {
@@ -23,7 +20,7 @@ export interface ManifestEntry {
 /** Concrete bundle name types */
 export type BundleName = 'loops' | 'main' | 'preload'
 
-/** loops bundle asset aliases */
+/** Loops bundle asset aliases */
 export type LoopsAssetAlias =
   | 'alpha-dance'
   | 'alpha-dance.ogg'
@@ -142,7 +139,7 @@ export type LoopsAssetAlias =
   | 'wacky-waiting'
   | 'wacky-waiting.ogg'
 
-/** main bundle asset aliases */
+/** Main bundle asset aliases */
 export type MainAssetAlias =
   | 'main/sounds/sfx-hover'
   | 'main/sounds/sfx-hover.wav'
@@ -157,7 +154,7 @@ export type MainAssetAlias =
   | 'sfx-scrolling'
   | 'sfx-scrolling.wav'
 
-/** preload bundle asset aliases */
+/** Preload bundle asset aliases */
 export type PreloadAssetAlias =
   | 'Kenney-Future'
   | 'Kenney-Future-Narrow'
