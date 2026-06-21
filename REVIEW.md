@@ -22,7 +22,7 @@
 - **Warning:** missing input/bounds validation, unsafe defaults, untested edge cases in board logic, per-frame
   allocations, listeners left attached, missing cleanup in screen lifecycle, or hand-edited generated files.
 - **Do not flag** formatting or style the tooling already enforces: oxfmt owns formatting, oxlint owns lint/import-order
-  (`bun run lint`/`bun run fix`), and `bun run typecheck` owns type-checking (`tsc --noEmit`).
+  and type-checking (`bun run lint`/`bun run fix`).
 
 ## Verification expectations
 

@@ -13,18 +13,16 @@ bundler/dev server, with oxlint + oxfmt for lint/format and Vitest for tests.
 ## Review Checklist
 
 - [ ] Run `bun install` after pulling remote changes and before getting started.
-- [ ] **Fresh clone only:** run `bun run dev` (or `bun run build`) once before `bun run typecheck` — AssetPack must
-      generate `src/gen/manifest.json` before TypeScript can resolve the asset-manifest import in
-      `src/app/game.create.ts`. (`src/gen/manifest-types.ts` is a committed stub so the type-only import in
-      `screens.types.ts` works without a build.)
-- [ ] Run `bun run lint`, `bun run typecheck`, and `bun run test` to lint, type-check, and test changes (`bun run fix`
-      to autofix lint + format).
+- [ ] **Fresh clone only:** run `bun run dev` (or `bun run build`) once before `bun run lint` — AssetPack must generate
+      `src/gen/manifest.json` before TypeScript can resolve the asset-manifest import in `src/app/game.create.ts`.
+      (`src/gen/manifest-types.ts` is a committed stub so the type-only import in `screens.types.ts` works without a
+      build.)
+- [ ] Run `bun run lint` and `bun run test` to lint and test changes (`bun run fix` to autofix lint + format).
 
 ## Commands
 
 - `bun run dev` — dev server on port **3212** (AssetPack runs as a Vite plugin and watches `raw-assets/`)
-- `bun run lint` — oxlint (`oxlint -c oxlint.config.ts`); `bun run fix` autofixes lint and runs oxfmt
-- `bun run typecheck` — type-check both tsconfig projects (`tsc --noEmit` on app + node)
+- `bun run lint` — oxlint (auto-discovers `oxlint.config.ts`); `bun run fix` autofixes lint and runs oxfmt
 - `bun run test` — Vitest, single run (`bun run test:watch` for watch mode)
 - `bun run build` / `bun run preview` — production build / serve it locally
 - `bun run clean` — wipe deps, caches, and generated assets; `bun run clean:assets` for asset caches only
@@ -68,14 +66,10 @@ subpath (e.g. `@thalys/pixi-shared/engine`, `@thalys/pixi-shared/lib/flat-grid`)
 
 ## Tooling Configuration
 
-- `vite.config.ts` holds Vite server/plugin config. Format rules (no semicolons, single quotes) live in `.oxfmtrc.json`.
-- Lint config is `oxlint.config.ts` (a TS config with a `default` export), loaded via `oxlint -c oxlint.config.ts` in
-  the `lint`/`fix` scripts. Its relative imports use explicit `.ts` extensions because Node (which oxlint uses to load
-  the config) won't resolve extensionless paths. Rules are split into `oxlint.rules.<plugin>.ts` and overrides into
-  `oxlint.overrides*.ts`.
-- Oxlint override `files` globs must be plain globs (`scripts/**`); extglob patterns like `*.?([cm])ts` silently match
-  nothing.
-- `unicorn/number-literal-case` stays off: it wants uppercase hex, oxfmt enforces lowercase.
+- `vite.config.ts` holds Vite server/plugin config. Format rules live in `oxfmt.config.ts`, which re-exports
+  `@thalys/config-oxc/oxfmt` (no semicolons, single quotes, lowercase hex).
+- Lint config is `oxlint.config.ts`, which extends `@thalys/config-oxc/oxlint`. Oxlint auto-discovers it — no `-c` flag
+  needed. Type-checking is handled by `oxlint-tsgolint` (bundled in the shared config), not a separate `tsc` step.
 - tsconfigs (3): `tsconfig.json` (solution file only), `tsconfig.app.json` (all of `src/` incl. tests; browser-safe
   types only), `tsconfig.node.json` (extends app; `scripts/` + root configs; adds `bun-types`/`node`). The split keeps
   Bun/Node globals out of browser code — don't merge them.
