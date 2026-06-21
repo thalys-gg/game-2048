@@ -23,12 +23,7 @@ export default defineConfig(async (_configEnv: ConfigEnv) => {
         '#': resolve(import.meta.dirname, 'scripts'),
       },
     },
-    plugins: [
-      devtoolsJson(),
-      glsl(),
-      fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(),
-      assetpack(),
-    ],
+    plugins: [devtoolsJson(), glsl(), fullReloadWhen(['ts', 'tsx', 'frag', 'vert']).change(), assetpack()],
     define: {
       APP_VERSION: JSON.stringify(env.npm_package_version),
     },

@@ -15,7 +15,8 @@ export function searchUpFor(filename: string) {
      * Asynchronously searches for the specified file starting from `startDir`.
      *
      * @param leafDir - The absolute path of the directory to start the search from.
-     * @returns A promise that resolves with the absolute path of the directory containing the file, or null if not found.
+     * @returns A promise that resolves with the absolute path of the directory containing the file, or null if not
+     *   found.
      */
     async from(leafDir: string = import.meta.dir): Promise<string | null> {
       let currentDir = leafDir
@@ -43,8 +44,8 @@ export function searchUpFor(filename: string) {
 }
 
 /**
- * Finds the project's root directory by searching upwards for a `package.json` file.
- * It starts the search from the directory of the current module.
+ * Finds the project's root directory by searching upwards for a `package.json` file. It starts the search from the
+ * directory of the current module.
  *
  * @returns {Promise<string>} A promise that resolves with the absolute path to the project root.
  * @throws {Error} If the `package.json` file cannot be found.

@@ -39,7 +39,7 @@ const person = {
 
 const watched = watchObject(person)
 
-watched.on('firstNameChanged', (firstName) => {
+watched.on('firstNameChanged', firstName => {
   logEvent(`firstName was changed to ${firstName}!`)
   setTimeout(() => {
     log(person)

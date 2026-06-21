@@ -1,8 +1,11 @@
 # Documentation standard
 
-How this repository is documented. The goal is a **dual audience**: a human reading it understands _why_ things are designed the way they are, and an LLM agent working on the code gets the same context — what exists, where to find it, and what is reusable.
+How this repository is documented. The goal is a **dual audience**: a human reading it understands _why_ things are
+designed the way they are, and an LLM agent working on the code gets the same context — what exists, where to find it,
+and what is reusable.
 
-This standard is meant to be **reusable across repos**. Copy `docs/` (this file, the ADR layout, an `architecture.md`) into each game/project so every repo is self-describing.
+This standard is meant to be **reusable across repos**. Copy `docs/` (this file, the ADR layout, an `architecture.md`)
+into each game/project so every repo is self-describing.
 
 ## Three layers
 
@@ -16,13 +19,16 @@ This standard is meant to be **reusable across repos**. Copy `docs/` (this file,
 
 ### High-level
 
-- Keep `AGENTS.md` brief and reachable (aim < 200 lines): commands, path aliases, architecture summary, tooling gotchas. Link out to `docs/` for depth instead of inlining it.
-- Diagrams are **Mermaid in markdown** — plain text, so they version, diff, and are readable by both humans and LLMs (no binary images to rot). GitHub renders them.
+- Keep `AGENTS.md` brief and reachable (aim < 200 lines): commands, path aliases, architecture summary, tooling gotchas.
+  Link out to `docs/` for depth instead of inlining it.
+- Diagrams are **Mermaid in markdown** — plain text, so they version, diff, and are readable by both humans and LLMs (no
+  binary images to rot). GitHub renders them.
 - Record decisions as **ADRs** (see below). The _why_ is the most valuable and most perishable knowledge.
 
 ### Module
 
-- One `README.md` per major directory (e.g. `src/engine/`, `src/app/screens/`): one paragraph on the directory's responsibility, key files, and how it's used. Link to related ADRs.
+- One `README.md` per major directory (e.g. `src/engine/`, `src/app/screens/`): one paragraph on the directory's
+  responsibility, key files, and how it's used. Link to related ADRs.
 - The module's entry file carries a TSDoc `@packageDocumentation` comment summarizing the module.
 
 ### Function / symbol
@@ -33,12 +39,19 @@ This standard is meant to be **reusable across repos**. Copy `docs/` (this file,
 
 ## Architecture Decision Records (ADRs)
 
-Lightweight [MADR](https://adr.github.io/madr/)-style records in [`docs/decisions/`](decisions/), numbered sequentially (`0001-…`, `0002-…`). Each one captures: **context** (the forces at play), the **decision**, its **consequences**, and the **alternatives considered**. Write one whenever a choice would otherwise leave a future reader (human or LLM) asking "why is it like this?".
+Lightweight [MADR](https://adr.github.io/madr/)-style records in [`docs/decisions/`](decisions/), numbered sequentially
+(`0001-…`, `0002-…`). Each one captures: **context** (the forces at play), the **decision**, its **consequences**, and
+the **alternatives considered**. Write one whenever a choice would otherwise leave a future reader (human or LLM) asking
+"why is it like this?".
 
 ## LLM index
 
-[`llms.txt`](../llms.txt) is a curated index ([llms.txt](https://llmstxt.org/) format) pointing agents at the docs above. Keep it current when docs move.
+[`llms.txt`](../llms.txt) is a curated index ([llms.txt](https://llmstxt.org/) format) pointing agents at the docs
+above. Keep it current when docs move.
 
 ## Phasing
 
-This is **Phase 1**: conventions applied by hand, kept reusable. **Phase 2** (when there are several games, or upkeep starts to hurt) adds cheap automation — `codebase-map`, an `llms.txt` generator — and only then a generated API reference (TypeDoc) with CI doc-gates if a published API earns it. See [ADR 0001](decisions/0001-adopt-layered-documentation-standard.md).
+This is **Phase 1**: conventions applied by hand, kept reusable. **Phase 2** (when there are several games, or upkeep
+starts to hurt) adds cheap automation — `codebase-map`, an `llms.txt` generator — and only then a generated API
+reference (TypeDoc) with CI doc-gates if a published API earns it. See
+[ADR 0001](decisions/0001-adopt-layered-documentation-standard.md).

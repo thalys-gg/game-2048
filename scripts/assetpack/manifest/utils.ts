@@ -1,8 +1,7 @@
 /**
- * Extracts a manifest name from a given asset path.
- * The manifest name is derived from the path of the last directory containing a `{m}` marker.
- * This function constructs a path up to and including that marked directory,
- * then removes any `{...}` style tags and leading/trailing slashes.
+ * Extracts a manifest name from a given asset path. The manifest name is derived from the path of the last directory
+ * containing a `{m}` marker. This function constructs a path up to and including that marked directory, then removes
+ * any `{...}` style tags and leading/trailing slashes.
  *
  * @param path - The full path of the asset.
  * @param entry - The base entry path to be removed from the asset path.

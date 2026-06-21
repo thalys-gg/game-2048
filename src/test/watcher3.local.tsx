@@ -1,7 +1,6 @@
 /**
- * Watched Object Implementation
- * A utility to create deeply proxied objects that trigger a callback
- * whenever a property is modified, added, or deleted anywhere in the object tree.
+ * Watched Object Implementation A utility to create deeply proxied objects that trigger a callback whenever a property
+ * is modified, added, or deleted anywhere in the object tree.
  */
 
 import { blue, blueBright, logger } from '@thalys/logger'
@@ -37,6 +36,7 @@ export type WatcherCallback = (event: ChangeEvent) => void
 
 /**
  * Creates a proxy that wraps the target object to detect deep changes.
+ *
  * @param target - The object to watch.
  * @param callback - Function called on any change.
  * @returns A proxied version of the target.
@@ -47,6 +47,7 @@ export function createWatchedObject<T extends object>(target: T, callback: Watch
 
   /**
    * Internal handler to create the proxy recursively.
+   *
    * @param obj - The current object being proxied.
    * @param path - The path to reach this object from the root.
    */
@@ -158,7 +159,7 @@ function runDemo() {
   }
 
   // 1. Create the watched object
-  const state = createWatchedObject(initialData, (event) => {
+  const state = createWatchedObject(initialData, event => {
     const pathStr = event.path.map(String).join('.')
     clean(`[CHANGE DETECTED] Path: '${pathStr}' | Type: ${event.type}`)
     clean(`   Old: ${JSON.stringify(event.previousValue)} -> New: ${JSON.stringify(event.value)}`)

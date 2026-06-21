@@ -23,7 +23,7 @@ export async function createApplication() {
   // `preload` bundle and background-load the rest.
   await Assets.init({ manifest, basePath: 'assets' })
   await Assets.loadBundle('preload')
-  Assets.backgroundLoadBundle(manifest.bundles.map((item) => item.name))
+  Assets.backgroundLoadBundle(manifest.bundles.map(item => item.name))
 
   initDevtools({ app: engine })
 

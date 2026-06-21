@@ -1,6 +1,7 @@
 # 2048
 
-A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, using [Vite](https://vite.dev/) as the toolchain and [Bun](https://bun.sh/) as the package manager.
+A 2048 puzzle game built with [PixiJS 8](https://pixijs.com/) and TypeScript, using [Vite](https://vite.dev/) as the
+toolchain and [Bun](https://bun.sh/) as the package manager.
 
 ## Documentation
 

@@ -1,9 +1,6 @@
 import { Graphics } from 'pixi.js'
 
-/**
- * A debug visualization component that draws a colored rectangle
- * to help visualize container bounds and positioning.
- */
+/** A debug visualization component that draws a colored rectangle to help visualize container bounds and positioning. */
 export class DebugQuad extends Graphics {
   private _width: number
   private _height: number
@@ -35,18 +32,14 @@ export class DebugQuad extends Graphics {
     this.draw()
   }
 
-  /**
-   * Updates the debug quad dimensions and redraws it
-   */
+  /** Updates the debug quad dimensions and redraws it */
   public updateSize(width: number, height: number): void {
     this._width = width
     this._height = height
     this.draw()
   }
 
-  /**
-   * Updates the debug quad to match its parent container dimensions
-   */
+  /** Updates the debug quad to match its parent container dimensions */
   public updateToParentSize(): void {
     if (this.parent) {
       // Temporarily remove self to get parent bounds without the debug quad
@@ -63,15 +56,8 @@ export class DebugQuad extends Graphics {
     }
   }
 
-  /**
-   * Updates the debug quad colors and redraws it
-   */
-  public updateColors(
-    fillColor?: number,
-    fillAlpha?: number,
-    strokeColor?: number,
-    strokeWidth?: number,
-  ): void {
+  /** Updates the debug quad colors and redraws it */
+  public updateColors(fillColor?: number, fillAlpha?: number, strokeColor?: number, strokeWidth?: number): void {
     if (fillColor !== undefined) {
       this._fillColor = fillColor
     }
@@ -87,9 +73,7 @@ export class DebugQuad extends Graphics {
     this.draw()
   }
 
-  /**
-   * Redraws the debug quad with current settings
-   */
+  /** Redraws the debug quad with current settings */
   private draw(): void {
     this.clear()
     this.rect(0, 0, this._width, this._height)

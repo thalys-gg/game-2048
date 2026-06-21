@@ -3,9 +3,7 @@ import { Graphics } from 'pixi.js'
 
 import { Label } from './Label'
 
-/**
- * A volume slider component to be used in the Settings popup.
- */
+/** A volume slider component to be used in the Settings popup. */
 export class VolumeSlider extends Slider {
   /** Message displayed for the slider */
   public messageLabel: Label
@@ -34,9 +32,7 @@ export class VolumeSlider extends Slider {
       .roundRect(border, border, width - border * 2, height - border * 2, radius)
       .fill({ color: fillColor })
 
-    const slider = new Graphics()
-      .circle(0, 0, handleRadius + handleBorder)
-      .fill({ color: meshColor })
+    const slider = new Graphics().circle(0, 0, handleRadius + handleBorder).fill({ color: meshColor })
 
     super({
       bg,

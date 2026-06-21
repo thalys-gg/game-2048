@@ -13,7 +13,7 @@ export default new (class {
     }
 
     _rollupScoreRef = animate(from, to, {
-      onUpdate: (latest) => {
+      onUpdate: latest => {
         text.text = `${Math.round(latest)}`
       },
     })

@@ -8,10 +8,7 @@ import { webfont } from '@assetpack/core/webfont'
 import { generatePixiManifest } from './manifest/manifest'
 import { generateManifestTypes } from './manifest/manifest-typescript'
 
-/**
- * Returns an array of plugins that can be used by AssetPack to process assets
- * for a PixiJS project.
- */
+/** Returns an array of plugins that can be used by AssetPack to process assets for a PixiJS project. */
 export function customAssetpackPipes() {
   const pipes = [
     webfont(),

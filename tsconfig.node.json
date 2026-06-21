@@ -5,16 +5,7 @@
     "erasableSyntaxOnly": true,
     "lib": ["ESNext"],
     "target": "ES2022",
-    "types": [
-      "@assetpack/core",
-      "vite-plugin-glsl/ext",
-      "vite",
-      "bun",
-      "node",
-      "oxlint",
-      "oxfmt",
-      "vitest"
-    ]
+    "types": ["@assetpack/core", "vite-plugin-glsl/ext", "vite", "bun", "node", "oxlint", "oxfmt", "vitest"]
   },
   // Tooling that runs under Bun/Node: vite config, lint config, scripts
   "extends": "./tsconfig.app.json",

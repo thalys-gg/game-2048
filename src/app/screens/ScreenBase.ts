@@ -20,7 +20,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public prepareChildren() {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.prepare?.()
     })
   }
@@ -34,7 +34,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public resetChildren() {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.reset?.()
     })
   }
@@ -46,7 +46,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public resizeChildren({ screen, parent }: ResizeSignature) {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.resize?.({ screen, parent })
     })
   }
@@ -56,7 +56,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public showChildren() {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.show?.()
     })
   }
@@ -66,7 +66,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public hideChildren() {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.hide?.()
     })
   }
@@ -83,7 +83,7 @@ export class ScreenBase extends Container<IChild> implements IAppScreen {
   }
 
   public async resumeChildren() {
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       child.resume?.()
     })
   }
