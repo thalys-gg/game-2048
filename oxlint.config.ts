@@ -1,4 +1,3 @@
-/// <reference types="vitest/config" />
 import type { OxlintConfig } from 'oxlint'
 import { eslint_rules } from './oxlint.rules.eslint.ts'
 import { import_rules } from './oxlint.rules.import.ts'
