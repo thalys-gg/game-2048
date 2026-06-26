@@ -91,6 +91,12 @@ export class UIGame extends Container implements IChild {
       await this.playMoveAnimations(plan)
       this.grid.applyPlan(plan)
       this.syncPlacements(plan)
+
+      if (!this.grid.getRandomEmpty()) {
+        await this.checkGameState()
+        return
+      }
+
       await this.spawnPiece()
       await this.checkGameState()
     } finally {
