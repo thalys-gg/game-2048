@@ -35,7 +35,7 @@ export class UIGame extends Container implements IChild {
 
   public resize({ screen, parent }: ResizeSignature) {
     this.grid.forEach((pawn, x, y) => {
-      if (!pawn) return
+      if (!pawn || pawn.destroyed) return
 
       const pos = this.positions.get(x, y)
       if (!pos) {
@@ -165,8 +165,17 @@ export class UIGame extends Container implements IChild {
       merge.survivor.mergeSlam(merge.newValue),
       ...neighbors.map(async pawn => pawn.shakeFromImpact(impact.x, impact.y)),
     ])
+    this.purgePawnFromGrid(merge.merged)
     merge.merged.destroy()
     this.grid.onMerge?.(merge.newValue)
+  }
+
+  private purgePawnFromGrid(pawn: UIPawn) {
+    this.grid.forEach((cell, x, y) => {
+      if (cell === pawn) {
+        this.grid.set(x, y, null)
+      }
+    })
   }
 
   private hasWon() {
