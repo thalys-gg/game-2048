@@ -37,7 +37,7 @@
 
 When `package.json` scripts or tooling config change, update `AGENTS.md` to match:
 
-- Review Checklist and Fresh-clone instructions must use the remaining scripts (e.g. `bun run lint` and `bun run test`,
+- Review Checklist, Commands, and Fresh-clone instructions must use the remaining scripts (e.g. `bun run lint` and `bun run test`,
   not removed `bun run typecheck`).
 - **Commands** must list the current `package.json` scripts and their behavior (ports, flags, clean targets). Update
   **Testing** if test runner commands or conventions change.
