@@ -2,13 +2,13 @@ import type { FlatGrid } from '@thalys/pixi-shared/lib/flat-grid'
 import type { IChild, ResizeSignature } from '@thalys/pixi-shared/types'
 import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
-import { anime } from '@thalys/anime-pixi'
 import { logger } from '@thalys/logger'
 import { waitFor } from '@thalys/pixi-shared/lib/promise'
 import { Container } from 'pixi.js'
 import { CONFIG } from '@/config'
 import actions from '@/lib/actions'
 import { GameFlatGrid } from '@/lib/game-flat-grid'
+import type { MovePlan, PawnMerge } from '@/lib/game-move-plan'
 import { rollNewPawnValue } from '@/lib/math'
 import { STATE } from '@/screens/main/state'
 import { UIPawn } from '@/screens/main/UIPawn'
@@ -18,6 +18,8 @@ const log = logger.custom`[ ${'UIGame'} ]`
 export class UIGame extends Container implements IChild {
   private grid: GameFlatGrid<UIPawn>
   private positions: FlatGrid<Sprite>
+  private _isAnimating = false
+
   constructor(positions: FlatGrid<Sprite>) {
     super()
     this.positions = positions
@@ -25,6 +27,10 @@ export class UIGame extends Container implements IChild {
     this.grid.onMerge = (value: number) => {
       STATE.score += value
     }
+  }
+
+  public get isAnimating() {
+    return this._isAnimating
   }
 
   public resize({ screen, parent }: ResizeSignature) {
@@ -42,7 +48,7 @@ export class UIGame extends Container implements IChild {
   }
 
   public async show() {
-    const pawns = [this.spawnPiece(), this.spawnPiece()]
+    await Promise.all([this.spawnPiece(), this.spawnPiece()])
 
     // STATE.score = 1238
     // this.debugFillBoard(
@@ -74,13 +80,57 @@ export class UIGame extends Container implements IChild {
     }
   }
 
-  public move(direction: Direction) {
-    const moved = this.grid.move(direction, this.positions)
+  public async move(direction: Direction) {
+    if (this._isAnimating) return
 
-    if (moved) {
-      this.spawnPiece()
-      this.checkGameState()
+    const plan = this.grid.planMove(direction)
+    if (!plan.moved) return
+
+    this._isAnimating = true
+    try {
+      await this.playMoveAnimations(plan)
+      this.grid.applyPlan(plan)
+      this.syncPlacements(plan)
+      await this.spawnPiece()
+      await this.checkGameState()
+    } finally {
+      this._isAnimating = false
     }
+  }
+
+  private syncPlacements(plan: MovePlan<UIPawn>) {
+    for (const { x, y, pawn } of plan.placements) {
+      const pos = this.positions.get(x, y)
+      if (!pos) {
+        throw new Error(`[UIGame.syncPlacements] Invalid position x:${x} y:${y}`)
+      }
+      pawn.resize(pos)
+    }
+  }
+
+  private async playMoveAnimations(plan: MovePlan<UIPawn>) {
+    await Promise.all(
+      plan.slides.map(async slide => {
+        const pos = this.positions.get(slide.toX, slide.toY)
+        if (!pos) {
+          throw new Error(
+            `[UIGame.playMoveAnimations] Invalid position x:${slide.toX} y:${slide.toY}`,
+          )
+        }
+        await slide.pawn.slideTo(pos.x, pos.y)
+      }),
+    )
+
+    await Promise.all(plan.merges.map(async merge => this.playMergeAnimation(merge)))
+  }
+
+  private async playMergeAnimation(merge: PawnMerge<UIPawn>) {
+    await Promise.all([
+      merge.merged.fadeOutAndShrink(),
+      merge.survivor.mergePop(merge.newValue),
+    ])
+    merge.merged.destroy()
+    this.grid.onMerge?.(merge.newValue)
   }
 
   private hasWon() {
@@ -141,15 +191,14 @@ export class UIGame extends Container implements IChild {
   }
 
   /** Spawns a new piece in a random empty cells */
-  public spawnPiece() {
+  public async spawnPiece() {
     const coord = this.grid.getRandomEmpty()
     if (!coord) {
       throw new Error('[UIGame.spawnPiece] No empty cells found')
     }
 
     const pawn = this.createPawnAt(coord.x, coord.y, rollNewPawnValue())
-    pawn.alpha = 0
-    anime`fade-in`(pawn).play()
+    await pawn.spawnIn()
     return pawn
   }
 

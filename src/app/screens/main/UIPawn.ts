@@ -8,6 +8,10 @@ import { Label } from '@/ui/Label'
 
 const theme = getTheme()
 
+export const TILE_SLIDE_S = 0.12
+export const TILE_MERGE_S = 0.1
+export const TILE_SPAWN_S = 0.15
+
 function createSquare(value: number, parent: Container, label?: string) {
   const pawn = Sprite.from(textures.getPawn(value))
   pawn.label = label || 'PawnBackground'
@@ -77,9 +81,32 @@ export class UIPawn extends Container {
     this.text = createLabel(value, this)
   }
 
-  public async show() {
-    animate(this.scale, { x: 1, y: 1 }, { duration: 0.5, ease: 'backOut' })
-    await animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: 0.5, ease: 'circOut' })
+  public async spawnIn() {
+    this.scale.set(0.6)
+    this.alpha = 0
+
+    await Promise.all([
+      animate(this.scale, { x: 1, y: 1 }, { duration: TILE_SPAWN_S, ease: 'backOut' }),
+      animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: TILE_SPAWN_S, ease: 'circOut' }),
+    ])
+  }
+
+  public async slideTo(x: number, y: number, duration = TILE_SLIDE_S) {
+    await animate(this, { x, y } as ObjectTarget<this>, { duration, ease: 'easeOut' })
+  }
+
+  public async mergePop(newValue: number, duration = TILE_MERGE_S) {
+    this.value = newValue
+    const half = duration / 2
+    await animate(this.scale, { x: 1.12, y: 1.12 }, { duration: half, ease: 'easeOut' })
+    await animate(this.scale, { x: 1, y: 1 }, { duration: half, ease: 'easeIn' })
+  }
+
+  public async fadeOutAndShrink(duration = TILE_MERGE_S * 0.8) {
+    await Promise.all([
+      animate(this, { alpha: 0 } as ObjectTarget<this>, { duration, ease: 'easeIn' }),
+      animate(this.scale, { x: 0.5, y: 0.5 }, { duration, ease: 'easeIn' }),
+    ])
   }
 
   /** Updates the layout of the pawn's children. Re-centers the value label within the sprite */
@@ -90,5 +117,7 @@ export class UIPawn extends Container {
 
     this.x = this.coords.x
     this.y = this.coords.y
+    this.scale.set(1)
+    this.alpha = 1
   }
 }

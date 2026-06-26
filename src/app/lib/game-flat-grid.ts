@@ -2,6 +2,8 @@ import type { Sprite } from 'pixi.js'
 import type { Direction } from '@/lib/types'
 import type { UIPawn } from '@/screens/main/UIPawn'
 import { FlatGrid } from '@thalys/pixi-shared/lib/flat-grid'
+import type { MovePlan } from '@/lib/game-move-plan'
+import { planLine } from '@/lib/game-move-plan'
 
 export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
   public onMerge?: (value: number) => void
@@ -56,73 +58,61 @@ export class GameFlatGrid<T extends UIPawn> extends FlatGrid<T> {
     return newGrid
   }
 
-  public move(direction: Direction, positions: FlatGrid<Sprite>): boolean {
-    let moved = false
+  /** Computes slide/merge events and the post-move grid without mutating tile visuals. */
+  public planMove(direction: Direction): MovePlan<T> {
+    const slides: MovePlan<T>['slides'] = []
+    const merges: MovePlan<T>['merges'] = []
+    const placements: MovePlan<T>['placements'] = []
     const isHorizontal = direction === 'left' || direction === 'right'
     const isReverse = direction === 'right' || direction === 'down'
 
     const primarySize = isHorizontal ? this.height : this.width
     const secondarySize = isHorizontal ? this.width : this.height
 
-    for (let i = 0; i < primarySize; i++) {
-      const line: T[] = []
+    for (let lineIndex = 0; lineIndex < primarySize; lineIndex++) {
+      const entries: { pawn: T; fromX: number; fromY: number }[] = []
 
-      // Collect non-null values
       for (let j = 0; j < secondarySize; j++) {
         const idx = isReverse ? secondarySize - 1 - j : j
-        const [x, y] = isHorizontal ? [idx, i] : [i, idx]
+        const [x, y] = isHorizontal ? [idx, lineIndex] : [lineIndex, idx]
         const cell = this.get(x, y)
-        if (cell) line.push(cell)
+        if (cell) entries.push({ pawn: cell, fromX: x, fromY: y })
       }
 
-      const merged = this.mergeLine(line)
-
-      // Place back and update positions
+      const destCells: { x: number; y: number }[] = []
       for (let j = 0; j < secondarySize; j++) {
         const idx = isReverse ? secondarySize - 1 - j : j
-        const [x, y] = isHorizontal ? [idx, i] : [i, idx]
-        const newCell = merged[j] ?? null
-        const oldCell = this.get(x, y)
+        const [x, y] = isHorizontal ? [idx, lineIndex] : [lineIndex, idx]
+        destCells.push({ x, y })
+      }
 
-        if (newCell !== oldCell) moved = true
-        this.set(x, y, newCell)
+      const linePlan = planLine(entries, destCells)
+      slides.push(...linePlan.slides)
+      merges.push(...linePlan.merges)
 
-        if (newCell) {
-          const pos = positions.get(x, y)!
-          newCell.x = pos.x
-          newCell.y = pos.y
-        }
+      for (let j = 0; j < secondarySize; j++) {
+        const pawn = linePlan.cells[j]
+        if (!pawn) continue
+
+        const dest = destCells[j]
+        if (!dest) continue
+        placements.push({ x: dest.x, y: dest.y, pawn })
       }
     }
 
-    return moved
+    const moved = slides.length > 0 || merges.length > 0
+
+    return { moved, slides, merges, placements }
   }
 
-  public mergeLine(line: T[]): (T | null)[] {
-    const result: (T | null)[] = []
-    let i = 0
-
-    while (i < line.length) {
-      if (i + 1 < line.length && line[i].value === line[i + 1].value) {
-        const pawn = line[i]
-
-        // Merge: double the value, remove the second
-        pawn.value *= 2
-        this.onMerge?.(pawn.value)
-        result.push(pawn)
-        line[i + 1].destroy()
-        i += 2
-      } else {
-        result.push(line[i])
-        i++
-      }
+  /** Commits a planned move to the logical grid after animations finish. */
+  public applyPlan(plan: MovePlan<T>) {
+    for (let i = 0; i < this.data.length; i++) {
+      this.data[i] = null
     }
 
-    // Pad with nulls
-    while (result.length < this.width) {
-      result.push(null)
+    for (const { x, y, pawn } of plan.placements) {
+      this.set(x, y, pawn)
     }
-
-    return result
   }
 }
