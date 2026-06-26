@@ -1,5 +1,5 @@
 import { Texture } from 'pixi.js'
-import { CONFIG, getTheme } from '@/config'
+import { CONFIG, getTheme, getTileTheme } from '@/config'
 import { render } from '@/screens/main/render'
 
 const theme = getTheme()
@@ -33,7 +33,7 @@ export default new (class {
     const canvasWidth = width + padding * 2
     const canvasHeight = height + padding * 2
     const radius = CONFIG.piece.radius
-    const color = theme.tiles[value].bg
+    const color = getTileTheme(value).bg
 
     return (renderedPawnTextures[value] = render()
       .canvas(canvasWidth, canvasHeight)

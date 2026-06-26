@@ -121,7 +121,36 @@ export class UIGame extends Container implements IChild {
       }),
     )
 
-    await Promise.all(plan.merges.map(async merge => this.playMergeAnimation(merge, plan)))
+    const neighborShakes = this.collectMergeNeighborShakes(plan)
+
+    await Promise.all([
+      ...plan.merges.map(async merge => this.playMergeAnimation(merge)),
+      ...neighborShakes.map(async ({ pawn, impactX, impactY }) =>
+        pawn.shakeFromImpact(impactX, impactY),
+      ),
+    ])
+  }
+
+  private collectMergeNeighborShakes(plan: MovePlan<UIPawn>) {
+    const shaken = new Set<UIPawn>()
+    const shakes: { pawn: UIPawn; impactX: number; impactY: number }[] = []
+
+    for (const merge of plan.merges) {
+      const impact = this.positions.get(merge.toX, merge.toY)
+      if (!impact) {
+        throw new Error(
+          `[UIGame.collectMergeNeighborShakes] Invalid position x:${merge.toX} y:${merge.toY}`,
+        )
+      }
+
+      for (const neighbor of this.getMergeNeighbors(merge, plan)) {
+        if (shaken.has(neighbor)) continue
+        shaken.add(neighbor)
+        shakes.push({ pawn: neighbor, impactX: impact.x, impactY: impact.y })
+      }
+    }
+
+    return shakes
   }
 
   private getMergeNeighbors(merge: PawnMerge<UIPawn>, plan: MovePlan<UIPawn>) {
@@ -150,20 +179,10 @@ export class UIGame extends Container implements IChild {
     return neighbors
   }
 
-  private async playMergeAnimation(merge: PawnMerge<UIPawn>, plan: MovePlan<UIPawn>) {
-    const impact = this.positions.get(merge.toX, merge.toY)
-    if (!impact) {
-      throw new Error(
-        `[UIGame.playMergeAnimation] Invalid position x:${merge.toX} y:${merge.toY}`,
-      )
-    }
-
-    const neighbors = this.getMergeNeighbors(merge, plan)
-
+  private async playMergeAnimation(merge: PawnMerge<UIPawn>) {
     await Promise.all([
       merge.merged.fadeOutAndShrink(),
       merge.survivor.mergeSlam(merge.newValue),
-      ...neighbors.map(async pawn => pawn.shakeFromImpact(impact.x, impact.y)),
     ])
     this.purgePawnFromGrid(merge.merged)
     merge.merged.destroy()

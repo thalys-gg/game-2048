@@ -45,7 +45,9 @@ export function planLine<T extends { value: number }>(
 
   while (i < entries.length) {
     const dest = destCells[slot]
-    if (!dest) break
+    if (!dest) {
+      throw new Error(`[planLine] destCells exhausted at slot ${slot} with ${entries.length - i} entries left`)
+    }
 
     if (i + 1 < entries.length && entries[i].pawn.value === entries[i + 1].pawn.value) {
       const survivor = entries[i].pawn

@@ -2,11 +2,9 @@ import type { Coordinate } from '@thalys/pixi-shared/lib/flat-grid'
 import type { ObjectTarget } from 'motion'
 import { animate } from 'motion'
 import { Container, Sprite } from 'pixi.js'
-import { getTheme } from '@/config'
+import { getTileTheme } from '@/config'
 import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
-
-const theme = getTheme()
 
 export const TILE_SLIDE_S = 0.108
 export const TILE_MERGE_S = 0.09
@@ -27,7 +25,7 @@ function createLabel(value: number, parent: Container, label?: string) {
     text: `${value}`,
     style: {
       fontSize: 48,
-      fill: theme.tiles[value].text,
+      fill: getTileTheme(value).text,
     },
   })
   text.label = label || 'PawnValue'
@@ -50,7 +48,7 @@ export class UIPawn extends Container {
    */
   public set value(value: number) {
     this._value = value
-    this.text.style.fill = theme.tiles[value].text
+    this.text.style.fill = getTileTheme(value).text
     this.text.text = `${value}`
     this.bg.texture = textures.getPawn(value)
   }
