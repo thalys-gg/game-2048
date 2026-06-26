@@ -4,8 +4,8 @@
 
 - This is a **client-side PixiJS 8 + TypeScript browser game** (2048). There is no server, database, auth, or billing —
   review for game correctness and runtime health, not backend concerns.
-- **Keep the engine/app boundary intact.** `src/engine/` (`∆/`) is reusable "Creation Engine" code and must never import
-  from `src/app/` (`@/`). Flag any engine→app import.
+- **Keep the engine/app boundary intact.** The engine lives in the `@thalys/pixi-shared` npm package (subpath imports such
+  as `@thalys/pixi-shared/engine`); it must never import from the game layer (`@/`). Flag any engine→app import.
 - **Game logic is the core asset.** Board moves/merges, win/lose detection, and scoring (`src/app/screens/main/`, board
   logic over the engine's `FlatGrid` via `lib/game-flat-grid.ts`) must be correct. A wrong merge, score, or end-state is
   a real bug.
@@ -32,3 +32,17 @@
   directly.
 - Screen/UI changes should preserve lifecycle and resize behavior: screens extend `src/app/screens/ScreenBase.ts` and
   must release Pixi resources on hide/destroy — verify navigation (`showScreen`, overlays) does not leak.
+
+## Keep AGENTS.md in sync with tooling
+
+When `package.json` scripts or tooling config change, update `AGENTS.md` to match:
+
+- Review Checklist, Commands, and Fresh-clone instructions must use the remaining scripts (e.g. `bun run lint` and `bun run test`,
+  not removed `bun run typecheck`).
+- **Commands** must list the current `package.json` scripts and their behavior (ports, flags, clean targets). Update
+  **Testing** if test runner commands or conventions change.
+- Tooling Configuration must reflect the current config files (e.g. `oxlint.config.ts` extending
+  `@thalys/config-oxc/oxlint`, `oxfmt.config.ts` re-exporting `@thalys/config-oxc/oxfmt`) and must not reference deleted
+  files such as `.oxfmtrc.json` or split rule files; do not document manual `-c` / config-path flags because oxlint
+  auto-discovers `oxlint.config.ts`.
+- If generated files are required before type-checking, document the prerequisite command in the Review Checklist.
