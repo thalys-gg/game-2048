@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "bunVersion": "1.3",
   "framework": "vite",
-  "installCommand": "CI=true bun install",
+  "installCommand": "bun install --production",
   "buildCommand": "vite build"
 }
