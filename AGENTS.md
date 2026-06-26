@@ -1,7 +1,9 @@
 # 2048 Game
 
-A 2048 puzzle game built with PixiJS 8 and TypeScript. Bun is the package manager and script runtime; Vite is the
-bundler/dev server, with oxlint + oxfmt for lint/format and Vitest for tests.
+A 2048 puzzle game built with PixiJS 8 and TypeScript
+Bun is the package manager and script runtime
+Vite is the bundler/dev server
+oxlint + oxfmt for lint/format and Vitest for tests
 
 ## Documentation
 

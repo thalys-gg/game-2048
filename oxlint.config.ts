@@ -1,4 +1,4 @@
-import config from '@thalys/config-oxc/oxlint'
-import { defineConfig } from 'oxlint'
+import { oxlintConfig } from "@thalys/config-oxc";
+import { defineConfig } from "oxlint";
 
-export default defineConfig({ extends: [config] })
+export default defineConfig(oxlintConfig);
