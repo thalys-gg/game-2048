@@ -9,7 +9,7 @@
     ".gitignore": ".gitattributes, .gitmodules, *ignore, .ignore*, .editorconfig",
     "package.json": "eslint.config.*, .gitignore, .gitattributes, bunfig.toml, bun.lock, pnpm-lock.yaml, pnpm-workspace.yaml, package-lock.json, .editorconfig, CLAUDE.md, GEMINI.md, TASKS.md, LICENSE*, README*",
     "tsconfig.json": "tsconfig.*.json",
-    "vite.config.ts": "index*.html, oxlint.*, .prettier*",
+    "vite.config.ts": "index*.html, oxlint.*, oxfmt.*, .prettier*",
     "*.tsx": "$(capture).ts, $(capture).*.ts, $(capture).*.tsx, $(capture)_*.ts, $(capture)_*.tsx, $(capture).css, $(capture).module.css, $(capture).less, $(capture).module.less, $(capture).module.less.d.ts, $(capture).scss, $(capture).module.scss, $(capture).module.scss.d.ts, $(capture).css.ts, $(capture).html, $(capture)*.md,",
     "*.ts": "$(capture)*.mjs,$(capture)*.js, $(capture).d.ts.map, $(capture).*.ts, $(capture).*.tsx, $(capture)_*.js, $(capture)_*.ts, $(capture)*.md,",
     "*.mts": "$(capture).mts.map, $(capture).*.mts, $(capture)_*.mts",
@@ -21,25 +21,30 @@
     "*.ogg": "$(capture)*.mp3, $(capture)*.wav"
   },
   "cSpell.words": ["glsl", "NESW", "oxlint", "pipx"],
+
   "npm.scriptRunner": "bun",
+
+  /**
+   *  Oxlint and Oxfmt
+   **/
+  "oxc.enable": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
-  },
-  "oxc.fmt.configPath": ".oxfmtrc.json",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.formatOnSaveMode": "file",
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit"
+    "source.fixAll.oxc": "explicit", // run lint fixes after
+    "source.format.oxc": "explicit" // run formatter first
   },
-  "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview"
+  "oxc.lint.customization": {
+    "no-unused-vars": {
+      "severity": "warning",
+      "autofix": false
+    }
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json][jsonc][jsonl]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  }
 }

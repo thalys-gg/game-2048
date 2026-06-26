@@ -1,4 +1,7 @@
-/** Auto-generated TypeScript types for asset manifest Generated from manifest.json - DO NOT EDIT MANUALLY */
+/**
+ * Auto-generated TypeScript types for asset manifest Generated from manifest.json - DO NOT EDIT
+ * MANUALLY
+ */
 
 /** Base manifest structure */
 export interface Manifest {
