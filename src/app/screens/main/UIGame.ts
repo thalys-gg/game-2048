@@ -121,13 +121,49 @@ export class UIGame extends Container implements IChild {
       }),
     )
 
-    await Promise.all(plan.merges.map(async merge => this.playMergeAnimation(merge)))
+    await Promise.all(plan.merges.map(async merge => this.playMergeAnimation(merge, plan)))
   }
 
-  private async playMergeAnimation(merge: PawnMerge<UIPawn>) {
+  private getMergeNeighbors(merge: PawnMerge<UIPawn>, plan: MovePlan<UIPawn>) {
+    const byCell = new Map<string, UIPawn>()
+    for (const { x, y, pawn } of plan.placements) {
+      byCell.set(`${x},${y}`, pawn)
+    }
+
+    const neighbors: UIPawn[] = []
+    for (const [dx, dy] of [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
+    ]) {
+      const x = merge.toX + dx
+      const y = merge.toY + dy
+      if (x < 0 || y < 0 || x >= CONFIG.cols || y >= CONFIG.rows) continue
+
+      const pawn = byCell.get(`${x},${y}`)
+      if (pawn && pawn !== merge.survivor && pawn !== merge.merged) {
+        neighbors.push(pawn)
+      }
+    }
+
+    return neighbors
+  }
+
+  private async playMergeAnimation(merge: PawnMerge<UIPawn>, plan: MovePlan<UIPawn>) {
+    const impact = this.positions.get(merge.toX, merge.toY)
+    if (!impact) {
+      throw new Error(
+        `[UIGame.playMergeAnimation] Invalid position x:${merge.toX} y:${merge.toY}`,
+      )
+    }
+
+    const neighbors = this.getMergeNeighbors(merge, plan)
+
     await Promise.all([
       merge.merged.fadeOutAndShrink(),
-      merge.survivor.mergePop(merge.newValue),
+      merge.survivor.mergeSlam(merge.newValue),
+      ...neighbors.map(async pawn => pawn.shakeFromImpact(impact.x, impact.y)),
     ])
     merge.merged.destroy()
     this.grid.onMerge?.(merge.newValue)
