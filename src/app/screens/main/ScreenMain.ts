@@ -46,8 +46,8 @@ export class ScreenMain extends ScreenBase {
   }
 
   private handleMove = (direction: Direction) => {
-    if (this.paused) return
-    this.game.move(direction)
+    if (this.paused || this.game.isAnimating) return
+    void this.game.move(direction)
   }
 
   public async pause() {

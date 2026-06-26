@@ -2,11 +2,14 @@ import type { Coordinate } from '@thalys/pixi-shared/lib/flat-grid'
 import type { ObjectTarget } from 'motion'
 import { animate } from 'motion'
 import { Container, Sprite } from 'pixi.js'
-import { getTheme } from '@/config'
+import { getTileTheme } from '@/config'
 import textures from '@/lib/textures'
 import { Label } from '@/ui/Label'
 
-const theme = getTheme()
+export const TILE_SLIDE_S = 0.108
+export const TILE_MERGE_S = 0.09
+export const TILE_SPAWN_S = 0.135
+const TILE_SHAKE_AMP = 5
 
 function createSquare(value: number, parent: Container, label?: string) {
   const pawn = Sprite.from(textures.getPawn(value))
@@ -22,7 +25,7 @@ function createLabel(value: number, parent: Container, label?: string) {
     text: `${value}`,
     style: {
       fontSize: 48,
-      fill: theme.tiles[value].text,
+      fill: getTileTheme(value).text,
     },
   })
   text.label = label || 'PawnValue'
@@ -45,7 +48,7 @@ export class UIPawn extends Container {
    */
   public set value(value: number) {
     this._value = value
-    this.text.style.fill = theme.tiles[value].text
+    this.text.style.fill = getTileTheme(value).text
     this.text.text = `${value}`
     this.bg.texture = textures.getPawn(value)
   }
@@ -77,9 +80,66 @@ export class UIPawn extends Container {
     this.text = createLabel(value, this)
   }
 
-  public async show() {
-    animate(this.scale, { x: 1, y: 1 }, { duration: 0.5, ease: 'backOut' })
-    await animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: 0.5, ease: 'circOut' })
+  public async spawnIn() {
+    this.scale.set(0.6)
+    this.alpha = 0
+
+    await Promise.all([
+      animate(this.scale, { x: 1, y: 1 }, { duration: TILE_SPAWN_S, ease: 'backOut' }),
+      animate(this, { alpha: 1 } as ObjectTarget<this>, { duration: TILE_SPAWN_S, ease: 'circOut' }),
+    ])
+  }
+
+  public async slideTo(x: number, y: number, duration = TILE_SLIDE_S) {
+    await animate(this, { x, y } as ObjectTarget<this>, { duration, ease: 'easeOut' })
+  }
+
+  public async mergeSlam(newValue: number, duration = TILE_MERGE_S) {
+    this.value = newValue
+    const windUp = duration * 0.12
+    const slam = duration * 0.28
+    const rebound = duration * 0.6
+
+    await animate(this.scale, { x: 1.06, y: 1.06 }, { duration: windUp, ease: 'easeOut' })
+    await animate(this.scale, { x: 0.86, y: 0.86 }, { duration: slam, ease: 'easeIn' })
+    await animate(this.scale, { x: 1.14, y: 1.14 }, { duration: rebound * 0.45, ease: 'backOut' })
+    await animate(this.scale, { x: 1, y: 1 }, { duration: rebound * 0.55, ease: 'easeOut' })
+  }
+
+  public async shakeFromImpact(
+    impactX: number,
+    impactY: number,
+    duration = TILE_MERGE_S,
+  ) {
+    const ox = this.x
+    const oy = this.y
+    const dx = ox - impactX
+    const dy = oy - impactY
+    const len = Math.hypot(dx, dy) || 1
+    const pushX = (dx / len) * TILE_SHAKE_AMP
+    const pushY = (dy / len) * TILE_SHAKE_AMP
+    const step = duration / 4
+
+    await animate(this, { x: ox + pushX, y: oy + pushY } as ObjectTarget<this>, {
+      duration: step,
+      ease: 'easeOut',
+    })
+    await animate(this, { x: ox - pushX * 0.55, y: oy - pushY * 0.55 } as ObjectTarget<this>, {
+      duration: step,
+      ease: 'easeInOut',
+    })
+    await animate(this, { x: ox + pushX * 0.25, y: oy + pushY * 0.25 } as ObjectTarget<this>, {
+      duration: step,
+      ease: 'easeInOut',
+    })
+    await animate(this, { x: ox, y: oy } as ObjectTarget<this>, { duration: step, ease: 'easeOut' })
+  }
+
+  public async fadeOutAndShrink(duration = TILE_MERGE_S * 0.8) {
+    await Promise.all([
+      animate(this, { alpha: 0 } as ObjectTarget<this>, { duration, ease: 'easeIn' }),
+      animate(this.scale, { x: 0.5, y: 0.5 }, { duration, ease: 'easeIn' }),
+    ])
   }
 
   /** Updates the layout of the pawn's children. Re-centers the value label within the sprite */
@@ -90,5 +150,7 @@ export class UIPawn extends Container {
 
     this.x = this.coords.x
     this.y = this.coords.y
+    this.scale.set(1)
+    this.alpha = 1
   }
 }
