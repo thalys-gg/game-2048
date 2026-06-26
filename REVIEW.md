@@ -32,3 +32,14 @@
   directly.
 - Screen/UI changes should preserve lifecycle and resize behavior: screens extend `src/app/screens/ScreenBase.ts` and
   must release Pixi resources on hide/destroy — verify navigation (`showScreen`, overlays) does not leak.
+
+## Keep AGENTS.md in sync with tooling
+
+When `package.json` scripts or tooling config change, update `AGENTS.md` to match:
+
+- Review Checklist and Fresh-clone instructions must use the remaining scripts (e.g. `bun run lint` and `bun run test`,
+  not removed `bun run typecheck`).
+- Tooling Configuration must reflect the current config files (e.g. `oxlint.config.ts` extending
+  `@thalys/config-oxc/oxlint`, `oxfmt.config.ts` re-exporting `@thalys/config-oxc/oxfmt`) and must not reference deleted
+  files such as `.oxfmtrc.json`, split rule files, or the `-c oxlint.config.ts` flag.
+- If generated files are required before type-checking, document the prerequisite command in the Review Checklist.
