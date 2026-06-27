@@ -91,3 +91,10 @@ export const CONFIG: TConfig = {
 export function getTheme(index: number = 0) {
   return CONFIG.themes[index]
 }
+
+const HIGHEST_THEMED_TILE = 32768
+
+export function getTileTheme(value: number) {
+  const theme = getTheme()
+  return theme.tiles[value] ?? theme.tiles[HIGHEST_THEMED_TILE]
+}
