@@ -46,5 +46,6 @@
   },
   "[json][jsonc][jsonl]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
-  }
+  },
+  "js/ts.experimental.useTsgo": false
 }

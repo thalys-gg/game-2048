@@ -5,6 +5,15 @@ Bun is the package manager and script runtime
 Vite is the bundler/dev server
 oxlint + oxfmt for lint/format and Vitest for tests
 
+# Deployment (Vercel)
+
+- Before declaring a deploy fixed, verify the actual Deployment
+  triggered and the live build matches the latest commit
+  (check for stale/old builds and unlinked worktree projects).
+- When a build fails, diagnose the real underlying build errors
+  rather than only patching vercel.json; confirm prepare/check
+  steps (e.g., `bun fix`) still run
+
 ## Documentation
 
 - [docs/architecture.md](docs/architecture.md) — layered diagram + the engine↔game boundary
